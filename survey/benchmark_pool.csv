@@ -1,0 +1,33 @@
+name,group,venue_or_arxiv,size,public_access_license,evaluation,deficit_claimed,seed_fit_tier,how_to_use_on_seed
+SecQue,A_SEC_QA,GEM 2025; arXiv 2504.04596,565 (Ratio 188),public; MIT; evaluation-only,GPT-4o judge 0/1/2 x5,real-world financial analysis on filings,seed,seed
+FinanceBench,A_SEC_QA,arXiv 2311.11944,"10,231 (150 public)",150-sample public; CC-BY-NC-4.0,human graded,retrieval: GPT-4-Turbo+retrieval wrong/refused on 81%,2,retrieval/long-context framing only
+DocFinQA,A_SEC_QA,ACL 2024; arXiv 2401.06915,~7k (varies by version),public (HF),execution accuracy,long documents; worst on longest docs,2,give full 10-K instead of chunks
+SEC-QA,A_SEC_QA,FinNLP 2025; arXiv 2406.14394,TBD,framework; TBD,program-based,multi-document RAG fails,related work,closest competitor: refreshable SEC question generation
+FinDER,A_SEC_QA,arXiv 2504.15800,"5,703",public (HF),retrieval + generation,ambiguous/abbreviated expert queries,3,conflicts with self-contained unambiguous stems
+Fin-RATE,A_SEC_QA,arXiv 2602.07294,"7,500",public (HF GGLabYale/Fin-RATE),accuracy + error attribution,longitudinal & cross-company: temporal/entity mismatch,1,multi-period tracking; cross-company comparison
+FinAgentBench,A_SEC_QA,NeurIPS 2025; arXiv 2508.14052,~26K,TBD,doc- and chunk-level ranking,multi-step agentic retrieval,2,agentic retrieval setting
+Finance Agent Benchmark (Vals),A_SEC_QA,arXiv 2508.00828,537 (~50 public),mostly private,agent with tools; rubric judge,"complex retrieval, GAAP/non-GAAP adjustments, modeling; <50% (paper)",1-2,trends/market-analysis ideas; adjustments (tier 2)
+FinSearchComp,A_SEC_QA,ICLR 2026; arXiv 2509.13160,635,public; CC-BY-4.0,accuracy vs human baseline,time-sensitive search; no-search models score 0,2,agentic search setting
+FrontierFinance (Samaya),A_SEC_QA,arXiv 2608.11683,"220 queries; 11,543 rubrics",public,long-form rubric grading,investor workflow long-form analysis,3,rubric grading conflicts with verifiable GT
+FinQA,B_numeric,EMNLP 2021; arXiv 2109.00122,"8,281",public (GitHub; license TBD),execution / program accuracy,multi-step numeric reasoning; needs domain knowledge,3,old data (1999-2019); borrow program-style GT
+ConvFinQA,B_numeric,EMNLP 2022; arXiv 2210.03849,"3,892 conv / 14,115 Q",public (GitHub),execution / program accuracy,long-range reasoning chains,2,sub-ability decomposition idea
+TAT-QA,B_numeric,ACL 2021; arXiv 2105.07624,"16,552",public; license statements conflict,EM/F1 with scale,hybrid table+text,3,old data
+MultiHiertt,B_numeric,ACL 2022; arXiv 2206.01347,"10,440",public (GitHub),EM/F1,multiple hierarchical tables,3,old data
+BizBench,B_numeric,ACL 2024; arXiv 2311.06602,8 tasks,public (HF kensho/bizbench),code execution,"program synthesis, quantity extraction, domain knowledge",3,borrow code-based grading
+FinanceMath,B_numeric,ACL 2024; arXiv 2311.09797,"1,200",public (GitHub yale-nlp),accuracy,domain knowledge: GPT-4o 60.9% vs human ~92%,3,not grounded in filings
+FinanceReasoning,B_numeric,ACL 2025; arXiv 2506.05828,"2,238",public,accuracy,4 error types; 9.72-30% of public items needed fixes,diagnostic,error taxonomy; GT-error precedent
+FinChain,B_numeric,ACL 2026; arXiv 2506.02515,58 topics,public (GitHub),ChainEval step+final,multi-step reasoning,3,template idea only
+V-FiLLM,B_numeric,arXiv 2608.11047,synthetic,TBD,correct-by-construction,depth -51%; numeric perturbation -47 pts,1 (perturbation control),numeric perturbation as contamination control
+FinanceQA (AfterQuery),C_robust,arXiv 2501.18062,TBD,public (HF AfterQuery),exact match,"assumptions, conventions, incomplete info; ~60% fail",1,missing-premise / stated-assumption items
+RealFin,C_robust,ACL 2026 Findings; arXiv 2602.07096,"2,020",public (GitHub),answer / detect missing / reject,models guess instead of flagging missing premises,1,missing-premise identification
+FailSafeQA,C_robust,arXiv 2502.06329,220,public; MIT,"LLM judge: robustness, grounding",fabrication with missing/irrelevant context,1,distractor context; missing context
+FinDVer,C_robust,EMNLP 2024; arXiv 2411.05764,"2,400 or 4,000",public (GitHub),entailed/refuted + explanation,claim verification lags experts,1,calculation verification items
+FinVerBench,C_robust,arXiv 2605.29586 (single author),"1,985",author says public,recall / false-positive rate,95-100% false positives on clean statements; rounding changes recall,1,error injection on XBRL; need clean controls
+FinED-Bench,C_robust,ACL 2026 Findings; arXiv 2608.12342,"973 docs / 4,123 errors",TBD,detection accuracy,reasoning errors hardest (38%),1,error-type taxonomy
+FinTrust,C_robust,EMNLP 2025; arXiv 2510.15232,7 dimensions,public (GitHub),per dimension,"fiduciary alignment, disclosure",3,off-target
+FinTagging,C_robust,arXiv 2505.20650,US-GAAP 17k+ concepts,public,macro-F1,XBRL concept alignment,tool idea,auto-diagnose wrong concept in seed GT
+Benchmark Self-Evolving,D_method,COLING 2025; arXiv 2402.11443,-,public code,-,models drop on evolved items,method,reframing ops; sub-ability probing
+SEB (Make Benchmarks Live Again),D_method,ICML 2026,-,TBD,-,pattern discovery on seed taxonomy,related work,closest methodological competitor
+GSM-Symbolic,D_method,arXiv 2410.05229,-,public,-,drops when numbers change or irrelevant clause added,method,perturbation + NoOp distractors
+FinForge,D_method,arXiv 2601.06747,5k+,public (GitHub),accuracy,semi-synthetic generation,related work,competitor for generation pipeline
+Beyond the Reported Cutoff,D_method,arXiv 2504.00042,197k,Compustat (proprietary),accuracy,memory biased to recent years and large firms,method,control firm size/year in closed-book tests
