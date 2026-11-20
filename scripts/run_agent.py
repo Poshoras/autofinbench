@@ -236,7 +236,13 @@ def run(qid, seed_rows):
         target_meta = next(f for f in edgar.filings(cik) if f['accn'] == spec['target_accn'])
         tdoc = XI.load(cik, spec['target_accn'])
         tmetrics = expand(spec, 'target')
-        tkeys = needed_keys(tmetrics.values())
+        # alternative reasonable definitions (graded as also-correct); overrides by metric name or by metric@period
+        vmetrics = {}
+        for vn, ov in spec.get('step5_question', {}).get('variants', {}).items():
+            vm = expand({**spec, 'metrics': {**spec['metrics'], **{k: v for k, v in ov.items() if '@' not in k}}}, 'target')
+            vm.update({k: v for k, v in ov.items() if '@' in k})
+            vmetrics[vn] = vm
+        tkeys = needed_keys(list(tmetrics.values()) + [e for vm in vmetrics.values() for e in vm.values()])
         txb = {k: lookup(tdoc, spec, 'target', k) for k in tkeys}
         plan['target_filing'] = target_meta
         plan['availability'] = {k: (txb[k]['concept'] if txb[k] else 'MISSING') for k in tkeys}
@@ -250,40 +256,55 @@ def run(qid, seed_rows):
 
     # ---- step 4
     TV = {k: v['value'] for k, v in txb.items() if v}
-    results = {}
-    for mk, expr in tmetrics.items():
-        v, miss = evaluate(expr, TV)
-        results[mk] = {'formula': expr, 'value': v, 'missing': miss}
+
+    def compute(mset):
+        out = {}
+        for mk, expr in mset.items():
+            v, miss = evaluate(expr, TV)
+            out[mk] = {'formula': expr, 'value': v, 'missing': miss}
+        return out
+    results = compute(tmetrics)
+    vresults = {vn: compute(vm) for vn, vm in vmetrics.items()}
     traj['step4_compute'] = {'inputs': {k: (v and {'concept': v['concept'], 'dims': v['dims'], 'value': v['value']}) for k, v in txb.items()},
-                             'metrics': results}
+                             'metrics': results, 'variant_metrics': vresults}
 
     # ---- step 5
     q5 = spec['step5_question']
-    ans = {}
-    for mk, d in q5['answer_decimals'].items():
-        ans[mk] = round(results[mk]['value'], d) if d > 0 else round(results[mk]['value'])
-    for name, (metric, a, b) in q5.get('directions', {}).items():
-        va, vb = ans[f'{metric}@{a}'], ans[f'{metric}@{b}']
-        ans[name] = 'increased' if vb > va else ('decreased' if vb < va else 'unchanged')
-    for name, (op, keys_) in q5.get('selectors', {}).items():
-        vals = {k: results[k]['value'] for k in keys_}
-        best = (max if op == 'argmax' else min)(vals, key=vals.get).split('@')[0]
-        ans[name] = q5.get('selector_labels', {}).get(best, best)
-    for name, (a, op, b) in q5.get('comparisons', {}).items():
-        ans[name] = 'yes' if {'>': results[a]['value'] > results[b]['value'], '<': results[a]['value'] < results[b]['value']}[op] else 'no'
     names = q5.get('display_names', {})
-    lines = []
-    for k, v in ans.items():
-        base = k.split('@')[0]
-        per = k.split('@')[1] if '@' in k else ''
+
+    def make_answer(res):
+        ans = {}
+        for mk, d in q5['answer_decimals'].items():
+            ans[mk] = round(res[mk]['value'], d) if d > 0 else round(res[mk]['value'])
+        for name, (metric, a, b) in q5.get('directions', {}).items():
+            va, vb = ans[f'{metric}@{a}'], ans[f'{metric}@{b}']
+            ans[name] = 'increased' if vb > va else ('decreased' if vb < va else 'unchanged')
+        for name, (op, keys_) in q5.get('selectors', {}).items():
+            vals = {k: res[k]['value'] for k in keys_}
+            best = (max if op == 'argmax' else min)(vals, key=vals.get).split('@')[0]
+            ans[name] = q5.get('selector_labels', {}).get(best, best)
+        for name, (a, op, b) in q5.get('comparisons', {}).items():
+            ans[name] = 'yes' if {'>': res[a]['value'] > res[b]['value'], '<': res[a]['value'] < res[b]['value']}[op] else 'no'
+        return ans
+
+    def fmt(k, v):
+        base, per = k.split('@')[0], (k.split('@')[1] if '@' in k else '')
         lab = names.get(base, base) + (f' ({per})' if per else '')
         if isinstance(v, (int, float)) and not isinstance(v, bool):
-            d = q5['answer_decimals'].get(k, 0)
-            lines.append(f'{lab}: {v:,.{d}f}')
-        else:
-            lines.append(f'{lab}: {v}')
-    traj['step5_question'] = {'question': q5['question'], 'answer': ans, 'answer_text': '\n'.join(lines),
-                              'grading': q5.get('grading', 'numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match'),
+            return f"{lab}: {v:,.{q5['answer_decimals'].get(k, 0)}f}"
+        return f'{lab}: {v}'
+    ans = make_answer(results)
+    variants_ans = {}
+    for vn, vres in vresults.items():
+        va = make_answer(vres)
+        variants_ans[vn] = {k: v for k, v in va.items() if ans.get(k) != v}   # only what differs from the primary answer
+    lines = [fmt(k, v) for k, v in ans.items()]
+    for vn, diff in variants_ans.items():
+        if diff:
+            lines.append(f'Also accepted ({vn}): ' + '; '.join(fmt(k, v) for k, v in diff.items()))
+    traj['step5_question'] = {'question': q5['question'], 'answer': ans, 'accepted_variants': variants_ans, 'answer_text': '\n'.join(lines),
+                              'grading': q5.get('grading', 'score each item separately; numbers correct if within 1 unit of the last stated decimal place; '
+                                                           'labels by meaning; an answer is also correct if it consistently matches one of the accepted variants'),
                               'changes_vs_seed': q5.get('changes_vs_seed', [])}
 
     # ---- step 6
@@ -309,12 +330,17 @@ def run(qid, seed_rows):
         x = abs(results[k]['value']) * 10 ** d
         if abs((x - int(x)) - 0.5) < 0.05:
             near_boundary.append({'key': k, 'unrounded': results[k]['value']})
-    auto_pass = all(c['found_in_filing_text'] for c in checks) and not leak and all(r['value'] is not None for r in results.values())
+    # the question must not give away the calculation (user rule: test the model's own reasoning)
+    formula_hits = re.findall(r'=|\s/\s|\bdivided by\b|\bx 365\b|\bminus\b|\bplus\b|\bdefined as\b|\bdenominator\b|\bsum of\b', q5['question'], re.I)
+    all_vals_ok = all(r['value'] is not None for r in results.values()) and \
+                  all(r['value'] is not None for vr in vresults.values() for r in vr.values())
+    auto_pass = all(c['found_in_filing_text'] for c in checks) and not leak and not formula_hits and all_vals_ok
     review = dict(spec.get('step6_review') or {})
     if review.get('verdict', 'auto') in ('auto', 'pending'):   # exception-based review: judge only flagged items
         clean = auto_pass and not traj['step2_backtest']['flags_for_attention']
         review = {**review, 'verdict': 'pass' if clean else 'needs_attention', 'mode': 'auto (no flags)' if clean else 'flagged'}
-    traj['step6_review'] = {'text_verification': checks, 'answer_leak_in_question': leak, 'rounding_near_boundary': near_boundary,
+    traj['step6_review'] = {'text_verification': checks, 'answer_leak_in_question': leak, 'formula_in_question': formula_hits,
+                            'rounding_near_boundary': near_boundary,
                             'automatic_checks_pass': auto_pass, **review}
     traj['revisions'] = spec.get('revisions', [])
     traj['final_status'] = ('ACCEPTED' if auto_pass and review['verdict'] == 'pass' else
@@ -323,7 +349,9 @@ def run(qid, seed_rows):
     row = {'new_qid': f'{qid}_u1', 'seed_qid': qid, 'company': spec['company'], 'form': target_meta['form'],
            'accession_number': spec['target_accn'], 'report_period': target_meta['period'], 'filed': target_meta['filed'],
            'question': q5['question'], 'answer_text': traj['step5_question']['answer_text'],
-           'answer_json': json.dumps(ans, ensure_ascii=False), 'status': traj['final_status']}
+           'answer_json': json.dumps(ans, ensure_ascii=False),
+           'accepted_variants_json': json.dumps({k: v for k, v in variants_ans.items() if v}, ensure_ascii=False),
+           'status': traj['final_status']}
     return traj, row
 
 

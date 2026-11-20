@@ -179,7 +179,7 @@
     "rationale": "分部结构未变（仍是 4 个地区 + Global Brand Divisions），数据可得。按 GT 的实际口径（NIKE Brand 收入为分母）出题并写明；叙述部分改为 \"占比最大的地区\"。"
   },
   "step5_question": {
-    "question": "According to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, what percentage of total NIKE Brand revenues in fiscal 2026 came from each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions? Use total NIKE Brand revenues (the sum of these five) as the denominator, report each percentage to two decimal places, and identify the region with the largest share.",
+    "question": "According to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, what percentage of total NIKE Brand revenues in fiscal 2026 was contributed by each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions, and which contributed the largest share? Report percentages to two decimal places.",
     "answer_decimals": {
       "Brand@FY2026": 0,
       "ShareNA@FY2026": 2,
@@ -211,7 +211,7 @@
     },
     "changes_vs_seed": [
       "期间 FY2018 → FY2026",
-      "分母从模糊的 \"total revenue\" 改为明确的 \"total NIKE Brand revenues\"（与原 GT 实际口径一致）",
+      "范围从模糊的 \"total revenue\" 改为 \"total NIKE Brand revenues\"（与原 GT 实际口径一致；属于问什么，不是怎么算）",
       "开放叙述改为 \"占比最大的地区\""
     ],
     "selector_labels": {
@@ -237,5 +237,13 @@
       "5 项之和 45,222 与文件中 \"TOTAL NIKE BRAND\" 一致"
     ]
   },
-  "revisions": []
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    }
+  ]
 }

@@ -26,7 +26,7 @@
     ]
   },
   "step5_question": {
-    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's return on capital employed (ROCE) for fiscal 2026, and how does it compare with fiscal 2025? Define ROCE = operating income / capital employed, where capital employed = total assets - total current liabilities at fiscal year-end. Report both as percentages rounded to one decimal place and state whether ROCE increased or decreased.",
+    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's return on capital employed (ROCE) for fiscal 2026, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.",
     "answer_decimals": {
       "ROCE@FY2025": 1,
       "ROCE@FY2026": 1
@@ -45,7 +45,24 @@
     "changes_vs_seed": [
       "期间平移",
       "补上公司名",
-      "题干写明公式"
-    ]
-  }
+      "EBIT 口径、平均资本口径列为也接受"
+    ],
+    "variants": {
+      "EBIT (pre-tax income + interest expense) instead of operating income": {
+        "ROCE": "(PreTax@{p} + IntExp@{p}) / (Assets@{p} - CurLiab@{p}) * 100"
+      },
+      "average capital employed": {
+        "ROCE": "OpInc@{p} / (((Assets@{p} - CurLiab@{p}) + (Assets@{prev} - CurLiab@{prev})) / 2) * 100"
+      }
+    }
+  },
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    }
+  ]
 }

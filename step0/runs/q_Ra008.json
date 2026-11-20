@@ -350,7 +350,8 @@
         "value": 0.0,
         "missing": []
       }
-    }
+    },
+    "variant_metrics": {}
   },
   "step5_question": {
     "question": "In NIKE's Asia Pacific & Latin America (APLA) segment, how did revenues from Footwear, Apparel, and Equipment change from fiscal 2025 to fiscal 2026, according to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026? Report each category's percentage change to two decimal places and identify which category had the highest and which had the lowest percentage change.",
@@ -361,8 +362,9 @@
       "Highest": "Apparel",
       "Lowest": "Equipment"
     },
+    "accepted_variants": {},
     "answer_text": "Footwear change % (FY2026): -1.68\nApparel change % (FY2026): 5.71\nEquipment change % (FY2026): -8.14\nHighest growth: Apparel\nLowest growth: Equipment",
-    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
       "期间 FY2018/FY2017 → FY2026/FY2025",
       "题干补上缺失的分部范围 \"APLA\"",
@@ -421,6 +423,7 @@
       }
     ],
     "answer_leak_in_question": [],
+    "formula_in_question": [],
     "rounding_near_boundary": [
       {
         "key": "FWg@FY2026",

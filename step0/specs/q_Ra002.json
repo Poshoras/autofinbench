@@ -87,6 +87,14 @@
       "label": "Total shareholders' equity (incl. noncontrolling interest)",
       "statement": "Consolidated Balance Sheets / Statements of Shareholders' Equity",
       "text_label": "(Total shareholders.{1,2}equity|BALANCE JUNE 30, \\d{4})"
+    },
+    "NetEarn": {
+      "concepts": [
+        "ProfitLoss"
+      ],
+      "type": "duration",
+      "label": "Net earnings (incl. noncontrolling interests)",
+      "statement": "Consolidated Statements of Earnings"
     }
   },
   "metrics": {
@@ -123,7 +131,7 @@
     "rationale": "所有数据项在 FY2026 10-K 中可得（见 availability）。去掉无法判分的叙述，改为每个比率的变化方向。"
   },
   "step5_question": {
-    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, analyze P&G's profitability for fiscal 2026 and fiscal 2025 with the following ratios: gross margin = (net sales - cost of products sold) / net sales; operating margin = operating income / net sales; net margin = net earnings attributable to Procter & Gamble / net sales; return on equity (ROE) = net earnings attributable to Procter & Gamble / average total shareholders' equity, where the average is taken over the beginning and end of each fiscal year. Report each ratio for both years as a percentage rounded to one decimal place, and for each ratio state whether it increased, decreased, or was unchanged from fiscal 2025 to fiscal 2026 (compare the rounded values).",
+    "question": "Analyze Procter & Gamble's profitability for fiscal 2026 and fiscal 2025 (fiscal years ended June 30) using ratio analysis, based on its fiscal 2026 Form 10-K. Report the gross profit margin, operating profit margin, net profit margin, and return on equity (ROE) for both years as percentages rounded to one decimal place, and state whether each ratio increased, decreased, or was unchanged.",
     "answer_decimals": {
       "GPM@FY2025": 1,
       "GPM@FY2026": 1,
@@ -168,10 +176,19 @@
     },
     "changes_vs_seed": [
       "期间 FY2024/FY2023 → FY2026/FY2025",
-      "题干写明 4 个比率的公式（含 ROE 用平均权益）",
-      "开放式 \"analyse\" 改为 \"数值 + 变化方向\"，删除叙述部分"
+      "开放式 \"analyse\" 改为指定 4 个比率的数值 + 变化方向（与原 GT 覆盖的比率一致）",
+      "口径歧义（ROE 用期末/平均权益、净利润是否含少数股东）列为也接受的口径"
     ],
-    "selector_labels": {}
+    "selector_labels": {},
+    "variants": {
+      "ROE on year-end equity": {
+        "ROE": "NI@{p} / Eq@{p} * 100"
+      },
+      "net earnings incl. noncontrolling interests": {
+        "NPM": "NetEarn@{p} / Rev@{p} * 100",
+        "ROE": "NetEarn@{p} / ((Eq@{p} + Eq@{prev}) / 2) * 100"
+      }
+    }
   },
   "step6_review": {
     "verdict": "pass",
@@ -196,6 +213,13 @@
       "problem": "Eq@FY2024 = 50,559 在 \"Total shareholders' equity\" 附近找不到（FY2026 10-K 资产负债表只有 2026、2025 两列）",
       "action": "在全文搜索 50,559，定位到股东权益变动表 \"BALANCE JUNE 30, 2024 … $ 50,559\" → 扩展核对用的行标签",
       "result": "第 2 轮通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
     }
   ]
 }

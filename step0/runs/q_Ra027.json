@@ -115,6 +115,16 @@
         "label": "U.S. Tax Act payments (reconciling item in Adjusted FCF table)",
         "statement": "MD&A – Non-GAAP reconciliation",
         "type": "duration"
+      },
+      "PreTax": {
+        "label": "Earnings before income taxes",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "IntExp": {
+        "label": "Interest expense",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
       }
     },
     "formulas": {
@@ -525,27 +535,73 @@
         "value": -40.88030307285871,
         "missing": []
       }
+    },
+    "variant_metrics": {
+      "year-end balances": {
+        "DIO@FY2025": {
+          "formula": "((Inv@FY2025 + Inv@FY2024) / 2) / COGS@FY2025 * 365",
+          "value": 64.5825842969585,
+          "missing": []
+        },
+        "DIO@FY2026": {
+          "formula": "((Inv@FY2026 + Inv@FY2025) / 2) / COGS@FY2026 * 365",
+          "value": 66.16582491582491,
+          "missing": []
+        },
+        "DSO@FY2025": {
+          "formula": "((AR@FY2025 + AR@FY2024) / 2) / Rev@FY2025 * 365",
+          "value": 26.639664705044847,
+          "missing": []
+        },
+        "DSO@FY2026": {
+          "formula": "((AR@FY2026 + AR@FY2025) / 2) / Rev@FY2026 * 365",
+          "value": 25.668518475962863,
+          "missing": []
+        },
+        "DPO@FY2025": {
+          "formula": "((AP@FY2025 + AP@FY2024) / 2) / COGS@FY2025 * 365",
+          "value": 135.62475706928385,
+          "missing": []
+        },
+        "DPO@FY2026": {
+          "formula": "((AP@FY2026 + AP@FY2025) / 2) / COGS@FY2026 * 365",
+          "value": 132.71464646464648,
+          "missing": []
+        },
+        "CCC@FY2025": {
+          "formula": "Inv@FY2025 / COGS@FY2025 * 365 + AR@FY2025 / Rev@FY2025 * 365 - AP@FY2025 / COGS@FY2025 * 365",
+          "value": -41.27813077972134,
+          "missing": []
+        },
+        "CCC@FY2026": {
+          "formula": "Inv@FY2026 / COGS@FY2026 * 365 + AR@FY2026 / Rev@FY2026 * 365 - AP@FY2026 / COGS@FY2026 * 365",
+          "value": -43.086833961454786,
+          "missing": []
+        }
+      }
     }
   },
   "step5_question": {
-    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026 (and the fiscal 2025 Form 10-K for balances as of June 30, 2024), compute P&G's cash conversion cycle for fiscal 2026 and fiscal 2025. Use averages of beginning- and end-of-year balances and a 365-day year: DIO = average inventories / cost of products sold x 365; DSO = average accounts receivable / net sales x 365; DPO = average accounts payable / cost of products sold x 365; CCC = DIO + DSO - DPO (computed from unrounded components). Report DIO, DSO, DPO and CCC for both years in days rounded to one decimal place, and state whether the CCC increased or decreased.",
+    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's cash conversion cycle for fiscal 2026, and how does it compare to fiscal 2025? Report the cash conversion cycle in days, rounded to one decimal place.",
     "answer": {
-      "DIO@FY2025": 64.6,
-      "DSO@FY2025": 26.6,
-      "DPO@FY2025": 135.6,
       "CCC@FY2025": -44.4,
-      "DIO@FY2026": 66.2,
-      "DSO@FY2026": 25.7,
-      "DPO@FY2026": 132.7,
       "CCC@FY2026": -40.9,
       "CCC_change": "increased"
     },
-    "answer_text": "DIO (days) (FY2025): 64.6\nDSO (days) (FY2025): 26.6\nDPO (days) (FY2025): 135.6\nCCC (days) (FY2025): -44.4\nDIO (days) (FY2026): 66.2\nDSO (days) (FY2026): 25.7\nDPO (days) (FY2026): 132.7\nCCC (days) (FY2026): -40.9\nCCC change: increased",
-    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "accepted_variants": {
+      "year-end balances": {
+        "CCC@FY2025": -41.3,
+        "CCC@FY2026": -43.1,
+        "CCC_change": "decreased"
+      }
+    },
+    "answer_text": "CCC (days) (FY2025): -44.4\nCCC (days) (FY2026): -40.9\nCCC change: increased\nAlso accepted (year-end balances): CCC (days) (FY2025): -41.3; CCC (days) (FY2026): -43.1; CCC change: decreased",
+    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
       "期间平移",
       "补上公司名",
-      "两年统一用平均余额并写明全部公式"
+      "只问 CCC（不再列出 DIO/DSO/DPO，避免提示分解步骤）",
+      "期末余额口径列为也接受"
     ]
   },
   "step6_review": {
@@ -630,14 +686,24 @@
       }
     ],
     "answer_leak_in_question": [],
+    "formula_in_question": [],
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
     "mode": "flagged → judged",
     "notes": [
-      "标记全部来自原题口径不一致和算术错误；新题统一用平均余额并写明公式，13 个输入全部在原文中核对通过"
+      "主答案用平均余额；期末余额口径为也接受",
+      "CCC 为负值：从 −44.4 到 −40.9 是\"上升\""
     ]
   },
-  "revisions": [],
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    }
+  ],
   "final_status": "ACCEPTED"
 }

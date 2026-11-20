@@ -139,7 +139,7 @@
     "rationale": "全部数据项可得。把 GT 的两个定性判断形式化：负债/权益比率 + 流动性资产是否超过 term debt。"
   },
   "step5_question": {
-    "question": "Assess Apple Inc.'s solvency position as of September 26, 2026 using the balance sheet in its fiscal 2026 Form 10-K. Report total assets, total liabilities, total shareholders' equity, and total term debt (current plus non-current term debt), each in $ millions. Then compute (a) the ratio of total liabilities to total shareholders' equity, rounded to two decimals, and (b) liquid assets, defined as cash and cash equivalents plus current and non-current marketable securities (in $ millions), and state whether liquid assets exceed total term debt.",
+    "question": "How does Apple Inc.'s solvency position look based on its balance sheet as of September 26, 2026 (fiscal 2026 Form 10-K)? Report total assets, total liabilities, total shareholders' equity, and total term debt (in $ millions); the ratio of total liabilities to shareholders' equity, rounded to two decimals; Apple's total cash, cash equivalents and marketable securities (in $ millions); and whether that total exceeds its term debt.",
     "answer_decimals": {
       "TA@FY2026": 0,
       "TL@FY2026": 0,
@@ -167,7 +167,7 @@
     "changes_vs_seed": [
       "时点 2023-09-30 → 2026-09-26",
       "GT 中的定性判断改为 1 个比率 + 1 个是/否判断",
-      "删除 \"依赖债务融资\" 这类错误/无法判分的叙述"
+      "删除 \"依赖债务融资\" 这类错误叙述"
     ]
   },
   "step6_review": {
@@ -182,8 +182,16 @@
       "change_is_mainly_information_update": "是（GT 的两个定性判断形式化为比率 + 是/否，未新增考点）"
     },
     "notes": [
-      "term debt 不含 commercial paper（与原 GT 口径一致），题干已写明 \"current plus non-current term debt\""
+      "term debt 指资产负债表中的 \"Term debt\"（流动 + 非流动），不含 commercial paper，与原 GT 一致"
     ]
   },
-  "revisions": []
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    }
+  ]
 }

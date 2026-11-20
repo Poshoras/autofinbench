@@ -309,7 +309,8 @@
         "value": 8.98,
         "missing": []
       }
-    }
+    },
+    "variant_metrics": {}
   },
   "step5_question": {
     "question": "From Apple Inc.'s Form 10-K for the fiscal year ended September 26, 2026, report the key profitability results for fiscal 2026: total gross margin, operating income, and net income (each in $ millions), and basic and diluted earnings per share.",
@@ -320,8 +321,9 @@
       "EPS_basic@FY2026": 9.01,
       "EPS_diluted@FY2026": 8.98
     },
+    "accepted_variants": {},
     "answer_text": "Total gross margin ($M) (FY2026): 233,602\nOperating income ($M) (FY2026): 158,063\nNet income ($M) (FY2026): 132,175\nBasic EPS ($) (FY2026): 9.01\nDiluted EPS ($) (FY2026): 8.98",
-    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
       "期间 FY2023 → FY2026",
       "\"key findings\" 改为明确列出 5 个指标（与原 GT 覆盖的指标一致）",
@@ -362,6 +364,7 @@
       }
     ],
     "answer_leak_in_question": [],
+    "formula_in_question": [],
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",

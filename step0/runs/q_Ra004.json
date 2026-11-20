@@ -384,10 +384,11 @@
         "value": 136935.0,
         "missing": []
       }
-    }
+    },
+    "variant_metrics": {}
   },
   "step5_question": {
-    "question": "Assess Apple Inc.'s solvency position as of September 26, 2026 using the balance sheet in its fiscal 2026 Form 10-K. Report total assets, total liabilities, total shareholders' equity, and total term debt (current plus non-current term debt), each in $ millions. Then compute (a) the ratio of total liabilities to total shareholders' equity, rounded to two decimals, and (b) liquid assets, defined as cash and cash equivalents plus current and non-current marketable securities (in $ millions), and state whether liquid assets exceed total term debt.",
+    "question": "How does Apple Inc.'s solvency position look based on its balance sheet as of September 26, 2026 (fiscal 2026 Form 10-K)? Report total assets, total liabilities, total shareholders' equity, and total term debt (in $ millions); the ratio of total liabilities to shareholders' equity, rounded to two decimals; Apple's total cash, cash equivalents and marketable securities (in $ millions); and whether that total exceeds its term debt.",
     "answer": {
       "TA@FY2026": 404548,
       "TL@FY2026": 292455,
@@ -397,12 +398,13 @@
       "Liquid@FY2026": 136935,
       "Liquid_exceeds_term_debt": "yes"
     },
+    "accepted_variants": {},
     "answer_text": "Total assets ($M) (FY2026): 404,548\nTotal liabilities ($M) (FY2026): 292,455\nTotal shareholders' equity ($M) (FY2026): 112,093\nTotal term debt ($M) (FY2026): 78,114\nTotal liabilities / equity (FY2026): 2.61\nLiquid assets ($M) (FY2026): 136,935\nLiquid assets exceed term debt?: yes",
-    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
       "时点 2023-09-30 → 2026-09-26",
       "GT 中的定性判断改为 1 个比率 + 1 个是/否判断",
-      "删除 \"依赖债务融资\" 这类错误/无法判分的叙述"
+      "删除 \"依赖债务融资\" 这类错误叙述"
     ]
   },
   "step6_review": {
@@ -457,6 +459,7 @@
       }
     ],
     "answer_leak_in_question": [],
+    "formula_in_question": [],
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -470,9 +473,17 @@
       "change_is_mainly_information_update": "是（GT 的两个定性判断形式化为比率 + 是/否，未新增考点）"
     },
     "notes": [
-      "term debt 不含 commercial paper（与原 GT 口径一致），题干已写明 \"current plus non-current term debt\""
+      "term debt 指资产负债表中的 \"Term debt\"（流动 + 非流动），不含 commercial paper，与原 GT 一致"
     ]
   },
-  "revisions": [],
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    }
+  ],
   "final_status": "ACCEPTED"
 }

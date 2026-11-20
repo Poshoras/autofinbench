@@ -114,7 +114,7 @@
     "rationale": "数据项全部可得（利息费用科目改名，见 revisions）。沿用回测确认的公式，并在题干中写明 ICR 的非常规定义。删除错误的叙述结论。"
   },
   "step5_question": {
-    "question": "Perform a solvency analysis of JPMorgan Chase & Co. using its Form 10-Q for the quarter ended September 30, 2026. Compute: (1) debt-to-equity ratio = total liabilities / total stockholders' equity; (2) interest coverage ratio = income before income tax expense / total interest expense, both for the three months ended September 30, 2026; (3) financial leverage ratio = total assets / total stockholders' equity; (4) long-term debt to capitalization ratio = long-term debt / (long-term debt + total stockholders' equity). Use balance sheet amounts as of September 30, 2026 and round each ratio to two decimals.",
+    "question": "What were the key outcomes of the solvency analysis for JPMorgan Chase as of September 30, 2026, based on its Form 10-Q for the third quarter of 2026? Report the debt-to-equity ratio, the interest coverage ratio for the three months ended September 30, 2026, the financial leverage ratio, and the long-term debt to capitalization ratio, each rounded to two decimals.",
     "answer_decimals": {
       "DE@Q3_2026": 2,
       "ICR@Q3_2026": 2,
@@ -129,9 +129,17 @@
     },
     "changes_vs_seed": [
       "时点 2024-03-31 → 2026-09-30（同为 3 个月季度）",
-      "题干写明 4 个公式（GT 原本没有）",
-      "删除 \"potential solvency risks\" 等结论"
-    ]
+      "删除 \"potential solvency risks\" 等结论",
+      "原题 ICR 为非常规口径（税前利润 ÷ 利息费用），常规 EBIT 口径列为也接受"
+    ],
+    "variants": {
+      "interest coverage on EBIT (pre-tax income + interest expense)": {
+        "ICR": "(PreTax@{p} + IntExp@{p}) / IntExp@{p}"
+      },
+      "debt-to-equity on long-term debt": {
+        "DE": "LTD@{p} / Eq@{p}"
+      }
+    }
   },
   "step6_review": {
     "verdict": "pass",
@@ -145,8 +153,8 @@
       "change_is_mainly_information_update": true
     },
     "notes": [
-      "ICR 定义非常规，已在题干写明公式，避免受测模型按 EBIT 口径作答被误判",
-      "银行业比率经济含义有限，但题目只考计算，不影响可判分性"
+      "主答案沿用回测确认的原题口径；常规口径作为也接受的答案",
+      "银行业比率经济含义有限，但题目只考计算"
     ]
   },
   "revisions": [
@@ -156,6 +164,13 @@
       "problem": "IntExp 只配置了 InterestExpense，目标 10-Q 中该标签缺失（availability=MISSING）",
       "action": "在目标文件中搜索含 Interest 的科目，发现 JPM 自 2026 年起改用 InterestExpenseOperating；原文 \"Total interest expense $ 26,020\" 吻合 → 把它加入候选科目",
       "result": "第 2 轮可得"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
     }
   ]
 }

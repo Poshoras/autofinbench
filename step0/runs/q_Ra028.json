@@ -105,6 +105,16 @@
         "label": "U.S. Tax Act payments (reconciling item in Adjusted FCF table)",
         "statement": "MD&A – Non-GAAP reconciliation",
         "type": "duration"
+      },
+      "PreTax": {
+        "label": "Earnings before income taxes",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "IntExp": {
+        "label": "Interest expense",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
       }
     },
     "formulas": {
@@ -255,21 +265,40 @@
         "value": 836846.1538461539,
         "missing": []
       }
+    },
+    "variant_metrics": {
+      "fiscal 2025 headcount derived from the fiscal 2026 10-K (104,000 employees, down 4%)": {
+        "RevPerEmp@FY2025": {
+          "formula": "Rev@FY2025 * 1000000 / (Emp@FY2026 / 0.96)",
+          "value": 778006.1538461538,
+          "missing": []
+        },
+        "RevPerEmp@FY2026": {
+          "formula": "Rev@FY2026 * 1000000 / Emp@FY2026",
+          "value": 836846.1538461539,
+          "missing": []
+        }
+      }
     }
   },
   "step5_question": {
-    "question": "Using Procter & Gamble's Form 10-K filings for the fiscal years ended June 30, 2026 and June 30, 2025, what was P&G's revenue per employee (net sales divided by the approximate number of employees reported as of fiscal year-end) for fiscal 2026 and fiscal 2025? Report both in US dollars rounded to the nearest dollar and state whether revenue per employee increased or decreased.",
+    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's revenue per employee for fiscal 2026, and how does it compare to fiscal 2025? Report in US dollars rounded to the nearest dollar.",
     "answer": {
       "RevPerEmp@FY2025": 773248,
       "RevPerEmp@FY2026": 836846,
       "RevPerEmp_change": "increased"
     },
-    "answer_text": "Revenue per employee ($) (FY2025): 773,248\nRevenue per employee ($) (FY2026): 836,846\nChange: increased",
-    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "accepted_variants": {
+      "fiscal 2025 headcount derived from the fiscal 2026 10-K (104,000 employees, down 4%)": {
+        "RevPerEmp@FY2025": 778006
+      }
+    },
+    "answer_text": "Revenue per employee ($) (FY2025): 773,248\nRevenue per employee ($) (FY2026): 836,846\nChange: increased\nAlso accepted (fiscal 2025 headcount derived from the fiscal 2026 10-K (104,000 employees, down 4%)): Revenue per employee ($) (FY2025): 778,006",
+    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
       "期间平移",
       "补上公司名",
-      "员工数口径写明为年末约数"
+      "FY2025 员工数：主答案用 FY2025 10-K 的 109,000；按 FY2026 10-K \"下降 4%\" 倒推的人数列为也接受"
     ]
   },
   "step6_review": {
@@ -300,11 +329,20 @@
       }
     ],
     "answer_leak_in_question": [],
+    "formula_in_question": [],
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
     "mode": "auto (no flags)"
   },
-  "revisions": [],
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    }
+  ],
   "final_status": "ACCEPTED"
 }

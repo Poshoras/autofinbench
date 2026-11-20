@@ -101,6 +101,16 @@
         "label": "U.S. Tax Act payments (reconciling item in Adjusted FCF table)",
         "statement": "MD&A – Non-GAAP reconciliation",
         "type": "duration"
+      },
+      "PreTax": {
+        "label": "Earnings before income taxes",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "IntExp": {
+        "label": "Interest expense",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
       }
     },
     "formulas": {
@@ -193,15 +203,17 @@
         "value": 3.260405296378909,
         "missing": []
       }
-    }
+    },
+    "variant_metrics": {}
   },
   "step5_question": {
     "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's revenue (net sales) growth rate from fiscal 2025 to fiscal 2026? Report the percentage rounded to one decimal place.",
     "answer": {
       "RevGrowth@FY2026": 3.3
     },
+    "accepted_variants": {},
     "answer_text": "Net sales growth % (FY2026): 3.3",
-    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
       "期间平移",
       "补上公司名"
@@ -223,6 +235,7 @@
       }
     ],
     "answer_leak_in_question": [],
+    "formula_in_question": [],
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",

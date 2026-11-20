@@ -211,6 +211,24 @@
           "pattern": "Adjusted Free Cash Flow 2026 (?:\\$ \\(?[\\d,]+\\)? ){4}2025 \\$ [\\d,]+ \\$ \\([\\d,]+\\) \\$ ([\\d,]+) \\$"
         }
       }
+    },
+    "PreTax": {
+      "concepts": [
+        "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+      ],
+      "type": "duration",
+      "label": "Earnings before income taxes",
+      "statement": "Consolidated Statements of Earnings"
+    },
+    "IntExp": {
+      "concepts": [
+        "InterestExpenseNonoperating",
+        "InterestExpense"
+      ],
+      "type": "duration",
+      "label": "Interest expense",
+      "statement": "Consolidated Statements of Earnings",
+      "text_label": "Interest expense"
     }
   },
   "step3_plan": {

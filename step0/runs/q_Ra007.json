@@ -188,20 +188,21 @@
         "value": 1.9057702488088937,
         "missing": []
       }
-    }
+    },
+    "variant_metrics": {}
   },
   "step5_question": {
-    "question": "Using NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, compute NIKE's EBIT for fiscal 2026 and fiscal 2025 in $ millions, where EBIT = income before income taxes + interest (income) expense, net (as reported on the income statement), and compute the year-over-year percentage change in EBIT from fiscal 2025 to fiscal 2026, rounded to two decimals.",
+    "question": "Based on NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, how does NIKE's EBIT for fiscal 2026 compare with fiscal 2025? Report EBIT for both years in $ millions and the year-over-year percentage change rounded to two decimals.",
     "answer": {
       "EBIT@FY2025": 3778,
       "EBIT@FY2026": 3850,
       "Chg@FY2026": 1.91
     },
+    "accepted_variants": {},
     "answer_text": "EBIT ($M) (FY2025): 3,778\nEBIT ($M) (FY2026): 3,850\nEBIT YoY change % (FY2026): 1.91",
-    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
       "期间 FY2018/FY2017 → FY2026/FY2025",
-      "题干写明 EBIT 定义",
       "删除原因解释"
     ]
   },
@@ -233,6 +234,7 @@
       }
     ],
     "answer_leak_in_question": [],
+    "formula_in_question": [],
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -246,7 +248,7 @@
       "change_is_mainly_information_update": true
     },
     "notes": [
-      "独立佐证：Nike 在 MD&A 的非 GAAP 调节表中直接披露 \"EBIT $ 3,850 $ 3,778\"，与计算结果一致"
+      "Nike 在 MD&A 中直接披露 EBIT（3,850 / 3,778），与计算结果一致，口径无歧义"
     ]
   },
   "revisions": [
@@ -263,6 +265,13 @@
       "problem": "第 1 轮修订的行标签正则有误",
       "action": "改为括号可选的正则，同时兼容新旧两种写法",
       "result": "第 3 轮通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
     }
   ],
   "final_status": "ACCEPTED"

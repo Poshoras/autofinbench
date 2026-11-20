@@ -24,7 +24,7 @@
     ]
   },
   "step5_question": {
-    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's capital expenditure ratio (capital expenditures / net sales) for fiscal 2026, and how does it compare with fiscal 2025? Report both as percentages rounded to two decimal places and state whether the ratio increased or decreased.",
+    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's capital expenditure ratio for fiscal 2026, and how does it compare to fiscal 2025? Round to two decimal places.",
     "answer_decimals": {
       "CapexRatio@FY2025": 2,
       "CapexRatio@FY2026": 2
@@ -42,7 +42,25 @@
     },
     "changes_vs_seed": [
       "期间平移",
-      "补上公司名"
-    ]
-  }
+      "补上公司名",
+      "\"capital expenditure ratio\" 有多种常见定义，列为也接受的口径"
+    ],
+    "variants": {
+      "operating cash flow / capital expenditures (times)": {
+        "CapexRatio": "CFO@{p} / Capex@{p}"
+      },
+      "capital expenditures / operating cash flow (%)": {
+        "CapexRatio": "Capex@{p} / CFO@{p} * 100"
+      }
+    }
+  },
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    }
+  ]
 }

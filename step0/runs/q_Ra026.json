@@ -107,6 +107,16 @@
         "label": "U.S. Tax Act payments (reconciling item in Adjusted FCF table)",
         "statement": "MD&A – Non-GAAP reconciliation",
         "type": "duration"
+      },
+      "PreTax": {
+        "label": "Earnings before income taxes",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "IntExp": {
+        "label": "Interest expense",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
       }
     },
     "formulas": {
@@ -243,6 +253,8 @@
       "doc": "pg-20260630.htm"
     },
     "availability": {
+      "AdjFCF@FY2025": "TEXT",
+      "AdjFCF@FY2026": "TEXT",
       "CFO@FY2025": "NetCashProvidedByUsedInOperatingActivities",
       "CFO@FY2026": "NetCashProvidedByUsedInOperatingActivities",
       "Capex@FY2025": "PaymentsToAcquirePropertyPlantAndEquipment",
@@ -253,6 +265,16 @@
   },
   "step4_compute": {
     "inputs": {
+      "AdjFCF@FY2025": {
+        "concept": "TEXT",
+        "dims": {},
+        "value": 14606.0
+      },
+      "AdjFCF@FY2026": {
+        "concept": "TEXT",
+        "dims": {},
+        "value": 15835.0
+      },
       "CFO@FY2025": {
         "concept": "NetCashProvidedByUsedInOperatingActivities",
         "dims": {},
@@ -295,25 +317,57 @@
         "value": 17.403943377148636,
         "missing": []
       }
+    },
+    "variant_metrics": {
+      "P&G's reported Adjusted Free Cash Flow": {
+        "FCFtoSales@FY2025": {
+          "formula": "AdjFCF@FY2025 / Rev@FY2025 * 100",
+          "value": 17.329505006881497,
+          "missing": []
+        },
+        "FCFtoSales@FY2026": {
+          "formula": "AdjFCF@FY2026 / Rev@FY2026 * 100",
+          "value": 18.19445721114073,
+          "missing": []
+        }
+      }
     }
   },
   "step5_question": {
-    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's free cash flow to sales ratio for fiscal 2026, and how does it compare with fiscal 2025? Define free cash flow = net cash from operating activities - capital expenditures, and the ratio = free cash flow / net sales. Report both as percentages rounded to one decimal place and state whether the ratio increased or decreased.",
+    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's free cash flow to sales ratio for fiscal 2026, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.",
     "answer": {
       "FCFtoSales@FY2025": 16.7,
       "FCFtoSales@FY2026": 17.4,
       "FCFtoSales_change": "increased"
     },
-    "answer_text": "FCF / net sales % (FY2025): 16.7\nFCF / net sales % (FY2026): 17.4\nChange: increased",
-    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "accepted_variants": {
+      "P&G's reported Adjusted Free Cash Flow": {
+        "FCFtoSales@FY2025": 17.3,
+        "FCFtoSales@FY2026": 18.2
+      }
+    },
+    "answer_text": "FCF / net sales % (FY2025): 16.7\nFCF / net sales % (FY2026): 17.4\nChange: increased\nAlso accepted (P&G's reported Adjusted Free Cash Flow): FCF / net sales % (FY2025): 17.3; FCF / net sales % (FY2026): 18.2",
+    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
       "期间平移",
       "补上公司名",
-      "题干写明 FCF 定义"
+      "P&G 报告的调整后 FCF 口径列为也接受"
     ]
   },
   "step6_review": {
     "text_verification": [
+      {
+        "key": "AdjFCF@FY2025",
+        "value_as_text": "14,606",
+        "match_mode": "text_source (single source)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "AdjFCF@FY2026",
+        "value_as_text": "15,835",
+        "match_mode": "text_source (single source)",
+        "found_in_filing_text": true
+      },
       {
         "key": "CFO@FY2025",
         "value_as_text": "17,817",
@@ -352,11 +406,20 @@
       }
     ],
     "answer_leak_in_question": [],
+    "formula_in_question": [],
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
     "mode": "auto (no flags)"
   },
-  "revisions": [],
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    }
+  ],
   "final_status": "ACCEPTED"
 }

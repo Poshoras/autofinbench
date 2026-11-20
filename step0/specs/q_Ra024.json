@@ -24,7 +24,7 @@
     ]
   },
   "step5_question": {
-    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's return on assets (ROA) for fiscal 2026, and how does it compare with fiscal 2025? Define ROA = net earnings (including noncontrolling interests) / average total assets, where average total assets is the mean of the beginning- and end-of-year balances. Report both as percentages rounded to one decimal place and state whether ROA increased or decreased.",
+    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's return on assets (ROA) for fiscal 2026, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.",
     "answer_decimals": {
       "ROA@FY2025": 1,
       "ROA@FY2026": 1
@@ -42,9 +42,20 @@
     },
     "changes_vs_seed": [
       "期间平移",
-      "两年统一用平均总资产（原题 2023 年口径不一致）",
-      "题干写明公式"
-    ]
+      "主答案用原 GT 写明的平均总资产口径（原题 2023 年口径不一致）",
+      "期末资产、归属净利润等口径列为也接受"
+    ],
+    "variants": {
+      "year-end total assets": {
+        "ROA": "NetEarn@{p} / Assets@{p} * 100"
+      },
+      "net earnings attributable to P&G": {
+        "ROA": "NI@{p} / ((Assets@{p} + Assets@{prev}) / 2) * 100"
+      },
+      "attributable earnings, year-end assets": {
+        "ROA": "NI@{p} / Assets@{p} * 100"
+      }
+    }
   },
   "step2_verdict": "SEED_ERROR（口径不一致）。GT 写明 ROA = 净利润 ÷ 平均总资产，FY2024 按此计算（12.3，复现）；FY2023 实际用了期末总资产：14,738 ÷ 120,829 = 12.20（与 GT 12.2 一致），按平均总资产应为 14,738 ÷ ((117,208 + 120,829)/2) = 12.4。",
   "step6_review": {
@@ -53,5 +64,14 @@
     "notes": [
       "回测标记源于原题口径不一致，不是 pipeline 错误；新题两年统一用 GT 自己写明的平均总资产口径"
     ]
-  }
+  },
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    }
+  ]
 }

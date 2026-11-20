@@ -360,10 +360,11 @@
         "value": 44.20664683822579,
         "missing": []
       }
-    }
+    },
+    "variant_metrics": {}
   },
   "step5_question": {
-    "question": "According to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, what percentage of total NIKE Brand revenues in fiscal 2026 came from each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions? Use total NIKE Brand revenues (the sum of these five) as the denominator, report each percentage to two decimal places, and identify the region with the largest share.",
+    "question": "According to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, what percentage of total NIKE Brand revenues in fiscal 2026 was contributed by each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions, and which contributed the largest share? Report percentages to two decimal places.",
     "answer": {
       "Brand@FY2026": 45222,
       "ShareNA@FY2026": 45.36,
@@ -373,11 +374,12 @@
       "ShareGBD@FY2026": 0.11,
       "Largest_share": "North America"
     },
+    "accepted_variants": {},
     "answer_text": "Total NIKE Brand revenues ($M) (FY2026): 45,222\nNorth America % (FY2026): 45.36\nEMEA % (FY2026): 27.80\nGreater China % (FY2026): 12.93\nAPLA % (FY2026): 13.81\nGlobal Brand Divisions % (FY2026): 0.11\nLargest share: North America",
-    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
       "期间 FY2018 → FY2026",
-      "分母从模糊的 \"total revenue\" 改为明确的 \"total NIKE Brand revenues\"（与原 GT 实际口径一致）",
+      "范围从模糊的 \"total revenue\" 改为 \"total NIKE Brand revenues\"（与原 GT 实际口径一致；属于问什么，不是怎么算）",
       "开放叙述改为 \"占比最大的地区\""
     ]
   },
@@ -421,6 +423,7 @@
       }
     ],
     "answer_leak_in_question": [],
+    "formula_in_question": [],
     "rounding_near_boundary": [
       {
         "key": "ShareAPLA@FY2026",
@@ -442,6 +445,14 @@
       "5 项之和 45,222 与文件中 \"TOTAL NIKE BRAND\" 一致"
     ]
   },
-  "revisions": [],
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
+      "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    }
+  ],
   "final_status": "ACCEPTED"
 }
