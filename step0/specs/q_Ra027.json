@@ -38,7 +38,6 @@
     ]
   },
   "step5_question": {
-    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's cash conversion cycle for fiscal 2026, and how does it compare to fiscal 2025? Report the cash conversion cycle in days, rounded to one decimal place.",
     "answer_decimals": {
       "CCC@FY2025": 1,
       "CCC@FY2026": 1
@@ -58,16 +57,20 @@
       "CCC_change": "CCC change"
     },
     "changes_vs_seed": [
-      "期间平移",
-      "补上公司名",
-      "只问 CCC（不再列出 DIO/DSO/DPO，避免提示分解步骤）",
-      "期末余额口径列为也接受"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ],
     "variants": {
       "year-end balances": {
         "CCC": "Inv@{p} / COGS@{p} * 365 + AR@{p} / Rev@{p} * 365 - AP@{p} / COGS@{p} * 365"
       }
-    }
+    },
+    "question_previous_version": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's cash conversion cycle for fiscal 2026, and how does it compare to fiscal 2025? Report the cash conversion cycle in days, rounded to one decimal place.",
+    "time_map": {
+      "2024": "2026",
+      "2023": "2025"
+    },
+    "gt_template": "The Cash Conversion Cycle (CCC) is calculated as Days Inventory Outstanding (DIO) + Days Sales Outstanding (DSO) - Days Payable Outstanding (DPO).\nFor 2026:\nDIO = (Average Inventory / Cost of Goods Sold) * 365\nAverage Inventory = ($[[Inv@FY2025]] million + $[[Inv@FY2026]] million) / 2 = $[[(Inv@FY2025 + Inv@FY2026) / 2|,.1f]] million\nDIO = ($[[(Inv@FY2025 + Inv@FY2026) / 2|,.1f]] million / $[[COGS@FY2026]] million) * 365 = [[DIO@FY2026|.1f]] days\nDSO = (Average Accounts Receivable / Net Sales) * 365\nAverage Accounts Receivable = ($[[AR@FY2025]] million + $[[AR@FY2026]] million) / 2 = $[[(AR@FY2025 + AR@FY2026) / 2|,.1f]] million\nDSO = ($[[(AR@FY2025 + AR@FY2026) / 2|,.1f]] million / $[[Rev@FY2026]] million) * 365 = [[DSO@FY2026|.1f]] days\nDPO = (Average Accounts Payable / Cost of Goods Sold) * 365\nAverage Accounts Payable = ($[[AP@FY2025]] million + $[[AP@FY2026]] million) / 2 = $[[(AP@FY2025 + AP@FY2026) / 2|,.1f]] million\nDPO = ($[[(AP@FY2025 + AP@FY2026) / 2|,.1f]] million / $[[COGS@FY2026]] million) * 365 = [[DPO@FY2026|.1f]] days\nCCC = DIO + DSO - DPO = [[CCC@FY2026|.1f]] days (computed from unrounded components)\n\nFor 2025:\nDIO = (Average Inventory / Cost of Goods Sold) * 365\nAverage Inventory = ($[[Inv@FY2024]] million + $[[Inv@FY2025]] million) / 2 = $[[(Inv@FY2024 + Inv@FY2025) / 2|,.1f]] million\nDIO = ($[[(Inv@FY2024 + Inv@FY2025) / 2|,.1f]] million / $[[COGS@FY2025]] million) * 365 = [[DIO@FY2025|.1f]] days\nDSO = (Average Accounts Receivable / Net Sales) * 365\nAverage Accounts Receivable = ($[[AR@FY2024]] million + $[[AR@FY2025]] million) / 2 = $[[(AR@FY2024 + AR@FY2025) / 2|,.1f]] million\nDSO = ($[[(AR@FY2024 + AR@FY2025) / 2|,.1f]] million / $[[Rev@FY2025]] million) * 365 = [[DSO@FY2025|.1f]] days\nDPO = (Average Accounts Payable / Cost of Goods Sold) * 365\nAverage Accounts Payable = ($[[AP@FY2024]] million + $[[AP@FY2025]] million) / 2 = $[[(AP@FY2024 + AP@FY2025) / 2|,.1f]] million\nDPO = ($[[(AP@FY2024 + AP@FY2025) / 2|,.1f]] million / $[[COGS@FY2025]] million) * 365 = [[DPO@FY2025|.1f]] days\nCCC = DIO + DSO - DPO = [[CCC@FY2025|.1f]] days (computed from unrounded components)\n\nAnalysis: The Cash Conversion Cycle became less negative, from [[CCC@FY2025|.1f]] days in 2025 to [[CCC@FY2026|.1f]] days in 2026 (an increase of [[CCC@FY2026 - CCC@FY2025|.1f]] days). P&G still collects cash from customers well before it pays its suppliers, but this advantage narrowed as inventory days rose and payable days fell."
   },
   "step2_verdict": "SEED_ERROR（口径不一致 + 算术错误）。① FY2023 实际用期末余额：7,073/42,760×365=60.4、5,471/82,006×365=24.4、14,598/42,760×365=124.6，与 GT 一致，但 FY2024 用平均余额，两年口径不一致；② FY2024 DPO = 14,981/40,848×365 = 133.9，GT 写 134.2，CCC 随之错为 −46.1（应为 −45.8）；③ GT 中 FY2023 CCC 算式写 \"−107.6\"，与 DPO 124.6 矛盾（笔误）。",
   "step6_review": {
@@ -84,6 +87,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ]

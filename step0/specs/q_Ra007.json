@@ -83,7 +83,6 @@
     "rationale": "数据项可得；题干写明 EBIT 定义。"
   },
   "step5_question": {
-    "question": "Based on NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, how does NIKE's EBIT for fiscal 2026 compare with fiscal 2025? Report EBIT for both years in $ millions and the year-over-year percentage change rounded to two decimals.",
     "answer_decimals": {
       "EBIT@FY2025": 0,
       "EBIT@FY2026": 0,
@@ -94,9 +93,12 @@
       "Chg": "EBIT YoY change %"
     },
     "changes_vs_seed": [
-      "期间 FY2018/FY2017 → FY2026/FY2025",
-      "删除原因解释"
-    ]
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+    ],
+    "question_previous_version": "Based on NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, how does NIKE's EBIT for fiscal 2026 compare with fiscal 2025? Report EBIT for both years in $ millions and the year-over-year percentage change rounded to two decimals.",
+    "time_map": {},
+    "gt_template": "EBIT 2026: $[[EBIT@FY2026]] million\nEBIT 2025: $[[EBIT@FY2025]] million\n(EBIT = income before income taxes + interest (income) expense, net: fiscal 2026: $[[PreTax@FY2026]] million + $([[NetInt@FY2026]]) million; fiscal 2025: $[[PreTax@FY2025]] million + $([[NetInt@FY2025]]) million)\nFormula:\nPercentage Change in EBIT = ((EBIT 2026 - EBIT 2025) / EBIT 2025) x 100\n\nCalculation:\nPercentage Change = (([[EBIT@FY2026]] - [[EBIT@FY2025]]) / [[EBIT@FY2025]]) x 100\nPercentage Change = ([[EBIT@FY2026 - EBIT@FY2025]] / [[EBIT@FY2025]]) x 100 = [[Chg@FY2026|.2f]]%\n\nNike's EBIT increased by approximately [[Chg@FY2026|.2f]]% from fiscal 2025 to fiscal 2026 (fiscal years ended May 31)."
   },
   "step6_review": {
     "verdict": "pass",
@@ -133,6 +135,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 4,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ]

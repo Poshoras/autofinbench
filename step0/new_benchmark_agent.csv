@@ -1,5 +1,24 @@
-new_qid,seed_qid,company,form,accession_number,report_period,filed,question,answer_text,answer_json,accepted_variants_json,status
-q_Ra002_u1,q_Ra002,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Analyze Procter & Gamble's profitability for fiscal 2026 and fiscal 2025 (fiscal years ended June 30) using ratio analysis, based on its fiscal 2026 Form 10-K. Report the gross profit margin, operating profit margin, net profit margin, and return on equity (ROE) for both years as percentages rounded to one decimal place, and state whether each ratio increased, decreased, or was unchanged.","Gross margin % (FY2025): 51.2
+new_qid,seed_qid,company,form,accession_number,report_period,filed,seed_question,question,ground_truth_answer,key_points,answer_json,accepted_variants_json,status
+q_Ra002_u1,q_Ra002,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,Analyse the profitability  for year 2024 and 2023 of the P&G using ratio analysis,Analyse the profitability  for year 2026 and 2025 of the P&G using ratio analysis,"Profitability Ratio Analysis for Procter & Gamble (P&G) in 2025 and 2026
+Gross Profit Margin:
+2026: 50.2%
+2025: 51.2%
+
+Operating Profit Margin:
+2026: 22.7%
+2025: 24.3%
+
+Net Profit Margin:
+2026: 18.4%
+2025: 19.0%
+
+Return on Equity (ROE):
+2026: 30.1%
+2025: 31.1%
+
+Analysis:
+In 2026, Procter & Gamble remained highly profitable, but its profitability ratios weakened compared with 2025. The gross profit margin decreased from 51.2% to 50.2%, the operating profit margin decreased from 24.3% to 22.7%, the net profit margin decreased from 19.0% to 18.4%, and ROE decreased from 31.1% to 30.1%. Costs rose faster than net sales (net sales $84,284 million -> $87,032 million), compressing margins, while an ROE of about 30% still reflects strong returns for shareholders.
+(Bases used: net profit margin and ROE use net earnings attributable to P&G; ROE uses average total shareholders' equity.)","Gross margin % (FY2025): 51.2
 Gross margin % (FY2026): 50.2
 Operating margin % (FY2025): 24.3
 Operating margin % (FY2026): 22.7
@@ -13,68 +32,213 @@ Net margin change: decreased
 ROE change: decreased
 Also accepted (ROE on year-end equity): ROE % (FY2025): 30.6; ROE % (FY2026): 29.5
 Also accepted (net earnings incl. noncontrolling interests): Net margin % (FY2025): 19.1; Net margin % (FY2026): 18.5; ROE % (FY2025): 31.2; ROE % (FY2026): 30.3","{""GPM@FY2025"": 51.2, ""GPM@FY2026"": 50.2, ""OPM@FY2025"": 24.3, ""OPM@FY2026"": 22.7, ""NPM@FY2025"": 19.0, ""NPM@FY2026"": 18.4, ""ROE@FY2025"": 31.1, ""ROE@FY2026"": 30.1, ""GPM_change"": ""decreased"", ""OPM_change"": ""decreased"", ""NPM_change"": ""decreased"", ""ROE_change"": ""decreased""}","{""ROE on year-end equity"": {""ROE@FY2025"": 30.6, ""ROE@FY2026"": 29.5}, ""net earnings incl. noncontrolling interests"": {""NPM@FY2025"": 19.1, ""NPM@FY2026"": 18.5, ""ROE@FY2025"": 31.2, ""ROE@FY2026"": 30.3}}",ACCEPTED
-q_Ra003_u1,q_Ra003,Apple Inc.,10-K,0000320193-26-000026,2026-09-26,2026-11-03,"From Apple Inc.'s Form 10-K for the fiscal year ended September 26, 2026, report the key profitability results for fiscal 2026: total gross margin, operating income, and net income (each in $ millions), and basic and diluted earnings per share.","Total gross margin ($M) (FY2026): 233,602
+q_Ra003_u1,q_Ra003,Apple Inc.,10-K,0000320193-26-000026,2026-09-26,2026-11-03,What are the key findings from the profitability analysis of Apple Inc. for the year 2023?,What are the key findings from the profitability analysis of Apple Inc. for the year 2026?,"The key findings from the profitability analysis of Apple Inc. for the year 2026 are as follows:
+- Gross Margin: The gross margin for 2026 is $233,602 million, which indicates the company's ability to generate profit from its core business activities after accounting for the cost of goods sold.
+- Operating Income: The operating income for 2026 is $158,063 million, reflecting the company's efficiency in managing its operating expenses, including research and development and selling, general, and administrative expenses.
+- Net Income: The net income for 2026 is $132,175 million, showcasing the company's overall profitability after accounting for all expenses, including taxes and other income/expenses.
+- Earnings Per Share (EPS): The basic EPS for 2026 is $9.01, and the diluted EPS is $8.98, indicating the earnings attributable to each share of the company's stock.
+Overall, Apple Inc. has demonstrated strong profitability in 2026, with significant gross margin, operating income, and net income, reflecting its ability to generate substantial profits from its operations.","Total gross margin ($M) (FY2026): 233,602
 Operating income ($M) (FY2026): 158,063
 Net income ($M) (FY2026): 132,175
 Basic EPS ($) (FY2026): 9.01
 Diluted EPS ($) (FY2026): 8.98","{""GM@FY2026"": 233602, ""OI@FY2026"": 158063, ""NetInc@FY2026"": 132175, ""EPS_basic@FY2026"": 9.01, ""EPS_diluted@FY2026"": 8.98}",{},ACCEPTED
-q_Ra004_u1,q_Ra004,Apple Inc.,10-K,0000320193-26-000026,2026-09-26,2026-11-03,"How does Apple Inc.'s solvency position look based on its balance sheet as of September 26, 2026 (fiscal 2026 Form 10-K)? Report total assets, total liabilities, total shareholders' equity, and total term debt (in $ millions); the ratio of total liabilities to shareholders' equity, rounded to two decimals; Apple's total cash, cash equivalents and marketable securities (in $ millions); and whether that total exceeds its term debt.","Total assets ($M) (FY2026): 404,548
+q_Ra004_u1,q_Ra004,Apple Inc.,10-K,0000320193-26-000026,2026-09-26,2026-11-03,How does the solvency position of Apple Inc. look based on the balance sheet data for 2023?,How does the solvency position of Apple Inc. look based on the balance sheet data for 2026?,"The solvency position of Apple Inc. for 2026 can be assessed using the balance sheet data (as of September 26, 2026):
+- Total Assets: $404,548 million
+- Total Liabilities: $292,455 million
+- Total Shareholders' Equity: $112,093 million
+Total liabilities are about 2.61 times total shareholders' equity. Most of these liabilities are operating obligations rather than borrowings: the term debt for 2026 is $78,114 million (current $9,906 million and non-current $68,208 million). The company's cash and cash equivalents are $36,305 million, with additional marketable securities of $20,417 million (current) and $80,213 million (non-current), i.e. $136,935 million in total, which exceeds its term debt. This indicates that Apple Inc. has sufficient liquidity to meet its debt obligations. Overall, its strong asset base and liquidity position suggest a stable solvency position.","Total assets ($M) (FY2026): 404,548
 Total liabilities ($M) (FY2026): 292,455
 Total shareholders' equity ($M) (FY2026): 112,093
 Total term debt ($M) (FY2026): 78,114
 Total liabilities / equity (FY2026): 2.61
 Liquid assets ($M) (FY2026): 136,935
 Liquid assets exceed term debt?: yes","{""TA@FY2026"": 404548, ""TL@FY2026"": 292455, ""TE@FY2026"": 112093, ""TermDebt@FY2026"": 78114, ""LtoE@FY2026"": 2.61, ""Liquid@FY2026"": 136935, ""Liquid_exceeds_term_debt"": ""yes""}",{},ACCEPTED
-q_Ra005_u1,q_Ra005,JPMorgan Chase & Co,10-Q,0001628280-26-069523,2026-09-30,2026-11-03,"What were the key outcomes of the solvency analysis for JPMorgan Chase as of September 30, 2026, based on its Form 10-Q for the third quarter of 2026? Report the debt-to-equity ratio, the interest coverage ratio for the three months ended September 30, 2026, the financial leverage ratio, and the long-term debt to capitalization ratio, each rounded to two decimals.","Debt-to-equity (Q3_2026): 12.67
+q_Ra005_u1,q_Ra005,JPMorgan Chase & Co,10-Q,0001628280-26-069523,2026-09-30,2026-11-03,"What were the key outcomes of the solvency analysis for JPMorgan Chase as of March 31, 2024?","What were the key outcomes of the solvency analysis for JPMorgan Chase as of September 30, 2026?","The key findings from the solvency analysis of JPMorgan Chase as of September 30, 2026, include:
+- Debt Equity Ratio: 12.67 (total liabilities $4,719,177 million / total stockholders' equity $372,368 million)
+- Interest Coverage Ratio: 0.77 (income before income tax expense $20,134 million / total interest expense $26,020 million, three months ended September 30, 2026; on an EBIT basis, i.e. pre-tax income plus interest expense, the ratio is 1.77)
+- Financial Leverage Ratio: 13.67 (total assets $5,091,545 million / total stockholders' equity)
+- Long-term Debt to Capitalization Ratio: 0.55 (long-term debt $460,160 million / (long-term debt + total stockholders' equity))
+These ratios reflect the highly leveraged balance sheet typical of a large bank, where deposits and other liabilities fund most of the assets. Because interest expense is an operating cost for a bank, the low interest coverage ratio does not by itself indicate a solvency problem.","Debt-to-equity (Q3_2026): 12.67
 Interest coverage (pre-tax income / interest expense) (Q3_2026): 0.77
 Financial leverage (Q3_2026): 13.67
 Long-term debt to capitalization (Q3_2026): 0.55
 Also accepted (interest coverage on EBIT (pre-tax income + interest expense)): Interest coverage (pre-tax income / interest expense) (Q3_2026): 1.77
 Also accepted (debt-to-equity on long-term debt): Debt-to-equity (Q3_2026): 1.24","{""DE@Q3_2026"": 12.67, ""ICR@Q3_2026"": 0.77, ""FL@Q3_2026"": 13.67, ""LTDCap@Q3_2026"": 0.55}","{""interest coverage on EBIT (pre-tax income + interest expense)"": {""ICR@Q3_2026"": 1.77}, ""debt-to-equity on long-term debt"": {""DE@Q3_2026"": 1.24}}",ACCEPTED
-q_Ra006_u1,q_Ra006,"NIKE, Inc.",10-K,0000320187-26-000088,2026-05-31,2026-07-15,"According to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, what percentage of total NIKE Brand revenues in fiscal 2026 was contributed by each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions, and which contributed the largest share? Report percentages to two decimal places.","Total NIKE Brand revenues ($M) (FY2026): 45,222
+q_Ra006_u1,q_Ra006,"NIKE, Inc.",10-K,0000320187-26-000088,2026-05-31,2026-07-15,"What percentage of Nike's total revenue in 2018 was contributed by each region, and how does this reflect the company's global revenue distribution?","What percentage of Nike's total revenue in 2026 was contributed by each region, and how does this reflect the company's global revenue distribution?","To calculate the percentage of revenue contributed by each region to Nike's total revenue in 2026:
+
+Formula:
+Percentage of Revenue = (Revenue from Region / Total NIKE Brand Revenue) x 100
+
+Data:
+
+North America Revenue = $20,511 million
+EMEA Revenue = $12,572 million
+Greater China Revenue = $5,847 million
+APLA Revenue = $6,243 million
+Global Brand Divisions Revenue = $49 million
+Total NIKE Brand Revenue = $20,511 + $12,572 + $5,847 + $6,243 + $49 = $45,222 million
+Calculations:
+
+North America: (20,511 / 45,222) x 100 = 45.36%
+EMEA: (12,572 / 45,222) x 100 = 27.80%
+Greater China: (5,847 / 45,222) x 100 = 12.93%
+APLA: (6,243 / 45,222) x 100 = 13.81%
+Global Brand Divisions: (49 / 45,222) x 100 = 0.11%
+
+North America contributes the largest share, followed by EMEA, APLA and Greater China, so NIKE Brand revenue remains concentrated in North America and EMEA. (Total NIKE, Inc. revenues, including Converse, were $46,398 million; measured against that total, North America's share is 44.21%.)","Total NIKE Brand revenues ($M) (FY2026): 45,222
 North America % (FY2026): 45.36
 EMEA % (FY2026): 27.80
 Greater China % (FY2026): 12.93
 APLA % (FY2026): 13.81
 Global Brand Divisions % (FY2026): 0.11
 Largest share: North America","{""Brand@FY2026"": 45222, ""ShareNA@FY2026"": 45.36, ""ShareEMEA@FY2026"": 27.8, ""ShareGC@FY2026"": 12.93, ""ShareAPLA@FY2026"": 13.81, ""ShareGBD@FY2026"": 0.11, ""Largest_share"": ""North America""}",{},ACCEPTED
-q_Ra007_u1,q_Ra007,"NIKE, Inc.",10-K,0000320187-26-000088,2026-05-31,2026-07-15,"Based on NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, how does NIKE's EBIT for fiscal 2026 compare with fiscal 2025? Report EBIT for both years in $ millions and the year-over-year percentage change rounded to two decimals.","EBIT ($M) (FY2025): 3,778
+q_Ra007_u1,q_Ra007,"NIKE, Inc.",10-K,0000320187-26-000088,2026-05-31,2026-07-15,How does Nike's EBIT compare year-on-year?,How does Nike's EBIT compare year-on-year?,"EBIT 2026: $3,850 million
+EBIT 2025: $3,778 million
+(EBIT = income before income taxes + interest (income) expense, net: fiscal 2026: $3,900 million + $(50) million; fiscal 2025: $3,885 million + $(107) million)
+Formula:
+Percentage Change in EBIT = ((EBIT 2026 - EBIT 2025) / EBIT 2025) x 100
+
+Calculation:
+Percentage Change = ((3,850 - 3,778) / 3,778) x 100
+Percentage Change = (72 / 3,778) x 100 = 1.91%
+
+Nike's EBIT increased by approximately 1.91% from fiscal 2025 to fiscal 2026 (fiscal years ended May 31).","EBIT ($M) (FY2025): 3,778
 EBIT ($M) (FY2026): 3,850
 EBIT YoY change % (FY2026): 1.91","{""EBIT@FY2025"": 3778, ""EBIT@FY2026"": 3850, ""Chg@FY2026"": 1.91}",{},ACCEPTED
-q_Ra008_u1,q_Ra008,"NIKE, Inc.",10-K,0000320187-26-000088,2026-05-31,2026-07-15,"In NIKE's Asia Pacific & Latin America (APLA) segment, how did revenues from Footwear, Apparel, and Equipment change from fiscal 2025 to fiscal 2026, according to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026? Report each category's percentage change to two decimal places and identify which category had the highest and which had the lowest percentage change.","Footwear change % (FY2026): -1.68
+q_Ra008_u1,q_Ra008,"NIKE, Inc.",10-K,0000320187-26-000088,2026-05-31,2026-07-15,"How did the growth rates of revenues from Footwear, Apparel, and Equipment compare from Fiscal 2017 to Fiscal 2018, and which category experienced the highest and lowest percentage change?","How did the growth rates of revenues from Footwear, Apparel, and Equipment compare from Fiscal 2025 to Fiscal 2026, and which category experienced the highest and lowest percentage change?","Footwear Revenues (Fiscal 2026): $4,377 million
+
+Footwear Revenues (Fiscal 2025): $4,452 million
+
+Percentage Change (Footwear): -2%
+
+Apparel Revenues (Fiscal 2026): $1,629 million
+
+Apparel Revenues (Fiscal 2025): $1,541 million
+
+Percentage Change (Apparel): 6%
+
+Equipment Revenues (Fiscal 2026): $237 million
+
+Equipment Revenues (Fiscal 2025): $258 million
+
+Percentage Change (Equipment): -8%
+Footwear = ((4,377 - 4,452)/4,452)*100 = -1.68%
+Apparel = ((1,629 - 1,541)/1,541)*100 = 5.71%
+Equipment = ((237 - 258)/258)*100 = -8.14%
+From Fiscal 2025 to Fiscal 2026 (Asia Pacific & Latin America segment):
+
+Apparel experienced the highest growth rate at approximately 5.71%.
+Footwear revenues declined by approximately 1.68%.
+Equipment revenues declined by approximately 8.14%, the lowest percentage change of the three categories.","Footwear change % (FY2026): -1.68
 Apparel change % (FY2026): 5.71
 Equipment change % (FY2026): -8.14
 Highest growth: Apparel
 Lowest growth: Equipment","{""FWg@FY2026"": -1.68, ""APg@FY2026"": 5.71, ""EQg@FY2026"": -8.14, ""Highest"": ""Apparel"", ""Lowest"": ""Equipment""}",{},ACCEPTED
-q_Ra023_u1,q_Ra023,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's capital expenditure ratio for fiscal 2026, and how does it compare to fiscal 2025? Round to two decimal places.","Capex / net sales % (FY2025): 4.48
+q_Ra023_u1,q_Ra023,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"What is the Capital Expenditure Ratio for 2024, and how does it compare to 2023?","What is the Capital Expenditure Ratio for 2026, and how does it compare to 2025?","The Capital Expenditure Ratio is Capital Expenditures divided by Net Sales.
+For 2026:
+Capital Expenditures = $4,409 million
+Net Sales = $87,032 million
+Capital Expenditure Ratio = $4,409 million / $87,032 million = 5.07%
+
+For 2025:
+Capital Expenditures = $3,773 million
+Net Sales = $84,284 million
+Capital Expenditure Ratio = $3,773 million / $84,284 million = 4.48%
+
+The ratio increased from 4.48% in 2025 to 5.07% in 2026.","Capex / net sales % (FY2025): 4.48
 Capex / net sales % (FY2026): 5.07
 Change: increased
 Also accepted (operating cash flow / capital expenditures (times)): Capex / net sales % (FY2025): 4.72; Capex / net sales % (FY2026): 4.44; Change: decreased
 Also accepted (capital expenditures / operating cash flow (%)): Capex / net sales % (FY2025): 21.18; Capex / net sales % (FY2026): 22.55","{""CapexRatio@FY2025"": 4.48, ""CapexRatio@FY2026"": 5.07, ""CapexRatio_change"": ""increased""}","{""operating cash flow / capital expenditures (times)"": {""CapexRatio@FY2025"": 4.72, ""CapexRatio@FY2026"": 4.44, ""CapexRatio_change"": ""decreased""}, ""capital expenditures / operating cash flow (%)"": {""CapexRatio@FY2025"": 21.18, ""CapexRatio@FY2026"": 22.55}}",ACCEPTED
-q_Ra024_u1,q_Ra024,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's return on assets (ROA) for fiscal 2026, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.","ROA % (FY2025): 13.0
+q_Ra024_u1,q_Ra024,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"What is Procter & Gamble's Return on Assets for 2024, and how does it compare to 2023?","What is Procter & Gamble's Return on Assets for 2026, and how does it compare to 2025?","ROA is Net Earnings divided by Average Total Assets.
+For 2026:
+Average Total Assets = ($125,231 million (2025) + $126,521 million (2026)) / 2 = $125,876.0 million
+ROA = $16,144 million / $125,876.0 million = 12.8%
+For 2025:
+Average Total Assets = ($122,370 million (2024) + $125,231 million (2025)) / 2 = $123,800.5 million
+ROA = $16,065 million / $123,800.5 million = 13.0%
+ROA decreased slightly from 13.0% in 2025 to 12.8% in 2026.","ROA % (FY2025): 13.0
 ROA % (FY2026): 12.8
 Change: decreased
 Also accepted (year-end total assets): ROA % (FY2025): 12.8; Change: unchanged
 Also accepted (net earnings attributable to P&G): ROA % (FY2025): 12.9; ROA % (FY2026): 12.7
 Also accepted (attributable earnings, year-end assets): ROA % (FY2025): 12.8; ROA % (FY2026): 12.7","{""ROA@FY2025"": 13.0, ""ROA@FY2026"": 12.8, ""ROA_change"": ""decreased""}","{""year-end total assets"": {""ROA@FY2025"": 12.8, ""ROA_change"": ""unchanged""}, ""net earnings attributable to P&G"": {""ROA@FY2025"": 12.9, ""ROA@FY2026"": 12.7}, ""attributable earnings, year-end assets"": {""ROA@FY2025"": 12.8, ""ROA@FY2026"": 12.7}}",ACCEPTED
-q_Ra025_u1,q_Ra025,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's return on capital employed (ROCE) for fiscal 2026, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.","ROCE % (FY2025): 22.9
+q_Ra025_u1,q_Ra025,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"What is the Return on Capital Employed for 2024, and how does it compare to 2023?","What is the Return on Capital Employed for 2026, and how does it compare to 2025?","ROCE is Operating Income divided by Capital Employed.
+For 2026:
+Capital Employed = Total Assets - Current Liabilities = $126,521 million - $38,694 million = $87,827 million
+ROCE = $19,748 million / $87,827 million = 22.5%
+For 2025:
+Capital Employed = $125,231 million - $36,058 million = $89,173 million
+ROCE = $20,451 million / $89,173 million = 22.9%
+ROCE decreased from 22.9% in 2025 to 22.5% in 2026.","ROCE % (FY2025): 22.9
 ROCE % (FY2026): 22.5
 Change: decreased
 Also accepted (EBIT (pre-tax income + interest expense) instead of operating income): ROCE % (FY2025): 23.6; ROCE % (FY2026): 24.2; Change: increased
 Also accepted (average capital employed): ROCE % (FY2025): 23.0; ROCE % (FY2026): 22.3","{""ROCE@FY2025"": 22.9, ""ROCE@FY2026"": 22.5, ""ROCE_change"": ""decreased""}","{""EBIT (pre-tax income + interest expense) instead of operating income"": {""ROCE@FY2025"": 23.6, ""ROCE@FY2026"": 24.2, ""ROCE_change"": ""increased""}, ""average capital employed"": {""ROCE@FY2025"": 23.0, ""ROCE@FY2026"": 22.3}}",ACCEPTED
-q_Ra026_u1,q_Ra026,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's free cash flow to sales ratio for fiscal 2026, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.","FCF / net sales % (FY2025): 16.7
+q_Ra026_u1,q_Ra026,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"What is the Free Cash Flow to Sales Ratio for 2024, and how does it compare to 2023?","What is the Free Cash Flow to Sales Ratio for 2026, and how does it compare to 2025?","Free Cash Flow to Sales Ratio is Free Cash Flow divided by Net Sales.
+For 2026:
+Free Cash Flow = Net Cash from Operating Activities - Capital Expenditures = $19,556 million - $4,409 million = $15,147 million
+Net Sales = $87,032 million
+Free Cash Flow to Sales Ratio = $15,147 million / $87,032 million = 17.4%
+For 2025:
+Free Cash Flow = $17,817 million - $3,773 million = $14,044 million
+Net Sales = $84,284 million
+Free Cash Flow to Sales Ratio = $14,044 million / $84,284 million = 16.7%
+The ratio increased from 16.7% in 2025 to 17.4% in 2026.","FCF / net sales % (FY2025): 16.7
 FCF / net sales % (FY2026): 17.4
 Change: increased
 Also accepted (P&G's reported Adjusted Free Cash Flow): FCF / net sales % (FY2025): 17.3; FCF / net sales % (FY2026): 18.2","{""FCFtoSales@FY2025"": 16.7, ""FCFtoSales@FY2026"": 17.4, ""FCFtoSales_change"": ""increased""}","{""P&G's reported Adjusted Free Cash Flow"": {""FCFtoSales@FY2025"": 17.3, ""FCFtoSales@FY2026"": 18.2}}",ACCEPTED
-q_Ra027_u1,q_Ra027,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's cash conversion cycle for fiscal 2026, and how does it compare to fiscal 2025? Report the cash conversion cycle in days, rounded to one decimal place.","CCC (days) (FY2025): -44.4
+q_Ra027_u1,q_Ra027,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"What is the Cash Conversion Cycle for 2024, and how does it compare to 2023?","What is the Cash Conversion Cycle for 2026, and how does it compare to 2025?","The Cash Conversion Cycle (CCC) is calculated as Days Inventory Outstanding (DIO) + Days Sales Outstanding (DSO) - Days Payable Outstanding (DPO).
+For 2026:
+DIO = (Average Inventory / Cost of Goods Sold) * 365
+Average Inventory = ($7,551 million + $8,170 million) / 2 = $7,860.5 million
+DIO = ($7,860.5 million / $43,362 million) * 365 = 66.2 days
+DSO = (Average Accounts Receivable / Net Sales) * 365
+Average Accounts Receivable = ($6,185 million + $6,056 million) / 2 = $6,120.5 million
+DSO = ($6,120.5 million / $87,032 million) * 365 = 25.7 days
+DPO = (Average Accounts Payable / Cost of Goods Sold) * 365
+Average Accounts Payable = ($15,227 million + $16,306 million) / 2 = $15,766.5 million
+DPO = ($15,766.5 million / $43,362 million) * 365 = 132.7 days
+CCC = DIO + DSO - DPO = -40.9 days (computed from unrounded components)
+
+For 2025:
+DIO = (Average Inventory / Cost of Goods Sold) * 365
+Average Inventory = ($7,016 million + $7,551 million) / 2 = $7,283.5 million
+DIO = ($7,283.5 million / $41,164 million) * 365 = 64.6 days
+DSO = (Average Accounts Receivable / Net Sales) * 365
+Average Accounts Receivable = ($6,118 million + $6,185 million) / 2 = $6,151.5 million
+DSO = ($6,151.5 million / $84,284 million) * 365 = 26.6 days
+DPO = (Average Accounts Payable / Cost of Goods Sold) * 365
+Average Accounts Payable = ($15,364 million + $15,227 million) / 2 = $15,295.5 million
+DPO = ($15,295.5 million / $41,164 million) * 365 = 135.6 days
+CCC = DIO + DSO - DPO = -44.4 days (computed from unrounded components)
+
+Analysis: The Cash Conversion Cycle became less negative, from -44.4 days in 2025 to -40.9 days in 2026 (an increase of 3.5 days). P&G still collects cash from customers well before it pays its suppliers, but this advantage narrowed as inventory days rose and payable days fell.","CCC (days) (FY2025): -44.4
 CCC (days) (FY2026): -40.9
 CCC change: increased
 Also accepted (year-end balances): CCC (days) (FY2025): -41.3; CCC (days) (FY2026): -43.1; CCC change: decreased","{""CCC@FY2025"": -44.4, ""CCC@FY2026"": -40.9, ""CCC_change"": ""increased""}","{""year-end balances"": {""CCC@FY2025"": -41.3, ""CCC@FY2026"": -43.1, ""CCC_change"": ""decreased""}}",ACCEPTED
-q_Ra028_u1,q_Ra028,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's revenue per employee for fiscal 2026, and how does it compare to fiscal 2025? Report in US dollars rounded to the nearest dollar.","Revenue per employee ($) (FY2025): 773,248
+q_Ra028_u1,q_Ra028,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"What is the Revenue per Employee for 2024, and how does it compare to 2023?","What is the Revenue per Employee for 2026, and how does it compare to 2025?","Revenue per Employee is Net Sales divided by the number of employees. For 2026:
+
+Number of Employees = 104,000
+Revenue per Employee = $87,032 million / 104,000 = $836,846
+For 2025:
+
+Number of Employees = 109,000
+Revenue per Employee = $84,284 million / 109,000 = $773,248
+Revenue per employee increased from $773,248 in 2025 to $836,846 in 2026, as net sales grew while headcount fell (P&G reported approximately 104,000 employees at June 30, 2026, a decrease of 4% versus the prior year).","Revenue per employee ($) (FY2025): 773,248
 Revenue per employee ($) (FY2026): 836,846
 Change: increased
 Also accepted (fiscal 2025 headcount derived from the fiscal 2026 10-K (104,000 employees, down 4%)): Revenue per employee ($) (FY2025): 778,006","{""RevPerEmp@FY2025"": 773248, ""RevPerEmp@FY2026"": 836846, ""RevPerEmp_change"": ""increased""}","{""fiscal 2025 headcount derived from the fiscal 2026 10-K (104,000 employees, down 4%)"": {""RevPerEmp@FY2025"": 778006}}",ACCEPTED
-q_Ra029_u1,q_Ra029,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's revenue (net sales) growth rate from fiscal 2025 to fiscal 2026? Report the percentage rounded to one decimal place.",Net sales growth % (FY2026): 3.3,"{""RevGrowth@FY2026"": 3.3}",{},ACCEPTED
-q_Ra030_u1,q_Ra030,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's free cash flow margin for fiscal 2026 based on its reported Adjusted Free Cash Flow, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.","Adjusted FCF / net sales % (FY2025): 17.3
+q_Ra029_u1,q_Ra029,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,What is the Revenue Growth Rate from 2023 to 2024?,What is the Revenue Growth Rate from 2025 to 2026?,"The Revenue Growth Rate is calculated as (Revenue for 2026 - Revenue for 2025) / Revenue for 2025.
+
+Revenue Growth Rate = ($87,032 million - $84,284 million) / $84,284 million = 3.3%",Net sales growth % (FY2026): 3.3,"{""RevGrowth@FY2026"": 3.3}",{},ACCEPTED
+q_Ra030_u1,q_Ra030,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"What is the Free Cash Flow Margin for 2024, and how does it compare to 2023?","What is the Free Cash Flow Margin for 2026, and how does it compare to 2025?","Free Cash Flow Margin is Free Cash Flow divided by Net Sales. For 2026:
+
+Free Cash Flow = $15,835 million (P&G's reported Adjusted Free Cash Flow)
+Free Cash Flow Margin = $15,835 million / $87,032 million = 18.2%
+For 2025:
+
+Free Cash Flow Margin = $14,606 million / $84,284 million = 17.3%
+The margin increased from 17.3% in 2025 to 18.2% in 2026.","Adjusted FCF / net sales % (FY2025): 17.3
 Adjusted FCF / net sales % (FY2026): 18.2
 Change: increased","{""FCFMargin@FY2025"": 17.3, ""FCFMargin@FY2026"": 18.2, ""FCFMargin_change"": ""increased""}",{},ACCEPTED

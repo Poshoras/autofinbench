@@ -25,7 +25,6 @@
     ]
   },
   "step5_question": {
-    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's revenue per employee for fiscal 2026, and how does it compare to fiscal 2025? Report in US dollars rounded to the nearest dollar.",
     "answer_decimals": {
       "RevPerEmp@FY2025": 0,
       "RevPerEmp@FY2026": 0
@@ -42,15 +41,20 @@
       "RevPerEmp_change": "Change"
     },
     "changes_vs_seed": [
-      "期间平移",
-      "补上公司名",
-      "FY2025 员工数：主答案用 FY2025 10-K 的 109,000；按 FY2026 10-K \"下降 4%\" 倒推的人数列为也接受"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ],
     "variants": {
       "fiscal 2025 headcount derived from the fiscal 2026 10-K (104,000 employees, down 4%)": {
         "RevPerEmp@FY2025": "Rev@FY2025 * 1000000 / (Emp@FY2026 / 0.96)"
       }
-    }
+    },
+    "question_previous_version": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's revenue per employee for fiscal 2026, and how does it compare to fiscal 2025? Report in US dollars rounded to the nearest dollar.",
+    "time_map": {
+      "2024": "2026",
+      "2023": "2025"
+    },
+    "gt_template": "Revenue per Employee is Net Sales divided by the number of employees. For 2026:\n\nNumber of Employees = [[Emp@FY2026]]\nRevenue per Employee = $[[Rev@FY2026]] million / [[Emp@FY2026]] = $[[RevPerEmp@FY2026]]\nFor 2025:\n\nNumber of Employees = [[Emp@FY2025]]\nRevenue per Employee = $[[Rev@FY2025]] million / [[Emp@FY2025]] = $[[RevPerEmp@FY2025]]\nRevenue per employee [[!RevPerEmp_change]] from $[[RevPerEmp@FY2025]] in 2025 to $[[RevPerEmp@FY2026]] in 2026, as net sales grew while headcount fell (P&G reported approximately [[Emp@FY2026]] employees at June 30, 2026, a decrease of 4% versus the prior year)."
   },
   "revisions": [
     {
@@ -58,6 +62,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ]

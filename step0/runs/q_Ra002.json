@@ -490,7 +490,8 @@
     }
   },
   "step5_question": {
-    "question": "Analyze Procter & Gamble's profitability for fiscal 2026 and fiscal 2025 (fiscal years ended June 30) using ratio analysis, based on its fiscal 2026 Form 10-K. Report the gross profit margin, operating profit margin, net profit margin, and return on equity (ROE) for both years as percentages rounded to one decimal place, and state whether each ratio increased, decreased, or was unchanged.",
+    "question": "Analyse the profitability  for year 2026 and 2025 of the P&G using ratio analysis",
+    "ground_truth_answer": "Profitability Ratio Analysis for Procter & Gamble (P&G) in 2025 and 2026\nGross Profit Margin:\n2026: 50.2%\n2025: 51.2%\n\nOperating Profit Margin:\n2026: 22.7%\n2025: 24.3%\n\nNet Profit Margin:\n2026: 18.4%\n2025: 19.0%\n\nReturn on Equity (ROE):\n2026: 30.1%\n2025: 31.1%\n\nAnalysis:\nIn 2026, Procter & Gamble remained highly profitable, but its profitability ratios weakened compared with 2025. The gross profit margin decreased from 51.2% to 50.2%, the operating profit margin decreased from 24.3% to 22.7%, the net profit margin decreased from 19.0% to 18.4%, and ROE decreased from 31.1% to 30.1%. Costs rose faster than net sales (net sales $84,284 million -> $87,032 million), compressing margins, while an ROE of about 30% still reflects strong returns for shareholders.\n(Bases used: net profit margin and ROE use net earnings attributable to P&G; ROE uses average total shareholders' equity.)",
     "answer": {
       "GPM@FY2025": 51.2,
       "GPM@FY2026": 50.2,
@@ -517,12 +518,11 @@
         "ROE@FY2026": 30.3
       }
     },
-    "answer_text": "Gross margin % (FY2025): 51.2\nGross margin % (FY2026): 50.2\nOperating margin % (FY2025): 24.3\nOperating margin % (FY2026): 22.7\nNet margin % (FY2025): 19.0\nNet margin % (FY2026): 18.4\nROE % (FY2025): 31.1\nROE % (FY2026): 30.1\nGross margin change: decreased\nOperating margin change: decreased\nNet margin change: decreased\nROE change: decreased\nAlso accepted (ROE on year-end equity): ROE % (FY2025): 30.6; ROE % (FY2026): 29.5\nAlso accepted (net earnings incl. noncontrolling interests): Net margin % (FY2025): 19.1; Net margin % (FY2026): 18.5; ROE % (FY2025): 31.2; ROE % (FY2026): 30.3",
+    "key_points": "Gross margin % (FY2025): 51.2\nGross margin % (FY2026): 50.2\nOperating margin % (FY2025): 24.3\nOperating margin % (FY2026): 22.7\nNet margin % (FY2025): 19.0\nNet margin % (FY2026): 18.4\nROE % (FY2025): 31.1\nROE % (FY2026): 30.1\nGross margin change: decreased\nOperating margin change: decreased\nNet margin change: decreased\nROE change: decreased\nAlso accepted (ROE on year-end equity): ROE % (FY2025): 30.6; ROE % (FY2026): 29.5\nAlso accepted (net earnings incl. noncontrolling interests): Net margin % (FY2025): 19.1; Net margin % (FY2026): 18.5; ROE % (FY2025): 31.2; ROE % (FY2026): 30.3",
     "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
-      "期间 FY2024/FY2023 → FY2026/FY2025",
-      "开放式 \"analyse\" 改为指定 4 个比率的数值 + 变化方向（与原 GT 覆盖的比率一致）",
-      "口径歧义（ROE 用期末/平均权益、净利润是否含少数股东）列为也接受的口径"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ]
   },
   "step6_review": {
@@ -608,6 +608,8 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
+    "only_time_changed_vs_seed": true,
+    "ground_truth_rendered": true,
     "rounding_near_boundary": [
       {
         "key": "NPM@FY2025",
@@ -643,6 +645,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ],

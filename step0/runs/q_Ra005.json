@@ -295,7 +295,8 @@
     }
   },
   "step5_question": {
-    "question": "What were the key outcomes of the solvency analysis for JPMorgan Chase as of September 30, 2026, based on its Form 10-Q for the third quarter of 2026? Report the debt-to-equity ratio, the interest coverage ratio for the three months ended September 30, 2026, the financial leverage ratio, and the long-term debt to capitalization ratio, each rounded to two decimals.",
+    "question": "What were the key outcomes of the solvency analysis for JPMorgan Chase as of September 30, 2026?",
+    "ground_truth_answer": "The key findings from the solvency analysis of JPMorgan Chase as of September 30, 2026, include:\n- Debt Equity Ratio: 12.67 (total liabilities $4,719,177 million / total stockholders' equity $372,368 million)\n- Interest Coverage Ratio: 0.77 (income before income tax expense $20,134 million / total interest expense $26,020 million, three months ended September 30, 2026; on an EBIT basis, i.e. pre-tax income plus interest expense, the ratio is 1.77)\n- Financial Leverage Ratio: 13.67 (total assets $5,091,545 million / total stockholders' equity)\n- Long-term Debt to Capitalization Ratio: 0.55 (long-term debt $460,160 million / (long-term debt + total stockholders' equity))\nThese ratios reflect the highly leveraged balance sheet typical of a large bank, where deposits and other liabilities fund most of the assets. Because interest expense is an operating cost for a bank, the low interest coverage ratio does not by itself indicate a solvency problem.",
     "answer": {
       "DE@Q3_2026": 12.67,
       "ICR@Q3_2026": 0.77,
@@ -310,12 +311,11 @@
         "DE@Q3_2026": 1.24
       }
     },
-    "answer_text": "Debt-to-equity (Q3_2026): 12.67\nInterest coverage (pre-tax income / interest expense) (Q3_2026): 0.77\nFinancial leverage (Q3_2026): 13.67\nLong-term debt to capitalization (Q3_2026): 0.55\nAlso accepted (interest coverage on EBIT (pre-tax income + interest expense)): Interest coverage (pre-tax income / interest expense) (Q3_2026): 1.77\nAlso accepted (debt-to-equity on long-term debt): Debt-to-equity (Q3_2026): 1.24",
+    "key_points": "Debt-to-equity (Q3_2026): 12.67\nInterest coverage (pre-tax income / interest expense) (Q3_2026): 0.77\nFinancial leverage (Q3_2026): 13.67\nLong-term debt to capitalization (Q3_2026): 0.55\nAlso accepted (interest coverage on EBIT (pre-tax income + interest expense)): Interest coverage (pre-tax income / interest expense) (Q3_2026): 1.77\nAlso accepted (debt-to-equity on long-term debt): Debt-to-equity (Q3_2026): 1.24",
     "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
-      "时点 2024-03-31 → 2026-09-30（同为 3 个月季度）",
-      "删除 \"potential solvency risks\" 等结论",
-      "原题 ICR 为非常规口径（税前利润 ÷ 利息费用），常规 EBIT 口径列为也接受"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ]
   },
   "step6_review": {
@@ -359,6 +359,8 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
+    "only_time_changed_vs_seed": true,
+    "ground_truth_rendered": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -389,6 +391,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ],

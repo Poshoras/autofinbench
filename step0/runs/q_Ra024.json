@@ -346,7 +346,8 @@
     }
   },
   "step5_question": {
-    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's return on assets (ROA) for fiscal 2026, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.",
+    "question": "What is Procter & Gamble's Return on Assets for 2026, and how does it compare to 2025?",
+    "ground_truth_answer": "ROA is Net Earnings divided by Average Total Assets.\nFor 2026:\nAverage Total Assets = ($125,231 million (2025) + $126,521 million (2026)) / 2 = $125,876.0 million\nROA = $16,144 million / $125,876.0 million = 12.8%\nFor 2025:\nAverage Total Assets = ($122,370 million (2024) + $125,231 million (2025)) / 2 = $123,800.5 million\nROA = $16,065 million / $123,800.5 million = 13.0%\nROA decreased slightly from 13.0% in 2025 to 12.8% in 2026.",
     "answer": {
       "ROA@FY2025": 13.0,
       "ROA@FY2026": 12.8,
@@ -366,12 +367,11 @@
         "ROA@FY2026": 12.7
       }
     },
-    "answer_text": "ROA % (FY2025): 13.0\nROA % (FY2026): 12.8\nChange: decreased\nAlso accepted (year-end total assets): ROA % (FY2025): 12.8; Change: unchanged\nAlso accepted (net earnings attributable to P&G): ROA % (FY2025): 12.9; ROA % (FY2026): 12.7\nAlso accepted (attributable earnings, year-end assets): ROA % (FY2025): 12.8; ROA % (FY2026): 12.7",
+    "key_points": "ROA % (FY2025): 13.0\nROA % (FY2026): 12.8\nChange: decreased\nAlso accepted (year-end total assets): ROA % (FY2025): 12.8; Change: unchanged\nAlso accepted (net earnings attributable to P&G): ROA % (FY2025): 12.9; ROA % (FY2026): 12.7\nAlso accepted (attributable earnings, year-end assets): ROA % (FY2025): 12.8; ROA % (FY2026): 12.7",
     "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
-      "期间平移",
-      "主答案用原 GT 写明的平均总资产口径（原题 2023 年口径不一致）",
-      "期末资产、归属净利润等口径列为也接受"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ]
   },
   "step6_review": {
@@ -421,6 +421,8 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
+    "only_time_changed_vs_seed": true,
+    "ground_truth_rendered": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -435,6 +437,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ],

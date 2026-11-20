@@ -26,7 +26,6 @@
     ]
   },
   "step5_question": {
-    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's free cash flow margin for fiscal 2026 based on its reported Adjusted Free Cash Flow, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.",
     "answer_decimals": {
       "FCFMargin@FY2025": 1,
       "FCFMargin@FY2026": 1
@@ -43,10 +42,15 @@
       "FCFMargin_change": "Change"
     },
     "changes_vs_seed": [
-      "期间平移",
-      "补上公司名",
-      "保留 \"reported Adjusted Free Cash Flow\"（说明问的是哪个指标，不是计算步骤）"
-    ]
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+    ],
+    "question_previous_version": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's free cash flow margin for fiscal 2026 based on its reported Adjusted Free Cash Flow, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.",
+    "time_map": {
+      "2024": "2026",
+      "2023": "2025"
+    },
+    "gt_template": "Free Cash Flow Margin is Free Cash Flow divided by Net Sales. For 2026:\n\nFree Cash Flow = $[[AdjFCF@FY2026]] million (P&G's reported Adjusted Free Cash Flow)\nFree Cash Flow Margin = $[[AdjFCF@FY2026]] million / $[[Rev@FY2026]] million = [[FCFMargin@FY2026|.1f]]%\nFor 2025:\n\nFree Cash Flow Margin = $[[AdjFCF@FY2025]] million / $[[Rev@FY2025]] million = [[FCFMargin@FY2025|.1f]]%\nThe margin [[!FCFMargin_change]] from [[FCFMargin@FY2025|.1f]]% in 2025 to [[FCFMargin@FY2026|.1f]]% in 2026."
   },
   "revisions": [
     {
@@ -54,6 +58,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示，新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ]

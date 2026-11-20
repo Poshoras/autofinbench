@@ -114,7 +114,6 @@
     "rationale": "数据项全部可得（利息费用科目改名，见 revisions）。沿用回测确认的公式，并在题干中写明 ICR 的非常规定义。删除错误的叙述结论。"
   },
   "step5_question": {
-    "question": "What were the key outcomes of the solvency analysis for JPMorgan Chase as of September 30, 2026, based on its Form 10-Q for the third quarter of 2026? Report the debt-to-equity ratio, the interest coverage ratio for the three months ended September 30, 2026, the financial leverage ratio, and the long-term debt to capitalization ratio, each rounded to two decimals.",
     "answer_decimals": {
       "DE@Q3_2026": 2,
       "ICR@Q3_2026": 2,
@@ -128,9 +127,8 @@
       "LTDCap": "Long-term debt to capitalization"
     },
     "changes_vs_seed": [
-      "时点 2024-03-31 → 2026-09-30（同为 3 个月季度）",
-      "删除 \"potential solvency risks\" 等结论",
-      "原题 ICR 为非常规口径（税前利润 ÷ 利息费用），常规 EBIT 口径列为也接受"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ],
     "variants": {
       "interest coverage on EBIT (pre-tax income + interest expense)": {
@@ -139,7 +137,12 @@
       "debt-to-equity on long-term debt": {
         "DE": "LTD@{p} / Eq@{p}"
       }
-    }
+    },
+    "question_previous_version": "What were the key outcomes of the solvency analysis for JPMorgan Chase as of September 30, 2026, based on its Form 10-Q for the third quarter of 2026? Report the debt-to-equity ratio, the interest coverage ratio for the three months ended September 30, 2026, the financial leverage ratio, and the long-term debt to capitalization ratio, each rounded to two decimals.",
+    "time_map": {
+      "March 31, 2024": "September 30, 2026"
+    },
+    "gt_template": "The key findings from the solvency analysis of JPMorgan Chase as of September 30, 2026, include:\n- Debt Equity Ratio: [[DE@Q3_2026|.2f]] (total liabilities $[[Liab@Q3_2026]] million / total stockholders' equity $[[Eq@Q3_2026]] million)\n- Interest Coverage Ratio: [[ICR@Q3_2026|.2f]] (income before income tax expense $[[PreTax@Q3_2026]] million / total interest expense $[[IntExp@Q3_2026]] million, three months ended September 30, 2026; on an EBIT basis, i.e. pre-tax income plus interest expense, the ratio is [[(PreTax@Q3_2026 + IntExp@Q3_2026) / IntExp@Q3_2026|.2f]])\n- Financial Leverage Ratio: [[FL@Q3_2026|.2f]] (total assets $[[Assets@Q3_2026]] million / total stockholders' equity)\n- Long-term Debt to Capitalization Ratio: [[LTDCap@Q3_2026|.2f]] (long-term debt $[[LTD@Q3_2026]] million / (long-term debt + total stockholders' equity))\nThese ratios reflect the highly leveraged balance sheet typical of a large bank, where deposits and other liabilities fund most of the assets. Because interest expense is an operating cost for a bank, the low interest coverage ratio does not by itself indicate a solvency problem."
   },
   "step6_review": {
     "verdict": "pass",
@@ -170,6 +173,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ]

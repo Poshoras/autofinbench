@@ -139,7 +139,6 @@
     "rationale": "全部数据项可得。把 GT 的两个定性判断形式化：负债/权益比率 + 流动性资产是否超过 term debt。"
   },
   "step5_question": {
-    "question": "How does Apple Inc.'s solvency position look based on its balance sheet as of September 26, 2026 (fiscal 2026 Form 10-K)? Report total assets, total liabilities, total shareholders' equity, and total term debt (in $ millions); the ratio of total liabilities to shareholders' equity, rounded to two decimals; Apple's total cash, cash equivalents and marketable securities (in $ millions); and whether that total exceeds its term debt.",
     "answer_decimals": {
       "TA@FY2026": 0,
       "TL@FY2026": 0,
@@ -165,10 +164,14 @@
       "Liquid_exceeds_term_debt": "Liquid assets exceed term debt?"
     },
     "changes_vs_seed": [
-      "时点 2023-09-30 → 2026-09-26",
-      "GT 中的定性判断改为 1 个比率 + 1 个是/否判断",
-      "删除 \"依赖债务融资\" 这类错误叙述"
-    ]
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+    ],
+    "question_previous_version": "How does Apple Inc.'s solvency position look based on its balance sheet as of September 26, 2026 (fiscal 2026 Form 10-K)? Report total assets, total liabilities, total shareholders' equity, and total term debt (in $ millions); the ratio of total liabilities to shareholders' equity, rounded to two decimals; Apple's total cash, cash equivalents and marketable securities (in $ millions); and whether that total exceeds its term debt.",
+    "time_map": {
+      "2023": "2026"
+    },
+    "gt_template": "The solvency position of Apple Inc. for 2026 can be assessed using the balance sheet data (as of September 26, 2026):\n- Total Assets: $[[Assets@FY2026]] million\n- Total Liabilities: $[[Liab@FY2026]] million\n- Total Shareholders' Equity: $[[Eq@FY2026]] million\nTotal liabilities are about [[LtoE@FY2026|.2f]] times total shareholders' equity. Most of these liabilities are operating obligations rather than borrowings: the term debt for 2026 is $[[TermDebt@FY2026]] million (current $[[TDc@FY2026]] million and non-current $[[TDn@FY2026]] million). The company's cash and cash equivalents are $[[Cash@FY2026]] million, with additional marketable securities of $[[MSc@FY2026]] million (current) and $[[MSn@FY2026]] million (non-current), i.e. $[[Liquid@FY2026]] million in total, which exceeds its term debt. This indicates that Apple Inc. has sufficient liquidity to meet its debt obligations. Overall, its strong asset base and liquidity position suggest a stable solvency position."
   },
   "step6_review": {
     "verdict": "pass",
@@ -191,6 +194,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ]

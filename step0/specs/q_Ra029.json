@@ -29,7 +29,6 @@
     ]
   },
   "step5_question": {
-    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's revenue (net sales) growth rate from fiscal 2025 to fiscal 2026? Report the percentage rounded to one decimal place.",
     "answer_decimals": {
       "RevGrowth@FY2026": 1
     },
@@ -37,8 +36,23 @@
       "RevGrowth": "Net sales growth %"
     },
     "changes_vs_seed": [
-      "期间平移",
-      "补上公司名"
-    ]
-  }
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+    ],
+    "question_previous_version": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's revenue (net sales) growth rate from fiscal 2025 to fiscal 2026? Report the percentage rounded to one decimal place.",
+    "time_map": {
+      "2024": "2026",
+      "2023": "2025"
+    },
+    "gt_template": "The Revenue Growth Rate is calculated as (Revenue for 2026 - Revenue for 2025) / Revenue for 2025.\n\nRevenue Growth Rate = ($[[Rev@FY2026]] million - $[[Rev@FY2025]] million) / $[[Rev@FY2025]] million = [[RevGrowth@FY2026|.1f]]%"
+  },
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示，新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；step6 新增\"只改时间\"自动检查",
+      "result": "通过"
+    }
+  ]
 }

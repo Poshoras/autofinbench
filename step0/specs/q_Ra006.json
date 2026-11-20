@@ -179,7 +179,6 @@
     "rationale": "分部结构未变（仍是 4 个地区 + Global Brand Divisions），数据可得。按 GT 的实际口径（NIKE Brand 收入为分母）出题并写明；叙述部分改为 \"占比最大的地区\"。"
   },
   "step5_question": {
-    "question": "According to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, what percentage of total NIKE Brand revenues in fiscal 2026 was contributed by each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions, and which contributed the largest share? Report percentages to two decimal places.",
     "answer_decimals": {
       "Brand@FY2026": 0,
       "ShareNA@FY2026": 2,
@@ -210,9 +209,8 @@
       "Largest_share": "Largest share"
     },
     "changes_vs_seed": [
-      "期间 FY2018 → FY2026",
-      "范围从模糊的 \"total revenue\" 改为 \"total NIKE Brand revenues\"（与原 GT 实际口径一致；属于问什么，不是怎么算）",
-      "开放叙述改为 \"占比最大的地区\""
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ],
     "selector_labels": {
       "ShareNA": "North America",
@@ -220,7 +218,12 @@
       "ShareGC": "Greater China",
       "ShareAPLA": "APLA",
       "ShareGBD": "Global Brand Divisions"
-    }
+    },
+    "question_previous_version": "According to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, what percentage of total NIKE Brand revenues in fiscal 2026 was contributed by each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions, and which contributed the largest share? Report percentages to two decimal places.",
+    "time_map": {
+      "2018": "2026"
+    },
+    "gt_template": "To calculate the percentage of revenue contributed by each region to Nike's total revenue in 2026:\n\nFormula:\nPercentage of Revenue = (Revenue from Region / Total NIKE Brand Revenue) x 100\n\nData:\n\nNorth America Revenue = $[[NA@FY2026]] million\nEMEA Revenue = $[[EMEA@FY2026]] million\nGreater China Revenue = $[[GC@FY2026]] million\nAPLA Revenue = $[[APLA@FY2026]] million\nGlobal Brand Divisions Revenue = $[[GBD@FY2026]] million\nTotal NIKE Brand Revenue = $[[NA@FY2026]] + $[[EMEA@FY2026]] + $[[GC@FY2026]] + $[[APLA@FY2026]] + $[[GBD@FY2026]] = $[[Brand@FY2026]] million\nCalculations:\n\nNorth America: ([[NA@FY2026]] / [[Brand@FY2026]]) x 100 = [[ShareNA@FY2026|.2f]]%\nEMEA: ([[EMEA@FY2026]] / [[Brand@FY2026]]) x 100 = [[ShareEMEA@FY2026|.2f]]%\nGreater China: ([[GC@FY2026]] / [[Brand@FY2026]]) x 100 = [[ShareGC@FY2026|.2f]]%\nAPLA: ([[APLA@FY2026]] / [[Brand@FY2026]]) x 100 = [[ShareAPLA@FY2026|.2f]]%\nGlobal Brand Divisions: ([[GBD@FY2026]] / [[Brand@FY2026]]) x 100 = [[ShareGBD@FY2026|.2f]]%\n\nNorth America contributes the largest share, followed by EMEA, APLA and Greater China, so NIKE Brand revenue remains concentrated in North America and EMEA. (Total NIKE, Inc. revenues, including Converse, were $[[TotRev@FY2026]] million; measured against that total, North America's share is [[NA@FY2026 / TotRev@FY2026 * 100|.2f]]%.)"
   },
   "step6_review": {
     "verdict": "pass",
@@ -243,6 +246,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ]

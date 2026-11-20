@@ -362,19 +362,19 @@
     "variant_metrics": {}
   },
   "step5_question": {
-    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's free cash flow margin for fiscal 2026 based on its reported Adjusted Free Cash Flow, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.",
+    "question": "What is the Free Cash Flow Margin for 2026, and how does it compare to 2025?",
+    "ground_truth_answer": "Free Cash Flow Margin is Free Cash Flow divided by Net Sales. For 2026:\n\nFree Cash Flow = $15,835 million (P&G's reported Adjusted Free Cash Flow)\nFree Cash Flow Margin = $15,835 million / $87,032 million = 18.2%\nFor 2025:\n\nFree Cash Flow Margin = $14,606 million / $84,284 million = 17.3%\nThe margin increased from 17.3% in 2025 to 18.2% in 2026.",
     "answer": {
       "FCFMargin@FY2025": 17.3,
       "FCFMargin@FY2026": 18.2,
       "FCFMargin_change": "increased"
     },
     "accepted_variants": {},
-    "answer_text": "Adjusted FCF / net sales % (FY2025): 17.3\nAdjusted FCF / net sales % (FY2026): 18.2\nChange: increased",
+    "key_points": "Adjusted FCF / net sales % (FY2025): 17.3\nAdjusted FCF / net sales % (FY2026): 18.2\nChange: increased",
     "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
-      "期间平移",
-      "补上公司名",
-      "保留 \"reported Adjusted Free Cash Flow\"（说明问的是哪个指标，不是计算步骤）"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ]
   },
   "step6_review": {
@@ -442,6 +442,8 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
+    "only_time_changed_vs_seed": true,
+    "ground_truth_rendered": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -453,6 +455,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示，新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ],

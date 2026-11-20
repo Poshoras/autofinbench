@@ -582,7 +582,8 @@
     }
   },
   "step5_question": {
-    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's cash conversion cycle for fiscal 2026, and how does it compare to fiscal 2025? Report the cash conversion cycle in days, rounded to one decimal place.",
+    "question": "What is the Cash Conversion Cycle for 2026, and how does it compare to 2025?",
+    "ground_truth_answer": "The Cash Conversion Cycle (CCC) is calculated as Days Inventory Outstanding (DIO) + Days Sales Outstanding (DSO) - Days Payable Outstanding (DPO).\nFor 2026:\nDIO = (Average Inventory / Cost of Goods Sold) * 365\nAverage Inventory = ($7,551 million + $8,170 million) / 2 = $7,860.5 million\nDIO = ($7,860.5 million / $43,362 million) * 365 = 66.2 days\nDSO = (Average Accounts Receivable / Net Sales) * 365\nAverage Accounts Receivable = ($6,185 million + $6,056 million) / 2 = $6,120.5 million\nDSO = ($6,120.5 million / $87,032 million) * 365 = 25.7 days\nDPO = (Average Accounts Payable / Cost of Goods Sold) * 365\nAverage Accounts Payable = ($15,227 million + $16,306 million) / 2 = $15,766.5 million\nDPO = ($15,766.5 million / $43,362 million) * 365 = 132.7 days\nCCC = DIO + DSO - DPO = -40.9 days (computed from unrounded components)\n\nFor 2025:\nDIO = (Average Inventory / Cost of Goods Sold) * 365\nAverage Inventory = ($7,016 million + $7,551 million) / 2 = $7,283.5 million\nDIO = ($7,283.5 million / $41,164 million) * 365 = 64.6 days\nDSO = (Average Accounts Receivable / Net Sales) * 365\nAverage Accounts Receivable = ($6,118 million + $6,185 million) / 2 = $6,151.5 million\nDSO = ($6,151.5 million / $84,284 million) * 365 = 26.6 days\nDPO = (Average Accounts Payable / Cost of Goods Sold) * 365\nAverage Accounts Payable = ($15,364 million + $15,227 million) / 2 = $15,295.5 million\nDPO = ($15,295.5 million / $41,164 million) * 365 = 135.6 days\nCCC = DIO + DSO - DPO = -44.4 days (computed from unrounded components)\n\nAnalysis: The Cash Conversion Cycle became less negative, from -44.4 days in 2025 to -40.9 days in 2026 (an increase of 3.5 days). P&G still collects cash from customers well before it pays its suppliers, but this advantage narrowed as inventory days rose and payable days fell.",
     "answer": {
       "CCC@FY2025": -44.4,
       "CCC@FY2026": -40.9,
@@ -595,13 +596,11 @@
         "CCC_change": "decreased"
       }
     },
-    "answer_text": "CCC (days) (FY2025): -44.4\nCCC (days) (FY2026): -40.9\nCCC change: increased\nAlso accepted (year-end balances): CCC (days) (FY2025): -41.3; CCC (days) (FY2026): -43.1; CCC change: decreased",
+    "key_points": "CCC (days) (FY2025): -44.4\nCCC (days) (FY2026): -40.9\nCCC change: increased\nAlso accepted (year-end balances): CCC (days) (FY2025): -41.3; CCC (days) (FY2026): -43.1; CCC change: decreased",
     "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
-      "期间平移",
-      "补上公司名",
-      "只问 CCC（不再列出 DIO/DSO/DPO，避免提示分解步骤）",
-      "期末余额口径列为也接受"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ]
   },
   "step6_review": {
@@ -687,6 +686,8 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
+    "only_time_changed_vs_seed": true,
+    "ground_truth_rendered": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -702,6 +703,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ],

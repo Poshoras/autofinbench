@@ -354,7 +354,8 @@
     "variant_metrics": {}
   },
   "step5_question": {
-    "question": "In NIKE's Asia Pacific & Latin America (APLA) segment, how did revenues from Footwear, Apparel, and Equipment change from fiscal 2025 to fiscal 2026, according to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026? Report each category's percentage change to two decimal places and identify which category had the highest and which had the lowest percentage change.",
+    "question": "How did the growth rates of revenues from Footwear, Apparel, and Equipment compare from Fiscal 2025 to Fiscal 2026, and which category experienced the highest and lowest percentage change?",
+    "ground_truth_answer": "Footwear Revenues (Fiscal 2026): $4,377 million\n\nFootwear Revenues (Fiscal 2025): $4,452 million\n\nPercentage Change (Footwear): -2%\n\nApparel Revenues (Fiscal 2026): $1,629 million\n\nApparel Revenues (Fiscal 2025): $1,541 million\n\nPercentage Change (Apparel): 6%\n\nEquipment Revenues (Fiscal 2026): $237 million\n\nEquipment Revenues (Fiscal 2025): $258 million\n\nPercentage Change (Equipment): -8%\nFootwear = ((4,377 - 4,452)/4,452)*100 = -1.68%\nApparel = ((1,629 - 1,541)/1,541)*100 = 5.71%\nEquipment = ((237 - 258)/258)*100 = -8.14%\nFrom Fiscal 2025 to Fiscal 2026 (Asia Pacific & Latin America segment):\n\nApparel experienced the highest growth rate at approximately 5.71%.\nFootwear revenues declined by approximately 1.68%.\nEquipment revenues declined by approximately 8.14%, the lowest percentage change of the three categories.",
     "answer": {
       "FWg@FY2026": -1.68,
       "APg@FY2026": 5.71,
@@ -363,12 +364,11 @@
       "Lowest": "Equipment"
     },
     "accepted_variants": {},
-    "answer_text": "Footwear change % (FY2026): -1.68\nApparel change % (FY2026): 5.71\nEquipment change % (FY2026): -8.14\nHighest growth: Apparel\nLowest growth: Equipment",
+    "key_points": "Footwear change % (FY2026): -1.68\nApparel change % (FY2026): 5.71\nEquipment change % (FY2026): -8.14\nHighest growth: Apparel\nLowest growth: Equipment",
     "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
-      "期间 FY2018/FY2017 → FY2026/FY2025",
-      "题干补上缺失的分部范围 \"APLA\"",
-      "删除原因推测（\"increased demand and product innovation\" 等）"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ]
   },
   "step6_review": {
@@ -424,6 +424,8 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
+    "only_time_changed_vs_seed": true,
+    "ground_truth_rendered": true,
     "rounding_near_boundary": [
       {
         "key": "FWg@FY2026",
@@ -446,6 +448,14 @@
       "Footwear −1.68% 接近舍入分界，判分容差 ±0.01 可吸收"
     ]
   },
-  "revisions": [],
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
+      "result": "通过"
+    }
+  ],
   "final_status": "ACCEPTED"
 }

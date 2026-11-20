@@ -375,7 +375,8 @@
     }
   },
   "step5_question": {
-    "question": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's return on capital employed (ROCE) for fiscal 2026, and how does it compare to fiscal 2025? Report percentages rounded to one decimal place.",
+    "question": "What is the Return on Capital Employed for 2026, and how does it compare to 2025?",
+    "ground_truth_answer": "ROCE is Operating Income divided by Capital Employed.\nFor 2026:\nCapital Employed = Total Assets - Current Liabilities = $126,521 million - $38,694 million = $87,827 million\nROCE = $19,748 million / $87,827 million = 22.5%\nFor 2025:\nCapital Employed = $125,231 million - $36,058 million = $89,173 million\nROCE = $20,451 million / $89,173 million = 22.9%\nROCE decreased from 22.9% in 2025 to 22.5% in 2026.",
     "answer": {
       "ROCE@FY2025": 22.9,
       "ROCE@FY2026": 22.5,
@@ -392,12 +393,11 @@
         "ROCE@FY2026": 22.3
       }
     },
-    "answer_text": "ROCE % (FY2025): 22.9\nROCE % (FY2026): 22.5\nChange: decreased\nAlso accepted (EBIT (pre-tax income + interest expense) instead of operating income): ROCE % (FY2025): 23.6; ROCE % (FY2026): 24.2; Change: increased\nAlso accepted (average capital employed): ROCE % (FY2025): 23.0; ROCE % (FY2026): 22.3",
+    "key_points": "ROCE % (FY2025): 22.9\nROCE % (FY2026): 22.5\nChange: decreased\nAlso accepted (EBIT (pre-tax income + interest expense) instead of operating income): ROCE % (FY2025): 23.6; ROCE % (FY2026): 24.2; Change: increased\nAlso accepted (average capital employed): ROCE % (FY2025): 23.0; ROCE % (FY2026): 22.3",
     "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
     "changes_vs_seed": [
-      "期间平移",
-      "补上公司名",
-      "EBIT 口径、平均资本口径列为也接受"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ]
   },
   "step6_review": {
@@ -477,6 +477,8 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
+    "only_time_changed_vs_seed": true,
+    "ground_truth_rendered": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -488,6 +490,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ],

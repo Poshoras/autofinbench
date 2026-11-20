@@ -143,7 +143,6 @@
     "rationale": "APLA 分部与品类拆分仍然存在且有 XBRL 标注；题干补上 \"APLA\" 这一缺失的范围。"
   },
   "step5_question": {
-    "question": "In NIKE's Asia Pacific & Latin America (APLA) segment, how did revenues from Footwear, Apparel, and Equipment change from fiscal 2025 to fiscal 2026, according to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026? Report each category's percentage change to two decimal places and identify which category had the highest and which had the lowest percentage change.",
     "answer_decimals": {
       "FWg@FY2026": 2,
       "APg@FY2026": 2,
@@ -175,15 +174,20 @@
       "Lowest": "Lowest growth"
     },
     "changes_vs_seed": [
-      "期间 FY2018/FY2017 → FY2026/FY2025",
-      "题干补上缺失的分部范围 \"APLA\"",
-      "删除原因推测（\"increased demand and product innovation\" 等）"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ],
     "selector_labels": {
       "FWg": "Footwear",
       "APg": "Apparel",
       "EQg": "Equipment"
-    }
+    },
+    "question_previous_version": "In NIKE's Asia Pacific & Latin America (APLA) segment, how did revenues from Footwear, Apparel, and Equipment change from fiscal 2025 to fiscal 2026, according to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026? Report each category's percentage change to two decimal places and identify which category had the highest and which had the lowest percentage change.",
+    "time_map": {
+      "2017": "2025",
+      "2018": "2026"
+    },
+    "gt_template": "Footwear Revenues (Fiscal 2026): $[[FW@FY2026]] million\n\nFootwear Revenues (Fiscal 2025): $[[FW@FY2025]] million\n\nPercentage Change (Footwear): [[FWg@FY2026|.0f]]%\n\nApparel Revenues (Fiscal 2026): $[[AP@FY2026]] million\n\nApparel Revenues (Fiscal 2025): $[[AP@FY2025]] million\n\nPercentage Change (Apparel): [[APg@FY2026|.0f]]%\n\nEquipment Revenues (Fiscal 2026): $[[EQ@FY2026]] million\n\nEquipment Revenues (Fiscal 2025): $[[EQ@FY2025]] million\n\nPercentage Change (Equipment): [[EQg@FY2026|.0f]]%\nFootwear = (([[FW@FY2026]] - [[FW@FY2025]])/[[FW@FY2025]])*100 = [[FWg@FY2026|.2f]]%\nApparel = (([[AP@FY2026]] - [[AP@FY2025]])/[[AP@FY2025]])*100 = [[APg@FY2026|.2f]]%\nEquipment = (([[EQ@FY2026]] - [[EQ@FY2025]])/[[EQ@FY2025]])*100 = [[EQg@FY2026|.2f]]%\nFrom Fiscal 2025 to Fiscal 2026 (Asia Pacific & Latin America segment):\n\nApparel experienced the highest growth rate at approximately [[APg@FY2026|.2f]]%.\nFootwear revenues declined by approximately [[-FWg@FY2026|.2f]]%.\nEquipment revenues declined by approximately [[-EQg@FY2026|.2f]]%, the lowest percentage change of the three categories."
   },
   "step6_review": {
     "verdict": "pass",
@@ -201,5 +205,13 @@
       "Footwear −1.68% 接近舍入分界，判分容差 ±0.01 可吸收"
     ]
   },
-  "revisions": []
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
+      "result": "通过"
+    }
+  ]
 }

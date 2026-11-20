@@ -271,6 +271,15 @@ def run(qid, seed_rows):
     # ---- step 5
     q5 = spec['step5_question']
     names = q5.get('display_names', {})
+    if 'time_map' in q5:   # new question = seed question with ONLY its time expressions replaced
+        tm = q5['time_map']
+        if tm:
+            rx = re.compile('|'.join(re.escape(k) for k in sorted(tm, key=len, reverse=True)))
+            question = rx.sub(lambda m: tm[m.group(0)], traj['seed']['question'])
+        else:   # seed question contains no time expression: wording stays identical
+            question = traj['seed']['question']
+    else:
+        question = q5['question']
 
     def make_answer(res):
         ans = {}
@@ -302,7 +311,25 @@ def run(qid, seed_rows):
     for vn, diff in variants_ans.items():
         if diff:
             lines.append(f'Also accepted ({vn}): ' + '; '.join(fmt(k, v) for k, v in diff.items()))
-    traj['step5_question'] = {'question': q5['question'], 'answer': ans, 'accepted_variants': variants_ans, 'answer_text': '\n'.join(lines),
+
+    def render_gt(tmpl):
+        """Free-form GT in the seed's style. [[expr|fmt]] = number computed from target data;
+        [[!key]] = value/label from the structured answer. No number is typed by hand."""
+        V = {**TV, **{k: r['value'] for k, r in results.items() if r['value'] is not None}}
+
+        def rep(m):
+            expr, fs = m.group(1).strip(), m.group(2)
+            if expr.startswith('!'):
+                v = ans[expr[1:]]
+                return f'{v:{fs}}' if fs and isinstance(v, (int, float)) else str(v)
+            v, miss = evaluate(expr, V)
+            if v is None:
+                raise RuntimeError(f'{qid} GT template: cannot evaluate {expr}: {miss}')
+            return f'{v:{fs or ",.0f"}}'
+        return re.sub(r'\[\[([^\]|]+)(?:\|([^\]]*))?\]\]', rep, tmpl)
+    gt = render_gt(q5['gt_template']) if 'gt_template' in q5 else None
+    traj['step5_question'] = {'question': question, 'ground_truth_answer': gt, 'answer': ans, 'accepted_variants': variants_ans,
+                              'key_points': '\n'.join(lines),
                               'grading': q5.get('grading', 'score each item separately; numbers correct if within 1 unit of the last stated decimal place; '
                                                            'labels by meaning; an answer is also correct if it consistently matches one of the accepted variants'),
                               'changes_vs_seed': q5.get('changes_vs_seed', [])}
@@ -324,22 +351,27 @@ def run(qid, seed_rows):
         else:   # small numbers must appear within ~400 chars after their row label
             found, mode = bool(re.search('(?i)' + item['text_label'] + r'.{0,400}?' + numpat, text)), 'near_label'
         checks.append({'key': k, 'value_as_text': s, 'match_mode': mode, 'found_in_filing_text': found})
-    leak = [k for k, v in ans.items() if isinstance(v, (int, float)) and re.search(r'(?<![\d,.])' + re.escape(f'{v:,}') + r'(?![\d])', q5['question'])]
+    leak = [k for k, v in ans.items() if isinstance(v, (int, float)) and re.search(r'(?<![\d,.])' + re.escape(f'{v:,}') + r'(?![\d])', question)]
+    # the new question may differ from the seed question only in its time expressions
+    TIME_RX = r'(?:January|February|March|April|May|June|July|August|September|October|November|December) \d{1,2}, \d{4}|(?:19|20)\d{2}'
+    only_time_changed = re.sub(TIME_RX, '<T>', question) == re.sub(TIME_RX, '<T>', traj['seed']['question'])
     near_boundary = []
     for k, d in q5['answer_decimals'].items():
         x = abs(results[k]['value']) * 10 ** d
         if abs((x - int(x)) - 0.5) < 0.05:
             near_boundary.append({'key': k, 'unrounded': results[k]['value']})
     # the question must not give away the calculation (user rule: test the model's own reasoning)
-    formula_hits = re.findall(r'=|\s/\s|\bdivided by\b|\bx 365\b|\bminus\b|\bplus\b|\bdefined as\b|\bdenominator\b|\bsum of\b', q5['question'], re.I)
+    formula_hits = re.findall(r'=|\s/\s|\bdivided by\b|\bx 365\b|\bminus\b|\bplus\b|\bdefined as\b|\bdenominator\b|\bsum of\b', question, re.I)
     all_vals_ok = all(r['value'] is not None for r in results.values()) and \
                   all(r['value'] is not None for vr in vresults.values() for r in vr.values())
-    auto_pass = all(c['found_in_filing_text'] for c in checks) and not leak and not formula_hits and all_vals_ok
+    auto_pass = all(c['found_in_filing_text'] for c in checks) and not leak and not formula_hits and all_vals_ok and \
+                only_time_changed and gt is not None
     review = dict(spec.get('step6_review') or {})
     if review.get('verdict', 'auto') in ('auto', 'pending'):   # exception-based review: judge only flagged items
         clean = auto_pass and not traj['step2_backtest']['flags_for_attention']
         review = {**review, 'verdict': 'pass' if clean else 'needs_attention', 'mode': 'auto (no flags)' if clean else 'flagged'}
     traj['step6_review'] = {'text_verification': checks, 'answer_leak_in_question': leak, 'formula_in_question': formula_hits,
+                            'only_time_changed_vs_seed': only_time_changed, 'ground_truth_rendered': gt is not None,
                             'rounding_near_boundary': near_boundary,
                             'automatic_checks_pass': auto_pass, **review}
     traj['revisions'] = spec.get('revisions', [])
@@ -348,8 +380,8 @@ def run(qid, seed_rows):
 
     row = {'new_qid': f'{qid}_u1', 'seed_qid': qid, 'company': spec['company'], 'form': target_meta['form'],
            'accession_number': spec['target_accn'], 'report_period': target_meta['period'], 'filed': target_meta['filed'],
-           'question': q5['question'], 'answer_text': traj['step5_question']['answer_text'],
-           'answer_json': json.dumps(ans, ensure_ascii=False),
+           'seed_question': traj['seed']['question'], 'question': question, 'ground_truth_answer': gt,
+           'key_points': traj['step5_question']['key_points'], 'answer_json': json.dumps(ans, ensure_ascii=False),
            'accepted_variants_json': json.dumps({k: v for k, v in variants_ans.items() if v}, ensure_ascii=False),
            'status': traj['final_status']}
     return traj, row

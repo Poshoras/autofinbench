@@ -131,7 +131,6 @@
     "rationale": "所有数据项在 FY2026 10-K 中可得（见 availability）。去掉无法判分的叙述，改为每个比率的变化方向。"
   },
   "step5_question": {
-    "question": "Analyze Procter & Gamble's profitability for fiscal 2026 and fiscal 2025 (fiscal years ended June 30) using ratio analysis, based on its fiscal 2026 Form 10-K. Report the gross profit margin, operating profit margin, net profit margin, and return on equity (ROE) for both years as percentages rounded to one decimal place, and state whether each ratio increased, decreased, or was unchanged.",
     "answer_decimals": {
       "GPM@FY2025": 1,
       "GPM@FY2026": 1,
@@ -175,9 +174,8 @@
       "ROE_change": "ROE change"
     },
     "changes_vs_seed": [
-      "期间 FY2024/FY2023 → FY2026/FY2025",
-      "开放式 \"analyse\" 改为指定 4 个比率的数值 + 变化方向（与原 GT 覆盖的比率一致）",
-      "口径歧义（ROE 用期末/平均权益、净利润是否含少数股东）列为也接受的口径"
+      "题干：只替换时间表达，其余与原题一字不差",
+      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
     ],
     "selector_labels": {},
     "variants": {
@@ -188,7 +186,13 @@
         "NPM": "NetEarn@{p} / Rev@{p} * 100",
         "ROE": "NetEarn@{p} / ((Eq@{p} + Eq@{prev}) / 2) * 100"
       }
-    }
+    },
+    "question_previous_version": "Analyze Procter & Gamble's profitability for fiscal 2026 and fiscal 2025 (fiscal years ended June 30) using ratio analysis, based on its fiscal 2026 Form 10-K. Report the gross profit margin, operating profit margin, net profit margin, and return on equity (ROE) for both years as percentages rounded to one decimal place, and state whether each ratio increased, decreased, or was unchanged.",
+    "time_map": {
+      "2024": "2026",
+      "2023": "2025"
+    },
+    "gt_template": "Profitability Ratio Analysis for Procter & Gamble (P&G) in 2025 and 2026\nGross Profit Margin:\n2026: [[GPM@FY2026|.1f]]%\n2025: [[GPM@FY2025|.1f]]%\n\nOperating Profit Margin:\n2026: [[OPM@FY2026|.1f]]%\n2025: [[OPM@FY2025|.1f]]%\n\nNet Profit Margin:\n2026: [[NPM@FY2026|.1f]]%\n2025: [[NPM@FY2025|.1f]]%\n\nReturn on Equity (ROE):\n2026: [[ROE@FY2026|.1f]]%\n2025: [[ROE@FY2025|.1f]]%\n\nAnalysis:\nIn 2026, Procter & Gamble remained highly profitable, but its profitability ratios weakened compared with 2025. The gross profit margin [[!GPM_change]] from [[GPM@FY2025|.1f]]% to [[GPM@FY2026|.1f]]%, the operating profit margin [[!OPM_change]] from [[OPM@FY2025|.1f]]% to [[OPM@FY2026|.1f]]%, the net profit margin [[!NPM_change]] from [[NPM@FY2025|.1f]]% to [[NPM@FY2026|.1f]]%, and ROE [[!ROE_change]] from [[ROE@FY2025|.1f]]% to [[ROE@FY2026|.1f]]%. Costs rose faster than net sales (net sales $[[Rev@FY2025]] million -> $[[Rev@FY2026]] million), compressing margins, while an ROE of about 30% still reflects strong returns for shareholders.\n(Bases used: net profit margin and ROE use net earnings attributable to P&G; ROE uses average total shareholders' equity.)"
   },
   "step6_review": {
     "verdict": "pass",
@@ -219,6 +223,13 @@
       "step": "step5_question",
       "problem": "题干写出了计算公式/口径定义，等于把推理过程交给受测模型（用户反馈，2026-11-20）；step6 新增\"题干不得含公式\"自动检查",
       "action": "删去公式，措辞贴近原题（只换期间、补公司名/范围）；口径歧义改为在答案中列出\"也接受的口径\"",
+      "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
+      "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
     }
   ]
