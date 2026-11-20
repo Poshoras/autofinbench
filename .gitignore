@@ -1,0 +1,4 @@
+# raw SEC EDGAR downloads (re-fetchable via scripts/edgar.py)
+data/edgar/
+__pycache__/
+.DS_Store
