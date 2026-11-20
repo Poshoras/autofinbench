@@ -1,0 +1,16 @@
+{
+  "qid": "q_Ra018",
+  "seed": {
+    "question": "What does the change in Discover’s Charge-Off Ratio compare to previous years imply?",
+    "ground_truth_answer": "In 2023, Discover Financial Services’ Charge-Off Ratio increased to approximately 3.41%, up from 1.82% in 2022 and 1.84% in 2021. This significant increase indicates a notable rise in the proportion of loan receivables deemed uncollectible. The rise in the Charge-Off Ratio reflects a deterioration in the company’s credit quality over the past year, suggesting that a larger percentage of its loan portfolio is facing defaults or delinquencies.",
+    "accession_number": "0001393612-24-000010",
+    "page_number": "62, 65"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2025-04-30",
+    "cutoff": "2026-01-01",
+    "pass": false
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "批量淘汰（step0 规则）：Discover Financial Services 最新一份 10-K/10-Q 提交于 2025-04-30，早于 2026-01-01，没有知识截止日之后的新数据"
+}

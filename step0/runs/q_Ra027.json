@@ -1,0 +1,643 @@
+{
+  "qid": "q_Ra027",
+  "seed": {
+    "question": "What is the Cash Conversion Cycle for 2024, and how does it compare to 2023?",
+    "ground_truth_answer": "The Cash Conversion Cycle (CCC) is calculated as Days Inventory Outstanding (DIO) + Days Sales Outstanding (DSO) - Days Payable Outstanding (DPO).\nFor 2024:\nDIO = (Average Inventory / Cost of Goods Sold) * 365\nAverage Inventory = ($7,073 million + $7,016 million) / 2 = $7,044.5 million\nDIO = ($7,044.5 million / $40,848 million) * 365 = 63.0 days\nDSO = (Average Accounts Receivable / Net Sales) * 365\nAverage Accounts Receivable = ($5,471 million + $6,118 million) / 2 = $5,794.5 million\nDSO = ($5,794.5 million / $84,039 million) * 365 = 25.1 days\nDPO = (Average Accounts Payable / Cost of Goods Sold) * 365\nAverage Accounts Payable = ($14,598 million + $15,364 million) / 2 = $14,981 million\nDPO = ($14,981 million / $40,848 million) * 365 = 134.2 days\nCCC = DIO + DSO - DPO = 63.0 days + 25.1 days - 134.2 days = -46.1 days\n\nFor 2023:\nDIO = ($7,073 million / $42,760 million) * 365 = 60.4 days\nDSO = ($5,471 million / $82,006 million) * 365 = 24.4 days\nDPO = ($14,598 million / $42,760 million) * 365 = 124.6 days\nCCC = 60.4 days + 24.4 days - 107.6 days = -39.8 days\n\nAnalysis: The Cash Conversion Cycle became slightly more negative from -39.8 days in 2023 to -46.1 days in 2024. This improvement indicates that P&G is more efficient in managing its working capital, reducing the time between outlaying cash and receiving cash from sales.",
+    "accession_number": "0000080424-24-000083",
+    "page_number": "36, 37"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-10-22",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
+  "step1_learn_pattern": {
+    "question_type": "A 计算型（多步）",
+    "structure": "两年对比：DIO、DSO、DPO、CCC",
+    "operation": "3 个周转天数（平均余额 ÷ 流量 × 365）再加减",
+    "output_format": "天，1 位小数",
+    "seed_numbers": {
+      "Inv@FY2024": "7,016",
+      "Inv@FY2023": "7,073",
+      "AR@FY2024": "6,118",
+      "AR@FY2023": "5,471",
+      "AP@FY2024": "15,364",
+      "AP@FY2023": "14,598",
+      "COGS@FY2024": "40,848",
+      "COGS@FY2023": "42,760"
+    },
+    "seed_answers": {
+      "DIO@FY2024": "63.0",
+      "DSO@FY2024": "25.1",
+      "DPO@FY2024": "134.2",
+      "CCC@FY2024": "-46.1",
+      "DIO@FY2023": "60.4",
+      "DSO@FY2023": "24.4",
+      "DPO@FY2023": "124.6",
+      "CCC@FY2023": "-39.8"
+    },
+    "notes": [
+      "GT FY2024 用平均余额、FY2023 用期末余额，口径不一致",
+      "GT FY2023 的 CCC 算式写 \"−107.6\"，与上一行 DPO 124.6 矛盾（结果 −39.8 与 124.6 一致，107.6 是笔误）"
+    ],
+    "data_items": {
+      "Rev": {
+        "label": "Net sales",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "COGS": {
+        "label": "Cost of products sold",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "OpInc": {
+        "label": "Operating income",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "NetEarn": {
+        "label": "Net earnings (incl. noncontrolling interests)",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "NI": {
+        "label": "Net earnings attributable to Procter & Gamble",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "CFO": {
+        "label": "Total operating activities",
+        "statement": "Consolidated Statements of Cash Flows",
+        "type": "duration"
+      },
+      "Capex": {
+        "label": "Capital expenditures",
+        "statement": "Consolidated Statements of Cash Flows",
+        "type": "duration"
+      },
+      "Assets": {
+        "label": "Total assets",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "CurLiab": {
+        "label": "Total current liabilities",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Inv": {
+        "label": "Total inventories",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "AR": {
+        "label": "Accounts receivable",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "AP": {
+        "label": "Accounts payable",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Emp": {
+        "label": "Number of employees (Item 1 – Employees)",
+        "statement": "Item 1 text",
+        "type": "instant"
+      },
+      "AdjFCF": {
+        "label": "Adjusted Free Cash Flow (P&G non-GAAP, MD&A)",
+        "statement": "MD&A – Cash Flow Analysis",
+        "type": "duration"
+      },
+      "TaxAct": {
+        "label": "U.S. Tax Act payments (reconciling item in Adjusted FCF table)",
+        "statement": "MD&A – Non-GAAP reconciliation",
+        "type": "duration"
+      }
+    },
+    "formulas": {
+      "DIO": "((Inv@{p} + Inv@{prev}) / 2) / COGS@{p} * 365",
+      "DSO": "((AR@{p} + AR@{prev}) / 2) / Rev@{p} * 365",
+      "DPO": "((AP@{p} + AP@{prev}) / 2) / COGS@{p} * 365",
+      "CCC": "((Inv@{p} + Inv@{prev}) / 2) / COGS@{p} * 365 + ((AR@{p} + AR@{prev}) / 2) / Rev@{p} * 365 - ((AP@{p} + AP@{prev}) / 2) / COGS@{p} * 365"
+    },
+    "evidence_in_seed_context": {
+      "Inv@FY2024": [
+        {
+          "page": "37",
+          "row_label": "Total inventories"
+        }
+      ],
+      "Inv@FY2023": [
+        {
+          "page": "37",
+          "row_label": "Total inventories"
+        }
+      ],
+      "AR@FY2024": [
+        {
+          "page": "37",
+          "row_label": "Accounts receivable"
+        }
+      ],
+      "AR@FY2023": [
+        {
+          "page": "37",
+          "row_label": "Accounts receivable"
+        }
+      ],
+      "AP@FY2024": [
+        {
+          "page": "37",
+          "row_label": "Accounts payable"
+        }
+      ],
+      "AP@FY2023": [
+        {
+          "page": "37",
+          "row_label": "Accounts payable"
+        }
+      ],
+      "COGS@FY2024": [
+        {
+          "page": "36",
+          "row_label": "Cost of products sold"
+        }
+      ],
+      "COGS@FY2023": [
+        {
+          "page": "36",
+          "row_label": "Cost of products sold"
+        }
+      ],
+      "DIO@FY2024": [],
+      "DSO@FY2024": [],
+      "DPO@FY2024": [],
+      "CCC@FY2024": [],
+      "DIO@FY2023": [],
+      "DSO@FY2023": [],
+      "DPO@FY2023": [],
+      "CCC@FY2023": []
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000080424-24-000083",
+    "inputs": [
+      {
+        "key": "AP@FY2022",
+        "seed_stated": null,
+        "xbrl": 14882.0,
+        "xbrl_concept": "AccountsPayableCurrent",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "AP@FY2023",
+        "seed_stated": 14598.0,
+        "xbrl": 14598.0,
+        "xbrl_concept": "AccountsPayableCurrent",
+        "status": "MATCH"
+      },
+      {
+        "key": "AP@FY2024",
+        "seed_stated": 15364.0,
+        "xbrl": 15364.0,
+        "xbrl_concept": "AccountsPayableCurrent",
+        "status": "MATCH"
+      },
+      {
+        "key": "AR@FY2022",
+        "seed_stated": null,
+        "xbrl": 5143.0,
+        "xbrl_concept": "AccountsReceivableNetCurrent",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "AR@FY2023",
+        "seed_stated": 5471.0,
+        "xbrl": 5471.0,
+        "xbrl_concept": "AccountsReceivableNetCurrent",
+        "status": "MATCH"
+      },
+      {
+        "key": "AR@FY2024",
+        "seed_stated": 6118.0,
+        "xbrl": 6118.0,
+        "xbrl_concept": "AccountsReceivableNetCurrent",
+        "status": "MATCH"
+      },
+      {
+        "key": "COGS@FY2023",
+        "seed_stated": 42760.0,
+        "xbrl": 42760.0,
+        "xbrl_concept": "CostOfGoodsAndServicesSold",
+        "status": "MATCH"
+      },
+      {
+        "key": "COGS@FY2024",
+        "seed_stated": 40848.0,
+        "xbrl": 40848.0,
+        "xbrl_concept": "CostOfGoodsAndServicesSold",
+        "status": "MATCH"
+      },
+      {
+        "key": "Inv@FY2022",
+        "seed_stated": null,
+        "xbrl": 6924.0,
+        "xbrl_concept": "InventoryNet",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "Inv@FY2023",
+        "seed_stated": 7073.0,
+        "xbrl": 7073.0,
+        "xbrl_concept": "InventoryNet",
+        "status": "MATCH"
+      },
+      {
+        "key": "Inv@FY2024",
+        "seed_stated": 7016.0,
+        "xbrl": 7016.0,
+        "xbrl_concept": "InventoryNet",
+        "status": "MATCH"
+      },
+      {
+        "key": "Rev@FY2023",
+        "seed_stated": null,
+        "xbrl": 82006.0,
+        "xbrl_concept": "Revenues",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "Rev@FY2024",
+        "seed_stated": null,
+        "xbrl": 84039.0,
+        "xbrl_concept": "Revenues",
+        "status": "XBRL_ONLY"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "DIO@FY2023",
+        "formula": "((Inv@FY2023 + Inv@FY2022) / 2) / COGS@FY2023 * 365",
+        "seed_answer": "60.4",
+        "recomputed_from_seed_inputs": 59.73930074836296,
+        "recomputed_from_filing": 59.73930074836296,
+        "missing": [],
+        "arithmetic_ok": false,
+        "filing_ok": false,
+        "corrected_seed_answer": 59.7,
+        "within_1_unit": false
+      },
+      {
+        "metric": "DIO@FY2024",
+        "formula": "((Inv@FY2024 + Inv@FY2023) / 2) / COGS@FY2024 * 365",
+        "seed_answer": "63.0",
+        "recomputed_from_seed_inputs": 62.94659469251861,
+        "recomputed_from_filing": 62.94659469251861,
+        "missing": [],
+        "arithmetic_ok": false,
+        "filing_ok": false,
+        "corrected_seed_answer": 62.9,
+        "within_1_unit": true
+      },
+      {
+        "metric": "DSO@FY2023",
+        "formula": "((AR@FY2023 + AR@FY2022) / 2) / Rev@FY2023 * 365",
+        "seed_answer": "24.4",
+        "recomputed_from_seed_inputs": 23.620893593151724,
+        "recomputed_from_filing": 23.620893593151724,
+        "missing": [],
+        "arithmetic_ok": false,
+        "filing_ok": false,
+        "corrected_seed_answer": 23.6,
+        "within_1_unit": false
+      },
+      {
+        "metric": "DSO@FY2024",
+        "formula": "((AR@FY2024 + AR@FY2023) / 2) / Rev@FY2024 * 365",
+        "seed_answer": "25.1",
+        "recomputed_from_seed_inputs": 25.166797558276514,
+        "recomputed_from_filing": 25.166797558276514,
+        "missing": [],
+        "arithmetic_ok": false,
+        "filing_ok": false,
+        "corrected_seed_answer": 25.2,
+        "within_1_unit": true
+      },
+      {
+        "metric": "DPO@FY2023",
+        "formula": "((AP@FY2023 + AP@FY2022) / 2) / COGS@FY2023 * 365",
+        "seed_answer": "124.6",
+        "recomputed_from_seed_inputs": 125.82086061739943,
+        "recomputed_from_filing": 125.82086061739943,
+        "missing": [],
+        "arithmetic_ok": false,
+        "filing_ok": false,
+        "corrected_seed_answer": 125.8,
+        "within_1_unit": false
+      },
+      {
+        "metric": "DPO@FY2024",
+        "formula": "((AP@FY2024 + AP@FY2023) / 2) / COGS@FY2024 * 365",
+        "seed_answer": "134.2",
+        "recomputed_from_seed_inputs": 133.86371425773598,
+        "recomputed_from_filing": 133.86371425773598,
+        "missing": [],
+        "arithmetic_ok": false,
+        "filing_ok": false,
+        "corrected_seed_answer": 133.9,
+        "within_1_unit": false
+      },
+      {
+        "metric": "CCC@FY2023",
+        "formula": "((Inv@FY2023 + Inv@FY2022) / 2) / COGS@FY2023 * 365 + ((AR@FY2023 + AR@FY2022) / 2) / Rev@FY2023 * 365 - ((AP@FY2023 + AP@FY2022) / 2) / COGS@FY2023 * 365",
+        "seed_answer": "-39.8",
+        "recomputed_from_seed_inputs": -42.46066627588475,
+        "recomputed_from_filing": -42.46066627588475,
+        "missing": [],
+        "arithmetic_ok": false,
+        "filing_ok": false,
+        "corrected_seed_answer": -42.5,
+        "within_1_unit": false
+      },
+      {
+        "metric": "CCC@FY2024",
+        "formula": "((Inv@FY2024 + Inv@FY2023) / 2) / COGS@FY2024 * 365 + ((AR@FY2024 + AR@FY2023) / 2) / Rev@FY2024 * 365 - ((AP@FY2024 + AP@FY2023) / 2) / COGS@FY2024 * 365",
+        "seed_answer": "-46.1",
+        "recomputed_from_seed_inputs": -45.75032200694085,
+        "recomputed_from_filing": -45.75032200694085,
+        "missing": [],
+        "arithmetic_ok": false,
+        "filing_ok": false,
+        "corrected_seed_answer": -45.8,
+        "within_1_unit": false
+      }
+    ],
+    "flags_for_attention": [
+      "DIO@FY2023",
+      "DSO@FY2023",
+      "DPO@FY2023",
+      "DPO@FY2024",
+      "CCC@FY2023",
+      "CCC@FY2024"
+    ],
+    "rounding_level_differences": [
+      "DIO@FY2024",
+      "DSO@FY2024"
+    ],
+    "verdict": "SEED_ERROR（口径不一致 + 算术错误）。① FY2023 实际用期末余额：7,073/42,760×365=60.4、5,471/82,006×365=24.4、14,598/42,760×365=124.6，与 GT 一致，但 FY2024 用平均余额，两年口径不一致；② FY2024 DPO = 14,981/40,848×365 = 133.9，GT 写 134.2，CCC 随之错为 −46.1（应为 −45.8）；③ GT 中 FY2023 CCC 算式写 \"−107.6\"，与 DPO 124.6 矛盾（笔误）。"
+  },
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026，截至 2026-06-30）；比较 FY2026 vs FY2025；2024-06-30 期末余额取自 FY2025 10-K",
+    "decision": "shift",
+    "rationale": "共享配置：所有数据项已在 FY2026/FY2025 10-K 中确认可得",
+    "target_filing": {
+      "form": "10-K",
+      "period": "2026-06-30",
+      "filed": "2026-08-04",
+      "accn": "0000080424-26-000103",
+      "doc": "pg-20260630.htm"
+    },
+    "availability": {
+      "AP@FY2024": "AccountsPayableCurrent",
+      "AP@FY2025": "AccountsPayableCurrent",
+      "AP@FY2026": "AccountsPayableCurrent",
+      "AR@FY2024": "AccountsReceivableNetCurrent",
+      "AR@FY2025": "AccountsReceivableNetCurrent",
+      "AR@FY2026": "AccountsReceivableNetCurrent",
+      "COGS@FY2025": "CostOfGoodsAndServicesSold",
+      "COGS@FY2026": "CostOfGoodsAndServicesSold",
+      "Inv@FY2024": "InventoryNet",
+      "Inv@FY2025": "InventoryNet",
+      "Inv@FY2026": "InventoryNet",
+      "Rev@FY2025": "Revenues",
+      "Rev@FY2026": "Revenues"
+    }
+  },
+  "step4_compute": {
+    "inputs": {
+      "AP@FY2024": {
+        "concept": "AccountsPayableCurrent",
+        "dims": {},
+        "value": 15364.0
+      },
+      "AP@FY2025": {
+        "concept": "AccountsPayableCurrent",
+        "dims": {},
+        "value": 15227.0
+      },
+      "AP@FY2026": {
+        "concept": "AccountsPayableCurrent",
+        "dims": {},
+        "value": 16306.0
+      },
+      "AR@FY2024": {
+        "concept": "AccountsReceivableNetCurrent",
+        "dims": {},
+        "value": 6118.0
+      },
+      "AR@FY2025": {
+        "concept": "AccountsReceivableNetCurrent",
+        "dims": {},
+        "value": 6185.0
+      },
+      "AR@FY2026": {
+        "concept": "AccountsReceivableNetCurrent",
+        "dims": {},
+        "value": 6056.0
+      },
+      "COGS@FY2025": {
+        "concept": "CostOfGoodsAndServicesSold",
+        "dims": {},
+        "value": 41164.0
+      },
+      "COGS@FY2026": {
+        "concept": "CostOfGoodsAndServicesSold",
+        "dims": {},
+        "value": 43362.0
+      },
+      "Inv@FY2024": {
+        "concept": "InventoryNet",
+        "dims": {},
+        "value": 7016.0
+      },
+      "Inv@FY2025": {
+        "concept": "InventoryNet",
+        "dims": {},
+        "value": 7551.0
+      },
+      "Inv@FY2026": {
+        "concept": "InventoryNet",
+        "dims": {},
+        "value": 8170.0
+      },
+      "Rev@FY2025": {
+        "concept": "Revenues",
+        "dims": {},
+        "value": 84284.0
+      },
+      "Rev@FY2026": {
+        "concept": "Revenues",
+        "dims": {},
+        "value": 87032.0
+      }
+    },
+    "metrics": {
+      "DIO@FY2025": {
+        "formula": "((Inv@FY2025 + Inv@FY2024) / 2) / COGS@FY2025 * 365",
+        "value": 64.5825842969585,
+        "missing": []
+      },
+      "DIO@FY2026": {
+        "formula": "((Inv@FY2026 + Inv@FY2025) / 2) / COGS@FY2026 * 365",
+        "value": 66.16582491582491,
+        "missing": []
+      },
+      "DSO@FY2025": {
+        "formula": "((AR@FY2025 + AR@FY2024) / 2) / Rev@FY2025 * 365",
+        "value": 26.639664705044847,
+        "missing": []
+      },
+      "DSO@FY2026": {
+        "formula": "((AR@FY2026 + AR@FY2025) / 2) / Rev@FY2026 * 365",
+        "value": 25.668518475962863,
+        "missing": []
+      },
+      "DPO@FY2025": {
+        "formula": "((AP@FY2025 + AP@FY2024) / 2) / COGS@FY2025 * 365",
+        "value": 135.62475706928385,
+        "missing": []
+      },
+      "DPO@FY2026": {
+        "formula": "((AP@FY2026 + AP@FY2025) / 2) / COGS@FY2026 * 365",
+        "value": 132.71464646464648,
+        "missing": []
+      },
+      "CCC@FY2025": {
+        "formula": "((Inv@FY2025 + Inv@FY2024) / 2) / COGS@FY2025 * 365 + ((AR@FY2025 + AR@FY2024) / 2) / Rev@FY2025 * 365 - ((AP@FY2025 + AP@FY2024) / 2) / COGS@FY2025 * 365",
+        "value": -44.40250806728049,
+        "missing": []
+      },
+      "CCC@FY2026": {
+        "formula": "((Inv@FY2026 + Inv@FY2025) / 2) / COGS@FY2026 * 365 + ((AR@FY2026 + AR@FY2025) / 2) / Rev@FY2026 * 365 - ((AP@FY2026 + AP@FY2025) / 2) / COGS@FY2026 * 365",
+        "value": -40.88030307285871,
+        "missing": []
+      }
+    }
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026 (and the fiscal 2025 Form 10-K for balances as of June 30, 2024), compute P&G's cash conversion cycle for fiscal 2026 and fiscal 2025. Use averages of beginning- and end-of-year balances and a 365-day year: DIO = average inventories / cost of products sold x 365; DSO = average accounts receivable / net sales x 365; DPO = average accounts payable / cost of products sold x 365; CCC = DIO + DSO - DPO (computed from unrounded components). Report DIO, DSO, DPO and CCC for both years in days rounded to one decimal place, and state whether the CCC increased or decreased.",
+    "answer": {
+      "DIO@FY2025": 64.6,
+      "DSO@FY2025": 26.6,
+      "DPO@FY2025": 135.6,
+      "CCC@FY2025": -44.4,
+      "DIO@FY2026": 66.2,
+      "DSO@FY2026": 25.7,
+      "DPO@FY2026": 132.7,
+      "CCC@FY2026": -40.9,
+      "CCC_change": "increased"
+    },
+    "answer_text": "DIO (days) (FY2025): 64.6\nDSO (days) (FY2025): 26.6\nDPO (days) (FY2025): 135.6\nCCC (days) (FY2025): -44.4\nDIO (days) (FY2026): 66.2\nDSO (days) (FY2026): 25.7\nDPO (days) (FY2026): 132.7\nCCC (days) (FY2026): -40.9\nCCC change: increased",
+    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名",
+      "两年统一用平均余额并写明全部公式"
+    ]
+  },
+  "step6_review": {
+    "text_verification": [
+      {
+        "key": "AP@FY2024",
+        "value_as_text": "15,364",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "AP@FY2025",
+        "value_as_text": "15,227",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "AP@FY2026",
+        "value_as_text": "16,306",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "AR@FY2024",
+        "value_as_text": "6,118",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "AR@FY2025",
+        "value_as_text": "6,185",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "AR@FY2026",
+        "value_as_text": "6,056",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "COGS@FY2025",
+        "value_as_text": "41,164",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "COGS@FY2026",
+        "value_as_text": "43,362",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Inv@FY2024",
+        "value_as_text": "7,016",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Inv@FY2025",
+        "value_as_text": "7,551",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Inv@FY2026",
+        "value_as_text": "8,170",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Rev@FY2025",
+        "value_as_text": "84,284",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Rev@FY2026",
+        "value_as_text": "87,032",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      }
+    ],
+    "answer_leak_in_question": [],
+    "rounding_near_boundary": [],
+    "automatic_checks_pass": true,
+    "verdict": "pass",
+    "mode": "flagged → judged",
+    "notes": [
+      "标记全部来自原题口径不一致和算术错误；新题统一用平均余额并写明公式，13 个输入全部在原文中核对通过"
+    ]
+  },
+  "revisions": [],
+  "final_status": "ACCEPTED"
+}

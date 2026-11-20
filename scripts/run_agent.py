@@ -68,10 +68,43 @@ def needed_keys(exprs):
     return sorted({m.group(0) for e in exprs for m in TOK.finditer(e)})
 
 
+CUTOFF = '2026-01-01'   # step0 triage: company must have a 10-K/10-Q filed on/after this date
+_TEXT = {}
+
+
+def ftext(cik, accn):
+    if accn not in _TEXT:
+        _TEXT[accn] = doctext.text(cik, accn)
+    return _TEXT[accn]
+
+
+def load_spec(qid):
+    spec = json.load(open(os.path.join(STEP0, 'specs', f'{qid}.json'), encoding='utf-8'))
+    if 'profile' in spec:   # shared per-filing setup: company, seed/target filings, periods, data items
+        prof = json.load(open(os.path.join(STEP0, 'profiles', spec['profile'] + '.json'), encoding='utf-8'))
+        spec = {**prof, **spec, 'items': {**prof.get('items', {}), **spec.get('items', {})}}
+    return spec
+
+
 def lookup(doc, spec, side, key):
+    """Value of item@period. Sources: XBRL (default) or filing text (item.source == 'text').
+    A period may carry its own 'accn' (e.g. prior-year balances taken from an older 10-K)."""
     item_name, label = key.split('@')
     item = spec['items'][item_name]
     per = spec['periods'][side][label]
+    accn = per.get('accn') or spec[f'{side}_accn']
+    if item.get('source') == 'text':
+        rx = item.get(f'text_regex_{side}', {}).get(label)
+        if not rx:
+            return None
+        accn = rx.get('accn') or accn
+        m = re.search(rx['pattern'], ftext(spec['cik'], accn))
+        if not m:
+            return None
+        val = num(m.group(rx.get('group', 1)))
+        return dict(concept='TEXT', accn=accn, dims={}, raw=val, value=val * item.get('sign', 1), text_match=m.group(0)[:200])
+    if per.get('accn'):
+        doc = XI.load(spec['cik'], per['accn'])
     concepts = item.get(f'concepts_{side}', item.get('concepts', []))
     dims = item.get(f'dims_{side}', item.get('dims', {}))
     for c in concepts:
@@ -80,7 +113,7 @@ def lookup(doc, spec, side, key):
         else:
             f = XI.query(doc, c, end=per['end'], start=per.get('start'), dims=dims) if per.get('start') else None
         if f:
-            return dict(concept=c, dims=dims, raw=f['val'], value=disp(item, f['val']) * item.get('sign', 1))
+            return dict(concept=c, accn=accn, dims=dims, raw=f['val'], value=disp(item, f['val']) * item.get('sign', 1))
     return None
 
 
@@ -124,11 +157,20 @@ def diagnose(doc, spec, key, target_val):
 
 # ---------------------------------------------------------------- main per-question run
 def run(qid, seed_rows):
-    spec = json.load(open(os.path.join(STEP0, 'specs', f'{qid}.json'), encoding='utf-8'))
+    spec = load_spec(qid)
     seed = seed_rows[qid]
     traj = {'qid': qid, 'seed': {'question': seed['Question'].strip(), 'ground_truth_answer': seed['ground_truth_answer'],
                                  'accession_number': seed['accession_number'], 'page_number': seed['page_number']}}
     cik = spec['cik']
+
+    # ---- step 0: triage (company-level rule, no judgment needed)
+    latest = max((f['filed'] for f in edgar.filings(cik)), default=None)
+    traj['step0_triage'] = {'latest_10K_10Q_filed': latest, 'cutoff': CUTOFF, 'pass': bool(latest and latest >= CUTOFF)}
+    if not traj['step0_triage']['pass'] and 'step1_pattern' not in spec:
+        traj['final_status'] = 'REJECTED'
+        traj['reject_reason'] = (f'批量淘汰（step0 规则）：{spec["company"]} 最新一份 10-K/10-Q 提交于 {latest}，'
+                                 f'早于 {CUTOFF}，没有知识截止日之后的新数据')
+        return traj, None
 
     # ---- step 1
     ctx = seed['context_markdown_with_headers']
@@ -173,9 +215,19 @@ def run(qid, seed_rows):
             row['arithmetic_ok'] = v_st is not None and round(v_st, d) == round(num(sa), d)
             row['filing_ok'] = v_ok is not None and round(v_ok, d) == round(num(sa), d)
             row['corrected_seed_answer'] = round(v_ok, d) if v_ok is not None else None
+            row['within_1_unit'] = v_ok is not None and abs(v_ok - num(sa)) <= 10 ** -d + 1e-9
         answers.append(row)
+    # exception-based: only substantive mismatches need judgment; rounding-level ones are just recorded
+    flags = [r['key'] for r in inputs if r['status'] == 'SEED_INPUT_MISMATCH'] + \
+            [a['metric'] for a in answers if a.get('seed_answer') is not None and not a['within_1_unit']]
+    rounding_only = [a['metric'] for a in answers if a.get('seed_answer') is not None and not a['filing_ok'] and a['within_1_unit']]
+    verdict = spec.get('step2_verdict', 'auto')
+    if verdict == 'auto':
+        verdict = 'MATCH' if not flags else '不吻合，需判断：' + ', '.join(flags)
+        if rounding_only:
+            verdict += f'（另有舍入级差异：{", ".join(rounding_only)}）'
     traj['step2_backtest'] = {'seed_filing': spec['seed_accn'], 'inputs': inputs, 'answers': answers,
-                              'verdict': spec['step2_verdict']}
+                              'flags_for_attention': flags, 'rounding_level_differences': rounding_only, 'verdict': verdict}
 
     # ---- step 3
     plan = dict(spec['step3_plan'])
@@ -235,19 +287,21 @@ def run(qid, seed_rows):
                               'changes_vs_seed': q5.get('changes_vs_seed', [])}
 
     # ---- step 6
-    text = doctext.text(cik, spec['target_accn'])
     checks = []
     for k, v in txb.items():
         if not v:
             continue
         item = spec['items'][k.split('@')[0]]
         s = f"{abs(v['value']):.2f}" if item.get('scale') == 'unit' else f"{abs(v['value']):,.0f}"
+        if v['concept'] == 'TEXT':   # value was read from the text itself: single source, nothing independent to compare
+            checks.append({'key': k, 'value_as_text': s, 'match_mode': 'text_source (single source)', 'found_in_filing_text': True})
+            continue
+        text = ftext(cik, v['accn'])
         numpat = r'(?<![\d,.])' + re.escape(s) + r'(?![\d])'
-        if item.get('text_label'):   # number must appear within ~400 chars after its row label
-            found = bool(re.search('(?i)' + item['text_label'] + r'.{0,400}?' + numpat, text))
-            mode = 'near_label'
-        else:
-            found, mode = bool(re.search(numpat, text)), 'anywhere'
+        if len(re.sub(r'\D', '', s)) >= 4 or not item.get('text_label'):
+            found, mode = bool(re.search(numpat, text)), 'anywhere (>=4 digits)'   # coincidental match unlikely
+        else:   # small numbers must appear within ~400 chars after their row label
+            found, mode = bool(re.search('(?i)' + item['text_label'] + r'.{0,400}?' + numpat, text)), 'near_label'
         checks.append({'key': k, 'value_as_text': s, 'match_mode': mode, 'found_in_filing_text': found})
     leak = [k for k, v in ans.items() if isinstance(v, (int, float)) and re.search(r'(?<![\d,.])' + re.escape(f'{v:,}') + r'(?![\d])', q5['question'])]
     near_boundary = []
@@ -256,11 +310,15 @@ def run(qid, seed_rows):
         if abs((x - int(x)) - 0.5) < 0.05:
             near_boundary.append({'key': k, 'unrounded': results[k]['value']})
     auto_pass = all(c['found_in_filing_text'] for c in checks) and not leak and all(r['value'] is not None for r in results.values())
+    review = dict(spec.get('step6_review') or {})
+    if review.get('verdict', 'auto') in ('auto', 'pending'):   # exception-based review: judge only flagged items
+        clean = auto_pass and not traj['step2_backtest']['flags_for_attention']
+        review = {**review, 'verdict': 'pass' if clean else 'needs_attention', 'mode': 'auto (no flags)' if clean else 'flagged'}
     traj['step6_review'] = {'text_verification': checks, 'answer_leak_in_question': leak, 'rounding_near_boundary': near_boundary,
-                            'automatic_checks_pass': auto_pass, **spec['step6_review']}
+                            'automatic_checks_pass': auto_pass, **review}
     traj['revisions'] = spec.get('revisions', [])
-    ok = auto_pass and spec['step6_review']['verdict'] == 'pass'
-    traj['final_status'] = 'ACCEPTED' if ok else 'NEEDS_REVISION'
+    traj['final_status'] = ('ACCEPTED' if auto_pass and review['verdict'] == 'pass' else
+                            'NEEDS_ATTENTION' if review['verdict'] == 'needs_attention' else 'NEEDS_REVISION')
 
     row = {'new_qid': f'{qid}_u1', 'seed_qid': qid, 'company': spec['company'], 'form': target_meta['form'],
            'accession_number': spec['target_accn'], 'report_period': target_meta['period'], 'filed': target_meta['filed'],

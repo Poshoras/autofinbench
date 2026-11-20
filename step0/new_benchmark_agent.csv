@@ -42,3 +42,31 @@ Apparel change % (FY2026): 5.71
 Equipment change % (FY2026): -8.14
 Highest growth: Apparel
 Lowest growth: Equipment","{""FWg@FY2026"": -1.68, ""APg@FY2026"": 5.71, ""EQg@FY2026"": -8.14, ""Highest"": ""Apparel"", ""Lowest"": ""Equipment""}",ACCEPTED
+q_Ra023_u1,q_Ra023,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's capital expenditure ratio (capital expenditures / net sales) for fiscal 2026, and how does it compare with fiscal 2025? Report both as percentages rounded to two decimal places and state whether the ratio increased or decreased.","Capex / net sales % (FY2025): 4.48
+Capex / net sales % (FY2026): 5.07
+Change: increased","{""CapexRatio@FY2025"": 4.48, ""CapexRatio@FY2026"": 5.07, ""CapexRatio_change"": ""increased""}",ACCEPTED
+q_Ra024_u1,q_Ra024,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's return on assets (ROA) for fiscal 2026, and how does it compare with fiscal 2025? Define ROA = net earnings (including noncontrolling interests) / average total assets, where average total assets is the mean of the beginning- and end-of-year balances. Report both as percentages rounded to one decimal place and state whether ROA increased or decreased.","ROA % (FY2025): 13.0
+ROA % (FY2026): 12.8
+Change: decreased","{""ROA@FY2025"": 13.0, ""ROA@FY2026"": 12.8, ""ROA_change"": ""decreased""}",ACCEPTED
+q_Ra025_u1,q_Ra025,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's return on capital employed (ROCE) for fiscal 2026, and how does it compare with fiscal 2025? Define ROCE = operating income / capital employed, where capital employed = total assets - total current liabilities at fiscal year-end. Report both as percentages rounded to one decimal place and state whether ROCE increased or decreased.","ROCE % (FY2025): 22.9
+ROCE % (FY2026): 22.5
+Change: decreased","{""ROCE@FY2025"": 22.9, ""ROCE@FY2026"": 22.5, ""ROCE_change"": ""decreased""}",ACCEPTED
+q_Ra026_u1,q_Ra026,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's free cash flow to sales ratio for fiscal 2026, and how does it compare with fiscal 2025? Define free cash flow = net cash from operating activities - capital expenditures, and the ratio = free cash flow / net sales. Report both as percentages rounded to one decimal place and state whether the ratio increased or decreased.","FCF / net sales % (FY2025): 16.7
+FCF / net sales % (FY2026): 17.4
+Change: increased","{""FCFtoSales@FY2025"": 16.7, ""FCFtoSales@FY2026"": 17.4, ""FCFtoSales_change"": ""increased""}",ACCEPTED
+q_Ra027_u1,q_Ra027,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026 (and the fiscal 2025 Form 10-K for balances as of June 30, 2024), compute P&G's cash conversion cycle for fiscal 2026 and fiscal 2025. Use averages of beginning- and end-of-year balances and a 365-day year: DIO = average inventories / cost of products sold x 365; DSO = average accounts receivable / net sales x 365; DPO = average accounts payable / cost of products sold x 365; CCC = DIO + DSO - DPO (computed from unrounded components). Report DIO, DSO, DPO and CCC for both years in days rounded to one decimal place, and state whether the CCC increased or decreased.","DIO (days) (FY2025): 64.6
+DSO (days) (FY2025): 26.6
+DPO (days) (FY2025): 135.6
+CCC (days) (FY2025): -44.4
+DIO (days) (FY2026): 66.2
+DSO (days) (FY2026): 25.7
+DPO (days) (FY2026): 132.7
+CCC (days) (FY2026): -40.9
+CCC change: increased","{""DIO@FY2025"": 64.6, ""DSO@FY2025"": 26.6, ""DPO@FY2025"": 135.6, ""CCC@FY2025"": -44.4, ""DIO@FY2026"": 66.2, ""DSO@FY2026"": 25.7, ""DPO@FY2026"": 132.7, ""CCC@FY2026"": -40.9, ""CCC_change"": ""increased""}",ACCEPTED
+q_Ra028_u1,q_Ra028,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Using Procter & Gamble's Form 10-K filings for the fiscal years ended June 30, 2026 and June 30, 2025, what was P&G's revenue per employee (net sales divided by the approximate number of employees reported as of fiscal year-end) for fiscal 2026 and fiscal 2025? Report both in US dollars rounded to the nearest dollar and state whether revenue per employee increased or decreased.","Revenue per employee ($) (FY2025): 773,248
+Revenue per employee ($) (FY2026): 836,846
+Change: increased","{""RevPerEmp@FY2025"": 773248, ""RevPerEmp@FY2026"": 836846, ""RevPerEmp_change"": ""increased""}",ACCEPTED
+q_Ra029_u1,q_Ra029,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's revenue (net sales) growth rate from fiscal 2025 to fiscal 2026? Report the percentage rounded to one decimal place.",Net sales growth % (FY2026): 3.3,"{""RevGrowth@FY2026"": 3.3}",ACCEPTED
+q_Ra030_u1,q_Ra030,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's free cash flow margin for fiscal 2026, and how does it compare with fiscal 2025? Use P&G's reported Adjusted Free Cash Flow (the non-GAAP measure in MD&A) divided by net sales. Report both as percentages rounded to one decimal place and state whether the margin increased or decreased.","Adjusted FCF / net sales % (FY2025): 17.3
+Adjusted FCF / net sales % (FY2026): 18.2
+Change: increased","{""FCFMargin@FY2025"": 17.3, ""FCFMargin@FY2026"": 18.2, ""FCFMargin_change"": ""increased""}",ACCEPTED

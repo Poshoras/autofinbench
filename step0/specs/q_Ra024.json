@@ -1,0 +1,57 @@
+{
+  "qid": "q_Ra024",
+  "profile": "PG_10K_FY2024_to_FY2026",
+  "metrics": {
+    "ROA": "NetEarn@{p} / ((Assets@{p} + Assets@{prev}) / 2) * 100"
+  },
+  "step1_pattern": {
+    "question_type": "A 计算型",
+    "structure": "两年对比",
+    "operation": "净利润（含少数股东）÷ 平均总资产",
+    "output_format": "百分比，1 位小数",
+    "seed_numbers": {
+      "NetEarn@FY2024": "14,974",
+      "NetEarn@FY2023": "14,738",
+      "Assets@FY2024": "122,370",
+      "Assets@FY2023": "120,829"
+    },
+    "seed_answers": {
+      "ROA@FY2024": "12.3",
+      "ROA@FY2023": "12.2"
+    },
+    "notes": [
+      "GT 定义为 \"Average Total Assets\"，但 2023 年实际用了期末总资产"
+    ]
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's return on assets (ROA) for fiscal 2026, and how does it compare with fiscal 2025? Define ROA = net earnings (including noncontrolling interests) / average total assets, where average total assets is the mean of the beginning- and end-of-year balances. Report both as percentages rounded to one decimal place and state whether ROA increased or decreased.",
+    "answer_decimals": {
+      "ROA@FY2025": 1,
+      "ROA@FY2026": 1
+    },
+    "directions": {
+      "ROA_change": [
+        "ROA",
+        "FY2025",
+        "FY2026"
+      ]
+    },
+    "display_names": {
+      "ROA": "ROA %",
+      "ROA_change": "Change"
+    },
+    "changes_vs_seed": [
+      "期间平移",
+      "两年统一用平均总资产（原题 2023 年口径不一致）",
+      "题干写明公式"
+    ]
+  },
+  "step2_verdict": "SEED_ERROR（口径不一致）。GT 写明 ROA = 净利润 ÷ 平均总资产，FY2024 按此计算（12.3，复现）；FY2023 实际用了期末总资产：14,738 ÷ 120,829 = 12.20（与 GT 12.2 一致），按平均总资产应为 14,738 ÷ ((117,208 + 120,829)/2) = 12.4。",
+  "step6_review": {
+    "verdict": "pass",
+    "mode": "flagged → judged",
+    "notes": [
+      "回测标记源于原题口径不一致，不是 pipeline 错误；新题两年统一用 GT 自己写明的平均总资产口径"
+    ]
+  }
+}

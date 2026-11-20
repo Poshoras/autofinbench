@@ -1,0 +1,50 @@
+{
+  "qid": "q_Ra028",
+  "profile": "PG_10K_FY2024_to_FY2026",
+  "metrics": {
+    "RevPerEmp": "Rev@{p} * 1000000 / Emp@{p}"
+  },
+  "step1_pattern": {
+    "question_type": "A 计算型",
+    "structure": "两年对比",
+    "operation": "净销售额 ÷ 年末员工数",
+    "output_format": "美元，取整",
+    "seed_numbers": {
+      "Emp@FY2024": "108,000",
+      "Emp@FY2023": "108,000",
+      "Rev@FY2024": "84,039",
+      "Rev@FY2023": "82,006"
+    },
+    "seed_answers": {
+      "RevPerEmp@FY2024": "778,139",
+      "RevPerEmp@FY2023": "759,314"
+    },
+    "notes": [
+      "员工数只在 Item 1 正文中披露（无 XBRL）；FY2023 员工数来自 FY2024 10-K 的 \"unchanged versus the prior year\"",
+      "题干缺公司名"
+    ]
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K filings for the fiscal years ended June 30, 2026 and June 30, 2025, what was P&G's revenue per employee (net sales divided by the approximate number of employees reported as of fiscal year-end) for fiscal 2026 and fiscal 2025? Report both in US dollars rounded to the nearest dollar and state whether revenue per employee increased or decreased.",
+    "answer_decimals": {
+      "RevPerEmp@FY2025": 0,
+      "RevPerEmp@FY2026": 0
+    },
+    "directions": {
+      "RevPerEmp_change": [
+        "RevPerEmp",
+        "FY2025",
+        "FY2026"
+      ]
+    },
+    "display_names": {
+      "RevPerEmp": "Revenue per employee ($)",
+      "RevPerEmp_change": "Change"
+    },
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名",
+      "员工数口径写明为年末约数"
+    ]
+  }
+}

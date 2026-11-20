@@ -1,0 +1,80 @@
+{
+  "qid": "q_Ra027",
+  "profile": "PG_10K_FY2024_to_FY2026",
+  "metrics": {
+    "DIO": "((Inv@{p} + Inv@{prev}) / 2) / COGS@{p} * 365",
+    "DSO": "((AR@{p} + AR@{prev}) / 2) / Rev@{p} * 365",
+    "DPO": "((AP@{p} + AP@{prev}) / 2) / COGS@{p} * 365",
+    "CCC": "((Inv@{p} + Inv@{prev}) / 2) / COGS@{p} * 365 + ((AR@{p} + AR@{prev}) / 2) / Rev@{p} * 365 - ((AP@{p} + AP@{prev}) / 2) / COGS@{p} * 365"
+  },
+  "step1_pattern": {
+    "question_type": "A 计算型（多步）",
+    "structure": "两年对比：DIO、DSO、DPO、CCC",
+    "operation": "3 个周转天数（平均余额 ÷ 流量 × 365）再加减",
+    "output_format": "天，1 位小数",
+    "seed_numbers": {
+      "Inv@FY2024": "7,016",
+      "Inv@FY2023": "7,073",
+      "AR@FY2024": "6,118",
+      "AR@FY2023": "5,471",
+      "AP@FY2024": "15,364",
+      "AP@FY2023": "14,598",
+      "COGS@FY2024": "40,848",
+      "COGS@FY2023": "42,760"
+    },
+    "seed_answers": {
+      "DIO@FY2024": "63.0",
+      "DSO@FY2024": "25.1",
+      "DPO@FY2024": "134.2",
+      "CCC@FY2024": "-46.1",
+      "DIO@FY2023": "60.4",
+      "DSO@FY2023": "24.4",
+      "DPO@FY2023": "124.6",
+      "CCC@FY2023": "-39.8"
+    },
+    "notes": [
+      "GT FY2024 用平均余额、FY2023 用期末余额，口径不一致",
+      "GT FY2023 的 CCC 算式写 \"−107.6\"，与上一行 DPO 124.6 矛盾（结果 −39.8 与 124.6 一致，107.6 是笔误）"
+    ]
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026 (and the fiscal 2025 Form 10-K for balances as of June 30, 2024), compute P&G's cash conversion cycle for fiscal 2026 and fiscal 2025. Use averages of beginning- and end-of-year balances and a 365-day year: DIO = average inventories / cost of products sold x 365; DSO = average accounts receivable / net sales x 365; DPO = average accounts payable / cost of products sold x 365; CCC = DIO + DSO - DPO (computed from unrounded components). Report DIO, DSO, DPO and CCC for both years in days rounded to one decimal place, and state whether the CCC increased or decreased.",
+    "answer_decimals": {
+      "DIO@FY2025": 1,
+      "DSO@FY2025": 1,
+      "DPO@FY2025": 1,
+      "CCC@FY2025": 1,
+      "DIO@FY2026": 1,
+      "DSO@FY2026": 1,
+      "DPO@FY2026": 1,
+      "CCC@FY2026": 1
+    },
+    "directions": {
+      "CCC_change": [
+        "CCC",
+        "FY2025",
+        "FY2026"
+      ]
+    },
+    "display_names": {
+      "DIO": "DIO (days)",
+      "DSO": "DSO (days)",
+      "DPO": "DPO (days)",
+      "CCC": "CCC (days)",
+      "CCC_change": "CCC change"
+    },
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名",
+      "两年统一用平均余额并写明全部公式"
+    ]
+  },
+  "step2_verdict": "SEED_ERROR（口径不一致 + 算术错误）。① FY2023 实际用期末余额：7,073/42,760×365=60.4、5,471/82,006×365=24.4、14,598/42,760×365=124.6，与 GT 一致，但 FY2024 用平均余额，两年口径不一致；② FY2024 DPO = 14,981/40,848×365 = 133.9，GT 写 134.2，CCC 随之错为 −46.1（应为 −45.8）；③ GT 中 FY2023 CCC 算式写 \"−107.6\"，与 DPO 124.6 矛盾（笔误）。",
+  "step6_review": {
+    "verdict": "pass",
+    "mode": "flagged → judged",
+    "notes": [
+      "标记全部来自原题口径不一致和算术错误；新题统一用平均余额并写明公式，13 个输入全部在原文中核对通过"
+    ]
+  }
+}

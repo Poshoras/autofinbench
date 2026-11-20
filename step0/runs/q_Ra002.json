@@ -6,6 +6,11 @@
     "accession_number": "0000080424-24-000083",
     "page_number": "36, 37"
   },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-10-22",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
   "step1_learn_pattern": {
     "question_type": "B 半结构化分析型",
     "structure": "两年对比：4 个盈利比率 × 2 年 + 文字结论",
@@ -161,7 +166,8 @@
         "missing": [],
         "arithmetic_ok": false,
         "filing_ok": false,
-        "corrected_seed_answer": 47.9
+        "corrected_seed_answer": 47.9,
+        "within_1_unit": false
       },
       {
         "metric": "GPM@FY2024",
@@ -172,7 +178,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 51.4
+        "corrected_seed_answer": 51.4,
+        "within_1_unit": true
       },
       {
         "metric": "OPM@FY2023",
@@ -183,7 +190,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 22.1
+        "corrected_seed_answer": 22.1,
+        "within_1_unit": true
       },
       {
         "metric": "OPM@FY2024",
@@ -194,7 +202,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 22.1
+        "corrected_seed_answer": 22.1,
+        "within_1_unit": true
       },
       {
         "metric": "NPM@FY2023",
@@ -205,7 +214,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 17.9
+        "corrected_seed_answer": 17.9,
+        "within_1_unit": true
       },
       {
         "metric": "NPM@FY2024",
@@ -216,7 +226,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 17.7
+        "corrected_seed_answer": 17.7,
+        "within_1_unit": true
       },
       {
         "metric": "ROE@FY2023",
@@ -227,7 +238,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 31.2
+        "corrected_seed_answer": 31.2,
+        "within_1_unit": true
       },
       {
         "metric": "ROE@FY2024",
@@ -238,9 +250,14 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 30.5
+        "corrected_seed_answer": 30.5,
+        "within_1_unit": true
       }
     ],
+    "flags_for_attention": [
+      "GPM@FY2023"
+    ],
+    "rounding_level_differences": [],
     "verdict": "SEED_ERROR（部分）。GT 未给输入，回测反推口径后 8 个比率中 7 个精确复现；FY2023 毛利率 GT=47.6，按文件 (82,006−42,760)/82,006 = 47.86% → 47.9。叙述部分与数字矛盾（见 step1）。"
   },
   "step3_plan": {
@@ -398,67 +415,67 @@
       {
         "key": "COGS@FY2025",
         "value_as_text": "41,164",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "COGS@FY2026",
         "value_as_text": "43,362",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "Eq@FY2024",
         "value_as_text": "50,559",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "Eq@FY2025",
         "value_as_text": "52,284",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "Eq@FY2026",
         "value_as_text": "54,311",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "NI@FY2025",
         "value_as_text": "15,974",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "NI@FY2026",
         "value_as_text": "16,046",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "OpInc@FY2025",
         "value_as_text": "20,451",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "OpInc@FY2026",
         "value_as_text": "19,748",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "Rev@FY2025",
         "value_as_text": "84,284",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "Rev@FY2026",
         "value_as_text": "87,032",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       }
     ],

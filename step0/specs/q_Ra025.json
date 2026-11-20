@@ -1,0 +1,51 @@
+{
+  "qid": "q_Ra025",
+  "profile": "PG_10K_FY2024_to_FY2026",
+  "metrics": {
+    "ROCE": "OpInc@{p} / (Assets@{p} - CurLiab@{p}) * 100"
+  },
+  "step1_pattern": {
+    "question_type": "A 计算型",
+    "structure": "两年对比",
+    "operation": "营业利润 ÷ (总资产 − 流动负债)，期末值",
+    "output_format": "百分比，1 位小数",
+    "seed_numbers": {
+      "OpInc@FY2024": "18,545",
+      "OpInc@FY2023": "18,134",
+      "Assets@FY2024": "122,370",
+      "Assets@FY2023": "120,829",
+      "CurLiab@FY2024": "33,627",
+      "CurLiab@FY2023": "35,756"
+    },
+    "seed_answers": {
+      "ROCE@FY2024": "20.9",
+      "ROCE@FY2023": "21.3"
+    },
+    "notes": [
+      "题干缺公司名"
+    ]
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's return on capital employed (ROCE) for fiscal 2026, and how does it compare with fiscal 2025? Define ROCE = operating income / capital employed, where capital employed = total assets - total current liabilities at fiscal year-end. Report both as percentages rounded to one decimal place and state whether ROCE increased or decreased.",
+    "answer_decimals": {
+      "ROCE@FY2025": 1,
+      "ROCE@FY2026": 1
+    },
+    "directions": {
+      "ROCE_change": [
+        "ROCE",
+        "FY2025",
+        "FY2026"
+      ]
+    },
+    "display_names": {
+      "ROCE": "ROCE %",
+      "ROCE_change": "Change"
+    },
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名",
+      "题干写明公式"
+    ]
+  }
+}

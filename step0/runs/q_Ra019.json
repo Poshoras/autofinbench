@@ -1,0 +1,16 @@
+{
+  "qid": "q_Ra019",
+  "seed": {
+    "question": "What is capital-to-total asset ratio of Discover Financial Services for years 2023 and 2022?",
+    "ground_truth_answer": "Total Capital Ratio measures the proportion of a company's total capital relative to its total assets. It provides insight into how much of the company's assets are financed through its capital base, including both debt and equity.\n\nCalculation:\nTotal Capital = Total Debt + Shareholders' Equity\n\nFor 2023:\nTotal Debt: $750 million (Short-Term Borrowings) + $20,581 million (Long-Term Borrowings) = $21,331 million\nShareholders' Equity: $14,828 million\nTotal Capital: $21,331 million + $14,828 million = $36,159 million\nTotal Assets: $151,522 million\nTotal Capital Ratio: 36,159/151,522 = 23.8%\nFor 2022:\n\nTotal Debt: $0 (Short-Term Borrowings) + $20,108 million (Long-Term Borrowings) = $20,108 million\nShareholders' Equity: $14,344 million\nTotal Capital: $20,108 million + $14,344 million = $34,452 million\nTotal Assets: $131,706 million\nTotal Capital Ratio: 34,452/131,706= 26.1%\nSummary:\n2023 Total Capital Ratio: 23.8%\n2022 Total Capital Ratio: 26.1%\nAnalysis:\nThe Total Capital Ratio decreased from 26.1% in 2022 to 23.8% in 2023. This decline suggests that Discover Financial Services has become slightly more reliant on debt relative to its equity as its asset base has grown. The increase in total assets outpaced the growth in total capital, indicating a shift in the capital structure. This change may reflect adjustments in the company’s financing strategy or operational expansion, potentially impacting its financial stability and risk profile.",
+    "accession_number": "0001393612-24-000010",
+    "page_number": "85"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2025-04-30",
+    "cutoff": "2026-01-01",
+    "pass": false
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "批量淘汰（step0 规则）：Discover Financial Services 最新一份 10-K/10-Q 提交于 2025-04-30，早于 2026-01-01，没有知识截止日之后的新数据"
+}

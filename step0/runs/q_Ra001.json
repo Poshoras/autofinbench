@@ -6,6 +6,11 @@
     "accession_number": "0000320193-23-000106",
     "page_number": "29,30,31,32, 39"
   },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-11-03",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
   "step1_learn_pattern": {
     "question_type": "A 计算型",
     "structure": "三年趋势（逐年计算同一比率）",
@@ -128,7 +133,8 @@
         "missing": [],
         "arithmetic_ok": false,
         "filing_ok": false,
-        "corrected_seed_answer": 41.2
+        "corrected_seed_answer": 41.2,
+        "within_1_unit": false
       },
       {
         "metric": "ICR@FY2022",
@@ -139,7 +145,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 40.7
+        "corrected_seed_answer": 40.7,
+        "within_1_unit": true
       },
       {
         "metric": "ICR@FY2023",
@@ -150,9 +157,15 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 29.1
+        "corrected_seed_answer": 29.1,
+        "within_1_unit": true
       }
     ],
+    "flags_for_attention": [
+      "IntExp@FY2021",
+      "ICR@FY2021"
+    ],
+    "rounding_level_differences": [],
     "verdict": "SEED_ERROR。模式（营业利润 ÷ 利息费用）正确，FY2022/FY2023 复现；FY2021 有两处错误：① 利息费用 2,687 实为 InterestPaidNet（现金流量表 \"Cash paid for interest\"，p32），正确的利息费用为 2,645；② 即使按 2,687，108,949/2,687 = 40.55 也应为 40.5 而非 40.6。正确值 41.2。另：原题自带原文（p29–32、39）不含利润表，营业利润在原文中找不到。"
   },
   "step3_plan": {

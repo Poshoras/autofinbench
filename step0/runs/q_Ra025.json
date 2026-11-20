@@ -1,0 +1,367 @@
+{
+  "qid": "q_Ra025",
+  "seed": {
+    "question": "What is the Return on Capital Employed for 2024, and how does it compare to 2023?",
+    "ground_truth_answer": "ROCE is Operating Income divided by Capital Employed.\nFor 2024:\nCapital Employed = Total Assets - Current Liabilities = $122,370 million - $33,627 million = $88,743 million\nROCE = $18,545 million / $88,743 million = 20.9%\nFor 2023:\nCapital Employed = $120,829 million - $35,756 million = $85,073 million\nROCE = $18,134 million / $85,073 million = 21.3%\n",
+    "accession_number": "0000080424-24-000083",
+    "page_number": "36, 37"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-10-22",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
+  "step1_learn_pattern": {
+    "question_type": "A 计算型",
+    "structure": "两年对比",
+    "operation": "营业利润 ÷ (总资产 − 流动负债)，期末值",
+    "output_format": "百分比，1 位小数",
+    "seed_numbers": {
+      "OpInc@FY2024": "18,545",
+      "OpInc@FY2023": "18,134",
+      "Assets@FY2024": "122,370",
+      "Assets@FY2023": "120,829",
+      "CurLiab@FY2024": "33,627",
+      "CurLiab@FY2023": "35,756"
+    },
+    "seed_answers": {
+      "ROCE@FY2024": "20.9",
+      "ROCE@FY2023": "21.3"
+    },
+    "notes": [
+      "题干缺公司名"
+    ],
+    "data_items": {
+      "Rev": {
+        "label": "Net sales",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "COGS": {
+        "label": "Cost of products sold",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "OpInc": {
+        "label": "Operating income",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "NetEarn": {
+        "label": "Net earnings (incl. noncontrolling interests)",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "NI": {
+        "label": "Net earnings attributable to Procter & Gamble",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "CFO": {
+        "label": "Total operating activities",
+        "statement": "Consolidated Statements of Cash Flows",
+        "type": "duration"
+      },
+      "Capex": {
+        "label": "Capital expenditures",
+        "statement": "Consolidated Statements of Cash Flows",
+        "type": "duration"
+      },
+      "Assets": {
+        "label": "Total assets",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "CurLiab": {
+        "label": "Total current liabilities",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Inv": {
+        "label": "Total inventories",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "AR": {
+        "label": "Accounts receivable",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "AP": {
+        "label": "Accounts payable",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Emp": {
+        "label": "Number of employees (Item 1 – Employees)",
+        "statement": "Item 1 text",
+        "type": "instant"
+      },
+      "AdjFCF": {
+        "label": "Adjusted Free Cash Flow (P&G non-GAAP, MD&A)",
+        "statement": "MD&A – Cash Flow Analysis",
+        "type": "duration"
+      },
+      "TaxAct": {
+        "label": "U.S. Tax Act payments (reconciling item in Adjusted FCF table)",
+        "statement": "MD&A – Non-GAAP reconciliation",
+        "type": "duration"
+      }
+    },
+    "formulas": {
+      "ROCE": "OpInc@{p} / (Assets@{p} - CurLiab@{p}) * 100"
+    },
+    "evidence_in_seed_context": {
+      "OpInc@FY2024": [
+        {
+          "page": "36",
+          "row_label": "OPERATING INCOME"
+        }
+      ],
+      "OpInc@FY2023": [
+        {
+          "page": "36",
+          "row_label": "OPERATING INCOME"
+        }
+      ],
+      "Assets@FY2024": [
+        {
+          "page": "37",
+          "row_label": "TOTAL ASSETS"
+        },
+        {
+          "page": "37",
+          "row_label": "TOTAL LIABILITIES AND SHAREHOLDERS' EQUITY"
+        }
+      ],
+      "Assets@FY2023": [
+        {
+          "page": "37",
+          "row_label": "TOTAL ASSETS"
+        },
+        {
+          "page": "37",
+          "row_label": "TOTAL LIABILITIES AND SHAREHOLDERS' EQUITY"
+        }
+      ],
+      "CurLiab@FY2024": [
+        {
+          "page": "37",
+          "row_label": "TOTAL CURRENT LIABILITIES"
+        }
+      ],
+      "CurLiab@FY2023": [
+        {
+          "page": "37",
+          "row_label": "TOTAL CURRENT LIABILITIES"
+        }
+      ],
+      "ROCE@FY2024": [],
+      "ROCE@FY2023": []
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000080424-24-000083",
+    "inputs": [
+      {
+        "key": "Assets@FY2023",
+        "seed_stated": 120829.0,
+        "xbrl": 120829.0,
+        "xbrl_concept": "Assets",
+        "status": "MATCH"
+      },
+      {
+        "key": "Assets@FY2024",
+        "seed_stated": 122370.0,
+        "xbrl": 122370.0,
+        "xbrl_concept": "Assets",
+        "status": "MATCH"
+      },
+      {
+        "key": "CurLiab@FY2023",
+        "seed_stated": 35756.0,
+        "xbrl": 35756.0,
+        "xbrl_concept": "LiabilitiesCurrent",
+        "status": "MATCH"
+      },
+      {
+        "key": "CurLiab@FY2024",
+        "seed_stated": 33627.0,
+        "xbrl": 33627.0,
+        "xbrl_concept": "LiabilitiesCurrent",
+        "status": "MATCH"
+      },
+      {
+        "key": "OpInc@FY2023",
+        "seed_stated": 18134.0,
+        "xbrl": 18134.0,
+        "xbrl_concept": "OperatingIncomeLoss",
+        "status": "MATCH"
+      },
+      {
+        "key": "OpInc@FY2024",
+        "seed_stated": 18545.0,
+        "xbrl": 18545.0,
+        "xbrl_concept": "OperatingIncomeLoss",
+        "status": "MATCH"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "ROCE@FY2023",
+        "formula": "OpInc@FY2023 / (Assets@FY2023 - CurLiab@FY2023) * 100",
+        "seed_answer": "21.3",
+        "recomputed_from_seed_inputs": 21.315811126914532,
+        "recomputed_from_filing": 21.315811126914532,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 21.3,
+        "within_1_unit": true
+      },
+      {
+        "metric": "ROCE@FY2024",
+        "formula": "OpInc@FY2024 / (Assets@FY2024 - CurLiab@FY2024) * 100",
+        "seed_answer": "20.9",
+        "recomputed_from_seed_inputs": 20.897422895326955,
+        "recomputed_from_filing": 20.897422895326955,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 20.9,
+        "within_1_unit": true
+      }
+    ],
+    "flags_for_attention": [],
+    "rounding_level_differences": [],
+    "verdict": "MATCH"
+  },
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026，截至 2026-06-30）；比较 FY2026 vs FY2025；2024-06-30 期末余额取自 FY2025 10-K",
+    "decision": "shift",
+    "rationale": "共享配置：所有数据项已在 FY2026/FY2025 10-K 中确认可得",
+    "target_filing": {
+      "form": "10-K",
+      "period": "2026-06-30",
+      "filed": "2026-08-04",
+      "accn": "0000080424-26-000103",
+      "doc": "pg-20260630.htm"
+    },
+    "availability": {
+      "Assets@FY2025": "Assets",
+      "Assets@FY2026": "Assets",
+      "CurLiab@FY2025": "LiabilitiesCurrent",
+      "CurLiab@FY2026": "LiabilitiesCurrent",
+      "OpInc@FY2025": "OperatingIncomeLoss",
+      "OpInc@FY2026": "OperatingIncomeLoss"
+    }
+  },
+  "step4_compute": {
+    "inputs": {
+      "Assets@FY2025": {
+        "concept": "Assets",
+        "dims": {},
+        "value": 125231.0
+      },
+      "Assets@FY2026": {
+        "concept": "Assets",
+        "dims": {},
+        "value": 126521.0
+      },
+      "CurLiab@FY2025": {
+        "concept": "LiabilitiesCurrent",
+        "dims": {},
+        "value": 36058.0
+      },
+      "CurLiab@FY2026": {
+        "concept": "LiabilitiesCurrent",
+        "dims": {},
+        "value": 38694.0
+      },
+      "OpInc@FY2025": {
+        "concept": "OperatingIncomeLoss",
+        "dims": {},
+        "value": 20451.0
+      },
+      "OpInc@FY2026": {
+        "concept": "OperatingIncomeLoss",
+        "dims": {},
+        "value": 19748.0
+      }
+    },
+    "metrics": {
+      "ROCE@FY2025": {
+        "formula": "OpInc@FY2025 / (Assets@FY2025 - CurLiab@FY2025) * 100",
+        "value": 22.93407197245803,
+        "missing": []
+      },
+      "ROCE@FY2026": {
+        "formula": "OpInc@FY2026 / (Assets@FY2026 - CurLiab@FY2026) * 100",
+        "value": 22.48511277853052,
+        "missing": []
+      }
+    }
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's return on capital employed (ROCE) for fiscal 2026, and how does it compare with fiscal 2025? Define ROCE = operating income / capital employed, where capital employed = total assets - total current liabilities at fiscal year-end. Report both as percentages rounded to one decimal place and state whether ROCE increased or decreased.",
+    "answer": {
+      "ROCE@FY2025": 22.9,
+      "ROCE@FY2026": 22.5,
+      "ROCE_change": "decreased"
+    },
+    "answer_text": "ROCE % (FY2025): 22.9\nROCE % (FY2026): 22.5\nChange: decreased",
+    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名",
+      "题干写明公式"
+    ]
+  },
+  "step6_review": {
+    "text_verification": [
+      {
+        "key": "Assets@FY2025",
+        "value_as_text": "125,231",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Assets@FY2026",
+        "value_as_text": "126,521",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "CurLiab@FY2025",
+        "value_as_text": "36,058",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "CurLiab@FY2026",
+        "value_as_text": "38,694",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "OpInc@FY2025",
+        "value_as_text": "20,451",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "OpInc@FY2026",
+        "value_as_text": "19,748",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      }
+    ],
+    "answer_leak_in_question": [],
+    "rounding_near_boundary": [],
+    "automatic_checks_pass": true,
+    "verdict": "pass",
+    "mode": "auto (no flags)"
+  },
+  "revisions": [],
+  "final_status": "ACCEPTED"
+}

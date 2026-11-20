@@ -1,0 +1,16 @@
+{
+  "qid": "q_Ra012",
+  "seed": {
+    "question": "What was the change in dividend payout ratio between 2022 and 2023?",
+    "ground_truth_answer": "\nFrom 2022 to 2023, Discover’s payout ratio increased from approximately 14.9% to 23.9%. ",
+    "accession_number": "0001393612-24-000010;0001393612-24-000010",
+    "page_number": "77;86"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2025-04-30",
+    "cutoff": "2026-01-01",
+    "pass": false
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "批量淘汰（step0 规则）：Discover Financial Services 最新一份 10-K/10-Q 提交于 2025-04-30，早于 2026-01-01，没有知识截止日之后的新数据"
+}

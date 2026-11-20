@@ -6,6 +6,11 @@
     "accession_number": "0000320187-18-000142",
     "page_number": "71"
   },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-10-02",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
   "step1_learn_pattern": {
     "question_type": "A 计算型（附一句原因解释）",
     "structure": "两年对比：EBIT 同比变化率",
@@ -94,7 +99,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 4945.0
+        "corrected_seed_answer": 4945.0,
+        "within_1_unit": true
       },
       {
         "metric": "EBIT@FY2018",
@@ -105,7 +111,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 4379.0
+        "corrected_seed_answer": 4379.0,
+        "within_1_unit": true
       },
       {
         "metric": "Chg@FY2018",
@@ -116,9 +123,12 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": -11.45
+        "corrected_seed_answer": -11.45,
+        "within_1_unit": true
       }
     ],
+    "flags_for_attention": [],
+    "rounding_level_differences": [],
     "verdict": "MATCH。EBIT = 税前利润 + 净利息费用，两年数值与变化率 −11.45% 全部复现。"
   },
   "step3_plan": {
@@ -212,13 +222,13 @@
       {
         "key": "PreTax@FY2025",
         "value_as_text": "3,885",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "PreTax@FY2026",
         "value_as_text": "3,900",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       }
     ],

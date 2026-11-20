@@ -1,0 +1,16 @@
+{
+  "qid": "q_Ra011",
+  "seed": {
+    "question": "How has Discover’s payout ratio changed between 2023 and 2022?",
+    "ground_truth_answer": "The payout ratio is calculated using the formula:\nPayout Ratio = (Total Dividends per Share/Basci Earnings per Share (EPS))×100\n\nDividend per Share:\n2023: $2.70\n2022: $2.30\nBasic Earnings per Share (EPS):\n2023: $11.27\n2022: $15.45 \nPayout Ratio Calculation:\n2023: Payout Ratio = 23.9 %\n2022: Payout Ratio = 14.9 %",
+    "accession_number": "0001393612-24-000010;0001393612-24-000010",
+    "page_number": "77;86"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2025-04-30",
+    "cutoff": "2026-01-01",
+    "pass": false
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "批量淘汰（step0 规则）：Discover Financial Services 最新一份 10-K/10-Q 提交于 2025-04-30，早于 2026-01-01，没有知识截止日之后的新数据"
+}

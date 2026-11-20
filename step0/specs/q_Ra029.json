@@ -1,0 +1,44 @@
+{
+  "qid": "q_Ra029",
+  "profile": "PG_10K_FY2024_to_FY2026",
+  "metric_periods": {
+    "seed": [
+      "FY2024"
+    ],
+    "target": [
+      "FY2026"
+    ]
+  },
+  "metrics": {
+    "RevGrowth": "(Rev@{p} - Rev@{prev}) / Rev@{prev} * 100"
+  },
+  "step1_pattern": {
+    "question_type": "A 计算型",
+    "structure": "单个增长率",
+    "operation": "(今年 − 去年) ÷ 去年",
+    "output_format": "百分比，1 位小数",
+    "seed_numbers": {
+      "Rev@FY2024": "84,039",
+      "Rev@FY2023": "82,006"
+    },
+    "seed_answers": {
+      "RevGrowth@FY2024": "2.5"
+    },
+    "notes": [
+      "题干缺公司名"
+    ]
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's revenue (net sales) growth rate from fiscal 2025 to fiscal 2026? Report the percentage rounded to one decimal place.",
+    "answer_decimals": {
+      "RevGrowth@FY2026": 1
+    },
+    "display_names": {
+      "RevGrowth": "Net sales growth %"
+    },
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名"
+    ]
+  }
+}

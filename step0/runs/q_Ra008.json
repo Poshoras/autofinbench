@@ -6,6 +6,11 @@
     "accession_number": "0000320187-18-000142",
     "page_number": "30"
   },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-10-02",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
   "step1_learn_pattern": {
     "question_type": "A 计算型",
     "structure": "两年对比：3 个品类的增长率 + 最高/最低",
@@ -168,7 +173,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 8.83
+        "corrected_seed_answer": 8.83,
+        "within_1_unit": true
       },
       {
         "metric": "APg@FY2018",
@@ -179,7 +185,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 13.67
+        "corrected_seed_answer": 13.67,
+        "within_1_unit": true
       },
       {
         "metric": "EQg@FY2018",
@@ -190,7 +197,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": -8.61
+        "corrected_seed_answer": -8.61,
+        "within_1_unit": true
       },
       {
         "metric": "DIAG_products_minus_APLA_total@FY2017",
@@ -209,6 +217,8 @@
         "missing": []
       }
     ],
+    "flags_for_attention": [],
+    "rounding_level_differences": [],
     "verdict": "MATCH。3 个增长率复现；3 个品类之和 − APLA 分部收入 = 0（两年），确认题目实指 APLA 分部。种子输入来自 2018 年 MD&A，无 XBRL，只能靠原文定位（p30）核对。"
   },
   "step3_plan": {
@@ -364,25 +374,25 @@
       {
         "key": "AP@FY2025",
         "value_as_text": "1,541",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "AP@FY2026",
         "value_as_text": "1,629",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "APLA@FY2025",
         "value_as_text": "6,251",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "APLA@FY2026",
         "value_as_text": "6,243",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
@@ -400,13 +410,13 @@
       {
         "key": "FW@FY2025",
         "value_as_text": "4,452",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "FW@FY2026",
         "value_as_text": "4,377",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       }
     ],

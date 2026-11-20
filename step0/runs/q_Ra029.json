@@ -1,0 +1,233 @@
+{
+  "qid": "q_Ra029",
+  "seed": {
+    "question": "What is the Revenue Growth Rate from 2023 to 2024?",
+    "ground_truth_answer": "The Revenue Growth Rate is calculated as (Revenue for 2024 - Revenue for 2023) / Revenue for 2023.\n\nRevenue Growth Rate = ($84,039 million - $82,006 million) / $82,006 million = 2.5%\n",
+    "accession_number": "0000080424-24-000083",
+    "page_number": "36"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-10-22",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
+  "step1_learn_pattern": {
+    "question_type": "A 计算型",
+    "structure": "单个增长率",
+    "operation": "(今年 − 去年) ÷ 去年",
+    "output_format": "百分比，1 位小数",
+    "seed_numbers": {
+      "Rev@FY2024": "84,039",
+      "Rev@FY2023": "82,006"
+    },
+    "seed_answers": {
+      "RevGrowth@FY2024": "2.5"
+    },
+    "notes": [
+      "题干缺公司名"
+    ],
+    "data_items": {
+      "Rev": {
+        "label": "Net sales",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "COGS": {
+        "label": "Cost of products sold",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "OpInc": {
+        "label": "Operating income",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "NetEarn": {
+        "label": "Net earnings (incl. noncontrolling interests)",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "NI": {
+        "label": "Net earnings attributable to Procter & Gamble",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "CFO": {
+        "label": "Total operating activities",
+        "statement": "Consolidated Statements of Cash Flows",
+        "type": "duration"
+      },
+      "Capex": {
+        "label": "Capital expenditures",
+        "statement": "Consolidated Statements of Cash Flows",
+        "type": "duration"
+      },
+      "Assets": {
+        "label": "Total assets",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "CurLiab": {
+        "label": "Total current liabilities",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Inv": {
+        "label": "Total inventories",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "AR": {
+        "label": "Accounts receivable",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "AP": {
+        "label": "Accounts payable",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Emp": {
+        "label": "Number of employees (Item 1 – Employees)",
+        "statement": "Item 1 text",
+        "type": "instant"
+      },
+      "AdjFCF": {
+        "label": "Adjusted Free Cash Flow (P&G non-GAAP, MD&A)",
+        "statement": "MD&A – Cash Flow Analysis",
+        "type": "duration"
+      },
+      "TaxAct": {
+        "label": "U.S. Tax Act payments (reconciling item in Adjusted FCF table)",
+        "statement": "MD&A – Non-GAAP reconciliation",
+        "type": "duration"
+      }
+    },
+    "formulas": {
+      "RevGrowth": "(Rev@{p} - Rev@{prev}) / Rev@{prev} * 100"
+    },
+    "evidence_in_seed_context": {
+      "Rev@FY2024": [
+        {
+          "page": "36",
+          "row_label": "NET SALES"
+        }
+      ],
+      "Rev@FY2023": [
+        {
+          "page": "36",
+          "row_label": "NET SALES"
+        }
+      ],
+      "RevGrowth@FY2024": []
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000080424-24-000083",
+    "inputs": [
+      {
+        "key": "Rev@FY2023",
+        "seed_stated": 82006.0,
+        "xbrl": 82006.0,
+        "xbrl_concept": "Revenues",
+        "status": "MATCH"
+      },
+      {
+        "key": "Rev@FY2024",
+        "seed_stated": 84039.0,
+        "xbrl": 84039.0,
+        "xbrl_concept": "Revenues",
+        "status": "MATCH"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "RevGrowth@FY2024",
+        "formula": "(Rev@FY2024 - Rev@FY2023) / Rev@FY2023 * 100",
+        "seed_answer": "2.5",
+        "recomputed_from_seed_inputs": 2.4790868960807746,
+        "recomputed_from_filing": 2.4790868960807746,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 2.5,
+        "within_1_unit": true
+      }
+    ],
+    "flags_for_attention": [],
+    "rounding_level_differences": [],
+    "verdict": "MATCH"
+  },
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026，截至 2026-06-30）；比较 FY2026 vs FY2025；2024-06-30 期末余额取自 FY2025 10-K",
+    "decision": "shift",
+    "rationale": "共享配置：所有数据项已在 FY2026/FY2025 10-K 中确认可得",
+    "target_filing": {
+      "form": "10-K",
+      "period": "2026-06-30",
+      "filed": "2026-08-04",
+      "accn": "0000080424-26-000103",
+      "doc": "pg-20260630.htm"
+    },
+    "availability": {
+      "Rev@FY2025": "Revenues",
+      "Rev@FY2026": "Revenues"
+    }
+  },
+  "step4_compute": {
+    "inputs": {
+      "Rev@FY2025": {
+        "concept": "Revenues",
+        "dims": {},
+        "value": 84284.0
+      },
+      "Rev@FY2026": {
+        "concept": "Revenues",
+        "dims": {},
+        "value": 87032.0
+      }
+    },
+    "metrics": {
+      "RevGrowth@FY2026": {
+        "formula": "(Rev@FY2026 - Rev@FY2025) / Rev@FY2025 * 100",
+        "value": 3.260405296378909,
+        "missing": []
+      }
+    }
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's revenue (net sales) growth rate from fiscal 2025 to fiscal 2026? Report the percentage rounded to one decimal place.",
+    "answer": {
+      "RevGrowth@FY2026": 3.3
+    },
+    "answer_text": "Net sales growth % (FY2026): 3.3",
+    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名"
+    ]
+  },
+  "step6_review": {
+    "text_verification": [
+      {
+        "key": "Rev@FY2025",
+        "value_as_text": "84,284",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Rev@FY2026",
+        "value_as_text": "87,032",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      }
+    ],
+    "answer_leak_in_question": [],
+    "rounding_near_boundary": [],
+    "automatic_checks_pass": true,
+    "verdict": "pass",
+    "mode": "auto (no flags)"
+  },
+  "revisions": [],
+  "final_status": "ACCEPTED"
+}

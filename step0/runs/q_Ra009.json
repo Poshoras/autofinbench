@@ -6,6 +6,11 @@
     "accession_number": "0000320187-18-000142",
     "page_number": "18"
   },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-10-02",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
   "step1_learn_pattern": {
     "question_type": "C 开放检索型",
     "structure": "股价表现（年末价、最高、最低）+ 利润表指标两年对比",
@@ -255,7 +260,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 6.0
+        "corrected_seed_answer": 6.0,
+        "within_1_unit": true
       },
       {
         "metric": "PxEndChk@FY2017",
@@ -274,6 +280,8 @@
         "missing": []
       }
     ],
+    "flags_for_attention": [],
+    "rounding_level_differences": [],
     "verdict": "MATCH。财务数字全部与 XBRL 一致，股价在原文 p18 定位到；收入增长 5.96% ≈ 6%。"
   },
   "step3_plan": {

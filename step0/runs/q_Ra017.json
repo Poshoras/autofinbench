@@ -1,0 +1,16 @@
+{
+  "qid": "q_Ra017",
+  "seed": {
+    "question": "What is Discover’s Charge-Off Ratio compare to previous years?",
+    "ground_truth_answer": "The Charge-Off Ratio indicates the percentage of a company's loan receivables that have been written off as uncollectible over a specific period. It is a measure of credit risk and the effectiveness of a company’s credit management practices. It is calculated as the ratio of Net Charge-off to Average Loan Receivables.\nThe trends of the Charge of Ratio of Discover Financial Services is as follows:\n\nNet Charge-Offs:\n2023: $4,042 million\n2022: $1,817 million\n2021: $1,631 million\n\nAverage Loan Receivables:\n2023: $118,311 million\n2022: $99,673 million\n2021: $88,421 million\n\nCharge off Ratio:\n2023: 3.41%\n2022: 1.82%\n2021: 1.84%",
+    "accession_number": "0001393612-24-000010",
+    "page_number": "62, 65"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2025-04-30",
+    "cutoff": "2026-01-01",
+    "pass": false
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "批量淘汰（step0 规则）：Discover Financial Services 最新一份 10-K/10-Q 提交于 2025-04-30，早于 2026-01-01，没有知识截止日之后的新数据"
+}

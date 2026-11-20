@@ -1,0 +1,48 @@
+{
+  "qid": "q_Ra023",
+  "profile": "PG_10K_FY2024_to_FY2026",
+  "metrics": {
+    "CapexRatio": "Capex@{p} / Rev@{p} * 100"
+  },
+  "step1_pattern": {
+    "question_type": "A 计算型",
+    "structure": "两年对比",
+    "operation": "资本开支 ÷ 净销售额",
+    "output_format": "百分比，2 位小数",
+    "seed_numbers": {
+      "Capex@FY2024": "3,322",
+      "Capex@FY2023": "3,062",
+      "Rev@FY2024": "84,039",
+      "Rev@FY2023": "82,006"
+    },
+    "seed_answers": {
+      "CapexRatio@FY2024": "3.95",
+      "CapexRatio@FY2023": "3.73"
+    },
+    "notes": [
+      "题干缺公司名（靠 context 才知道是 P&G）"
+    ]
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's capital expenditure ratio (capital expenditures / net sales) for fiscal 2026, and how does it compare with fiscal 2025? Report both as percentages rounded to two decimal places and state whether the ratio increased or decreased.",
+    "answer_decimals": {
+      "CapexRatio@FY2025": 2,
+      "CapexRatio@FY2026": 2
+    },
+    "directions": {
+      "CapexRatio_change": [
+        "CapexRatio",
+        "FY2025",
+        "FY2026"
+      ]
+    },
+    "display_names": {
+      "CapexRatio": "Capex / net sales %",
+      "CapexRatio_change": "Change"
+    },
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名"
+    ]
+  }
+}

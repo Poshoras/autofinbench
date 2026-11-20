@@ -6,6 +6,11 @@
     "accession_number": "0000320193-23-000106",
     "page_number": "29,30,31,32"
   },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-11-03",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
   "step1_learn_pattern": {
     "question_type": "B 半结构化分析型",
     "structure": "单个时点：列出资产负债表数字 + 定性判断（负债 vs 权益；流动资产能否覆盖债务）",
@@ -223,7 +228,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 352583.0
+        "corrected_seed_answer": 352583.0,
+        "within_1_unit": true
       },
       {
         "metric": "TL@FY2023",
@@ -234,7 +240,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 290437.0
+        "corrected_seed_answer": 290437.0,
+        "within_1_unit": true
       },
       {
         "metric": "TE@FY2023",
@@ -245,7 +252,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 62146.0
+        "corrected_seed_answer": 62146.0,
+        "within_1_unit": true
       },
       {
         "metric": "TermDebt@FY2023",
@@ -256,7 +264,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 105103.0
+        "corrected_seed_answer": 105103.0,
+        "within_1_unit": true
       },
       {
         "metric": "LtoE@FY2023",
@@ -275,6 +284,8 @@
         "missing": []
       }
     ],
+    "flags_for_attention": [],
+    "rounding_level_differences": [],
     "verdict": "MATCH。所有数字与文件一致；term debt 105,103 = 9,822（流动）+ 95,281（非流动），反推确认。叙述错误见 step1。"
   },
   "step3_plan": {
@@ -399,49 +410,49 @@
       {
         "key": "Assets@FY2026",
         "value_as_text": "404,548",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "Cash@FY2026",
         "value_as_text": "36,305",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "Eq@FY2026",
         "value_as_text": "112,093",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "Liab@FY2026",
         "value_as_text": "292,455",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "MSc@FY2026",
         "value_as_text": "20,417",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "MSn@FY2026",
         "value_as_text": "80,213",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "TDc@FY2026",
         "value_as_text": "9,906",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "TDn@FY2026",
         "value_as_text": "68,208",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       }
     ],

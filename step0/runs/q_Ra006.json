@@ -6,6 +6,11 @@
     "accession_number": "0000320187-18-000142",
     "page_number": "71"
   },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-10-02",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
   "step1_learn_pattern": {
     "question_type": "A 计算型（附一句定性结论）",
     "structure": "单年：5 个地区占比",
@@ -171,7 +176,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 34485.0
+        "corrected_seed_answer": 34485.0,
+        "within_1_unit": true
       },
       {
         "metric": "ShareNA@FY2018",
@@ -182,7 +188,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 43.08
+        "corrected_seed_answer": 43.08,
+        "within_1_unit": true
       },
       {
         "metric": "ShareEMEA@FY2018",
@@ -193,7 +200,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 26.8
+        "corrected_seed_answer": 26.8,
+        "within_1_unit": true
       },
       {
         "metric": "ShareGC@FY2018",
@@ -204,7 +212,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 14.89
+        "corrected_seed_answer": 14.89,
+        "within_1_unit": true
       },
       {
         "metric": "ShareAPLA@FY2018",
@@ -215,7 +224,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 14.98
+        "corrected_seed_answer": 14.98,
+        "within_1_unit": true
       },
       {
         "metric": "ShareGBD@FY2018",
@@ -226,7 +236,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 0.26
+        "corrected_seed_answer": 0.26,
+        "within_1_unit": true
       },
       {
         "metric": "DIAG_NA_share_of_total_revenue@FY2018",
@@ -237,6 +248,8 @@
         "missing": []
       }
     ],
+    "flags_for_attention": [],
+    "rounding_level_differences": [],
     "verdict": "MATCH + 口径问题。输入和算术全部复现，但分母是 NIKE Brand 收入 34,485，而题干写的是 total revenue（NIKE Inc. 总收入 36,397；按总收入算，北美占比为 40.81% 而非 43.08%）。"
   },
   "step3_plan": {
@@ -373,13 +386,13 @@
       {
         "key": "APLA@FY2026",
         "value_as_text": "6,243",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "EMEA@FY2026",
         "value_as_text": "12,572",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
@@ -391,19 +404,19 @@
       {
         "key": "GC@FY2026",
         "value_as_text": "5,847",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "NA@FY2026",
         "value_as_text": "20,511",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "TotRev@FY2026",
         "value_as_text": "46,398",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       }
     ],

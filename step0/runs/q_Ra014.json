@@ -1,0 +1,16 @@
+{
+  "qid": "q_Ra014",
+  "seed": {
+    "question": "How does Discover’s CET1  compare to regulatory minimums?",
+    "ground_truth_answer": "DFS: With a CET1 ratio of 11.3%, DFS comfortably exceeds the regulatory minimum requirement of 4.5%. Indicating that it is well-positioned to absorb potential losses while maintaining financial stability.\nDiscover Bank: Discover Bank's CET1 ratio of 10.8% is above the regulatory minimum requirement of 4.5% and also exceeds the well-capitalized threshold of 6.5%. This reflects strong capital adequacy and a solid cushion above the required levels, which supports its ability to manage risks and comply with regulatory standards.",
+    "accession_number": "0001393612-24-000010",
+    "page_number": "125, 126"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2025-04-30",
+    "cutoff": "2026-01-01",
+    "pass": false
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "批量淘汰（step0 规则）：Discover Financial Services 最新一份 10-K/10-Q 提交于 2025-04-30，早于 2026-01-01，没有知识截止日之后的新数据"
+}

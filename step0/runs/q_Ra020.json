@@ -1,0 +1,16 @@
+{
+  "qid": "q_Ra020",
+  "seed": {
+    "question": "How did Discover Financial Service’s Gross Profit Margin for 2023 compare to the previous year?",
+    "ground_truth_answer": "Discover Financial Services: Gross Profit Margin Analysis\nGross Profit Margin Calculation for 2023\nGross Profit=Net Interest Income+Other Income−Provision for Credit Losses Gross Profit=$13,099 million+$2,761 million−$6,018 million=$9,842 million\nTotal Revenue=Net Interest Income+Other Income Total Revenue=$13,099 million+$2,761 million=$15,860 million\nGross Profit Margin=Gross Profit/Total Revenue×100\nGross Profit Margin=9,842/15,860×100 = 62.1%\n\nGross Profit Margin for 2022:\nGross Profit=$10,999 million+$2,294 million−$2,359 million=$10,934 million\nTotal Revenue=$10,999 million+$2,294 million=$13,293 million\nGross Profit Margin=10,934/13,293×100 = 82.2%",
+    "accession_number": "0001393612-24-000010",
+    "page_number": "86"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2025-04-30",
+    "cutoff": "2026-01-01",
+    "pass": false
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "批量淘汰（step0 规则）：Discover Financial Services 最新一份 10-K/10-Q 提交于 2025-04-30，早于 2026-01-01，没有知识截止日之后的新数据"
+}

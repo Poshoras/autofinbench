@@ -1,0 +1,51 @@
+{
+  "qid": "q_Ra030",
+  "profile": "PG_10K_FY2024_to_FY2026",
+  "metrics": {
+    "FCFMargin": "AdjFCF@{p} / Rev@{p} * 100",
+    "DIAG_components_minus_reported_AdjFCF": "CFO@{p} - Capex@{p} + TaxAct@{p} - AdjFCF@{p}"
+  },
+  "step1_pattern": {
+    "question_type": "A 计算型",
+    "structure": "两年对比",
+    "operation": "P&G 报告的调整后自由现金流 ÷ 净销售额",
+    "output_format": "百分比，1 位小数",
+    "seed_numbers": {
+      "AdjFCF@FY2024": "16,946",
+      "AdjFCF@FY2023": "14,011",
+      "Rev@FY2024": "84,039",
+      "Rev@FY2023": "82,006"
+    },
+    "seed_answers": {
+      "FCFMargin@FY2024": "20.2",
+      "FCFMargin@FY2023": "17.1"
+    },
+    "notes": [
+      "FCF 用的是 P&G 自定义的非 GAAP \"Adjusted Free Cash Flow\"（MD&A p25），不是 q_Ra026 的 经营现金流 − 资本开支",
+      "题干缺公司名"
+    ]
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's free cash flow margin for fiscal 2026, and how does it compare with fiscal 2025? Use P&G's reported Adjusted Free Cash Flow (the non-GAAP measure in MD&A) divided by net sales. Report both as percentages rounded to one decimal place and state whether the margin increased or decreased.",
+    "answer_decimals": {
+      "FCFMargin@FY2025": 1,
+      "FCFMargin@FY2026": 1
+    },
+    "directions": {
+      "FCFMargin_change": [
+        "FCFMargin",
+        "FY2025",
+        "FY2026"
+      ]
+    },
+    "display_names": {
+      "FCFMargin": "Adjusted FCF / net sales %",
+      "FCFMargin_change": "Change"
+    },
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名",
+      "写明用 P&G 报告的 Adjusted Free Cash Flow"
+    ]
+  }
+}

@@ -1,0 +1,439 @@
+{
+  "qid": "q_Ra030",
+  "seed": {
+    "question": "What is the Free Cash Flow Margin for 2024, and how does it compare to 2023?",
+    "ground_truth_answer": "Free Cash Flow Margin is Free Cash Flow divided by Net Sales. For 2024:\n\nFree Cash Flow = $16,946 million\nFree Cash Flow Margin = $16,946 million / $84,039 million = 20.2%\nFor 2023:\n\nFree Cash Flow Margin = $14,011 million / $82,006 million = 17.1%\n",
+    "accession_number": "0000080424-24-000083",
+    "page_number": "25"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-10-22",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
+  "step1_learn_pattern": {
+    "question_type": "A 计算型",
+    "structure": "两年对比",
+    "operation": "P&G 报告的调整后自由现金流 ÷ 净销售额",
+    "output_format": "百分比，1 位小数",
+    "seed_numbers": {
+      "AdjFCF@FY2024": "16,946",
+      "AdjFCF@FY2023": "14,011",
+      "Rev@FY2024": "84,039",
+      "Rev@FY2023": "82,006"
+    },
+    "seed_answers": {
+      "FCFMargin@FY2024": "20.2",
+      "FCFMargin@FY2023": "17.1"
+    },
+    "notes": [
+      "FCF 用的是 P&G 自定义的非 GAAP \"Adjusted Free Cash Flow\"（MD&A p25），不是 q_Ra026 的 经营现金流 − 资本开支",
+      "题干缺公司名"
+    ],
+    "data_items": {
+      "Rev": {
+        "label": "Net sales",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "COGS": {
+        "label": "Cost of products sold",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "OpInc": {
+        "label": "Operating income",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "NetEarn": {
+        "label": "Net earnings (incl. noncontrolling interests)",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "NI": {
+        "label": "Net earnings attributable to Procter & Gamble",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "CFO": {
+        "label": "Total operating activities",
+        "statement": "Consolidated Statements of Cash Flows",
+        "type": "duration"
+      },
+      "Capex": {
+        "label": "Capital expenditures",
+        "statement": "Consolidated Statements of Cash Flows",
+        "type": "duration"
+      },
+      "Assets": {
+        "label": "Total assets",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "CurLiab": {
+        "label": "Total current liabilities",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Inv": {
+        "label": "Total inventories",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "AR": {
+        "label": "Accounts receivable",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "AP": {
+        "label": "Accounts payable",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Emp": {
+        "label": "Number of employees (Item 1 – Employees)",
+        "statement": "Item 1 text",
+        "type": "instant"
+      },
+      "AdjFCF": {
+        "label": "Adjusted Free Cash Flow (P&G non-GAAP, MD&A)",
+        "statement": "MD&A – Cash Flow Analysis",
+        "type": "duration"
+      },
+      "TaxAct": {
+        "label": "U.S. Tax Act payments (reconciling item in Adjusted FCF table)",
+        "statement": "MD&A – Non-GAAP reconciliation",
+        "type": "duration"
+      }
+    },
+    "formulas": {
+      "FCFMargin": "AdjFCF@{p} / Rev@{p} * 100",
+      "DIAG_components_minus_reported_AdjFCF": "CFO@{p} - Capex@{p} + TaxAct@{p} - AdjFCF@{p}"
+    },
+    "evidence_in_seed_context": {
+      "AdjFCF@FY2024": [
+        {
+          "page": "25",
+          "row_label": "Adjusted Free Cash Flow"
+        }
+      ],
+      "AdjFCF@FY2023": [
+        {
+          "page": "25",
+          "row_label": "Adjusted Free Cash Flow"
+        }
+      ],
+      "Rev@FY2024": [],
+      "Rev@FY2023": [],
+      "FCFMargin@FY2024": [],
+      "FCFMargin@FY2023": []
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000080424-24-000083",
+    "inputs": [
+      {
+        "key": "AdjFCF@FY2023",
+        "seed_stated": 14011.0,
+        "xbrl": 14011.0,
+        "xbrl_concept": "TEXT",
+        "status": "MATCH"
+      },
+      {
+        "key": "AdjFCF@FY2024",
+        "seed_stated": 16946.0,
+        "xbrl": 16946.0,
+        "xbrl_concept": "TEXT",
+        "status": "MATCH"
+      },
+      {
+        "key": "CFO@FY2023",
+        "seed_stated": null,
+        "xbrl": 16848.0,
+        "xbrl_concept": "NetCashProvidedByUsedInOperatingActivities",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "CFO@FY2024",
+        "seed_stated": null,
+        "xbrl": 19846.0,
+        "xbrl_concept": "NetCashProvidedByUsedInOperatingActivities",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "Capex@FY2023",
+        "seed_stated": null,
+        "xbrl": 3062.0,
+        "xbrl_concept": "PaymentsToAcquirePropertyPlantAndEquipment",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "Capex@FY2024",
+        "seed_stated": null,
+        "xbrl": 3322.0,
+        "xbrl_concept": "PaymentsToAcquirePropertyPlantAndEquipment",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "Rev@FY2023",
+        "seed_stated": 82006.0,
+        "xbrl": 82006.0,
+        "xbrl_concept": "Revenues",
+        "status": "MATCH"
+      },
+      {
+        "key": "Rev@FY2024",
+        "seed_stated": 84039.0,
+        "xbrl": 84039.0,
+        "xbrl_concept": "Revenues",
+        "status": "MATCH"
+      },
+      {
+        "key": "TaxAct@FY2023",
+        "seed_stated": null,
+        "xbrl": 225.0,
+        "xbrl_concept": "TEXT",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "TaxAct@FY2024",
+        "seed_stated": null,
+        "xbrl": 422.0,
+        "xbrl_concept": "TEXT",
+        "status": "XBRL_ONLY"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "FCFMargin@FY2023",
+        "formula": "AdjFCF@FY2023 / Rev@FY2023 * 100",
+        "seed_answer": "17.1",
+        "recomputed_from_seed_inputs": 17.085335219374194,
+        "recomputed_from_filing": 17.085335219374194,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 17.1,
+        "within_1_unit": true
+      },
+      {
+        "metric": "FCFMargin@FY2024",
+        "formula": "AdjFCF@FY2024 / Rev@FY2024 * 100",
+        "seed_answer": "20.2",
+        "recomputed_from_seed_inputs": 20.164447458917884,
+        "recomputed_from_filing": 20.164447458917884,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 20.2,
+        "within_1_unit": true
+      },
+      {
+        "metric": "DIAG_components_minus_reported_AdjFCF@FY2023",
+        "formula": "CFO@FY2023 - Capex@FY2023 + TaxAct@FY2023 - AdjFCF@FY2023",
+        "seed_answer": null,
+        "recomputed_from_seed_inputs": 0.0,
+        "recomputed_from_filing": 0.0,
+        "missing": []
+      },
+      {
+        "metric": "DIAG_components_minus_reported_AdjFCF@FY2024",
+        "formula": "CFO@FY2024 - Capex@FY2024 + TaxAct@FY2024 - AdjFCF@FY2024",
+        "seed_answer": null,
+        "recomputed_from_seed_inputs": 0.0,
+        "recomputed_from_filing": 0.0,
+        "missing": []
+      }
+    ],
+    "flags_for_attention": [],
+    "rounding_level_differences": [],
+    "verdict": "MATCH"
+  },
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026，截至 2026-06-30）；比较 FY2026 vs FY2025；2024-06-30 期末余额取自 FY2025 10-K",
+    "decision": "shift",
+    "rationale": "共享配置：所有数据项已在 FY2026/FY2025 10-K 中确认可得",
+    "target_filing": {
+      "form": "10-K",
+      "period": "2026-06-30",
+      "filed": "2026-08-04",
+      "accn": "0000080424-26-000103",
+      "doc": "pg-20260630.htm"
+    },
+    "availability": {
+      "AdjFCF@FY2025": "TEXT",
+      "AdjFCF@FY2026": "TEXT",
+      "CFO@FY2025": "NetCashProvidedByUsedInOperatingActivities",
+      "CFO@FY2026": "NetCashProvidedByUsedInOperatingActivities",
+      "Capex@FY2025": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "Capex@FY2026": "PaymentsToAcquirePropertyPlantAndEquipment",
+      "Rev@FY2025": "Revenues",
+      "Rev@FY2026": "Revenues",
+      "TaxAct@FY2025": "TEXT",
+      "TaxAct@FY2026": "TEXT"
+    }
+  },
+  "step4_compute": {
+    "inputs": {
+      "AdjFCF@FY2025": {
+        "concept": "TEXT",
+        "dims": {},
+        "value": 14606.0
+      },
+      "AdjFCF@FY2026": {
+        "concept": "TEXT",
+        "dims": {},
+        "value": 15835.0
+      },
+      "CFO@FY2025": {
+        "concept": "NetCashProvidedByUsedInOperatingActivities",
+        "dims": {},
+        "value": 17817.0
+      },
+      "CFO@FY2026": {
+        "concept": "NetCashProvidedByUsedInOperatingActivities",
+        "dims": {},
+        "value": 19556.0
+      },
+      "Capex@FY2025": {
+        "concept": "PaymentsToAcquirePropertyPlantAndEquipment",
+        "dims": {},
+        "value": 3773.0
+      },
+      "Capex@FY2026": {
+        "concept": "PaymentsToAcquirePropertyPlantAndEquipment",
+        "dims": {},
+        "value": 4409.0
+      },
+      "Rev@FY2025": {
+        "concept": "Revenues",
+        "dims": {},
+        "value": 84284.0
+      },
+      "Rev@FY2026": {
+        "concept": "Revenues",
+        "dims": {},
+        "value": 87032.0
+      },
+      "TaxAct@FY2025": {
+        "concept": "TEXT",
+        "dims": {},
+        "value": 562.0
+      },
+      "TaxAct@FY2026": {
+        "concept": "TEXT",
+        "dims": {},
+        "value": 688.0
+      }
+    },
+    "metrics": {
+      "FCFMargin@FY2025": {
+        "formula": "AdjFCF@FY2025 / Rev@FY2025 * 100",
+        "value": 17.329505006881497,
+        "missing": []
+      },
+      "FCFMargin@FY2026": {
+        "formula": "AdjFCF@FY2026 / Rev@FY2026 * 100",
+        "value": 18.19445721114073,
+        "missing": []
+      },
+      "DIAG_components_minus_reported_AdjFCF@FY2025": {
+        "formula": "CFO@FY2025 - Capex@FY2025 + TaxAct@FY2025 - AdjFCF@FY2025",
+        "value": 0.0,
+        "missing": []
+      },
+      "DIAG_components_minus_reported_AdjFCF@FY2026": {
+        "formula": "CFO@FY2026 - Capex@FY2026 + TaxAct@FY2026 - AdjFCF@FY2026",
+        "value": 0.0,
+        "missing": []
+      }
+    }
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's free cash flow margin for fiscal 2026, and how does it compare with fiscal 2025? Use P&G's reported Adjusted Free Cash Flow (the non-GAAP measure in MD&A) divided by net sales. Report both as percentages rounded to one decimal place and state whether the margin increased or decreased.",
+    "answer": {
+      "FCFMargin@FY2025": 17.3,
+      "FCFMargin@FY2026": 18.2,
+      "FCFMargin_change": "increased"
+    },
+    "answer_text": "Adjusted FCF / net sales % (FY2025): 17.3\nAdjusted FCF / net sales % (FY2026): 18.2\nChange: increased",
+    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名",
+      "写明用 P&G 报告的 Adjusted Free Cash Flow"
+    ]
+  },
+  "step6_review": {
+    "text_verification": [
+      {
+        "key": "AdjFCF@FY2025",
+        "value_as_text": "14,606",
+        "match_mode": "text_source (single source)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "AdjFCF@FY2026",
+        "value_as_text": "15,835",
+        "match_mode": "text_source (single source)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "CFO@FY2025",
+        "value_as_text": "17,817",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "CFO@FY2026",
+        "value_as_text": "19,556",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Capex@FY2025",
+        "value_as_text": "3,773",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Capex@FY2026",
+        "value_as_text": "4,409",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Rev@FY2025",
+        "value_as_text": "84,284",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Rev@FY2026",
+        "value_as_text": "87,032",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "TaxAct@FY2025",
+        "value_as_text": "562",
+        "match_mode": "text_source (single source)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "TaxAct@FY2026",
+        "value_as_text": "688",
+        "match_mode": "text_source (single source)",
+        "found_in_filing_text": true
+      }
+    ],
+    "answer_leak_in_question": [],
+    "rounding_near_boundary": [],
+    "automatic_checks_pass": true,
+    "verdict": "pass",
+    "mode": "auto (no flags)"
+  },
+  "revisions": [],
+  "final_status": "ACCEPTED"
+}

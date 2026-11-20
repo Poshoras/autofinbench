@@ -1,0 +1,16 @@
+{
+  "qid": "q_Ra015",
+  "seed": {
+    "question": "What was Discover’s Return on Assets for 2023?",
+    "ground_truth_answer": "Return on Assets (ROA) is calculated using the following formula:\n\nROA = (Net Income/Average Total Assets)×100\nCalculation for 2023:\nNet Income (2023): $2,940 million\nTotal Assets (2023): $151,522 million\nTotal Assets (2022): $131,706 million\nTo find the average total assets:\n\nAverage Total Assets=(151,522+131,706)/2 = 141,614 million\nROA = (2,940/141,614)×100 = 2.08%",
+    "accession_number": "0001393612-24-000010",
+    "page_number": "85, 86"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2025-04-30",
+    "cutoff": "2026-01-01",
+    "pass": false
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "批量淘汰（step0 规则）：Discover Financial Services 最新一份 10-K/10-Q 提交于 2025-04-30，早于 2026-01-01，没有知识截止日之后的新数据"
+}

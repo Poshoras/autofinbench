@@ -1,0 +1,52 @@
+{
+  "qid": "q_Ra026",
+  "profile": "PG_10K_FY2024_to_FY2026",
+  "metrics": {
+    "FCFtoSales": "(CFO@{p} - Capex@{p}) / Rev@{p} * 100"
+  },
+  "step1_pattern": {
+    "question_type": "A 计算型",
+    "structure": "两年对比",
+    "operation": "(经营现金流 − 资本开支) ÷ 净销售额",
+    "output_format": "百分比，1 位小数",
+    "seed_numbers": {
+      "CFO@FY2024": "19,846",
+      "CFO@FY2023": "16,848",
+      "Capex@FY2024": "3,322",
+      "Capex@FY2023": "3,062",
+      "Rev@FY2024": "84,039",
+      "Rev@FY2023": "82,006"
+    },
+    "seed_answers": {
+      "FCFtoSales@FY2024": "19.6",
+      "FCFtoSales@FY2023": "16.8"
+    },
+    "notes": [
+      "题干缺公司名",
+      "FCF = 经营现金流 − 资本开支（与 q_Ra030 的 P&G 调整后 FCF 不同）"
+    ]
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's free cash flow to sales ratio for fiscal 2026, and how does it compare with fiscal 2025? Define free cash flow = net cash from operating activities - capital expenditures, and the ratio = free cash flow / net sales. Report both as percentages rounded to one decimal place and state whether the ratio increased or decreased.",
+    "answer_decimals": {
+      "FCFtoSales@FY2025": 1,
+      "FCFtoSales@FY2026": 1
+    },
+    "directions": {
+      "FCFtoSales_change": [
+        "FCFtoSales",
+        "FY2025",
+        "FY2026"
+      ]
+    },
+    "display_names": {
+      "FCFtoSales": "FCF / net sales %",
+      "FCFtoSales_change": "Change"
+    },
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名",
+      "题干写明 FCF 定义"
+    ]
+  }
+}

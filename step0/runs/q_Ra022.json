@@ -1,0 +1,16 @@
+{
+  "qid": "q_Ra022",
+  "seed": {
+    "question": "What was Discover’s ROE for 2023 compared to 2022?",
+    "ground_truth_answer": "Discover Financial Services: Return on Equity (ROE) for 2023 vs. 2022\nROE Calculation: Formula: ROE=Net Income allocated to Common Shareholders/Average Shareholders’ Equity\nNet Income allocated to common shareholders:\n2023: $2,859 million\n2022: $4,286 million\nAverage Shareholders’ Equity=(Equity (2023)+Equity (2022))/2=($14,828 million+$14,344 million)/2=$14,586 million\nROE Calculation:\n2023: ROE (2023)=$2,859 million/$14,586 million = 19.6%\n2022: ROE (2022)=$4,286 million/$14,344 million = 29.9%",
+    "accession_number": "0001393612-24-000010",
+    "page_number": "85, 86"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2025-04-30",
+    "cutoff": "2026-01-01",
+    "pass": false
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "批量淘汰（step0 规则）：Discover Financial Services 最新一份 10-K/10-Q 提交于 2025-04-30，早于 2026-01-01，没有知识截止日之后的新数据"
+}

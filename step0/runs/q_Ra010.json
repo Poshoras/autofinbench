@@ -6,6 +6,11 @@
     "accession_number": "0001393612-24-000010",
     "page_number": "60, 61, 62"
   },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2025-04-30",
+    "cutoff": "2026-01-01",
+    "pass": false
+  },
   "step1_learn_pattern": {
     "question_type": "A 计算型（公司直接披露的指标）",
     "structure": "两年对比：净息差",
@@ -61,6 +66,8 @@
       }
     ],
     "answers": [],
+    "flags_for_attention": [],
+    "rounding_level_differences": [],
     "verdict": "MATCH（仅原文定位）。NIM 11.07% / 11.04% 在原文 p62 定位到，为公司直接披露的指标。"
   },
   "step3_plan": {

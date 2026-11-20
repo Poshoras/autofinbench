@@ -1,0 +1,310 @@
+{
+  "qid": "q_Ra028",
+  "seed": {
+    "question": "What is the Revenue per Employee for 2024, and how does it compare to 2023?",
+    "ground_truth_answer": "Revenue per Employee is Net Sales divided by the number of employees. For 2024:\n\nNumber of Employees = 108,000\nRevenue per Employee = $84,039 million / 108,000 = $778,139\nFor 2023:\n\nNumber of Employees = 108,000\nRevenue per Employee = $82,006 million / 108,000 = $759,314\n",
+    "accession_number": "0000080424-24-000083;0000080424-24-000083",
+    "page_number": "2;36"
+  },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-10-22",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
+  "step1_learn_pattern": {
+    "question_type": "A 计算型",
+    "structure": "两年对比",
+    "operation": "净销售额 ÷ 年末员工数",
+    "output_format": "美元，取整",
+    "seed_numbers": {
+      "Emp@FY2024": "108,000",
+      "Emp@FY2023": "108,000",
+      "Rev@FY2024": "84,039",
+      "Rev@FY2023": "82,006"
+    },
+    "seed_answers": {
+      "RevPerEmp@FY2024": "778,139",
+      "RevPerEmp@FY2023": "759,314"
+    },
+    "notes": [
+      "员工数只在 Item 1 正文中披露（无 XBRL）；FY2023 员工数来自 FY2024 10-K 的 \"unchanged versus the prior year\"",
+      "题干缺公司名"
+    ],
+    "data_items": {
+      "Rev": {
+        "label": "Net sales",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "COGS": {
+        "label": "Cost of products sold",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "OpInc": {
+        "label": "Operating income",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "NetEarn": {
+        "label": "Net earnings (incl. noncontrolling interests)",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "NI": {
+        "label": "Net earnings attributable to Procter & Gamble",
+        "statement": "Consolidated Statements of Earnings",
+        "type": "duration"
+      },
+      "CFO": {
+        "label": "Total operating activities",
+        "statement": "Consolidated Statements of Cash Flows",
+        "type": "duration"
+      },
+      "Capex": {
+        "label": "Capital expenditures",
+        "statement": "Consolidated Statements of Cash Flows",
+        "type": "duration"
+      },
+      "Assets": {
+        "label": "Total assets",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "CurLiab": {
+        "label": "Total current liabilities",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Inv": {
+        "label": "Total inventories",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "AR": {
+        "label": "Accounts receivable",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "AP": {
+        "label": "Accounts payable",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Emp": {
+        "label": "Number of employees (Item 1 – Employees)",
+        "statement": "Item 1 text",
+        "type": "instant"
+      },
+      "AdjFCF": {
+        "label": "Adjusted Free Cash Flow (P&G non-GAAP, MD&A)",
+        "statement": "MD&A – Cash Flow Analysis",
+        "type": "duration"
+      },
+      "TaxAct": {
+        "label": "U.S. Tax Act payments (reconciling item in Adjusted FCF table)",
+        "statement": "MD&A – Non-GAAP reconciliation",
+        "type": "duration"
+      }
+    },
+    "formulas": {
+      "RevPerEmp": "Rev@{p} * 1000000 / Emp@{p}"
+    },
+    "evidence_in_seed_context": {
+      "Emp@FY2024": [
+        {
+          "page": "2",
+          "row_label": "As of June 30, 2024, the Company had approximately 108,000 employees, unchanged versus the"
+        }
+      ],
+      "Emp@FY2023": [
+        {
+          "page": "2",
+          "row_label": "As of June 30, 2024, the Company had approximately 108,000 employees, unchanged versus the"
+        }
+      ],
+      "Rev@FY2024": [
+        {
+          "page": "36",
+          "row_label": "NET SALES"
+        }
+      ],
+      "Rev@FY2023": [
+        {
+          "page": "36",
+          "row_label": "NET SALES"
+        }
+      ],
+      "RevPerEmp@FY2024": [],
+      "RevPerEmp@FY2023": []
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000080424-24-000083",
+    "inputs": [
+      {
+        "key": "Emp@FY2023",
+        "seed_stated": 108000.0,
+        "xbrl": 108000.0,
+        "xbrl_concept": "TEXT",
+        "status": "MATCH"
+      },
+      {
+        "key": "Emp@FY2024",
+        "seed_stated": 108000.0,
+        "xbrl": 108000.0,
+        "xbrl_concept": "TEXT",
+        "status": "MATCH"
+      },
+      {
+        "key": "Rev@FY2023",
+        "seed_stated": 82006.0,
+        "xbrl": 82006.0,
+        "xbrl_concept": "Revenues",
+        "status": "MATCH"
+      },
+      {
+        "key": "Rev@FY2024",
+        "seed_stated": 84039.0,
+        "xbrl": 84039.0,
+        "xbrl_concept": "Revenues",
+        "status": "MATCH"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "RevPerEmp@FY2023",
+        "formula": "Rev@FY2023 * 1000000 / Emp@FY2023",
+        "seed_answer": "759,314",
+        "recomputed_from_seed_inputs": 759314.8148148148,
+        "recomputed_from_filing": 759314.8148148148,
+        "missing": [],
+        "arithmetic_ok": false,
+        "filing_ok": false,
+        "corrected_seed_answer": 759315.0,
+        "within_1_unit": true
+      },
+      {
+        "metric": "RevPerEmp@FY2024",
+        "formula": "Rev@FY2024 * 1000000 / Emp@FY2024",
+        "seed_answer": "778,139",
+        "recomputed_from_seed_inputs": 778138.8888888889,
+        "recomputed_from_filing": 778138.8888888889,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 778139.0,
+        "within_1_unit": true
+      }
+    ],
+    "flags_for_attention": [],
+    "rounding_level_differences": [
+      "RevPerEmp@FY2023"
+    ],
+    "verdict": "MATCH（另有舍入级差异：RevPerEmp@FY2023）"
+  },
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026，截至 2026-06-30）；比较 FY2026 vs FY2025；2024-06-30 期末余额取自 FY2025 10-K",
+    "decision": "shift",
+    "rationale": "共享配置：所有数据项已在 FY2026/FY2025 10-K 中确认可得",
+    "target_filing": {
+      "form": "10-K",
+      "period": "2026-06-30",
+      "filed": "2026-08-04",
+      "accn": "0000080424-26-000103",
+      "doc": "pg-20260630.htm"
+    },
+    "availability": {
+      "Emp@FY2025": "TEXT",
+      "Emp@FY2026": "TEXT",
+      "Rev@FY2025": "Revenues",
+      "Rev@FY2026": "Revenues"
+    }
+  },
+  "step4_compute": {
+    "inputs": {
+      "Emp@FY2025": {
+        "concept": "TEXT",
+        "dims": {},
+        "value": 109000.0
+      },
+      "Emp@FY2026": {
+        "concept": "TEXT",
+        "dims": {},
+        "value": 104000.0
+      },
+      "Rev@FY2025": {
+        "concept": "Revenues",
+        "dims": {},
+        "value": 84284.0
+      },
+      "Rev@FY2026": {
+        "concept": "Revenues",
+        "dims": {},
+        "value": 87032.0
+      }
+    },
+    "metrics": {
+      "RevPerEmp@FY2025": {
+        "formula": "Rev@FY2025 * 1000000 / Emp@FY2025",
+        "value": 773247.7064220184,
+        "missing": []
+      },
+      "RevPerEmp@FY2026": {
+        "formula": "Rev@FY2026 * 1000000 / Emp@FY2026",
+        "value": 836846.1538461539,
+        "missing": []
+      }
+    }
+  },
+  "step5_question": {
+    "question": "Using Procter & Gamble's Form 10-K filings for the fiscal years ended June 30, 2026 and June 30, 2025, what was P&G's revenue per employee (net sales divided by the approximate number of employees reported as of fiscal year-end) for fiscal 2026 and fiscal 2025? Report both in US dollars rounded to the nearest dollar and state whether revenue per employee increased or decreased.",
+    "answer": {
+      "RevPerEmp@FY2025": 773248,
+      "RevPerEmp@FY2026": 836846,
+      "RevPerEmp_change": "increased"
+    },
+    "answer_text": "Revenue per employee ($) (FY2025): 773,248\nRevenue per employee ($) (FY2026): 836,846\nChange: increased",
+    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "changes_vs_seed": [
+      "期间平移",
+      "补上公司名",
+      "员工数口径写明为年末约数"
+    ]
+  },
+  "step6_review": {
+    "text_verification": [
+      {
+        "key": "Emp@FY2025",
+        "value_as_text": "109000.00",
+        "match_mode": "text_source (single source)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Emp@FY2026",
+        "value_as_text": "104000.00",
+        "match_mode": "text_source (single source)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Rev@FY2025",
+        "value_as_text": "84,284",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Rev@FY2026",
+        "value_as_text": "87,032",
+        "match_mode": "anywhere (>=4 digits)",
+        "found_in_filing_text": true
+      }
+    ],
+    "answer_leak_in_question": [],
+    "rounding_near_boundary": [],
+    "automatic_checks_pass": true,
+    "verdict": "pass",
+    "mode": "auto (no flags)"
+  },
+  "revisions": [],
+  "final_status": "ACCEPTED"
+}

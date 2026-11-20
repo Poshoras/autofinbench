@@ -6,6 +6,11 @@
     "accession_number": "0000320193-23-000106",
     "page_number": "28"
   },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-11-03",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
   "step1_learn_pattern": {
     "question_type": "C 开放检索型",
     "structure": "单年：列出 5 个利润表数字 + 文字点评",
@@ -175,7 +180,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 169148.0
+        "corrected_seed_answer": 169148.0,
+        "within_1_unit": true
       },
       {
         "metric": "OI@FY2023",
@@ -186,7 +192,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 114301.0
+        "corrected_seed_answer": 114301.0,
+        "within_1_unit": true
       },
       {
         "metric": "NetInc@FY2023",
@@ -197,7 +204,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 96995.0
+        "corrected_seed_answer": 96995.0,
+        "within_1_unit": true
       },
       {
         "metric": "EPS_basic@FY2023",
@@ -208,7 +216,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 6.16
+        "corrected_seed_answer": 6.16,
+        "within_1_unit": true
       },
       {
         "metric": "EPS_diluted@FY2023",
@@ -219,9 +228,12 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 6.13
+        "corrected_seed_answer": 6.13,
+        "within_1_unit": true
       }
     ],
+    "flags_for_attention": [],
+    "rounding_level_differences": [],
     "verdict": "MATCH。5 项数字全部与文件一致（p28 利润表）。"
   },
   "step3_plan": {
@@ -333,19 +345,19 @@
       {
         "key": "GP@FY2026",
         "value_as_text": "233,602",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "NI@FY2026",
         "value_as_text": "132,175",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "OpInc@FY2026",
         "value_as_text": "158,063",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       }
     ],

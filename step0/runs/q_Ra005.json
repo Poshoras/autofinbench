@@ -6,6 +6,11 @@
     "accession_number": "0000019617-24-000326",
     "page_number": "83, 85"
   },
+  "step0_triage": {
+    "latest_10K_10Q_filed": "2026-11-03",
+    "cutoff": "2026-01-01",
+    "pass": true
+  },
   "step1_learn_pattern": {
     "question_type": "B 半结构化分析型",
     "structure": "单个季度：4 个偿债比率 + 文字结论",
@@ -123,7 +128,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 11.15
+        "corrected_seed_answer": 11.15,
+        "within_1_unit": true
       },
       {
         "metric": "ICR@Q1_2024",
@@ -134,7 +140,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 0.71
+        "corrected_seed_answer": 0.71,
+        "within_1_unit": true
       },
       {
         "metric": "FL@Q1_2024",
@@ -145,7 +152,8 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 12.15
+        "corrected_seed_answer": 12.15,
+        "within_1_unit": true
       },
       {
         "metric": "LTDCap@Q1_2024",
@@ -156,9 +164,12 @@
         "missing": [],
         "arithmetic_ok": true,
         "filing_ok": true,
-        "corrected_seed_answer": 0.54
+        "corrected_seed_answer": 0.54,
+        "within_1_unit": true
       }
     ],
+    "flags_for_attention": [],
+    "rounding_level_differences": [],
     "verdict": "MATCH。4 个比率均由反推公式精确复现（ICR 为非常规定义：税前利润 ÷ 利息费用）。"
   },
   "step3_plan": {
@@ -258,37 +269,37 @@
       {
         "key": "Assets@Q3_2026",
         "value_as_text": "5,091,545",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "Eq@Q3_2026",
         "value_as_text": "372,368",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "IntExp@Q3_2026",
         "value_as_text": "26,020",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "LTD@Q3_2026",
         "value_as_text": "460,160",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "Liab@Q3_2026",
         "value_as_text": "4,719,177",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       },
       {
         "key": "PreTax@Q3_2026",
         "value_as_text": "20,134",
-        "match_mode": "near_label",
+        "match_mode": "anywhere (>=4 digits)",
         "found_in_filing_text": true
       }
     ],
