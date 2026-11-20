@@ -174,8 +174,9 @@
       "Lowest": "Lowest growth"
     },
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ],
     "selector_labels": {
       "FWg": "Footwear",
@@ -184,10 +185,17 @@
     },
     "question_previous_version": "In NIKE's Asia Pacific & Latin America (APLA) segment, how did revenues from Footwear, Apparel, and Equipment change from fiscal 2025 to fiscal 2026, according to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026? Report each category's percentage change to two decimal places and identify which category had the highest and which had the lowest percentage change.",
     "time_map": {
-      "2017": "2025",
-      "2018": "2026"
+      "2018": "2026",
+      "2017": "2025"
     },
-    "gt_template": "Footwear Revenues (Fiscal 2026): $[[FW@FY2026]] million\n\nFootwear Revenues (Fiscal 2025): $[[FW@FY2025]] million\n\nPercentage Change (Footwear): [[FWg@FY2026|.0f]]%\n\nApparel Revenues (Fiscal 2026): $[[AP@FY2026]] million\n\nApparel Revenues (Fiscal 2025): $[[AP@FY2025]] million\n\nPercentage Change (Apparel): [[APg@FY2026|.0f]]%\n\nEquipment Revenues (Fiscal 2026): $[[EQ@FY2026]] million\n\nEquipment Revenues (Fiscal 2025): $[[EQ@FY2025]] million\n\nPercentage Change (Equipment): [[EQg@FY2026|.0f]]%\nFootwear = (([[FW@FY2026]] - [[FW@FY2025]])/[[FW@FY2025]])*100 = [[FWg@FY2026|.2f]]%\nApparel = (([[AP@FY2026]] - [[AP@FY2025]])/[[AP@FY2025]])*100 = [[APg@FY2026|.2f]]%\nEquipment = (([[EQ@FY2026]] - [[EQ@FY2025]])/[[EQ@FY2025]])*100 = [[EQg@FY2026|.2f]]%\nFrom Fiscal 2025 to Fiscal 2026 (Asia Pacific & Latin America segment):\n\nApparel experienced the highest growth rate at approximately [[APg@FY2026|.2f]]%.\nFootwear revenues declined by approximately [[-FWg@FY2026|.2f]]%.\nEquipment revenues declined by approximately [[-EQg@FY2026|.2f]]%, the lowest percentage change of the three categories."
+    "old_question": "In NIKE, Inc.'s Asia Pacific & Latin America (APLA) segment, how did the growth rates of revenues from Footwear, Apparel, and Equipment compare from fiscal year 2017 to fiscal year 2018 (fiscal years ended May 31)? Report each category's percentage change rounded to two decimal places and identify which category experienced the highest and which the lowest percentage change.",
+    "asked": {
+      "FWg": "Footwear",
+      "APg": "Apparel",
+      "EQg": "Equipment",
+      "Highest": "highest",
+      "Lowest": "lowest"
+    }
   },
   "step6_review": {
     "verdict": "pass",
@@ -212,6 +220,18 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
-  ]
+  ],
+  "label_map": {
+    "FY2026": "FY2018",
+    "FY2025": "FY2017"
+  },
+  "company_in_question": "NIKE"
 }

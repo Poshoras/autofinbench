@@ -536,71 +536,29 @@
         "missing": []
       }
     },
-    "variant_metrics": {
-      "year-end balances": {
-        "DIO@FY2025": {
-          "formula": "((Inv@FY2025 + Inv@FY2024) / 2) / COGS@FY2025 * 365",
-          "value": 64.5825842969585,
-          "missing": []
-        },
-        "DIO@FY2026": {
-          "formula": "((Inv@FY2026 + Inv@FY2025) / 2) / COGS@FY2026 * 365",
-          "value": 66.16582491582491,
-          "missing": []
-        },
-        "DSO@FY2025": {
-          "formula": "((AR@FY2025 + AR@FY2024) / 2) / Rev@FY2025 * 365",
-          "value": 26.639664705044847,
-          "missing": []
-        },
-        "DSO@FY2026": {
-          "formula": "((AR@FY2026 + AR@FY2025) / 2) / Rev@FY2026 * 365",
-          "value": 25.668518475962863,
-          "missing": []
-        },
-        "DPO@FY2025": {
-          "formula": "((AP@FY2025 + AP@FY2024) / 2) / COGS@FY2025 * 365",
-          "value": 135.62475706928385,
-          "missing": []
-        },
-        "DPO@FY2026": {
-          "formula": "((AP@FY2026 + AP@FY2025) / 2) / COGS@FY2026 * 365",
-          "value": 132.71464646464648,
-          "missing": []
-        },
-        "CCC@FY2025": {
-          "formula": "Inv@FY2025 / COGS@FY2025 * 365 + AR@FY2025 / Rev@FY2025 * 365 - AP@FY2025 / COGS@FY2025 * 365",
-          "value": -41.27813077972134,
-          "missing": []
-        },
-        "CCC@FY2026": {
-          "formula": "Inv@FY2026 / COGS@FY2026 * 365 + AR@FY2026 / Rev@FY2026 * 365 - AP@FY2026 / COGS@FY2026 * 365",
-          "value": -43.086833961454786,
-          "missing": []
-        }
-      }
-    }
+    "variant_metrics": {}
   },
   "step5_question": {
-    "question": "What is the Cash Conversion Cycle for 2026, and how does it compare to 2025?",
-    "ground_truth_answer": "The Cash Conversion Cycle (CCC) is calculated as Days Inventory Outstanding (DIO) + Days Sales Outstanding (DSO) - Days Payable Outstanding (DPO).\nFor 2026:\nDIO = (Average Inventory / Cost of Goods Sold) * 365\nAverage Inventory = ($7,551 million + $8,170 million) / 2 = $7,860.5 million\nDIO = ($7,860.5 million / $43,362 million) * 365 = 66.2 days\nDSO = (Average Accounts Receivable / Net Sales) * 365\nAverage Accounts Receivable = ($6,185 million + $6,056 million) / 2 = $6,120.5 million\nDSO = ($6,120.5 million / $87,032 million) * 365 = 25.7 days\nDPO = (Average Accounts Payable / Cost of Goods Sold) * 365\nAverage Accounts Payable = ($15,227 million + $16,306 million) / 2 = $15,766.5 million\nDPO = ($15,766.5 million / $43,362 million) * 365 = 132.7 days\nCCC = DIO + DSO - DPO = -40.9 days (computed from unrounded components)\n\nFor 2025:\nDIO = (Average Inventory / Cost of Goods Sold) * 365\nAverage Inventory = ($7,016 million + $7,551 million) / 2 = $7,283.5 million\nDIO = ($7,283.5 million / $41,164 million) * 365 = 64.6 days\nDSO = (Average Accounts Receivable / Net Sales) * 365\nAverage Accounts Receivable = ($6,118 million + $6,185 million) / 2 = $6,151.5 million\nDSO = ($6,151.5 million / $84,284 million) * 365 = 26.6 days\nDPO = (Average Accounts Payable / Cost of Goods Sold) * 365\nAverage Accounts Payable = ($15,364 million + $15,227 million) / 2 = $15,295.5 million\nDPO = ($15,295.5 million / $41,164 million) * 365 = 135.6 days\nCCC = DIO + DSO - DPO = -44.4 days (computed from unrounded components)\n\nAnalysis: The Cash Conversion Cycle became less negative, from -44.4 days in 2025 to -40.9 days in 2026 (an increase of 3.5 days). P&G still collects cash from customers well before it pays its suppliers, but this advantage narrowed as inventory days rose and payable days fell.",
+    "old_question": "What was the cash conversion cycle of Procter & Gamble (P&G) for fiscal year 2024 (ended June 30, 2024), using average balances (beginning and end of year) and a 365-day year, and how does it compare with fiscal year 2023 on the same basis? Report the cash conversion cycle for both years in days, rounded to one decimal place, and state whether it increased or decreased.",
+    "old_ground_truth": "Answer:\n- CCC (days) (FY2023): -42.5\n- CCC (days) (FY2024): -45.8\n- CCC change: decreased\nCalculation:\n- CCC (days) (FY2023): -42.5  [((7,073 + 6,924) / 2) / 42,760 x 365 + ((5,471 + 5,143) / 2) / 82,006 x 365 - ((14,598 + 14,882) / 2) / 42,760 x 365]\n- CCC (days) (FY2024): -45.8  [((7,016 + 7,073) / 2) / 40,848 x 365 + ((6,118 + 5,471) / 2) / 84,039 x 365 - ((15,364 + 14,598) / 2) / 40,848 x 365]\nData used ($ millions unless stated):\n- Accounts payable (FY2022): 14,882\n- Accounts payable (FY2023): 14,598\n- Accounts payable (FY2024): 15,364\n- Accounts receivable (FY2022): 5,143\n- Accounts receivable (FY2023): 5,471\n- Accounts receivable (FY2024): 6,118\n- Cost of products sold (FY2023): 42,760\n- Cost of products sold (FY2024): 40,848\n- Total inventories (FY2022): 6,924\n- Total inventories (FY2023): 7,073\n- Total inventories (FY2024): 7,016\n- Net sales (FY2023): 82,006\n- Net sales (FY2024): 84,039",
+    "old_answer": {
+      "CCC@FY2023": -42.5,
+      "CCC@FY2024": -45.8,
+      "CCC_change": "decreased"
+    },
+    "question": "What was the cash conversion cycle of Procter & Gamble (P&G) for fiscal year 2026 (ended June 30, 2026), using average balances (beginning and end of year) and a 365-day year, and how does it compare with fiscal year 2025 on the same basis? Report the cash conversion cycle for both years in days, rounded to one decimal place, and state whether it increased or decreased.",
+    "ground_truth_answer": "Answer:\n- CCC (days) (FY2025): -44.4\n- CCC (days) (FY2026): -40.9\n- CCC change: increased\nCalculation:\n- CCC (days) (FY2025): -44.4  [((7,551 + 7,016) / 2) / 41,164 x 365 + ((6,185 + 6,118) / 2) / 84,284 x 365 - ((15,227 + 15,364) / 2) / 41,164 x 365]\n- CCC (days) (FY2026): -40.9  [((8,170 + 7,551) / 2) / 43,362 x 365 + ((6,056 + 6,185) / 2) / 87,032 x 365 - ((16,306 + 15,227) / 2) / 43,362 x 365]\nData used ($ millions unless stated):\n- Accounts payable (FY2024): 15,364\n- Accounts payable (FY2025): 15,227\n- Accounts payable (FY2026): 16,306\n- Accounts receivable (FY2024): 6,118\n- Accounts receivable (FY2025): 6,185\n- Accounts receivable (FY2026): 6,056\n- Cost of products sold (FY2025): 41,164\n- Cost of products sold (FY2026): 43,362\n- Total inventories (FY2024): 7,016\n- Total inventories (FY2025): 7,551\n- Total inventories (FY2026): 8,170\n- Net sales (FY2025): 84,284\n- Net sales (FY2026): 87,032",
     "answer": {
       "CCC@FY2025": -44.4,
       "CCC@FY2026": -40.9,
       "CCC_change": "increased"
     },
-    "accepted_variants": {
-      "year-end balances": {
-        "CCC@FY2025": -41.3,
-        "CCC@FY2026": -43.1,
-        "CCC_change": "decreased"
-      }
-    },
-    "key_points": "CCC (days) (FY2025): -44.4\nCCC (days) (FY2026): -40.9\nCCC change: increased\nAlso accepted (year-end balances): CCC (days) (FY2025): -41.3; CCC (days) (FY2026): -43.1; CCC change: decreased",
-    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
+    "accepted_variants": {},
+    "grading": "score each listed item; numbers correct if within 1 unit of the last stated decimal place; labels by meaning",
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ]
   },
   "step6_review": {
@@ -686,8 +644,10 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
-    "only_time_changed_vs_seed": true,
-    "ground_truth_rendered": true,
+    "only_time_changed_old_vs_new": true,
+    "scored_items_not_asked": [],
+    "company_named_in_question": true,
+    "old_version_values_ok": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -711,6 +671,13 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
   ],
   "final_status": "ACCEPTED"

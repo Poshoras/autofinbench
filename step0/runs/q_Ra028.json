@@ -155,9 +155,10 @@
       {
         "key": "Emp@FY2023",
         "seed_stated": 108000.0,
-        "xbrl": 108000.0,
+        "xbrl": 107000.0,
         "xbrl_concept": "TEXT",
-        "status": "MATCH"
+        "status": "SEED_INPUT_MISMATCH",
+        "diagnosis_seed_value_matches_concept": []
       },
       {
         "key": "Emp@FY2024",
@@ -187,12 +188,12 @@
         "formula": "Rev@FY2023 * 1000000 / Emp@FY2023",
         "seed_answer": "759,314",
         "recomputed_from_seed_inputs": 759314.8148148148,
-        "recomputed_from_filing": 759314.8148148148,
+        "recomputed_from_filing": 766411.214953271,
         "missing": [],
         "arithmetic_ok": false,
         "filing_ok": false,
-        "corrected_seed_answer": 759315.0,
-        "within_1_unit": true
+        "corrected_seed_answer": 766411.0,
+        "within_1_unit": false
       },
       {
         "metric": "RevPerEmp@FY2024",
@@ -207,11 +208,12 @@
         "within_1_unit": true
       }
     ],
-    "flags_for_attention": [],
-    "rounding_level_differences": [
+    "flags_for_attention": [
+      "Emp@FY2023",
       "RevPerEmp@FY2023"
     ],
-    "verdict": "MATCH（另有舍入级差异：RevPerEmp@FY2023）"
+    "rounding_level_differences": [],
+    "verdict": "口径差异（原文件之间不一致）。FY2023 10-K 报告 \"approximately 107,000 employees\"，而 FY2024 10-K 称 108,000 \"unchanged versus the prior year\"；原 GT 两年都用 108,000（FY2023 人均收入 759,314）。新口径 = 各财年自己的 10-K 报告的人数 → FY2023 用 107,000，人均收入 766,411。"
   },
   "step3_plan": {
     "target_rule": "最新一期 10-K（FY2026，截至 2026-06-30）；比较 FY2026 vs FY2025；2024-06-30 期末余额取自 FY2025 10-K",
@@ -266,39 +268,29 @@
         "missing": []
       }
     },
-    "variant_metrics": {
-      "fiscal 2025 headcount derived from the fiscal 2026 10-K (104,000 employees, down 4%)": {
-        "RevPerEmp@FY2025": {
-          "formula": "Rev@FY2025 * 1000000 / (Emp@FY2026 / 0.96)",
-          "value": 778006.1538461538,
-          "missing": []
-        },
-        "RevPerEmp@FY2026": {
-          "formula": "Rev@FY2026 * 1000000 / Emp@FY2026",
-          "value": 836846.1538461539,
-          "missing": []
-        }
-      }
-    }
+    "variant_metrics": {}
   },
   "step5_question": {
-    "question": "What is the Revenue per Employee for 2026, and how does it compare to 2025?",
-    "ground_truth_answer": "Revenue per Employee is Net Sales divided by the number of employees. For 2026:\n\nNumber of Employees = 104,000\nRevenue per Employee = $87,032 million / 104,000 = $836,846\nFor 2025:\n\nNumber of Employees = 109,000\nRevenue per Employee = $84,284 million / 109,000 = $773,248\nRevenue per employee increased from $773,248 in 2025 to $836,846 in 2026, as net sales grew while headcount fell (P&G reported approximately 104,000 employees at June 30, 2026, a decrease of 4% versus the prior year).",
+    "old_question": "What was the revenue per employee of Procter & Gamble (P&G) for fiscal year 2024 (ended June 30, 2024), based on net sales and the approximate number of employees reported at fiscal year-end in that year's Form 10-K, and how does it compare with fiscal year 2023? Report both years in US dollars rounded to the nearest dollar and state whether it increased or decreased.",
+    "old_ground_truth": "Answer:\n- Revenue per employee ($) (FY2023): 766,411\n- Revenue per employee ($) (FY2024): 778,139\n- Change: increased\nCalculation:\n- Revenue per employee ($) (FY2023): 766,411  [82,006 x 1000000 / 107,000]\n- Revenue per employee ($) (FY2024): 778,139  [84,039 x 1000000 / 108,000]\nData used ($ millions unless stated):\n- Number of employees (Item 1 – Employees) (FY2023): 107,000\n- Number of employees (Item 1 – Employees) (FY2024): 108,000\n- Net sales (FY2023): 82,006\n- Net sales (FY2024): 84,039",
+    "old_answer": {
+      "RevPerEmp@FY2023": 766411,
+      "RevPerEmp@FY2024": 778139,
+      "RevPerEmp_change": "increased"
+    },
+    "question": "What was the revenue per employee of Procter & Gamble (P&G) for fiscal year 2026 (ended June 30, 2026), based on net sales and the approximate number of employees reported at fiscal year-end in that year's Form 10-K, and how does it compare with fiscal year 2025? Report both years in US dollars rounded to the nearest dollar and state whether it increased or decreased.",
+    "ground_truth_answer": "Answer:\n- Revenue per employee ($) (FY2025): 773,248\n- Revenue per employee ($) (FY2026): 836,846\n- Change: increased\nCalculation:\n- Revenue per employee ($) (FY2025): 773,248  [84,284 x 1000000 / 109,000]\n- Revenue per employee ($) (FY2026): 836,846  [87,032 x 1000000 / 104,000]\nData used ($ millions unless stated):\n- Number of employees (Item 1 – Employees) (FY2025): 109,000\n- Number of employees (Item 1 – Employees) (FY2026): 104,000\n- Net sales (FY2025): 84,284\n- Net sales (FY2026): 87,032",
     "answer": {
       "RevPerEmp@FY2025": 773248,
       "RevPerEmp@FY2026": 836846,
       "RevPerEmp_change": "increased"
     },
-    "accepted_variants": {
-      "fiscal 2025 headcount derived from the fiscal 2026 10-K (104,000 employees, down 4%)": {
-        "RevPerEmp@FY2025": 778006
-      }
-    },
-    "key_points": "Revenue per employee ($) (FY2025): 773,248\nRevenue per employee ($) (FY2026): 836,846\nChange: increased\nAlso accepted (fiscal 2025 headcount derived from the fiscal 2026 10-K (104,000 employees, down 4%)): Revenue per employee ($) (FY2025): 778,006",
-    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
+    "accepted_variants": {},
+    "grading": "score each listed item; numbers correct if within 1 unit of the last stated decimal place; labels by meaning",
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ]
   },
   "step6_review": {
@@ -330,12 +322,17 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
-    "only_time_changed_vs_seed": true,
-    "ground_truth_rendered": true,
+    "only_time_changed_old_vs_new": true,
+    "scored_items_not_asked": [],
+    "company_named_in_question": true,
+    "old_version_values_ok": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
-    "mode": "auto (no flags)"
+    "mode": "flagged → judged",
+    "notes": [
+      "题干已写明 \"the approximate number of employees reported at fiscal year-end in that year's Form 10-K\"，口径唯一"
+    ]
   },
   "revisions": [
     {
@@ -351,6 +348,13 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
   ],
   "final_status": "ACCEPTED"

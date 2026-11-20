@@ -128,14 +128,23 @@
       "EPS_diluted": "Diluted EPS ($)"
     },
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ],
     "question_previous_version": "From Apple Inc.'s Form 10-K for the fiscal year ended September 26, 2026, report the key profitability results for fiscal 2026: total gross margin, operating income, and net income (each in $ millions), and basic and diluted earnings per share.",
     "time_map": {
+      "September 30, 2023": "September 26, 2026",
       "2023": "2026"
     },
-    "gt_template": "The key findings from the profitability analysis of Apple Inc. for the year 2026 are as follows:\n- Gross Margin: The gross margin for 2026 is $[[GP@FY2026]] million, which indicates the company's ability to generate profit from its core business activities after accounting for the cost of goods sold.\n- Operating Income: The operating income for 2026 is $[[OpInc@FY2026]] million, reflecting the company's efficiency in managing its operating expenses, including research and development and selling, general, and administrative expenses.\n- Net Income: The net income for 2026 is $[[NI@FY2026]] million, showcasing the company's overall profitability after accounting for all expenses, including taxes and other income/expenses.\n- Earnings Per Share (EPS): The basic EPS for 2026 is $[[EPSb@FY2026|.2f]], and the diluted EPS is $[[EPSd@FY2026|.2f]], indicating the earnings attributable to each share of the company's stock.\nOverall, Apple Inc. has demonstrated strong profitability in 2026, with significant gross margin, operating income, and net income, reflecting its ability to generate substantial profits from its operations."
+    "old_question": "What were the key profitability results of Apple Inc. for fiscal year 2023 (ended September 30, 2023)? Report total gross margin, operating income, and net income (in $ millions), and basic and diluted earnings per share (in dollars).",
+    "asked": {
+      "GM": "total gross margin",
+      "OI": "operating income",
+      "NetInc": "net income",
+      "EPS_basic": "basic and diluted earnings per share",
+      "EPS_diluted": "basic and diluted earnings per share"
+    }
   },
   "step6_review": {
     "verdict": "pass",
@@ -157,6 +166,17 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
-  ]
+  ],
+  "label_map": {
+    "FY2026": "FY2023"
+  },
+  "company_in_question": "Apple Inc."
 }

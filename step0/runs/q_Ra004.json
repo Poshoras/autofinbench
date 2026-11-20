@@ -388,8 +388,19 @@
     "variant_metrics": {}
   },
   "step5_question": {
-    "question": "How does the solvency position of Apple Inc. look based on the balance sheet data for 2026?",
-    "ground_truth_answer": "The solvency position of Apple Inc. for 2026 can be assessed using the balance sheet data (as of September 26, 2026):\n- Total Assets: $404,548 million\n- Total Liabilities: $292,455 million\n- Total Shareholders' Equity: $112,093 million\nTotal liabilities are about 2.61 times total shareholders' equity. Most of these liabilities are operating obligations rather than borrowings: the term debt for 2026 is $78,114 million (current $9,906 million and non-current $68,208 million). The company's cash and cash equivalents are $36,305 million, with additional marketable securities of $20,417 million (current) and $80,213 million (non-current), i.e. $136,935 million in total, which exceeds its term debt. This indicates that Apple Inc. has sufficient liquidity to meet its debt obligations. Overall, its strong asset base and liquidity position suggest a stable solvency position.",
+    "old_question": "How does the solvency position of Apple Inc. look based on its balance sheet as of September 30, 2023 (end of fiscal year 2023)? Report total assets, total liabilities, total shareholders' equity, and total term debt (current and non-current), each in $ millions; the ratio of total liabilities to total shareholders' equity, rounded to two decimals; and Apple's total cash, cash equivalents and marketable securities (current and non-current) in $ millions, stating whether this total exceeds its total term debt.",
+    "old_ground_truth": "Answer:\n- Total assets ($M) (FY2023): 352,583\n- Total liabilities ($M) (FY2023): 290,437\n- Total shareholders' equity ($M) (FY2023): 62,146\n- Total term debt ($M) (FY2023): 105,103\n- Total liabilities / equity (FY2023): 4.67\n- Liquid assets ($M) (FY2023): 162,099\n- Liquid assets exceed term debt?: yes\nCalculation:\n- Total assets ($M) (FY2023): 352,583  [352,583]\n- Total liabilities ($M) (FY2023): 290,437  [290,437]\n- Total shareholders' equity ($M) (FY2023): 62,146  [62,146]\n- Total term debt ($M) (FY2023): 105,103  [9,822 + 95,281]\n- Total liabilities / equity (FY2023): 4.67  [290,437 / 62,146]\n- Liquid assets ($M) (FY2023): 162,099  [29,965 + 31,590 + 100,544]\nData used ($ millions unless stated):\n- Total assets (FY2023): 352,583\n- Cash and cash equivalents (FY2023): 29,965\n- Total shareholders' equity (FY2023): 62,146\n- Total liabilities (FY2023): 290,437\n- Marketable securities (current) (FY2023): 31,590\n- Marketable securities (non-current) (FY2023): 100,544\n- Term debt (current) (FY2023): 9,822\n- Term debt (non-current) (FY2023): 95,281",
+    "old_answer": {
+      "TA@FY2023": 352583,
+      "TL@FY2023": 290437,
+      "TE@FY2023": 62146,
+      "TermDebt@FY2023": 105103,
+      "LtoE@FY2023": 4.67,
+      "Liquid@FY2023": 162099,
+      "Liquid_exceeds_term_debt": "yes"
+    },
+    "question": "How does the solvency position of Apple Inc. look based on its balance sheet as of September 26, 2026 (end of fiscal year 2026)? Report total assets, total liabilities, total shareholders' equity, and total term debt (current and non-current), each in $ millions; the ratio of total liabilities to total shareholders' equity, rounded to two decimals; and Apple's total cash, cash equivalents and marketable securities (current and non-current) in $ millions, stating whether this total exceeds its total term debt.",
+    "ground_truth_answer": "Answer:\n- Total assets ($M) (FY2026): 404,548\n- Total liabilities ($M) (FY2026): 292,455\n- Total shareholders' equity ($M) (FY2026): 112,093\n- Total term debt ($M) (FY2026): 78,114\n- Total liabilities / equity (FY2026): 2.61\n- Liquid assets ($M) (FY2026): 136,935\n- Liquid assets exceed term debt?: yes\nCalculation:\n- Total assets ($M) (FY2026): 404,548  [404,548]\n- Total liabilities ($M) (FY2026): 292,455  [292,455]\n- Total shareholders' equity ($M) (FY2026): 112,093  [112,093]\n- Total term debt ($M) (FY2026): 78,114  [9,906 + 68,208]\n- Total liabilities / equity (FY2026): 2.61  [292,455 / 112,093]\n- Liquid assets ($M) (FY2026): 136,935  [36,305 + 20,417 + 80,213]\nData used ($ millions unless stated):\n- Total assets (FY2026): 404,548\n- Cash and cash equivalents (FY2026): 36,305\n- Total shareholders' equity (FY2026): 112,093\n- Total liabilities (FY2026): 292,455\n- Marketable securities (current) (FY2026): 20,417\n- Marketable securities (non-current) (FY2026): 80,213\n- Term debt (current) (FY2026): 9,906\n- Term debt (non-current) (FY2026): 68,208",
     "answer": {
       "TA@FY2026": 404548,
       "TL@FY2026": 292455,
@@ -400,11 +411,11 @@
       "Liquid_exceeds_term_debt": "yes"
     },
     "accepted_variants": {},
-    "key_points": "Total assets ($M) (FY2026): 404,548\nTotal liabilities ($M) (FY2026): 292,455\nTotal shareholders' equity ($M) (FY2026): 112,093\nTotal term debt ($M) (FY2026): 78,114\nTotal liabilities / equity (FY2026): 2.61\nLiquid assets ($M) (FY2026): 136,935\nLiquid assets exceed term debt?: yes",
-    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
+    "grading": "score each listed item; numbers correct if within 1 unit of the last stated decimal place; labels by meaning",
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ]
   },
   "step6_review": {
@@ -460,8 +471,10 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
-    "only_time_changed_vs_seed": true,
-    "ground_truth_rendered": true,
+    "only_time_changed_old_vs_new": true,
+    "scored_items_not_asked": [],
+    "company_named_in_question": true,
+    "old_version_values_ok": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -492,6 +505,13 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
   ],
   "final_status": "ACCEPTED"

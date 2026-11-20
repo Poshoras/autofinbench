@@ -151,7 +151,8 @@
           "pattern": "As of June 30, 2024, the Company had approximately ([\\d,]+) employees"
         },
         "FY2023": {
-          "pattern": "approximately ([\\d,]+) employees, unchanged versus the prior year"
+          "pattern": "As of June 30, 2023, the Company had approximately ([\\d,]+) employees",
+          "accn": "0000080424-23-000073"
         }
       },
       "text_regex_target": {
@@ -235,5 +236,10 @@
     "target_rule": "最新一期 10-K（FY2026，截至 2026-06-30）；比较 FY2026 vs FY2025；2024-06-30 期末余额取自 FY2025 10-K",
     "decision": "shift",
     "rationale": "共享配置：所有数据项已在 FY2026/FY2025 10-K 中确认可得"
+  },
+  "label_map": {
+    "FY2026": "FY2024",
+    "FY2025": "FY2023",
+    "FY2024": "FY2022"
   }
 }

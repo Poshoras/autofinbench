@@ -284,8 +284,6 @@
       "Eq@FY2026": "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest",
       "NI@FY2025": "NetIncomeLoss",
       "NI@FY2026": "NetIncomeLoss",
-      "NetEarn@FY2025": "ProfitLoss",
-      "NetEarn@FY2026": "ProfitLoss",
       "OpInc@FY2025": "OperatingIncomeLoss",
       "OpInc@FY2026": "OperatingIncomeLoss",
       "Rev@FY2025": "Revenues",
@@ -328,16 +326,6 @@
         "concept": "NetIncomeLoss",
         "dims": {},
         "value": 16046.0
-      },
-      "NetEarn@FY2025": {
-        "concept": "ProfitLoss",
-        "dims": {},
-        "value": 16065.0
-      },
-      "NetEarn@FY2026": {
-        "concept": "ProfitLoss",
-        "dims": {},
-        "value": 16144.0
       },
       "OpInc@FY2025": {
         "concept": "OperatingIncomeLoss",
@@ -402,96 +390,27 @@
         "missing": []
       }
     },
-    "variant_metrics": {
-      "ROE on year-end equity": {
-        "GPM@FY2025": {
-          "formula": "(Rev@FY2025 - COGS@FY2025) / Rev@FY2025 * 100",
-          "value": 51.16036258364577,
-          "missing": []
-        },
-        "GPM@FY2026": {
-          "formula": "(Rev@FY2026 - COGS@FY2026) / Rev@FY2026 * 100",
-          "value": 50.176946410515676,
-          "missing": []
-        },
-        "OPM@FY2025": {
-          "formula": "OpInc@FY2025 / Rev@FY2025 * 100",
-          "value": 24.264391818138677,
-          "missing": []
-        },
-        "OPM@FY2026": {
-          "formula": "OpInc@FY2026 / Rev@FY2026 * 100",
-          "value": 22.69050464197077,
-          "missing": []
-        },
-        "NPM@FY2025": {
-          "formula": "NI@FY2025 / Rev@FY2025 * 100",
-          "value": 18.952588866214228,
-          "missing": []
-        },
-        "NPM@FY2026": {
-          "formula": "NI@FY2026 / Rev@FY2026 * 100",
-          "value": 18.436896773600512,
-          "missing": []
-        },
-        "ROE@FY2025": {
-          "formula": "NI@FY2025 / Eq@FY2025 * 100",
-          "value": 30.552367837196847,
-          "missing": []
-        },
-        "ROE@FY2026": {
-          "formula": "NI@FY2026 / Eq@FY2026 * 100",
-          "value": 29.544659461250944,
-          "missing": []
-        }
-      },
-      "net earnings incl. noncontrolling interests": {
-        "GPM@FY2025": {
-          "formula": "(Rev@FY2025 - COGS@FY2025) / Rev@FY2025 * 100",
-          "value": 51.16036258364577,
-          "missing": []
-        },
-        "GPM@FY2026": {
-          "formula": "(Rev@FY2026 - COGS@FY2026) / Rev@FY2026 * 100",
-          "value": 50.176946410515676,
-          "missing": []
-        },
-        "OPM@FY2025": {
-          "formula": "OpInc@FY2025 / Rev@FY2025 * 100",
-          "value": 24.264391818138677,
-          "missing": []
-        },
-        "OPM@FY2026": {
-          "formula": "OpInc@FY2026 / Rev@FY2026 * 100",
-          "value": 22.69050464197077,
-          "missing": []
-        },
-        "NPM@FY2025": {
-          "formula": "NetEarn@FY2025 / Rev@FY2025 * 100",
-          "value": 19.06055716387452,
-          "missing": []
-        },
-        "NPM@FY2026": {
-          "formula": "NetEarn@FY2026 / Rev@FY2026 * 100",
-          "value": 18.549499034837762,
-          "missing": []
-        },
-        "ROE@FY2025": {
-          "formula": "NetEarn@FY2025 / ((Eq@FY2025 + Eq@FY2024) / 2) * 100",
-          "value": 31.2417957469152,
-          "missing": []
-        },
-        "ROE@FY2026": {
-          "formula": "NetEarn@FY2026 / ((Eq@FY2026 + Eq@FY2025) / 2) * 100",
-          "value": 30.29035132979971,
-          "missing": []
-        }
-      }
-    }
+    "variant_metrics": {}
   },
   "step5_question": {
-    "question": "Analyse the profitability  for year 2026 and 2025 of the P&G using ratio analysis",
-    "ground_truth_answer": "Profitability Ratio Analysis for Procter & Gamble (P&G) in 2025 and 2026\nGross Profit Margin:\n2026: 50.2%\n2025: 51.2%\n\nOperating Profit Margin:\n2026: 22.7%\n2025: 24.3%\n\nNet Profit Margin:\n2026: 18.4%\n2025: 19.0%\n\nReturn on Equity (ROE):\n2026: 30.1%\n2025: 31.1%\n\nAnalysis:\nIn 2026, Procter & Gamble remained highly profitable, but its profitability ratios weakened compared with 2025. The gross profit margin decreased from 51.2% to 50.2%, the operating profit margin decreased from 24.3% to 22.7%, the net profit margin decreased from 19.0% to 18.4%, and ROE decreased from 31.1% to 30.1%. Costs rose faster than net sales (net sales $84,284 million -> $87,032 million), compressing margins, while an ROE of about 30% still reflects strong returns for shareholders.\n(Bases used: net profit margin and ROE use net earnings attributable to P&G; ROE uses average total shareholders' equity.)",
+    "old_question": "Using ratio analysis, analyze the profitability of Procter & Gamble (P&G) for fiscal years 2024 and 2023 (fiscal years ended June 30, 2024 and June 30, 2023). For each year, report the gross profit margin, operating profit margin, net profit margin (based on net earnings attributable to P&G), and return on equity (based on net earnings attributable to P&G and average total shareholders' equity) as percentages rounded to one decimal place, and state whether each ratio increased, decreased, or was unchanged from fiscal 2023 to fiscal 2024 (based on the rounded values).",
+    "old_ground_truth": "Answer:\n- Gross margin % (FY2023): 47.9\n- Gross margin % (FY2024): 51.4\n- Operating margin % (FY2023): 22.1\n- Operating margin % (FY2024): 22.1\n- Net margin % (FY2023): 17.9\n- Net margin % (FY2024): 17.7\n- ROE % (FY2023): 31.2\n- ROE % (FY2024): 30.5\n- Gross margin change: increased\n- Operating margin change: unchanged\n- Net margin change: decreased\n- ROE change: decreased\nCalculation:\n- Gross margin % (FY2023): 47.9  [(82,006 - 42,760) / 82,006 x 100]\n- Gross margin % (FY2024): 51.4  [(84,039 - 40,848) / 84,039 x 100]\n- Operating margin % (FY2023): 22.1  [18,134 / 82,006 x 100]\n- Operating margin % (FY2024): 22.1  [18,545 / 84,039 x 100]\n- Net margin % (FY2023): 17.9  [14,653 / 82,006 x 100]\n- Net margin % (FY2024): 17.7  [14,879 / 84,039 x 100]\n- ROE % (FY2023): 31.2  [14,653 / ((47,065 + 46,854) / 2) x 100]\n- ROE % (FY2024): 30.5  [14,879 / ((50,559 + 47,065) / 2) x 100]\nData used ($ millions unless stated):\n- Cost of products sold (FY2023): 42,760\n- Cost of products sold (FY2024): 40,848\n- Total shareholders' equity (incl. noncontrolling interest) (FY2022): 46,854\n- Total shareholders' equity (incl. noncontrolling interest) (FY2023): 47,065\n- Total shareholders' equity (incl. noncontrolling interest) (FY2024): 50,559\n- Net earnings attributable to Procter & Gamble (FY2023): 14,653\n- Net earnings attributable to Procter & Gamble (FY2024): 14,879\n- Operating income (FY2023): 18,134\n- Operating income (FY2024): 18,545\n- Net sales (FY2023): 82,006\n- Net sales (FY2024): 84,039",
+    "old_answer": {
+      "GPM@FY2023": 47.9,
+      "GPM@FY2024": 51.4,
+      "OPM@FY2023": 22.1,
+      "OPM@FY2024": 22.1,
+      "NPM@FY2023": 17.9,
+      "NPM@FY2024": 17.7,
+      "ROE@FY2023": 31.2,
+      "ROE@FY2024": 30.5,
+      "GPM_change": "increased",
+      "OPM_change": "unchanged",
+      "NPM_change": "decreased",
+      "ROE_change": "decreased"
+    },
+    "question": "Using ratio analysis, analyze the profitability of Procter & Gamble (P&G) for fiscal years 2026 and 2025 (fiscal years ended June 30, 2026 and June 30, 2025). For each year, report the gross profit margin, operating profit margin, net profit margin (based on net earnings attributable to P&G), and return on equity (based on net earnings attributable to P&G and average total shareholders' equity) as percentages rounded to one decimal place, and state whether each ratio increased, decreased, or was unchanged from fiscal 2025 to fiscal 2026 (based on the rounded values).",
+    "ground_truth_answer": "Answer:\n- Gross margin % (FY2025): 51.2\n- Gross margin % (FY2026): 50.2\n- Operating margin % (FY2025): 24.3\n- Operating margin % (FY2026): 22.7\n- Net margin % (FY2025): 19.0\n- Net margin % (FY2026): 18.4\n- ROE % (FY2025): 31.1\n- ROE % (FY2026): 30.1\n- Gross margin change: decreased\n- Operating margin change: decreased\n- Net margin change: decreased\n- ROE change: decreased\nCalculation:\n- Gross margin % (FY2025): 51.2  [(84,284 - 41,164) / 84,284 x 100]\n- Gross margin % (FY2026): 50.2  [(87,032 - 43,362) / 87,032 x 100]\n- Operating margin % (FY2025): 24.3  [20,451 / 84,284 x 100]\n- Operating margin % (FY2026): 22.7  [19,748 / 87,032 x 100]\n- Net margin % (FY2025): 19.0  [15,974 / 84,284 x 100]\n- Net margin % (FY2026): 18.4  [16,046 / 87,032 x 100]\n- ROE % (FY2025): 31.1  [15,974 / ((52,284 + 50,559) / 2) x 100]\n- ROE % (FY2026): 30.1  [16,046 / ((54,311 + 52,284) / 2) x 100]\nData used ($ millions unless stated):\n- Cost of products sold (FY2025): 41,164\n- Cost of products sold (FY2026): 43,362\n- Total shareholders' equity (incl. noncontrolling interest) (FY2024): 50,559\n- Total shareholders' equity (incl. noncontrolling interest) (FY2025): 52,284\n- Total shareholders' equity (incl. noncontrolling interest) (FY2026): 54,311\n- Net earnings attributable to Procter & Gamble (FY2025): 15,974\n- Net earnings attributable to Procter & Gamble (FY2026): 16,046\n- Operating income (FY2025): 20,451\n- Operating income (FY2026): 19,748\n- Net sales (FY2025): 84,284\n- Net sales (FY2026): 87,032",
     "answer": {
       "GPM@FY2025": 51.2,
       "GPM@FY2026": 50.2,
@@ -506,23 +425,12 @@
       "NPM_change": "decreased",
       "ROE_change": "decreased"
     },
-    "accepted_variants": {
-      "ROE on year-end equity": {
-        "ROE@FY2025": 30.6,
-        "ROE@FY2026": 29.5
-      },
-      "net earnings incl. noncontrolling interests": {
-        "NPM@FY2025": 19.1,
-        "NPM@FY2026": 18.5,
-        "ROE@FY2025": 31.2,
-        "ROE@FY2026": 30.3
-      }
-    },
-    "key_points": "Gross margin % (FY2025): 51.2\nGross margin % (FY2026): 50.2\nOperating margin % (FY2025): 24.3\nOperating margin % (FY2026): 22.7\nNet margin % (FY2025): 19.0\nNet margin % (FY2026): 18.4\nROE % (FY2025): 31.1\nROE % (FY2026): 30.1\nGross margin change: decreased\nOperating margin change: decreased\nNet margin change: decreased\nROE change: decreased\nAlso accepted (ROE on year-end equity): ROE % (FY2025): 30.6; ROE % (FY2026): 29.5\nAlso accepted (net earnings incl. noncontrolling interests): Net margin % (FY2025): 19.1; Net margin % (FY2026): 18.5; ROE % (FY2025): 31.2; ROE % (FY2026): 30.3",
-    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
+    "accepted_variants": {},
+    "grading": "score each listed item; numbers correct if within 1 unit of the last stated decimal place; labels by meaning",
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ]
   },
   "step6_review": {
@@ -570,18 +478,6 @@
         "found_in_filing_text": true
       },
       {
-        "key": "NetEarn@FY2025",
-        "value_as_text": "16,065",
-        "match_mode": "anywhere (>=4 digits)",
-        "found_in_filing_text": true
-      },
-      {
-        "key": "NetEarn@FY2026",
-        "value_as_text": "16,144",
-        "match_mode": "anywhere (>=4 digits)",
-        "found_in_filing_text": true
-      },
-      {
         "key": "OpInc@FY2025",
         "value_as_text": "20,451",
         "match_mode": "anywhere (>=4 digits)",
@@ -608,8 +504,10 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
-    "only_time_changed_vs_seed": true,
-    "ground_truth_rendered": true,
+    "only_time_changed_old_vs_new": true,
+    "scored_items_not_asked": [],
+    "company_named_in_question": true,
+    "old_version_values_ok": true,
     "rounding_near_boundary": [
       {
         "key": "NPM@FY2025",
@@ -653,6 +551,13 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 4,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
   ],
   "final_status": "ACCEPTED"

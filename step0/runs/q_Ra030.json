@@ -362,19 +362,26 @@
     "variant_metrics": {}
   },
   "step5_question": {
-    "question": "What is the Free Cash Flow Margin for 2026, and how does it compare to 2025?",
-    "ground_truth_answer": "Free Cash Flow Margin is Free Cash Flow divided by Net Sales. For 2026:\n\nFree Cash Flow = $15,835 million (P&G's reported Adjusted Free Cash Flow)\nFree Cash Flow Margin = $15,835 million / $87,032 million = 18.2%\nFor 2025:\n\nFree Cash Flow Margin = $14,606 million / $84,284 million = 17.3%\nThe margin increased from 17.3% in 2025 to 18.2% in 2026.",
+    "old_question": "What was the free cash flow margin of Procter & Gamble (P&G) for fiscal year 2024 (ended June 30, 2024), based on P&G's reported Adjusted Free Cash Flow as a percentage of net sales, and how does it compare with fiscal year 2023? Report both years as percentages rounded to one decimal place and state whether the margin increased or decreased.",
+    "old_ground_truth": "Answer:\n- Adjusted FCF / net sales % (FY2023): 17.1\n- Adjusted FCF / net sales % (FY2024): 20.2\n- Change: increased\nCalculation:\n- Adjusted FCF / net sales % (FY2023): 17.1  [14,011 / 82,006 x 100]\n- Adjusted FCF / net sales % (FY2024): 20.2  [16,946 / 84,039 x 100]\nData used ($ millions unless stated):\n- Adjusted Free Cash Flow (P&G non-GAAP, MD&A) (FY2023): 14,011\n- Adjusted Free Cash Flow (P&G non-GAAP, MD&A) (FY2024): 16,946\n- Net sales (FY2023): 82,006\n- Net sales (FY2024): 84,039",
+    "old_answer": {
+      "FCFMargin@FY2023": 17.1,
+      "FCFMargin@FY2024": 20.2,
+      "FCFMargin_change": "increased"
+    },
+    "question": "What was the free cash flow margin of Procter & Gamble (P&G) for fiscal year 2026 (ended June 30, 2026), based on P&G's reported Adjusted Free Cash Flow as a percentage of net sales, and how does it compare with fiscal year 2025? Report both years as percentages rounded to one decimal place and state whether the margin increased or decreased.",
+    "ground_truth_answer": "Answer:\n- Adjusted FCF / net sales % (FY2025): 17.3\n- Adjusted FCF / net sales % (FY2026): 18.2\n- Change: increased\nCalculation:\n- Adjusted FCF / net sales % (FY2025): 17.3  [14,606 / 84,284 x 100]\n- Adjusted FCF / net sales % (FY2026): 18.2  [15,835 / 87,032 x 100]\nData used ($ millions unless stated):\n- Adjusted Free Cash Flow (P&G non-GAAP, MD&A) (FY2025): 14,606\n- Adjusted Free Cash Flow (P&G non-GAAP, MD&A) (FY2026): 15,835\n- Net sales (FY2025): 84,284\n- Net sales (FY2026): 87,032",
     "answer": {
       "FCFMargin@FY2025": 17.3,
       "FCFMargin@FY2026": 18.2,
       "FCFMargin_change": "increased"
     },
     "accepted_variants": {},
-    "key_points": "Adjusted FCF / net sales % (FY2025): 17.3\nAdjusted FCF / net sales % (FY2026): 18.2\nChange: increased",
-    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
+    "grading": "score each listed item; numbers correct if within 1 unit of the last stated decimal place; labels by meaning",
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ]
   },
   "step6_review": {
@@ -442,8 +449,10 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
-    "only_time_changed_vs_seed": true,
-    "ground_truth_rendered": true,
+    "only_time_changed_old_vs_new": true,
+    "scored_items_not_asked": [],
+    "company_named_in_question": true,
+    "old_version_values_ok": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -463,6 +472,13 @@
       "problem": "题干比原题多了提示，新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
   ],
   "final_status": "ACCEPTED"

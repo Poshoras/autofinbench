@@ -41,20 +41,20 @@
       "RevPerEmp_change": "Change"
     },
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ],
-    "variants": {
-      "fiscal 2025 headcount derived from the fiscal 2026 10-K (104,000 employees, down 4%)": {
-        "RevPerEmp@FY2025": "Rev@FY2025 * 1000000 / (Emp@FY2026 / 0.96)"
-      }
-    },
     "question_previous_version": "Based on Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what is P&G's revenue per employee for fiscal 2026, and how does it compare to fiscal 2025? Report in US dollars rounded to the nearest dollar.",
     "time_map": {
       "2024": "2026",
       "2023": "2025"
     },
-    "gt_template": "Revenue per Employee is Net Sales divided by the number of employees. For 2026:\n\nNumber of Employees = [[Emp@FY2026]]\nRevenue per Employee = $[[Rev@FY2026]] million / [[Emp@FY2026]] = $[[RevPerEmp@FY2026]]\nFor 2025:\n\nNumber of Employees = [[Emp@FY2025]]\nRevenue per Employee = $[[Rev@FY2025]] million / [[Emp@FY2025]] = $[[RevPerEmp@FY2025]]\nRevenue per employee [[!RevPerEmp_change]] from $[[RevPerEmp@FY2025]] in 2025 to $[[RevPerEmp@FY2026]] in 2026, as net sales grew while headcount fell (P&G reported approximately [[Emp@FY2026]] employees at June 30, 2026, a decrease of 4% versus the prior year)."
+    "old_question": "What was the revenue per employee of Procter & Gamble (P&G) for fiscal year 2024 (ended June 30, 2024), based on net sales and the approximate number of employees reported at fiscal year-end in that year's Form 10-K, and how does it compare with fiscal year 2023? Report both years in US dollars rounded to the nearest dollar and state whether it increased or decreased.",
+    "asked": {
+      "RevPerEmp": "revenue per employee",
+      "RevPerEmp_change": "increased or decreased"
+    }
   },
   "revisions": [
     {
@@ -70,6 +70,22 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
-  ]
+  ],
+  "company_in_question": "Procter & Gamble",
+  "step2_verdict": "口径差异（原文件之间不一致）。FY2023 10-K 报告 \"approximately 107,000 employees\"，而 FY2024 10-K 称 108,000 \"unchanged versus the prior year\"；原 GT 两年都用 108,000（FY2023 人均收入 759,314）。新口径 = 各财年自己的 10-K 报告的人数 → FY2023 用 107,000，人均收入 766,411。",
+  "step6_review": {
+    "verdict": "pass",
+    "mode": "flagged → judged",
+    "notes": [
+      "题干已写明 \"the approximate number of employees reported at fiscal year-end in that year's Form 10-K\"，口径唯一"
+    ]
+  }
 }

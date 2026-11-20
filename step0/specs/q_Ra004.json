@@ -164,14 +164,25 @@
       "Liquid_exceeds_term_debt": "Liquid assets exceed term debt?"
     },
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ],
     "question_previous_version": "How does Apple Inc.'s solvency position look based on its balance sheet as of September 26, 2026 (fiscal 2026 Form 10-K)? Report total assets, total liabilities, total shareholders' equity, and total term debt (in $ millions); the ratio of total liabilities to shareholders' equity, rounded to two decimals; Apple's total cash, cash equivalents and marketable securities (in $ millions); and whether that total exceeds its term debt.",
     "time_map": {
+      "September 30, 2023": "September 26, 2026",
       "2023": "2026"
     },
-    "gt_template": "The solvency position of Apple Inc. for 2026 can be assessed using the balance sheet data (as of September 26, 2026):\n- Total Assets: $[[Assets@FY2026]] million\n- Total Liabilities: $[[Liab@FY2026]] million\n- Total Shareholders' Equity: $[[Eq@FY2026]] million\nTotal liabilities are about [[LtoE@FY2026|.2f]] times total shareholders' equity. Most of these liabilities are operating obligations rather than borrowings: the term debt for 2026 is $[[TermDebt@FY2026]] million (current $[[TDc@FY2026]] million and non-current $[[TDn@FY2026]] million). The company's cash and cash equivalents are $[[Cash@FY2026]] million, with additional marketable securities of $[[MSc@FY2026]] million (current) and $[[MSn@FY2026]] million (non-current), i.e. $[[Liquid@FY2026]] million in total, which exceeds its term debt. This indicates that Apple Inc. has sufficient liquidity to meet its debt obligations. Overall, its strong asset base and liquidity position suggest a stable solvency position."
+    "old_question": "How does the solvency position of Apple Inc. look based on its balance sheet as of September 30, 2023 (end of fiscal year 2023)? Report total assets, total liabilities, total shareholders' equity, and total term debt (current and non-current), each in $ millions; the ratio of total liabilities to total shareholders' equity, rounded to two decimals; and Apple's total cash, cash equivalents and marketable securities (current and non-current) in $ millions, stating whether this total exceeds its total term debt.",
+    "asked": {
+      "TA": "total assets",
+      "TL": "total liabilities",
+      "TE": "total shareholders' equity",
+      "TermDebt": "total term debt",
+      "LtoE": "ratio of total liabilities to total shareholders' equity",
+      "Liquid": "cash, cash equivalents and marketable securities",
+      "Liquid_exceeds_term_debt": "exceeds its total term debt"
+    }
   },
   "step6_review": {
     "verdict": "pass",
@@ -202,6 +213,17 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
-  ]
+  ],
+  "label_map": {
+    "FY2026": "FY2023"
+  },
+  "company_in_question": "Apple Inc."
 }

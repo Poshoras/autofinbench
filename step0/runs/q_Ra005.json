@@ -63,7 +63,8 @@
       "DE": "Liab@{p} / Eq@{p}",
       "ICR": "PreTax@{p} / IntExp@{p}",
       "FL": "Assets@{p} / Eq@{p}",
-      "LTDCap": "LTD@{p} / (LTD@{p} + Eq@{p})"
+      "LTDCap": "LTD@{p} / (LTD@{p} + Eq@{p})",
+      "ICRE": "(PreTax@{p} + IntExp@{p}) / IntExp@{p}"
     },
     "evidence_in_seed_context": {
       "DE@Q1_2024": [],
@@ -166,6 +167,14 @@
         "filing_ok": true,
         "corrected_seed_answer": 0.54,
         "within_1_unit": true
+      },
+      {
+        "metric": "ICRE@Q1_2024",
+        "formula": "(PreTax@Q1_2024 + IntExp@Q1_2024) / IntExp@Q1_2024",
+        "seed_answer": null,
+        "recomputed_from_seed_inputs": 1.710009853834784,
+        "recomputed_from_filing": 1.710009853834784,
+        "missing": []
       }
     ],
     "flags_for_attention": [],
@@ -245,77 +254,38 @@
         "formula": "LTD@Q3_2026 / (LTD@Q3_2026 + Eq@Q3_2026)",
         "value": 0.5527261545557627,
         "missing": []
+      },
+      "ICRE@Q3_2026": {
+        "formula": "(PreTax@Q3_2026 + IntExp@Q3_2026) / IntExp@Q3_2026",
+        "value": 1.7737893927747885,
+        "missing": []
       }
     },
-    "variant_metrics": {
-      "interest coverage on EBIT (pre-tax income + interest expense)": {
-        "DE@Q3_2026": {
-          "formula": "Liab@Q3_2026 / Eq@Q3_2026",
-          "value": 12.673422528251622,
-          "missing": []
-        },
-        "ICR@Q3_2026": {
-          "formula": "(PreTax@Q3_2026 + IntExp@Q3_2026) / IntExp@Q3_2026",
-          "value": 1.7737893927747885,
-          "missing": []
-        },
-        "FL@Q3_2026": {
-          "formula": "Assets@Q3_2026 / Eq@Q3_2026",
-          "value": 13.673422528251622,
-          "missing": []
-        },
-        "LTDCap@Q3_2026": {
-          "formula": "LTD@Q3_2026 / (LTD@Q3_2026 + Eq@Q3_2026)",
-          "value": 0.5527261545557627,
-          "missing": []
-        }
-      },
-      "debt-to-equity on long-term debt": {
-        "DE@Q3_2026": {
-          "formula": "LTD@Q3_2026 / Eq@Q3_2026",
-          "value": 1.2357667683581832,
-          "missing": []
-        },
-        "ICR@Q3_2026": {
-          "formula": "PreTax@Q3_2026 / IntExp@Q3_2026",
-          "value": 0.7737893927747886,
-          "missing": []
-        },
-        "FL@Q3_2026": {
-          "formula": "Assets@Q3_2026 / Eq@Q3_2026",
-          "value": 13.673422528251622,
-          "missing": []
-        },
-        "LTDCap@Q3_2026": {
-          "formula": "LTD@Q3_2026 / (LTD@Q3_2026 + Eq@Q3_2026)",
-          "value": 0.5527261545557627,
-          "missing": []
-        }
-      }
-    }
+    "variant_metrics": {}
   },
   "step5_question": {
-    "question": "What were the key outcomes of the solvency analysis for JPMorgan Chase as of September 30, 2026?",
-    "ground_truth_answer": "The key findings from the solvency analysis of JPMorgan Chase as of September 30, 2026, include:\n- Debt Equity Ratio: 12.67 (total liabilities $4,719,177 million / total stockholders' equity $372,368 million)\n- Interest Coverage Ratio: 0.77 (income before income tax expense $20,134 million / total interest expense $26,020 million, three months ended September 30, 2026; on an EBIT basis, i.e. pre-tax income plus interest expense, the ratio is 1.77)\n- Financial Leverage Ratio: 13.67 (total assets $5,091,545 million / total stockholders' equity)\n- Long-term Debt to Capitalization Ratio: 0.55 (long-term debt $460,160 million / (long-term debt + total stockholders' equity))\nThese ratios reflect the highly leveraged balance sheet typical of a large bank, where deposits and other liabilities fund most of the assets. Because interest expense is an operating cost for a bank, the low interest coverage ratio does not by itself indicate a solvency problem.",
+    "old_question": "What were the key outcomes of the solvency analysis for JPMorgan Chase & Co. as of March 31, 2024, based on its Form 10-Q for the quarter ended March 31, 2024? Report the following ratios, each rounded to two decimals: the debt-to-equity ratio (based on total liabilities and total stockholders' equity), the financial leverage ratio (based on total assets and total stockholders' equity), and the long-term debt to capitalization ratio, all as of March 31, 2024; and the EBIT-based interest coverage ratio for the three months ended March 31, 2024.",
+    "old_ground_truth": "Answer:\n- Debt-to-equity (Q1_2024): 11.15\n- Interest coverage (EBIT basis) (Q1_2024): 1.71\n- Financial leverage (Q1_2024): 12.15\n- Long-term debt to capitalization (Q1_2024): 0.54\nCalculation:\n- Debt-to-equity (Q1_2024): 11.15  [3,754,090 / 336,637]\n- Interest coverage (EBIT basis) (Q1_2024): 1.71  [(17,293 + 24,356) / 24,356]\n- Financial leverage (Q1_2024): 12.15  [4,090,727 / 336,637]\n- Long-term debt to capitalization (Q1_2024): 0.54  [395,872 / (395,872 + 336,637)]\nData used ($ millions unless stated):\n- Total assets (Q1_2024): 4,090,727\n- Total stockholders' equity (Q1_2024): 336,637\n- Total interest expense (Q1_2024): 24,356\n- Long-term debt (Q1_2024): 395,872\n- Total liabilities (Q1_2024): 3,754,090\n- Income before income tax expense (Q1_2024): 17,293",
+    "old_answer": {
+      "DE@Q1_2024": 11.15,
+      "ICRE@Q1_2024": 1.71,
+      "FL@Q1_2024": 12.15,
+      "LTDCap@Q1_2024": 0.54
+    },
+    "question": "What were the key outcomes of the solvency analysis for JPMorgan Chase & Co. as of September 30, 2026, based on its Form 10-Q for the quarter ended September 30, 2026? Report the following ratios, each rounded to two decimals: the debt-to-equity ratio (based on total liabilities and total stockholders' equity), the financial leverage ratio (based on total assets and total stockholders' equity), and the long-term debt to capitalization ratio, all as of September 30, 2026; and the EBIT-based interest coverage ratio for the three months ended September 30, 2026.",
+    "ground_truth_answer": "Answer:\n- Debt-to-equity (Q3_2026): 12.67\n- Interest coverage (EBIT basis) (Q3_2026): 1.77\n- Financial leverage (Q3_2026): 13.67\n- Long-term debt to capitalization (Q3_2026): 0.55\nCalculation:\n- Debt-to-equity (Q3_2026): 12.67  [4,719,177 / 372,368]\n- Interest coverage (EBIT basis) (Q3_2026): 1.77  [(20,134 + 26,020) / 26,020]\n- Financial leverage (Q3_2026): 13.67  [5,091,545 / 372,368]\n- Long-term debt to capitalization (Q3_2026): 0.55  [460,160 / (460,160 + 372,368)]\nData used ($ millions unless stated):\n- Total assets (Q3_2026): 5,091,545\n- Total stockholders' equity (Q3_2026): 372,368\n- Total interest expense (Q3_2026): 26,020\n- Long-term debt (Q3_2026): 460,160\n- Total liabilities (Q3_2026): 4,719,177\n- Income before income tax expense (Q3_2026): 20,134",
     "answer": {
       "DE@Q3_2026": 12.67,
-      "ICR@Q3_2026": 0.77,
+      "ICRE@Q3_2026": 1.77,
       "FL@Q3_2026": 13.67,
       "LTDCap@Q3_2026": 0.55
     },
-    "accepted_variants": {
-      "interest coverage on EBIT (pre-tax income + interest expense)": {
-        "ICR@Q3_2026": 1.77
-      },
-      "debt-to-equity on long-term debt": {
-        "DE@Q3_2026": 1.24
-      }
-    },
-    "key_points": "Debt-to-equity (Q3_2026): 12.67\nInterest coverage (pre-tax income / interest expense) (Q3_2026): 0.77\nFinancial leverage (Q3_2026): 13.67\nLong-term debt to capitalization (Q3_2026): 0.55\nAlso accepted (interest coverage on EBIT (pre-tax income + interest expense)): Interest coverage (pre-tax income / interest expense) (Q3_2026): 1.77\nAlso accepted (debt-to-equity on long-term debt): Debt-to-equity (Q3_2026): 1.24",
-    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
+    "accepted_variants": {},
+    "grading": "score each listed item; numbers correct if within 1 unit of the last stated decimal place; labels by meaning",
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ]
   },
   "step6_review": {
@@ -359,8 +329,10 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
-    "only_time_changed_vs_seed": true,
-    "ground_truth_rendered": true,
+    "only_time_changed_old_vs_new": true,
+    "scored_items_not_asked": [],
+    "company_named_in_question": true,
+    "old_version_values_ok": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -399,6 +371,13 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 4,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
   ],
   "final_status": "ACCEPTED"

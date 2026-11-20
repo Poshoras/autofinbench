@@ -36,15 +36,19 @@
       "RevGrowth": "Net sales growth %"
     },
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ],
     "question_previous_version": "Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, what was P&G's revenue (net sales) growth rate from fiscal 2025 to fiscal 2026? Report the percentage rounded to one decimal place.",
     "time_map": {
       "2024": "2026",
       "2023": "2025"
     },
-    "gt_template": "The Revenue Growth Rate is calculated as (Revenue for 2026 - Revenue for 2025) / Revenue for 2025.\n\nRevenue Growth Rate = ($[[Rev@FY2026]] million - $[[Rev@FY2025]] million) / $[[Rev@FY2025]] million = [[RevGrowth@FY2026|.1f]]%"
+    "old_question": "What was the net sales growth rate of Procter & Gamble (P&G) from fiscal year 2023 to fiscal year 2024 (fiscal years ended June 30)? Report the percentage rounded to one decimal place.",
+    "asked": {
+      "RevGrowth": "growth rate"
+    }
   },
   "revisions": [
     {
@@ -53,6 +57,14 @@
       "problem": "题干比原题多了提示，新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 2,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
-  ]
+  ],
+  "company_in_question": "Procter & Gamble"
 }

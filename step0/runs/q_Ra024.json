@@ -250,8 +250,6 @@
       "Assets@FY2024": "Assets",
       "Assets@FY2025": "Assets",
       "Assets@FY2026": "Assets",
-      "NI@FY2025": "NetIncomeLoss",
-      "NI@FY2026": "NetIncomeLoss",
       "NetEarn@FY2025": "ProfitLoss",
       "NetEarn@FY2026": "ProfitLoss"
     }
@@ -272,16 +270,6 @@
         "concept": "Assets",
         "dims": {},
         "value": 126521.0
-      },
-      "NI@FY2025": {
-        "concept": "NetIncomeLoss",
-        "dims": {},
-        "value": 15974.0
-      },
-      "NI@FY2026": {
-        "concept": "NetIncomeLoss",
-        "dims": {},
-        "value": 16046.0
       },
       "NetEarn@FY2025": {
         "concept": "ProfitLoss",
@@ -306,72 +294,29 @@
         "missing": []
       }
     },
-    "variant_metrics": {
-      "year-end total assets": {
-        "ROA@FY2025": {
-          "formula": "NetEarn@FY2025 / Assets@FY2025 * 100",
-          "value": 12.828293313955811,
-          "missing": []
-        },
-        "ROA@FY2026": {
-          "formula": "NetEarn@FY2026 / Assets@FY2026 * 100",
-          "value": 12.759937085543111,
-          "missing": []
-        }
-      },
-      "net earnings attributable to P&G": {
-        "ROA@FY2025": {
-          "formula": "NI@FY2025 / ((Assets@FY2025 + Assets@FY2024) / 2) * 100",
-          "value": 12.90301735453411,
-          "missing": []
-        },
-        "ROA@FY2026": {
-          "formula": "NI@FY2026 / ((Assets@FY2026 + Assets@FY2025) / 2) * 100",
-          "value": 12.74746575995424,
-          "missing": []
-        }
-      },
-      "attributable earnings, year-end assets": {
-        "ROA@FY2025": {
-          "formula": "NI@FY2025 / Assets@FY2025 * 100",
-          "value": 12.755627600194842,
-          "missing": []
-        },
-        "ROA@FY2026": {
-          "formula": "NI@FY2026 / Assets@FY2026 * 100",
-          "value": 12.682479588368729,
-          "missing": []
-        }
-      }
-    }
+    "variant_metrics": {}
   },
   "step5_question": {
-    "question": "What is Procter & Gamble's Return on Assets for 2026, and how does it compare to 2025?",
-    "ground_truth_answer": "ROA is Net Earnings divided by Average Total Assets.\nFor 2026:\nAverage Total Assets = ($125,231 million (2025) + $126,521 million (2026)) / 2 = $125,876.0 million\nROA = $16,144 million / $125,876.0 million = 12.8%\nFor 2025:\nAverage Total Assets = ($122,370 million (2024) + $125,231 million (2025)) / 2 = $123,800.5 million\nROA = $16,065 million / $123,800.5 million = 13.0%\nROA decreased slightly from 13.0% in 2025 to 12.8% in 2026.",
+    "old_question": "What was the return on assets (ROA) of Procter & Gamble (P&G) for fiscal year 2024 (ended June 30, 2024), based on net earnings including noncontrolling interests and average total assets, and how does it compare with fiscal year 2023 on the same basis? Report both years as percentages rounded to one decimal place and state whether ROA increased, decreased, or was unchanged.",
+    "old_ground_truth": "Answer:\n- ROA % (FY2023): 12.4\n- ROA % (FY2024): 12.3\n- Change: decreased\nCalculation:\n- ROA % (FY2023): 12.4  [14,738 / ((120,829 + 117,208) / 2) x 100]\n- ROA % (FY2024): 12.3  [14,974 / ((122,370 + 120,829) / 2) x 100]\nData used ($ millions unless stated):\n- Total assets (FY2022): 117,208\n- Total assets (FY2023): 120,829\n- Total assets (FY2024): 122,370\n- Net earnings (incl. noncontrolling interests) (FY2023): 14,738\n- Net earnings (incl. noncontrolling interests) (FY2024): 14,974",
+    "old_answer": {
+      "ROA@FY2023": 12.4,
+      "ROA@FY2024": 12.3,
+      "ROA_change": "decreased"
+    },
+    "question": "What was the return on assets (ROA) of Procter & Gamble (P&G) for fiscal year 2026 (ended June 30, 2026), based on net earnings including noncontrolling interests and average total assets, and how does it compare with fiscal year 2025 on the same basis? Report both years as percentages rounded to one decimal place and state whether ROA increased, decreased, or was unchanged.",
+    "ground_truth_answer": "Answer:\n- ROA % (FY2025): 13.0\n- ROA % (FY2026): 12.8\n- Change: decreased\nCalculation:\n- ROA % (FY2025): 13.0  [16,065 / ((125,231 + 122,370) / 2) x 100]\n- ROA % (FY2026): 12.8  [16,144 / ((126,521 + 125,231) / 2) x 100]\nData used ($ millions unless stated):\n- Total assets (FY2024): 122,370\n- Total assets (FY2025): 125,231\n- Total assets (FY2026): 126,521\n- Net earnings (incl. noncontrolling interests) (FY2025): 16,065\n- Net earnings (incl. noncontrolling interests) (FY2026): 16,144",
     "answer": {
       "ROA@FY2025": 13.0,
       "ROA@FY2026": 12.8,
       "ROA_change": "decreased"
     },
-    "accepted_variants": {
-      "year-end total assets": {
-        "ROA@FY2025": 12.8,
-        "ROA_change": "unchanged"
-      },
-      "net earnings attributable to P&G": {
-        "ROA@FY2025": 12.9,
-        "ROA@FY2026": 12.7
-      },
-      "attributable earnings, year-end assets": {
-        "ROA@FY2025": 12.8,
-        "ROA@FY2026": 12.7
-      }
-    },
-    "key_points": "ROA % (FY2025): 13.0\nROA % (FY2026): 12.8\nChange: decreased\nAlso accepted (year-end total assets): ROA % (FY2025): 12.8; Change: unchanged\nAlso accepted (net earnings attributable to P&G): ROA % (FY2025): 12.9; ROA % (FY2026): 12.7\nAlso accepted (attributable earnings, year-end assets): ROA % (FY2025): 12.8; ROA % (FY2026): 12.7",
-    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
+    "accepted_variants": {},
+    "grading": "score each listed item; numbers correct if within 1 unit of the last stated decimal place; labels by meaning",
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ]
   },
   "step6_review": {
@@ -395,18 +340,6 @@
         "found_in_filing_text": true
       },
       {
-        "key": "NI@FY2025",
-        "value_as_text": "15,974",
-        "match_mode": "anywhere (>=4 digits)",
-        "found_in_filing_text": true
-      },
-      {
-        "key": "NI@FY2026",
-        "value_as_text": "16,046",
-        "match_mode": "anywhere (>=4 digits)",
-        "found_in_filing_text": true
-      },
-      {
         "key": "NetEarn@FY2025",
         "value_as_text": "16,065",
         "match_mode": "anywhere (>=4 digits)",
@@ -421,8 +354,10 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
-    "only_time_changed_vs_seed": true,
-    "ground_truth_rendered": true,
+    "only_time_changed_old_vs_new": true,
+    "scored_items_not_asked": [],
+    "company_named_in_question": true,
+    "old_version_values_ok": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -445,6 +380,13 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
   ],
   "final_status": "ACCEPTED"

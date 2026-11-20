@@ -364,10 +364,19 @@
     "variant_metrics": {}
   },
   "step5_question": {
-    "question": "What percentage of Nike's total revenue in 2026 was contributed by each region, and how does this reflect the company's global revenue distribution?",
-    "ground_truth_answer": "To calculate the percentage of revenue contributed by each region to Nike's total revenue in 2026:\n\nFormula:\nPercentage of Revenue = (Revenue from Region / Total NIKE Brand Revenue) x 100\n\nData:\n\nNorth America Revenue = $20,511 million\nEMEA Revenue = $12,572 million\nGreater China Revenue = $5,847 million\nAPLA Revenue = $6,243 million\nGlobal Brand Divisions Revenue = $49 million\nTotal NIKE Brand Revenue = $20,511 + $12,572 + $5,847 + $6,243 + $49 = $45,222 million\nCalculations:\n\nNorth America: (20,511 / 45,222) x 100 = 45.36%\nEMEA: (12,572 / 45,222) x 100 = 27.80%\nGreater China: (5,847 / 45,222) x 100 = 12.93%\nAPLA: (6,243 / 45,222) x 100 = 13.81%\nGlobal Brand Divisions: (49 / 45,222) x 100 = 0.11%\n\nNorth America contributes the largest share, followed by EMEA, APLA and Greater China, so NIKE Brand revenue remains concentrated in North America and EMEA. (Total NIKE, Inc. revenues, including Converse, were $46,398 million; measured against that total, North America's share is 44.21%.)",
+    "old_question": "According to NIKE, Inc.'s Form 10-K for fiscal year 2018 (ended May 31, 2018), what percentage of total NIKE Brand revenues in fiscal 2018 was contributed by each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions? Report each percentage rounded to two decimal places and identify the one with the largest share.",
+    "old_ground_truth": "Answer:\n- North America % (FY2018): 43.08\n- EMEA % (FY2018): 26.80\n- Greater China % (FY2018): 14.89\n- APLA % (FY2018): 14.98\n- Global Brand Divisions % (FY2018): 0.26\n- Largest share: North America\nCalculation:\n- North America % (FY2018): 43.08  [14,855 / (14,855 + 9,242 + 5,134 + 5,166 + 88) x 100]\n- EMEA % (FY2018): 26.80  [9,242 / (14,855 + 9,242 + 5,134 + 5,166 + 88) x 100]\n- Greater China % (FY2018): 14.89  [5,134 / (14,855 + 9,242 + 5,134 + 5,166 + 88) x 100]\n- APLA % (FY2018): 14.98  [5,166 / (14,855 + 9,242 + 5,134 + 5,166 + 88) x 100]\n- Global Brand Divisions % (FY2018): 0.26  [88 / (14,855 + 9,242 + 5,134 + 5,166 + 88) x 100]\nData used ($ millions unless stated):\n- NIKE Brand revenues – Asia Pacific & Latin America (FY2018): 5,166\n- NIKE Brand revenues – Europe, Middle East & Africa (FY2018): 9,242\n- Global Brand Divisions revenues (FY2018): 88\n- NIKE Brand revenues – Greater China (FY2018): 5,134\n- NIKE Brand revenues – North America (FY2018): 14,855",
+    "old_answer": {
+      "ShareNA@FY2018": 43.08,
+      "ShareEMEA@FY2018": 26.8,
+      "ShareGC@FY2018": 14.89,
+      "ShareAPLA@FY2018": 14.98,
+      "ShareGBD@FY2018": 0.26,
+      "Largest_share": "North America"
+    },
+    "question": "According to NIKE, Inc.'s Form 10-K for fiscal year 2026 (ended May 31, 2026), what percentage of total NIKE Brand revenues in fiscal 2026 was contributed by each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions? Report each percentage rounded to two decimal places and identify the one with the largest share.",
+    "ground_truth_answer": "Answer:\n- North America % (FY2026): 45.36\n- EMEA % (FY2026): 27.80\n- Greater China % (FY2026): 12.93\n- APLA % (FY2026): 13.81\n- Global Brand Divisions % (FY2026): 0.11\n- Largest share: North America\nCalculation:\n- North America % (FY2026): 45.36  [20,511 / (20,511 + 12,572 + 5,847 + 6,243 + 49) x 100]\n- EMEA % (FY2026): 27.80  [12,572 / (20,511 + 12,572 + 5,847 + 6,243 + 49) x 100]\n- Greater China % (FY2026): 12.93  [5,847 / (20,511 + 12,572 + 5,847 + 6,243 + 49) x 100]\n- APLA % (FY2026): 13.81  [6,243 / (20,511 + 12,572 + 5,847 + 6,243 + 49) x 100]\n- Global Brand Divisions % (FY2026): 0.11  [49 / (20,511 + 12,572 + 5,847 + 6,243 + 49) x 100]\nData used ($ millions unless stated):\n- NIKE Brand revenues – Asia Pacific & Latin America (FY2026): 6,243\n- NIKE Brand revenues – Europe, Middle East & Africa (FY2026): 12,572\n- Global Brand Divisions revenues (FY2026): 49\n- NIKE Brand revenues – Greater China (FY2026): 5,847\n- NIKE Brand revenues – North America (FY2026): 20,511",
     "answer": {
-      "Brand@FY2026": 45222,
       "ShareNA@FY2026": 45.36,
       "ShareEMEA@FY2026": 27.8,
       "ShareGC@FY2026": 12.93,
@@ -376,11 +385,11 @@
       "Largest_share": "North America"
     },
     "accepted_variants": {},
-    "key_points": "Total NIKE Brand revenues ($M) (FY2026): 45,222\nNorth America % (FY2026): 45.36\nEMEA % (FY2026): 27.80\nGreater China % (FY2026): 12.93\nAPLA % (FY2026): 13.81\nGlobal Brand Divisions % (FY2026): 0.11\nLargest share: North America",
-    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
+    "grading": "score each listed item; numbers correct if within 1 unit of the last stated decimal place; labels by meaning",
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ]
   },
   "step6_review": {
@@ -424,8 +433,10 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
-    "only_time_changed_vs_seed": true,
-    "ground_truth_rendered": true,
+    "only_time_changed_old_vs_new": true,
+    "scored_items_not_asked": [],
+    "company_named_in_question": true,
+    "old_version_values_ok": true,
     "rounding_near_boundary": [
       {
         "key": "ShareAPLA@FY2026",
@@ -461,6 +472,13 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
   ],
   "final_status": "ACCEPTED"

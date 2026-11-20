@@ -192,19 +192,26 @@
     "variant_metrics": {}
   },
   "step5_question": {
-    "question": "How does Nike's EBIT compare year-on-year?",
-    "ground_truth_answer": "EBIT 2026: $3,850 million\nEBIT 2025: $3,778 million\n(EBIT = income before income taxes + interest (income) expense, net: fiscal 2026: $3,900 million + $(50) million; fiscal 2025: $3,885 million + $(107) million)\nFormula:\nPercentage Change in EBIT = ((EBIT 2026 - EBIT 2025) / EBIT 2025) x 100\n\nCalculation:\nPercentage Change = ((3,850 - 3,778) / 3,778) x 100\nPercentage Change = (72 / 3,778) x 100 = 1.91%\n\nNike's EBIT increased by approximately 1.91% from fiscal 2025 to fiscal 2026 (fiscal years ended May 31).",
+    "old_question": "How did NIKE, Inc.'s EBIT (earnings before interest and taxes, as reported by NIKE) for fiscal year 2018 (ended May 31, 2018) compare with fiscal year 2017? Report EBIT for both years in $ millions and the year-over-year percentage change rounded to two decimals.",
+    "old_ground_truth": "Answer:\n- EBIT ($M) (FY2017): 4,945\n- EBIT ($M) (FY2018): 4,379\n- EBIT YoY change % (FY2018): -11.45\nCalculation:\n- EBIT ($M) (FY2017): 4,945  [4,886 - -59]\n- EBIT ($M) (FY2018): 4,379  [4,325 - -54]\n- EBIT YoY change % (FY2018): -11.45  [((4,325 - -54) - (4,886 - -59)) / (4,886 - -59) x 100]\nData used ($ millions unless stated):\n- Interest expense (income), net（XBRL 中正数 = 净利息收入） (FY2017): -59\n- Interest expense (income), net（XBRL 中正数 = 净利息收入） (FY2018): -54\n- Income before income taxes (FY2017): 4,886\n- Income before income taxes (FY2018): 4,325",
+    "old_answer": {
+      "EBIT@FY2017": 4945,
+      "EBIT@FY2018": 4379,
+      "Chg@FY2018": -11.45
+    },
+    "question": "How did NIKE, Inc.'s EBIT (earnings before interest and taxes, as reported by NIKE) for fiscal year 2026 (ended May 31, 2026) compare with fiscal year 2025? Report EBIT for both years in $ millions and the year-over-year percentage change rounded to two decimals.",
+    "ground_truth_answer": "Answer:\n- EBIT ($M) (FY2025): 3,778\n- EBIT ($M) (FY2026): 3,850\n- EBIT YoY change % (FY2026): 1.91\nCalculation:\n- EBIT ($M) (FY2025): 3,778  [3,885 - 107]\n- EBIT ($M) (FY2026): 3,850  [3,900 - 50]\n- EBIT YoY change % (FY2026): 1.91  [((3,900 - 50) - (3,885 - 107)) / (3,885 - 107) x 100]\nData used ($ millions unless stated):\n- Interest expense (income), net（XBRL 中正数 = 净利息收入） (FY2025): 107\n- Interest expense (income), net（XBRL 中正数 = 净利息收入） (FY2026): 50\n- Income before income taxes (FY2025): 3,885\n- Income before income taxes (FY2026): 3,900",
     "answer": {
       "EBIT@FY2025": 3778,
       "EBIT@FY2026": 3850,
       "Chg@FY2026": 1.91
     },
     "accepted_variants": {},
-    "key_points": "EBIT ($M) (FY2025): 3,778\nEBIT ($M) (FY2026): 3,850\nEBIT YoY change % (FY2026): 1.91",
-    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
+    "grading": "score each listed item; numbers correct if within 1 unit of the last stated decimal place; labels by meaning",
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ]
   },
   "step6_review": {
@@ -236,8 +243,10 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
-    "only_time_changed_vs_seed": true,
-    "ground_truth_rendered": true,
+    "only_time_changed_old_vs_new": true,
+    "scored_items_not_asked": [],
+    "company_named_in_question": true,
+    "old_version_values_ok": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -282,6 +291,13 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 5,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
   ],
   "final_status": "ACCEPTED"

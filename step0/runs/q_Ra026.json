@@ -253,8 +253,6 @@
       "doc": "pg-20260630.htm"
     },
     "availability": {
-      "AdjFCF@FY2025": "TEXT",
-      "AdjFCF@FY2026": "TEXT",
       "CFO@FY2025": "NetCashProvidedByUsedInOperatingActivities",
       "CFO@FY2026": "NetCashProvidedByUsedInOperatingActivities",
       "Capex@FY2025": "PaymentsToAcquirePropertyPlantAndEquipment",
@@ -265,16 +263,6 @@
   },
   "step4_compute": {
     "inputs": {
-      "AdjFCF@FY2025": {
-        "concept": "TEXT",
-        "dims": {},
-        "value": 14606.0
-      },
-      "AdjFCF@FY2026": {
-        "concept": "TEXT",
-        "dims": {},
-        "value": 15835.0
-      },
       "CFO@FY2025": {
         "concept": "NetCashProvidedByUsedInOperatingActivities",
         "dims": {},
@@ -318,56 +306,33 @@
         "missing": []
       }
     },
-    "variant_metrics": {
-      "P&G's reported Adjusted Free Cash Flow": {
-        "FCFtoSales@FY2025": {
-          "formula": "AdjFCF@FY2025 / Rev@FY2025 * 100",
-          "value": 17.329505006881497,
-          "missing": []
-        },
-        "FCFtoSales@FY2026": {
-          "formula": "AdjFCF@FY2026 / Rev@FY2026 * 100",
-          "value": 18.19445721114073,
-          "missing": []
-        }
-      }
-    }
+    "variant_metrics": {}
   },
   "step5_question": {
-    "question": "What is the Free Cash Flow to Sales Ratio for 2026, and how does it compare to 2025?",
-    "ground_truth_answer": "Free Cash Flow to Sales Ratio is Free Cash Flow divided by Net Sales.\nFor 2026:\nFree Cash Flow = Net Cash from Operating Activities - Capital Expenditures = $19,556 million - $4,409 million = $15,147 million\nNet Sales = $87,032 million\nFree Cash Flow to Sales Ratio = $15,147 million / $87,032 million = 17.4%\nFor 2025:\nFree Cash Flow = $17,817 million - $3,773 million = $14,044 million\nNet Sales = $84,284 million\nFree Cash Flow to Sales Ratio = $14,044 million / $84,284 million = 16.7%\nThe ratio increased from 16.7% in 2025 to 17.4% in 2026.",
+    "old_question": "What was the free cash flow to sales ratio of Procter & Gamble (P&G) for fiscal year 2024 (ended June 30, 2024), with free cash flow measured as operating cash flow less capital expenditures, and how does it compare with fiscal year 2023? Report both years as percentages rounded to one decimal place and state whether the ratio increased or decreased.",
+    "old_ground_truth": "Answer:\n- FCF / net sales % (FY2023): 16.8\n- FCF / net sales % (FY2024): 19.7\n- Change: increased\nCalculation:\n- FCF / net sales % (FY2023): 16.8  [(16,848 - 3,062) / 82,006 x 100]\n- FCF / net sales % (FY2024): 19.7  [(19,846 - 3,322) / 84,039 x 100]\nData used ($ millions unless stated):\n- Total operating activities (FY2023): 16,848\n- Total operating activities (FY2024): 19,846\n- Capital expenditures (FY2023): 3,062\n- Capital expenditures (FY2024): 3,322\n- Net sales (FY2023): 82,006\n- Net sales (FY2024): 84,039",
+    "old_answer": {
+      "FCFtoSales@FY2023": 16.8,
+      "FCFtoSales@FY2024": 19.7,
+      "FCFtoSales_change": "increased"
+    },
+    "question": "What was the free cash flow to sales ratio of Procter & Gamble (P&G) for fiscal year 2026 (ended June 30, 2026), with free cash flow measured as operating cash flow less capital expenditures, and how does it compare with fiscal year 2025? Report both years as percentages rounded to one decimal place and state whether the ratio increased or decreased.",
+    "ground_truth_answer": "Answer:\n- FCF / net sales % (FY2025): 16.7\n- FCF / net sales % (FY2026): 17.4\n- Change: increased\nCalculation:\n- FCF / net sales % (FY2025): 16.7  [(17,817 - 3,773) / 84,284 x 100]\n- FCF / net sales % (FY2026): 17.4  [(19,556 - 4,409) / 87,032 x 100]\nData used ($ millions unless stated):\n- Total operating activities (FY2025): 17,817\n- Total operating activities (FY2026): 19,556\n- Capital expenditures (FY2025): 3,773\n- Capital expenditures (FY2026): 4,409\n- Net sales (FY2025): 84,284\n- Net sales (FY2026): 87,032",
     "answer": {
       "FCFtoSales@FY2025": 16.7,
       "FCFtoSales@FY2026": 17.4,
       "FCFtoSales_change": "increased"
     },
-    "accepted_variants": {
-      "P&G's reported Adjusted Free Cash Flow": {
-        "FCFtoSales@FY2025": 17.3,
-        "FCFtoSales@FY2026": 18.2
-      }
-    },
-    "key_points": "FCF / net sales % (FY2025): 16.7\nFCF / net sales % (FY2026): 17.4\nChange: increased\nAlso accepted (P&G's reported Adjusted Free Cash Flow): FCF / net sales % (FY2025): 17.3; FCF / net sales % (FY2026): 18.2",
-    "grading": "score each item separately; numbers correct if within 1 unit of the last stated decimal place; labels by meaning; an answer is also correct if it consistently matches one of the accepted variants",
+    "accepted_variants": {},
+    "grading": "score each listed item; numbers correct if within 1 unit of the last stated decimal place; labels by meaning",
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ]
   },
   "step6_review": {
     "text_verification": [
-      {
-        "key": "AdjFCF@FY2025",
-        "value_as_text": "14,606",
-        "match_mode": "text_source (single source)",
-        "found_in_filing_text": true
-      },
-      {
-        "key": "AdjFCF@FY2026",
-        "value_as_text": "15,835",
-        "match_mode": "text_source (single source)",
-        "found_in_filing_text": true
-      },
       {
         "key": "CFO@FY2025",
         "value_as_text": "17,817",
@@ -407,8 +372,10 @@
     ],
     "answer_leak_in_question": [],
     "formula_in_question": [],
-    "only_time_changed_vs_seed": true,
-    "ground_truth_rendered": true,
+    "only_time_changed_old_vs_new": true,
+    "scored_items_not_asked": [],
+    "company_named_in_question": true,
+    "old_version_values_ok": true,
     "rounding_near_boundary": [],
     "automatic_checks_pass": true,
     "verdict": "pass",
@@ -428,6 +395,13 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 3,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
   ],
   "final_status": "ACCEPTED"

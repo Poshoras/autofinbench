@@ -88,7 +88,8 @@
     "DE": "Liab@{p} / Eq@{p}",
     "ICR": "PreTax@{p} / IntExp@{p}",
     "FL": "Assets@{p} / Eq@{p}",
-    "LTDCap": "LTD@{p} / (LTD@{p} + Eq@{p})"
+    "LTDCap": "LTD@{p} / (LTD@{p} + Eq@{p})",
+    "ICRE": "(PreTax@{p} + IntExp@{p}) / IntExp@{p}"
   },
   "step1_pattern": {
     "question_type": "B 半结构化分析型",
@@ -116,33 +117,32 @@
   "step5_question": {
     "answer_decimals": {
       "DE@Q3_2026": 2,
-      "ICR@Q3_2026": 2,
+      "ICRE@Q3_2026": 2,
       "FL@Q3_2026": 2,
       "LTDCap@Q3_2026": 2
     },
     "display_names": {
       "DE": "Debt-to-equity",
-      "ICR": "Interest coverage (pre-tax income / interest expense)",
+      "ICRE": "Interest coverage (EBIT basis)",
       "FL": "Financial leverage",
       "LTDCap": "Long-term debt to capitalization"
     },
     "changes_vs_seed": [
-      "题干：只替换时间表达，其余与原题一字不差",
-      "GT：沿用原 GT 的结构和写法，数字换成目标期间核实过的值；原 GT 中的错误按正确口径写"
+      "旧题与新题成对生成：旧题 = 原题补全公司、财年、必答指标、单位和关键口径；新题 = 旧题只替换时间",
+      "评分点只覆盖题目要求的内容；不再使用替代口径（口径已在题干写明）",
+      "旧题的标准答案按同一口径用原期间数据重算（更正原 GT 中的错误）"
     ],
-    "variants": {
-      "interest coverage on EBIT (pre-tax income + interest expense)": {
-        "ICR": "(PreTax@{p} + IntExp@{p}) / IntExp@{p}"
-      },
-      "debt-to-equity on long-term debt": {
-        "DE": "LTD@{p} / Eq@{p}"
-      }
-    },
     "question_previous_version": "What were the key outcomes of the solvency analysis for JPMorgan Chase as of September 30, 2026, based on its Form 10-Q for the third quarter of 2026? Report the debt-to-equity ratio, the interest coverage ratio for the three months ended September 30, 2026, the financial leverage ratio, and the long-term debt to capitalization ratio, each rounded to two decimals.",
     "time_map": {
       "March 31, 2024": "September 30, 2026"
     },
-    "gt_template": "The key findings from the solvency analysis of JPMorgan Chase as of September 30, 2026, include:\n- Debt Equity Ratio: [[DE@Q3_2026|.2f]] (total liabilities $[[Liab@Q3_2026]] million / total stockholders' equity $[[Eq@Q3_2026]] million)\n- Interest Coverage Ratio: [[ICR@Q3_2026|.2f]] (income before income tax expense $[[PreTax@Q3_2026]] million / total interest expense $[[IntExp@Q3_2026]] million, three months ended September 30, 2026; on an EBIT basis, i.e. pre-tax income plus interest expense, the ratio is [[(PreTax@Q3_2026 + IntExp@Q3_2026) / IntExp@Q3_2026|.2f]])\n- Financial Leverage Ratio: [[FL@Q3_2026|.2f]] (total assets $[[Assets@Q3_2026]] million / total stockholders' equity)\n- Long-term Debt to Capitalization Ratio: [[LTDCap@Q3_2026|.2f]] (long-term debt $[[LTD@Q3_2026]] million / (long-term debt + total stockholders' equity))\nThese ratios reflect the highly leveraged balance sheet typical of a large bank, where deposits and other liabilities fund most of the assets. Because interest expense is an operating cost for a bank, the low interest coverage ratio does not by itself indicate a solvency problem."
+    "old_question": "What were the key outcomes of the solvency analysis for JPMorgan Chase & Co. as of March 31, 2024, based on its Form 10-Q for the quarter ended March 31, 2024? Report the following ratios, each rounded to two decimals: the debt-to-equity ratio (based on total liabilities and total stockholders' equity), the financial leverage ratio (based on total assets and total stockholders' equity), and the long-term debt to capitalization ratio, all as of March 31, 2024; and the EBIT-based interest coverage ratio for the three months ended March 31, 2024.",
+    "asked": {
+      "DE": "debt-to-equity ratio",
+      "ICRE": "interest coverage ratio",
+      "FL": "financial leverage ratio",
+      "LTDCap": "long-term debt to capitalization ratio"
+    }
   },
   "step6_review": {
     "verdict": "pass",
@@ -181,6 +181,17 @@
       "problem": "题干比原题多了提示（列出要报告的项目、口径），新旧题不只差时间（用户反馈，2026-11-20）",
       "action": "题干改为原题只替换时间；GT 改为仿照原 GT 的自由文本；结构化答案和也接受的口径保留为评分要点；step6 新增\"只改时间\"自动检查",
       "result": "通过"
+    },
+    {
+      "round": 4,
+      "step": "step5_question",
+      "problem": "外部检查（2026-11-20）：只改时间的题干缺公司/财年/必答指标/口径，联网模型搜错公司、用季度数据、答了不在得分点的指标；得分点与题干要求不一致（005 只问\"偿债分析结果\"却按 4 个比率评分；006 题干写总收入、GT 用 NIKE Brand 收入；005 ICR 与 027 不同口径方向相反）",
+      "action": "新旧两题都补全公司、报告期、必答指标、单位和关键口径（仍只差时间）；得分点 = 题干要求；删除替代口径；005 改用 EBIT 口径的利息保障倍数；旧题答案按同口径重算",
+      "result": "见本轮运行"
     }
-  ]
+  ],
+  "label_map": {
+    "Q3_2026": "Q1_2024"
+  },
+  "company_in_question": "JPMorgan Chase"
 }
