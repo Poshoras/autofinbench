@@ -1,0 +1,141 @@
+{
+  "qid": "q_Ra009",
+  "company": "NIKE, Inc.",
+  "cik": 320187,
+  "seed_accn": "0000320187-18-000142",
+  "target_accn": "0000320187-26-000088",
+  "periods": {
+    "seed": {
+      "FY2017": {
+        "start": "2016-06-01",
+        "end": "2017-05-31"
+      },
+      "FY2018": {
+        "start": "2017-06-01",
+        "end": "2018-05-31"
+      }
+    },
+    "target": {
+      "FY2025": {
+        "start": "2024-06-01",
+        "end": "2025-05-31"
+      },
+      "FY2026": {
+        "start": "2025-06-01",
+        "end": "2026-05-31"
+      }
+    }
+  },
+  "metric_periods": {
+    "seed": [
+      "FY2017",
+      "FY2018"
+    ],
+    "target": [
+      "FY2025",
+      "FY2026"
+    ]
+  },
+  "items": {
+    "Rev": {
+      "concepts_seed": [
+        "SalesRevenueNet"
+      ],
+      "concepts_target": [
+        "RevenueFromContractWithCustomerExcludingAssessedTax"
+      ],
+      "type": "duration",
+      "label": "Revenues",
+      "statement": "Consolidated Statements of Income"
+    },
+    "NI": {
+      "concepts": [
+        "NetIncomeLoss"
+      ],
+      "type": "duration",
+      "label": "Net income",
+      "statement": "Consolidated Statements of Income"
+    },
+    "EPSb": {
+      "concepts": [
+        "EarningsPerShareBasic"
+      ],
+      "type": "duration",
+      "scale": "unit",
+      "label": "Basic EPS",
+      "statement": "Consolidated Statements of Income"
+    },
+    "EPSd": {
+      "concepts": [
+        "EarningsPerShareDiluted"
+      ],
+      "type": "duration",
+      "scale": "unit",
+      "label": "Diluted EPS",
+      "statement": "Consolidated Statements of Income"
+    },
+    "PxEnd": {
+      "concepts": [],
+      "type": "duration",
+      "scale": "unit",
+      "label": "Year-end stock price",
+      "statement": "Item 5 – market price table"
+    },
+    "PxHigh": {
+      "concepts": [],
+      "type": "duration",
+      "scale": "unit",
+      "label": "High stock price",
+      "statement": "Item 5 – market price table"
+    },
+    "PxLow": {
+      "concepts": [],
+      "type": "duration",
+      "scale": "unit",
+      "label": "Low stock price",
+      "statement": "Item 5 – market price table"
+    }
+  },
+  "metrics": {
+    "RevGrowth": "(Rev@{p} - Rev@{prev}) / Rev@{prev} * 100",
+    "PxEndChk": "PxEnd@{p}"
+  },
+  "step1_pattern": {
+    "question_type": "C 开放检索型",
+    "structure": "股价表现（年末价、最高、最低）+ 利润表指标两年对比",
+    "operation": "取数 + 一个收入增长率",
+    "output_format": "股价 $；金额 $ 百万",
+    "seed_numbers": {
+      "PxEnd@FY2018": "71.80",
+      "PxEnd@FY2017": "52.99",
+      "PxHigh@FY2018": "73.49",
+      "PxLow@FY2018": "50.35",
+      "Rev@FY2018": "36,397",
+      "Rev@FY2017": "34,350",
+      "NI@FY2018": "1,933",
+      "NI@FY2017": "4,240",
+      "EPSb@FY2018": "1.19",
+      "EPSb@FY2017": "2.56",
+      "EPSd@FY2018": "1.17",
+      "EPSd@FY2017": "2.51"
+    },
+    "seed_answers": {
+      "RevGrowth@FY2018": "6"
+    },
+    "notes": [
+      "题目核心是股价表现，股价来自 10-K 的 Item 5 股价表，属于市场数据而非财务报表数据"
+    ]
+  },
+  "step2_verdict": "MATCH。财务数字全部与 XBRL 一致，股价在原文 p18 定位到；收入增长 5.96% ≈ 6%。",
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026）",
+    "decision": "reject",
+    "rationale": "FY2026 10-K 的 Item 5 已不再提供股价高低点/年末价表格（SEC 2018 年后取消该披露要求），题目核心数据无法从申报文件获得。只保留财务指标部分会改变题目考查的内容，因此淘汰。"
+  },
+  "step6_review": {
+    "verdict": "pending",
+    "checklist": {},
+    "notes": []
+  },
+  "revisions": []
+}

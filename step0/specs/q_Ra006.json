@@ -1,0 +1,241 @@
+{
+  "qid": "q_Ra006",
+  "company": "NIKE, Inc.",
+  "cik": 320187,
+  "seed_accn": "0000320187-18-000142",
+  "target_accn": "0000320187-26-000088",
+  "periods": {
+    "seed": {
+      "FY2018": {
+        "start": "2017-06-01",
+        "end": "2018-05-31"
+      }
+    },
+    "target": {
+      "FY2026": {
+        "start": "2025-06-01",
+        "end": "2026-05-31"
+      }
+    }
+  },
+  "metric_periods": {
+    "seed": [
+      "FY2018"
+    ],
+    "target": [
+      "FY2026"
+    ]
+  },
+  "items": {
+    "NA": {
+      "concepts_seed": [
+        "SalesRevenueNet"
+      ],
+      "dims_seed": {
+        "ProductOrServiceAxis": "NIKEBrandMember",
+        "StatementBusinessSegmentsAxis": "NorthAmericaSegmentMember"
+      },
+      "concepts_target": [
+        "RevenueFromContractWithCustomerExcludingAssessedTax"
+      ],
+      "dims_target": {
+        "ConsolidationItemsAxis": "OperatingSegmentsMember",
+        "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+        "SubsegmentsAxis": "NorthAmericaSegmentMember"
+      },
+      "type": "duration",
+      "label": "NIKE Brand revenues – North America",
+      "statement": "Notes – Operating segments",
+      "text_label": "North America"
+    },
+    "EMEA": {
+      "concepts_seed": [
+        "SalesRevenueNet"
+      ],
+      "dims_seed": {
+        "ProductOrServiceAxis": "NIKEBrandMember",
+        "StatementBusinessSegmentsAxis": "EuropeMiddleEastAndAfricaSegmentMember"
+      },
+      "concepts_target": [
+        "RevenueFromContractWithCustomerExcludingAssessedTax"
+      ],
+      "dims_target": {
+        "ConsolidationItemsAxis": "OperatingSegmentsMember",
+        "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+        "SubsegmentsAxis": "EuropeMiddleEastAndAfricaSegmentMember"
+      },
+      "type": "duration",
+      "label": "NIKE Brand revenues – Europe, Middle East & Africa",
+      "statement": "Notes – Operating segments",
+      "text_label": "Europe,? Middle East & Africa"
+    },
+    "GC": {
+      "concepts_seed": [
+        "SalesRevenueNet"
+      ],
+      "dims_seed": {
+        "ProductOrServiceAxis": "NIKEBrandMember",
+        "StatementBusinessSegmentsAxis": "GreaterChinaSegmentMember"
+      },
+      "concepts_target": [
+        "RevenueFromContractWithCustomerExcludingAssessedTax"
+      ],
+      "dims_target": {
+        "ConsolidationItemsAxis": "OperatingSegmentsMember",
+        "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+        "SubsegmentsAxis": "GreaterChinaSegmentMember"
+      },
+      "type": "duration",
+      "label": "NIKE Brand revenues – Greater China",
+      "statement": "Notes – Operating segments",
+      "text_label": "Greater China"
+    },
+    "APLA": {
+      "concepts_seed": [
+        "SalesRevenueNet"
+      ],
+      "dims_seed": {
+        "ProductOrServiceAxis": "NIKEBrandMember",
+        "StatementBusinessSegmentsAxis": "AsiaPacificAndLatinAmericaSegmentMember"
+      },
+      "concepts_target": [
+        "RevenueFromContractWithCustomerExcludingAssessedTax"
+      ],
+      "dims_target": {
+        "ConsolidationItemsAxis": "OperatingSegmentsMember",
+        "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+        "SubsegmentsAxis": "AsiaPacificAndLatinAmericaSegmentMember"
+      },
+      "type": "duration",
+      "label": "NIKE Brand revenues – Asia Pacific & Latin America",
+      "statement": "Notes – Operating segments",
+      "text_label": "Asia Pacific & Latin America"
+    },
+    "GBD": {
+      "concepts_seed": [],
+      "concepts_target": [
+        "RevenueFromContractWithCustomerExcludingAssessedTax"
+      ],
+      "dims_target": {
+        "ConsolidationItemsAxis": "MaterialReconcilingItemsMember",
+        "StatementBusinessSegmentsAxis": "NIKEBrandMember"
+      },
+      "type": "duration",
+      "label": "Global Brand Divisions revenues",
+      "statement": "Notes – Operating segments",
+      "text_label": "Global Brand Divisions"
+    },
+    "TotRev": {
+      "concepts_seed": [
+        "SalesRevenueNet"
+      ],
+      "concepts_target": [
+        "RevenueFromContractWithCustomerExcludingAssessedTax"
+      ],
+      "type": "duration",
+      "label": "Total NIKE, Inc. revenues",
+      "statement": "Consolidated Statements of Income",
+      "text_label": "TOTAL NIKE, INC. REVENUES"
+    }
+  },
+  "metrics": {
+    "Brand": "NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}",
+    "ShareNA": "NA@{p} / (NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}) * 100",
+    "ShareEMEA": "EMEA@{p} / (NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}) * 100",
+    "ShareGC": "GC@{p} / (NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}) * 100",
+    "ShareAPLA": "APLA@{p} / (NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}) * 100",
+    "ShareGBD": "GBD@{p} / (NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}) * 100",
+    "DIAG_NA_share_of_total_revenue": "NA@{p} / TotRev@{p} * 100"
+  },
+  "step1_pattern": {
+    "question_type": "A 计算型（附一句定性结论）",
+    "structure": "单年：5 个地区占比",
+    "operation": "各地区收入 ÷ 分母，分母为 5 项之和",
+    "output_format": "百分比，保留 2 位小数",
+    "seed_numbers": {
+      "NA@FY2018": "14,855",
+      "EMEA@FY2018": "9,242",
+      "GC@FY2018": "5,134",
+      "APLA@FY2018": "5,166",
+      "GBD@FY2018": "88"
+    },
+    "seed_answers": {
+      "Brand@FY2018": "34,485",
+      "ShareNA@FY2018": "43.08",
+      "ShareEMEA@FY2018": "26.80",
+      "ShareGC@FY2018": "14.89",
+      "ShareAPLA@FY2018": "14.98",
+      "ShareGBD@FY2018": "0.26"
+    },
+    "notes": [
+      "题干说 \"Nike's total revenue\"，但 GT 的分母 34,485 是 NIKE Brand 收入（不含 Converse 1,886 和 Corporate 26），与 NIKE Inc. 总收入 36,397 不同 → 题干与 GT 口径不一致",
+      "\"how does this reflect global distribution\" 是开放叙述，GT 未作回答"
+    ]
+  },
+  "step2_verdict": "MATCH + 口径问题。输入和算术全部复现，但分母是 NIKE Brand 收入 34,485，而题干写的是 total revenue（NIKE Inc. 总收入 36,397；按总收入算，北美占比为 40.81% 而非 43.08%）。",
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026，截至 2026-05-31）",
+    "decision": "shift",
+    "rationale": "分部结构未变（仍是 4 个地区 + Global Brand Divisions），数据可得。按 GT 的实际口径（NIKE Brand 收入为分母）出题并写明；叙述部分改为 \"占比最大的地区\"。"
+  },
+  "step5_question": {
+    "question": "According to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, what percentage of total NIKE Brand revenues in fiscal 2026 came from each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions? Use total NIKE Brand revenues (the sum of these five) as the denominator, report each percentage to two decimal places, and identify the region with the largest share.",
+    "answer_decimals": {
+      "Brand@FY2026": 0,
+      "ShareNA@FY2026": 2,
+      "ShareEMEA@FY2026": 2,
+      "ShareGC@FY2026": 2,
+      "ShareAPLA@FY2026": 2,
+      "ShareGBD@FY2026": 2
+    },
+    "selectors": {
+      "Largest_share": [
+        "argmax",
+        [
+          "ShareNA@FY2026",
+          "ShareEMEA@FY2026",
+          "ShareGC@FY2026",
+          "ShareAPLA@FY2026",
+          "ShareGBD@FY2026"
+        ]
+      ]
+    },
+    "display_names": {
+      "Brand": "Total NIKE Brand revenues ($M)",
+      "ShareNA": "North America %",
+      "ShareEMEA": "EMEA %",
+      "ShareGC": "Greater China %",
+      "ShareAPLA": "APLA %",
+      "ShareGBD": "Global Brand Divisions %",
+      "Largest_share": "Largest share"
+    },
+    "changes_vs_seed": [
+      "期间 FY2018 → FY2026",
+      "分母从模糊的 \"total revenue\" 改为明确的 \"total NIKE Brand revenues\"（与原 GT 实际口径一致）",
+      "开放叙述改为 \"占比最大的地区\""
+    ],
+    "selector_labels": {
+      "ShareNA": "North America",
+      "ShareEMEA": "EMEA",
+      "ShareGC": "Greater China",
+      "ShareAPLA": "APLA",
+      "ShareGBD": "Global Brand Divisions"
+    }
+  },
+  "step6_review": {
+    "verdict": "pass",
+    "checklist": {
+      "same_company_and_period_type": true,
+      "inputs_found_in_filing_text": true,
+      "formula_matches_learned_pattern": true,
+      "arithmetic_by_code": true,
+      "answerable_from_filing_alone": true,
+      "no_answer_leak_in_question": true,
+      "change_is_mainly_information_update": "是（分母改为明确的 NIKE Brand 收入，与原 GT 实际口径一致）"
+    },
+    "notes": [
+      "5 项之和 45,222 与文件中 \"TOTAL NIKE BRAND\" 一致"
+    ]
+  },
+  "revisions": []
+}

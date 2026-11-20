@@ -1,0 +1,60 @@
+{
+  "qid": "q_Ra010",
+  "company": "Discover Financial Services",
+  "cik": 1393612,
+  "seed_accn": "0001393612-24-000010",
+  "target_accn": null,
+  "periods": {
+    "seed": {
+      "FY2022": {
+        "start": "2022-01-01",
+        "end": "2022-12-31"
+      },
+      "FY2023": {
+        "start": "2023-01-01",
+        "end": "2023-12-31"
+      }
+    },
+    "target": {}
+  },
+  "metric_periods": {
+    "seed": [],
+    "target": []
+  },
+  "items": {
+    "NIM": {
+      "concepts": [],
+      "type": "duration",
+      "scale": "unit",
+      "label": "Net interest margin (reported %)",
+      "statement": "MD&A – Net interest income"
+    }
+  },
+  "metrics": {},
+  "step1_pattern": {
+    "question_type": "A 计算型（公司直接披露的指标）",
+    "structure": "两年对比：净息差",
+    "operation": "无运算，直接取公司披露的 NIM（= 净利息收入 ÷ 平均贷款应收款）",
+    "output_format": "百分比，保留 2 位小数",
+    "seed_numbers": {
+      "NIM@FY2023": "11.07",
+      "NIM@FY2022": "11.04"
+    },
+    "notes": [
+      "题干用 \"Discover’s\"，公司明确",
+      "GT 中 \"despite a disproportionate rise in interest expenses\" 为叙述，无法判分"
+    ]
+  },
+  "step2_verdict": "MATCH（仅原文定位）。NIM 11.07% / 11.04% 在原文 p62 定位到，为公司直接披露的指标。",
+  "step3_plan": {
+    "target_rule": "同类文件（10-K）的最新一期，且报告期须晚于受测模型知识截止日",
+    "decision": "reject",
+    "rationale": "EDGAR 上 Discover 最后一份定期报告是 2025-03-31 的 10-Q（2025 年被 Capital One 收购后不再单独申报）。可用的最新 10-K 报告期为 2024-12-31，早于当前主流模型的知识截止日，平移后起不到防污染作用。"
+  },
+  "step6_review": {
+    "verdict": "pending",
+    "checklist": {},
+    "notes": []
+  },
+  "revisions": []
+}

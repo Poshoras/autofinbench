@@ -1,0 +1,181 @@
+{
+  "qid": "q_Ra001",
+  "seed": {
+    "question": "How did Apple Inc.'s Interest Coverage Ratio evolve between 2021 and 2023?",
+    "ground_truth_answer": "Interest Coverage Ratio is calculated using the formula: Interest Coverage Ratio = EBIT / Interest Expenses.\n\nFor 2021:\nEBIT (Operating Income) = $108,949 million\nInterest Expenses = $2,687 million\nInterest Coverage Ratio = $108,949 million / $2,687 million = 40.6\n\nFor 2022:\nEBIT (Operating Income) = $119,437 million\nInterest Expenses = $2,931 million\nInterest Coverage Ratio = $119,437 million / $2,931 million = 40.7\n\nFor 2023:\nEBIT (Operating Income) = $114,301 million\nInterest Expenses = $3,933 million\nInterest Coverage Ratio = $114,301 million / $3,933 million = 29.1",
+    "accession_number": "0000320193-23-000106",
+    "page_number": "29,30,31,32, 39"
+  },
+  "step1_learn_pattern": {
+    "question_type": "A 计算型",
+    "structure": "三年趋势（逐年计算同一比率）",
+    "operation": "一次除法：营业利润 ÷ 利息费用",
+    "output_format": "倍数，保留 1 位小数",
+    "seed_numbers": {
+      "OpInc@FY2021": "108,949",
+      "OpInc@FY2022": "119,437",
+      "OpInc@FY2023": "114,301",
+      "IntExp@FY2021": "2,687",
+      "IntExp@FY2022": "2,931",
+      "IntExp@FY2023": "3,933"
+    },
+    "seed_answers": {
+      "ICR@FY2021": "40.6",
+      "ICR@FY2022": "40.7",
+      "ICR@FY2023": "29.1"
+    },
+    "notes": [
+      "GT 把 EBIT 定义为 Operating Income"
+    ],
+    "data_items": {
+      "OpInc": {
+        "label": "Operating income",
+        "statement": "Consolidated Statements of Operations",
+        "type": "duration"
+      },
+      "IntExp": {
+        "label": "Interest expense",
+        "statement": "Notes – Other income/(expense), net",
+        "type": "duration"
+      }
+    },
+    "formulas": {
+      "ICR": "OpInc@{p} / IntExp@{p}"
+    },
+    "evidence_in_seed_context": {
+      "OpInc@FY2021": [],
+      "OpInc@FY2022": [],
+      "OpInc@FY2023": [],
+      "IntExp@FY2021": [
+        {
+          "page": "32",
+          "row_label": "Cash paid for interest"
+        }
+      ],
+      "IntExp@FY2022": [
+        {
+          "page": "39",
+          "row_label": "Interest expense"
+        }
+      ],
+      "IntExp@FY2023": [
+        {
+          "page": "39",
+          "row_label": "Interest expense"
+        }
+      ],
+      "ICR@FY2021": [],
+      "ICR@FY2022": [],
+      "ICR@FY2023": []
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000320193-23-000106",
+    "inputs": [
+      {
+        "key": "IntExp@FY2021",
+        "seed_stated": 2687.0,
+        "xbrl": 2645.0,
+        "xbrl_concept": "InterestExpense",
+        "status": "SEED_INPUT_MISMATCH",
+        "diagnosis_seed_value_matches_concept": [
+          "InterestPaidNet"
+        ]
+      },
+      {
+        "key": "IntExp@FY2022",
+        "seed_stated": 2931.0,
+        "xbrl": 2931.0,
+        "xbrl_concept": "InterestExpense",
+        "status": "MATCH"
+      },
+      {
+        "key": "IntExp@FY2023",
+        "seed_stated": 3933.0,
+        "xbrl": 3933.0,
+        "xbrl_concept": "InterestExpense",
+        "status": "MATCH"
+      },
+      {
+        "key": "OpInc@FY2021",
+        "seed_stated": 108949.0,
+        "xbrl": 108949.0,
+        "xbrl_concept": "OperatingIncomeLoss",
+        "status": "MATCH"
+      },
+      {
+        "key": "OpInc@FY2022",
+        "seed_stated": 119437.0,
+        "xbrl": 119437.0,
+        "xbrl_concept": "OperatingIncomeLoss",
+        "status": "MATCH"
+      },
+      {
+        "key": "OpInc@FY2023",
+        "seed_stated": 114301.0,
+        "xbrl": 114301.0,
+        "xbrl_concept": "OperatingIncomeLoss",
+        "status": "MATCH"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "ICR@FY2021",
+        "formula": "OpInc@FY2021 / IntExp@FY2021",
+        "seed_answer": "40.6",
+        "recomputed_from_seed_inputs": 40.54670636397469,
+        "recomputed_from_filing": 41.19054820415879,
+        "missing": [],
+        "arithmetic_ok": false,
+        "filing_ok": false,
+        "corrected_seed_answer": 41.2
+      },
+      {
+        "metric": "ICR@FY2022",
+        "formula": "OpInc@FY2022 / IntExp@FY2022",
+        "seed_answer": "40.7",
+        "recomputed_from_seed_inputs": 40.74957352439441,
+        "recomputed_from_filing": 40.74957352439441,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 40.7
+      },
+      {
+        "metric": "ICR@FY2023",
+        "formula": "OpInc@FY2023 / IntExp@FY2023",
+        "seed_answer": "29.1",
+        "recomputed_from_seed_inputs": 29.062039155860667,
+        "recomputed_from_filing": 29.062039155860667,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 29.1
+      }
+    ],
+    "verdict": "SEED_ERROR。模式（营业利润 ÷ 利息费用）正确，FY2022/FY2023 复现；FY2021 有两处错误：① 利息费用 2,687 实为 InterestPaidNet（现金流量表 \"Cash paid for interest\"，p32），正确的利息费用为 2,645；② 即使按 2,687，108,949/2,687 = 40.55 也应为 40.5 而非 40.6。正确值 41.2。另：原题自带原文（p29–32、39）不含利润表，营业利润在原文中找不到。"
+  },
+  "step3_plan": {
+    "target_rule": "同类文件（10-K）的最新一期，比较结构保持三年",
+    "decision": "reject",
+    "rationale": "利息费用在 FY2024 起的 Apple 10-K 中不再单独披露：XBRL 无 InterestExpense 类标签；正文仅在利率敏感性分析中提到 \"increase in annual interest expense\"，没有实际金额。缺一个必要数据项，无法在不改变指标定义的前提下平移。",
+    "target_filing": {
+      "form": "10-K",
+      "period": "2026-09-26",
+      "filed": "2026-11-03",
+      "accn": "0000320193-26-000026",
+      "doc": "aapl-20260926.htm"
+    },
+    "availability": {
+      "IntExp@FY2024": "MISSING",
+      "IntExp@FY2025": "MISSING",
+      "IntExp@FY2026": "MISSING",
+      "OpInc@FY2024": "OperatingIncomeLoss",
+      "OpInc@FY2025": "OperatingIncomeLoss",
+      "OpInc@FY2026": "OperatingIncomeLoss"
+    }
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "利息费用在 FY2024 起的 Apple 10-K 中不再单独披露：XBRL 无 InterestExpense 类标签；正文仅在利率敏感性分析中提到 \"increase in annual interest expense\"，没有实际金额。缺一个必要数据项，无法在不改变指标定义的前提下平移。",
+  "revisions": []
+}

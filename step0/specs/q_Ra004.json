@@ -1,0 +1,189 @@
+{
+  "qid": "q_Ra004",
+  "company": "Apple Inc.",
+  "cik": 320193,
+  "seed_accn": "0000320193-23-000106",
+  "target_accn": "0000320193-26-000026",
+  "periods": {
+    "seed": {
+      "FY2023": {
+        "start": "2022-09-25",
+        "end": "2023-09-30"
+      }
+    },
+    "target": {
+      "FY2026": {
+        "start": "2025-09-28",
+        "end": "2026-09-26"
+      }
+    }
+  },
+  "metric_periods": {
+    "seed": [
+      "FY2023"
+    ],
+    "target": [
+      "FY2026"
+    ]
+  },
+  "items": {
+    "Assets": {
+      "concepts": [
+        "Assets"
+      ],
+      "type": "instant",
+      "label": "Total assets",
+      "statement": "Consolidated Balance Sheets",
+      "text_label": "Total assets"
+    },
+    "Liab": {
+      "concepts": [
+        "Liabilities"
+      ],
+      "type": "instant",
+      "label": "Total liabilities",
+      "statement": "Consolidated Balance Sheets",
+      "text_label": "Total liabilities"
+    },
+    "Eq": {
+      "concepts": [
+        "StockholdersEquity"
+      ],
+      "type": "instant",
+      "label": "Total shareholders' equity",
+      "statement": "Consolidated Balance Sheets",
+      "text_label": "Total shareholders.{1,2}equity"
+    },
+    "TDc": {
+      "concepts": [
+        "LongTermDebtCurrent"
+      ],
+      "type": "instant",
+      "label": "Term debt (current)",
+      "statement": "Consolidated Balance Sheets",
+      "text_label": "Term debt"
+    },
+    "TDn": {
+      "concepts": [
+        "LongTermDebtNoncurrent"
+      ],
+      "type": "instant",
+      "label": "Term debt (non-current)",
+      "statement": "Consolidated Balance Sheets",
+      "text_label": "Term debt"
+    },
+    "Cash": {
+      "concepts": [
+        "CashAndCashEquivalentsAtCarryingValue"
+      ],
+      "type": "instant",
+      "label": "Cash and cash equivalents",
+      "statement": "Consolidated Balance Sheets",
+      "text_label": "Cash and cash equivalents"
+    },
+    "MSc": {
+      "concepts": [
+        "MarketableSecuritiesCurrent"
+      ],
+      "type": "instant",
+      "label": "Marketable securities (current)",
+      "statement": "Consolidated Balance Sheets",
+      "text_label": "Marketable securities"
+    },
+    "MSn": {
+      "concepts": [
+        "MarketableSecuritiesNoncurrent"
+      ],
+      "type": "instant",
+      "label": "Marketable securities (non-current)",
+      "statement": "Consolidated Balance Sheets",
+      "text_label": "Marketable securities"
+    }
+  },
+  "metrics": {
+    "TA": "Assets@{p}",
+    "TL": "Liab@{p}",
+    "TE": "Eq@{p}",
+    "TermDebt": "TDc@{p} + TDn@{p}",
+    "LtoE": "Liab@{p} / Eq@{p}",
+    "Liquid": "Cash@{p} + MSc@{p} + MSn@{p}"
+  },
+  "step1_pattern": {
+    "question_type": "B 半结构化分析型",
+    "structure": "单个时点：列出资产负债表数字 + 定性判断（负债 vs 权益；流动资产能否覆盖债务）",
+    "operation": "加法（term debt = 流动 + 非流动；现金 + 有价证券）+ 比较",
+    "output_format": "$ 百万",
+    "seed_numbers": {
+      "Assets@FY2023": "352,583",
+      "Liab@FY2023": "290,437",
+      "Eq@FY2023": "62,146",
+      "Cash@FY2023": "29,965",
+      "MSc@FY2023": "31,590",
+      "MSn@FY2023": "100,544"
+    },
+    "seed_answers": {
+      "TA@FY2023": "352,583",
+      "TL@FY2023": "290,437",
+      "TE@FY2023": "62,146",
+      "TermDebt@FY2023": "105,103"
+    },
+    "notes": [
+      "GT 把 \"总负债 > 股东权益\" 解读为 \"更依赖债务融资\"——混淆了总负债与有息负债",
+      "GT 隐含的两个判断：负债/权益偏高；现金+有价证券 > term debt（\"sufficient liquidity\"）→ 可形式化为一个比率和一个是/否判断"
+    ]
+  },
+  "step2_verdict": "MATCH。所有数字与文件一致；term debt 105,103 = 9,822（流动）+ 95,281（非流动），反推确认。叙述错误见 step1。",
+  "step3_plan": {
+    "target_rule": "最新一期 10-K 资产负债表（2026-09-26）",
+    "decision": "shift",
+    "rationale": "全部数据项可得。把 GT 的两个定性判断形式化：负债/权益比率 + 流动性资产是否超过 term debt。"
+  },
+  "step5_question": {
+    "question": "Assess Apple Inc.'s solvency position as of September 26, 2026 using the balance sheet in its fiscal 2026 Form 10-K. Report total assets, total liabilities, total shareholders' equity, and total term debt (current plus non-current term debt), each in $ millions. Then compute (a) the ratio of total liabilities to total shareholders' equity, rounded to two decimals, and (b) liquid assets, defined as cash and cash equivalents plus current and non-current marketable securities (in $ millions), and state whether liquid assets exceed total term debt.",
+    "answer_decimals": {
+      "TA@FY2026": 0,
+      "TL@FY2026": 0,
+      "TE@FY2026": 0,
+      "TermDebt@FY2026": 0,
+      "LtoE@FY2026": 2,
+      "Liquid@FY2026": 0
+    },
+    "comparisons": {
+      "Liquid_exceeds_term_debt": [
+        "Liquid@FY2026",
+        ">",
+        "TermDebt@FY2026"
+      ]
+    },
+    "display_names": {
+      "TA": "Total assets ($M)",
+      "TL": "Total liabilities ($M)",
+      "TE": "Total shareholders' equity ($M)",
+      "TermDebt": "Total term debt ($M)",
+      "LtoE": "Total liabilities / equity",
+      "Liquid": "Liquid assets ($M)",
+      "Liquid_exceeds_term_debt": "Liquid assets exceed term debt?"
+    },
+    "changes_vs_seed": [
+      "时点 2023-09-30 → 2026-09-26",
+      "GT 中的定性判断改为 1 个比率 + 1 个是/否判断",
+      "删除 \"依赖债务融资\" 这类错误/无法判分的叙述"
+    ]
+  },
+  "step6_review": {
+    "verdict": "pass",
+    "checklist": {
+      "same_company_and_period_type": true,
+      "inputs_found_in_filing_text": true,
+      "formula_matches_learned_pattern": true,
+      "arithmetic_by_code": true,
+      "answerable_from_filing_alone": true,
+      "no_answer_leak_in_question": true,
+      "change_is_mainly_information_update": "是（GT 的两个定性判断形式化为比率 + 是/否，未新增考点）"
+    },
+    "notes": [
+      "term debt 不含 commercial paper（与原 GT 口径一致），题干已写明 \"current plus non-current term debt\""
+    ]
+  },
+  "revisions": []
+}

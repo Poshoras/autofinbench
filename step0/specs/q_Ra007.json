@@ -1,0 +1,133 @@
+{
+  "qid": "q_Ra007",
+  "company": "NIKE, Inc.",
+  "cik": 320187,
+  "seed_accn": "0000320187-18-000142",
+  "target_accn": "0000320187-26-000088",
+  "periods": {
+    "seed": {
+      "FY2017": {
+        "start": "2016-06-01",
+        "end": "2017-05-31"
+      },
+      "FY2018": {
+        "start": "2017-06-01",
+        "end": "2018-05-31"
+      }
+    },
+    "target": {
+      "FY2025": {
+        "start": "2024-06-01",
+        "end": "2025-05-31"
+      },
+      "FY2026": {
+        "start": "2025-06-01",
+        "end": "2026-05-31"
+      }
+    }
+  },
+  "metric_periods": {
+    "seed": [
+      "FY2017",
+      "FY2018"
+    ],
+    "target": [
+      "FY2025",
+      "FY2026"
+    ]
+  },
+  "items": {
+    "PreTax": {
+      "concepts": [
+        "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+      ],
+      "type": "duration",
+      "label": "Income before income taxes",
+      "statement": "Consolidated Statements of Income",
+      "text_label": "Income before income taxes"
+    },
+    "NetInt": {
+      "concepts": [
+        "InterestIncomeExpenseNonoperatingNet"
+      ],
+      "type": "duration",
+      "label": "Interest expense (income), net（XBRL 中正数 = 净利息收入）",
+      "statement": "Consolidated Statements of Income",
+      "text_label": "Interest \\(?(income|expense)\\)? \\(?(income|expense)\\)?, net"
+    }
+  },
+  "metrics": {
+    "EBIT": "PreTax@{p} - NetInt@{p}",
+    "Chg": "((PreTax@{p} - NetInt@{p}) - (PreTax@{prev} - NetInt@{prev})) / (PreTax@{prev} - NetInt@{prev}) * 100"
+  },
+  "step1_pattern": {
+    "question_type": "A 计算型（附一句原因解释）",
+    "structure": "两年对比：EBIT 同比变化率",
+    "operation": "EBIT = 税前利润 + 净利息费用；变化率 = (今年 − 去年) ÷ 去年",
+    "output_format": "EBIT 为 $ 百万；变化率为百分比，保留 2 位小数",
+    "seed_answers": {
+      "EBIT@FY2018": "4,379",
+      "EBIT@FY2017": "4,945",
+      "Chg@FY2018": "-11.45"
+    },
+    "notes": [
+      "GT 未给 EBIT 的计算方法；回测确认 = 税前利润 + 净利息费用（与 Nike 分部附注中的 \"Earnings Before Interest and Taxes\" 一致）",
+      "GT 的原因解释（S&A 费用上升、毛利率承压）无法用比率判分，删除"
+    ]
+  },
+  "step2_verdict": "MATCH。EBIT = 税前利润 + 净利息费用，两年数值与变化率 −11.45% 全部复现。",
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026），比较 FY2026 vs FY2025",
+    "decision": "shift",
+    "rationale": "数据项可得；题干写明 EBIT 定义。"
+  },
+  "step5_question": {
+    "question": "Using NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, compute NIKE's EBIT for fiscal 2026 and fiscal 2025 in $ millions, where EBIT = income before income taxes + interest (income) expense, net (as reported on the income statement), and compute the year-over-year percentage change in EBIT from fiscal 2025 to fiscal 2026, rounded to two decimals.",
+    "answer_decimals": {
+      "EBIT@FY2025": 0,
+      "EBIT@FY2026": 0,
+      "Chg@FY2026": 2
+    },
+    "display_names": {
+      "EBIT": "EBIT ($M)",
+      "Chg": "EBIT YoY change %"
+    },
+    "changes_vs_seed": [
+      "期间 FY2018/FY2017 → FY2026/FY2025",
+      "题干写明 EBIT 定义",
+      "删除原因解释"
+    ]
+  },
+  "step6_review": {
+    "verdict": "pass",
+    "checklist": {
+      "same_company_and_period_type": true,
+      "inputs_found_in_filing_text": true,
+      "formula_matches_learned_pattern": true,
+      "arithmetic_by_code": true,
+      "answerable_from_filing_alone": true,
+      "no_answer_leak_in_question": true,
+      "change_is_mainly_information_update": true
+    },
+    "notes": [
+      "独立佐证：Nike 在 MD&A 的非 GAAP 调节表中直接披露 \"EBIT $ 3,850 $ 3,778\"，与计算结果一致"
+    ]
+  },
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step6_review",
+      "problem": "NetInt (50)/(107) 在 \"Interest expense (income), net\" 附近找不到",
+      "action": "查原文发现 FY2026 10-K 已改名为 \"Interest (income) expense, net\"（Nike 现为净利息收入）→ 扩展行标签；同时把题干中的科目名改为新文件的叫法（属于 step5 修订）",
+      "result": "第 2 轮仍未通过：新行标签正则写成了两对括号，与原文 \"Interest (income) expense, net\" 不符"
+    },
+    {
+      "round": 2,
+      "step": "step6_review",
+      "problem": "第 1 轮修订的行标签正则有误",
+      "action": "改为括号可选的正则，同时兼容新旧两种写法",
+      "result": "第 3 轮通过"
+    }
+  ]
+}

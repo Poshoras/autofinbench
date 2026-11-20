@@ -1,0 +1,467 @@
+{
+  "qid": "q_Ra004",
+  "seed": {
+    "question": "How does the solvency position of Apple Inc. look based on the balance sheet data for 2023?",
+    "ground_truth_answer": "The solvency position of Apple Inc. for 2023 can be assessed using the balance sheet data:\n- Total Assets: $352,583 million\n- Total Liabilities: $290,437 million\n- Total Shareholders' Equity: $62,146 million\nThe company's total liabilities are significantly higher than its total shareholders' equity, indicating a higher reliance on debt financing. However, the company has substantial total assets, which can cover its total liabilities. The term debt for 2023 is $105,103 million (current and non-current), and the company's cash and cash equivalents are $29,965 million, with additional marketable securities of $31,590 million (current) and $100,544 million (non-current). This indicates that Apple Inc. has sufficient liquidity to meet its debt obligations. Overall, while the company has a high level of debt, its strong asset base and liquidity position suggest a stable solvency position.",
+    "accession_number": "0000320193-23-000106",
+    "page_number": "29,30,31,32"
+  },
+  "step1_learn_pattern": {
+    "question_type": "B 半结构化分析型",
+    "structure": "单个时点：列出资产负债表数字 + 定性判断（负债 vs 权益；流动资产能否覆盖债务）",
+    "operation": "加法（term debt = 流动 + 非流动；现金 + 有价证券）+ 比较",
+    "output_format": "$ 百万",
+    "seed_numbers": {
+      "Assets@FY2023": "352,583",
+      "Liab@FY2023": "290,437",
+      "Eq@FY2023": "62,146",
+      "Cash@FY2023": "29,965",
+      "MSc@FY2023": "31,590",
+      "MSn@FY2023": "100,544"
+    },
+    "seed_answers": {
+      "TA@FY2023": "352,583",
+      "TL@FY2023": "290,437",
+      "TE@FY2023": "62,146",
+      "TermDebt@FY2023": "105,103"
+    },
+    "notes": [
+      "GT 把 \"总负债 > 股东权益\" 解读为 \"更依赖债务融资\"——混淆了总负债与有息负债",
+      "GT 隐含的两个判断：负债/权益偏高；现金+有价证券 > term debt（\"sufficient liquidity\"）→ 可形式化为一个比率和一个是/否判断"
+    ],
+    "data_items": {
+      "Assets": {
+        "label": "Total assets",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Liab": {
+        "label": "Total liabilities",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Eq": {
+        "label": "Total shareholders' equity",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "TDc": {
+        "label": "Term debt (current)",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "TDn": {
+        "label": "Term debt (non-current)",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "Cash": {
+        "label": "Cash and cash equivalents",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "MSc": {
+        "label": "Marketable securities (current)",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      },
+      "MSn": {
+        "label": "Marketable securities (non-current)",
+        "statement": "Consolidated Balance Sheets",
+        "type": "instant"
+      }
+    },
+    "formulas": {
+      "TA": "Assets@{p}",
+      "TL": "Liab@{p}",
+      "TE": "Eq@{p}",
+      "TermDebt": "TDc@{p} + TDn@{p}",
+      "LtoE": "Liab@{p} / Eq@{p}",
+      "Liquid": "Cash@{p} + MSc@{p} + MSn@{p}"
+    },
+    "evidence_in_seed_context": {
+      "Assets@FY2023": [
+        {
+          "page": "30",
+          "row_label": "Total assets"
+        },
+        {
+          "page": "30",
+          "row_label": "Total liabilities and shareholders' equity"
+        }
+      ],
+      "Liab@FY2023": [
+        {
+          "page": "30",
+          "row_label": "Total liabilities"
+        }
+      ],
+      "Eq@FY2023": [
+        {
+          "page": "30",
+          "row_label": "Total shareholders' equity"
+        },
+        {
+          "page": "31",
+          "row_label": "Total shareholders' equity, ending balances"
+        }
+      ],
+      "Cash@FY2023": [
+        {
+          "page": "30",
+          "row_label": "Cash and cash equivalents"
+        }
+      ],
+      "MSc@FY2023": [
+        {
+          "page": "30",
+          "row_label": "Marketable securities"
+        }
+      ],
+      "MSn@FY2023": [
+        {
+          "page": "30",
+          "row_label": "Marketable securities"
+        }
+      ],
+      "TA@FY2023": [
+        {
+          "page": "30",
+          "row_label": "Total assets"
+        },
+        {
+          "page": "30",
+          "row_label": "Total liabilities and shareholders' equity"
+        }
+      ],
+      "TL@FY2023": [
+        {
+          "page": "30",
+          "row_label": "Total liabilities"
+        }
+      ],
+      "TE@FY2023": [
+        {
+          "page": "30",
+          "row_label": "Total shareholders' equity"
+        },
+        {
+          "page": "31",
+          "row_label": "Total shareholders' equity, ending balances"
+        }
+      ],
+      "TermDebt@FY2023": []
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000320193-23-000106",
+    "inputs": [
+      {
+        "key": "Assets@FY2023",
+        "seed_stated": 352583.0,
+        "xbrl": 352583.0,
+        "xbrl_concept": "Assets",
+        "status": "MATCH"
+      },
+      {
+        "key": "Cash@FY2023",
+        "seed_stated": 29965.0,
+        "xbrl": 29965.0,
+        "xbrl_concept": "CashAndCashEquivalentsAtCarryingValue",
+        "status": "MATCH"
+      },
+      {
+        "key": "Eq@FY2023",
+        "seed_stated": 62146.0,
+        "xbrl": 62146.0,
+        "xbrl_concept": "StockholdersEquity",
+        "status": "MATCH"
+      },
+      {
+        "key": "Liab@FY2023",
+        "seed_stated": 290437.0,
+        "xbrl": 290437.0,
+        "xbrl_concept": "Liabilities",
+        "status": "MATCH"
+      },
+      {
+        "key": "MSc@FY2023",
+        "seed_stated": 31590.0,
+        "xbrl": 31590.0,
+        "xbrl_concept": "MarketableSecuritiesCurrent",
+        "status": "MATCH"
+      },
+      {
+        "key": "MSn@FY2023",
+        "seed_stated": 100544.0,
+        "xbrl": 100544.0,
+        "xbrl_concept": "MarketableSecuritiesNoncurrent",
+        "status": "MATCH"
+      },
+      {
+        "key": "TDc@FY2023",
+        "seed_stated": null,
+        "xbrl": 9822.0,
+        "xbrl_concept": "LongTermDebtCurrent",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "TDn@FY2023",
+        "seed_stated": null,
+        "xbrl": 95281.0,
+        "xbrl_concept": "LongTermDebtNoncurrent",
+        "status": "XBRL_ONLY"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "TA@FY2023",
+        "formula": "Assets@FY2023",
+        "seed_answer": "352,583",
+        "recomputed_from_seed_inputs": 352583.0,
+        "recomputed_from_filing": 352583.0,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 352583.0
+      },
+      {
+        "metric": "TL@FY2023",
+        "formula": "Liab@FY2023",
+        "seed_answer": "290,437",
+        "recomputed_from_seed_inputs": 290437.0,
+        "recomputed_from_filing": 290437.0,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 290437.0
+      },
+      {
+        "metric": "TE@FY2023",
+        "formula": "Eq@FY2023",
+        "seed_answer": "62,146",
+        "recomputed_from_seed_inputs": 62146.0,
+        "recomputed_from_filing": 62146.0,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 62146.0
+      },
+      {
+        "metric": "TermDebt@FY2023",
+        "formula": "TDc@FY2023 + TDn@FY2023",
+        "seed_answer": "105,103",
+        "recomputed_from_seed_inputs": 105103.0,
+        "recomputed_from_filing": 105103.0,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 105103.0
+      },
+      {
+        "metric": "LtoE@FY2023",
+        "formula": "Liab@FY2023 / Eq@FY2023",
+        "seed_answer": null,
+        "recomputed_from_seed_inputs": 4.673462491552152,
+        "recomputed_from_filing": 4.673462491552152,
+        "missing": []
+      },
+      {
+        "metric": "Liquid@FY2023",
+        "formula": "Cash@FY2023 + MSc@FY2023 + MSn@FY2023",
+        "seed_answer": null,
+        "recomputed_from_seed_inputs": 162099.0,
+        "recomputed_from_filing": 162099.0,
+        "missing": []
+      }
+    ],
+    "verdict": "MATCH。所有数字与文件一致；term debt 105,103 = 9,822（流动）+ 95,281（非流动），反推确认。叙述错误见 step1。"
+  },
+  "step3_plan": {
+    "target_rule": "最新一期 10-K 资产负债表（2026-09-26）",
+    "decision": "shift",
+    "rationale": "全部数据项可得。把 GT 的两个定性判断形式化：负债/权益比率 + 流动性资产是否超过 term debt。",
+    "target_filing": {
+      "form": "10-K",
+      "period": "2026-09-26",
+      "filed": "2026-11-03",
+      "accn": "0000320193-26-000026",
+      "doc": "aapl-20260926.htm"
+    },
+    "availability": {
+      "Assets@FY2026": "Assets",
+      "Cash@FY2026": "CashAndCashEquivalentsAtCarryingValue",
+      "Eq@FY2026": "StockholdersEquity",
+      "Liab@FY2026": "Liabilities",
+      "MSc@FY2026": "MarketableSecuritiesCurrent",
+      "MSn@FY2026": "MarketableSecuritiesNoncurrent",
+      "TDc@FY2026": "LongTermDebtCurrent",
+      "TDn@FY2026": "LongTermDebtNoncurrent"
+    }
+  },
+  "step4_compute": {
+    "inputs": {
+      "Assets@FY2026": {
+        "concept": "Assets",
+        "dims": {},
+        "value": 404548.0
+      },
+      "Cash@FY2026": {
+        "concept": "CashAndCashEquivalentsAtCarryingValue",
+        "dims": {},
+        "value": 36305.0
+      },
+      "Eq@FY2026": {
+        "concept": "StockholdersEquity",
+        "dims": {},
+        "value": 112093.0
+      },
+      "Liab@FY2026": {
+        "concept": "Liabilities",
+        "dims": {},
+        "value": 292455.0
+      },
+      "MSc@FY2026": {
+        "concept": "MarketableSecuritiesCurrent",
+        "dims": {},
+        "value": 20417.0
+      },
+      "MSn@FY2026": {
+        "concept": "MarketableSecuritiesNoncurrent",
+        "dims": {},
+        "value": 80213.0
+      },
+      "TDc@FY2026": {
+        "concept": "LongTermDebtCurrent",
+        "dims": {},
+        "value": 9906.0
+      },
+      "TDn@FY2026": {
+        "concept": "LongTermDebtNoncurrent",
+        "dims": {},
+        "value": 68208.0
+      }
+    },
+    "metrics": {
+      "TA@FY2026": {
+        "formula": "Assets@FY2026",
+        "value": 404548.0,
+        "missing": []
+      },
+      "TL@FY2026": {
+        "formula": "Liab@FY2026",
+        "value": 292455.0,
+        "missing": []
+      },
+      "TE@FY2026": {
+        "formula": "Eq@FY2026",
+        "value": 112093.0,
+        "missing": []
+      },
+      "TermDebt@FY2026": {
+        "formula": "TDc@FY2026 + TDn@FY2026",
+        "value": 78114.0,
+        "missing": []
+      },
+      "LtoE@FY2026": {
+        "formula": "Liab@FY2026 / Eq@FY2026",
+        "value": 2.609038923037121,
+        "missing": []
+      },
+      "Liquid@FY2026": {
+        "formula": "Cash@FY2026 + MSc@FY2026 + MSn@FY2026",
+        "value": 136935.0,
+        "missing": []
+      }
+    }
+  },
+  "step5_question": {
+    "question": "Assess Apple Inc.'s solvency position as of September 26, 2026 using the balance sheet in its fiscal 2026 Form 10-K. Report total assets, total liabilities, total shareholders' equity, and total term debt (current plus non-current term debt), each in $ millions. Then compute (a) the ratio of total liabilities to total shareholders' equity, rounded to two decimals, and (b) liquid assets, defined as cash and cash equivalents plus current and non-current marketable securities (in $ millions), and state whether liquid assets exceed total term debt.",
+    "answer": {
+      "TA@FY2026": 404548,
+      "TL@FY2026": 292455,
+      "TE@FY2026": 112093,
+      "TermDebt@FY2026": 78114,
+      "LtoE@FY2026": 2.61,
+      "Liquid@FY2026": 136935,
+      "Liquid_exceeds_term_debt": "yes"
+    },
+    "answer_text": "Total assets ($M) (FY2026): 404,548\nTotal liabilities ($M) (FY2026): 292,455\nTotal shareholders' equity ($M) (FY2026): 112,093\nTotal term debt ($M) (FY2026): 78,114\nTotal liabilities / equity (FY2026): 2.61\nLiquid assets ($M) (FY2026): 136,935\nLiquid assets exceed term debt?: yes",
+    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "changes_vs_seed": [
+      "时点 2023-09-30 → 2026-09-26",
+      "GT 中的定性判断改为 1 个比率 + 1 个是/否判断",
+      "删除 \"依赖债务融资\" 这类错误/无法判分的叙述"
+    ]
+  },
+  "step6_review": {
+    "text_verification": [
+      {
+        "key": "Assets@FY2026",
+        "value_as_text": "404,548",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Cash@FY2026",
+        "value_as_text": "36,305",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Eq@FY2026",
+        "value_as_text": "112,093",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Liab@FY2026",
+        "value_as_text": "292,455",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "MSc@FY2026",
+        "value_as_text": "20,417",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "MSn@FY2026",
+        "value_as_text": "80,213",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "TDc@FY2026",
+        "value_as_text": "9,906",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "TDn@FY2026",
+        "value_as_text": "68,208",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      }
+    ],
+    "answer_leak_in_question": [],
+    "rounding_near_boundary": [],
+    "automatic_checks_pass": true,
+    "verdict": "pass",
+    "checklist": {
+      "same_company_and_period_type": true,
+      "inputs_found_in_filing_text": true,
+      "formula_matches_learned_pattern": true,
+      "arithmetic_by_code": true,
+      "answerable_from_filing_alone": true,
+      "no_answer_leak_in_question": true,
+      "change_is_mainly_information_update": "是（GT 的两个定性判断形式化为比率 + 是/否，未新增考点）"
+    },
+    "notes": [
+      "term debt 不含 commercial paper（与原 GT 口径一致），题干已写明 \"current plus non-current term debt\""
+    ]
+  },
+  "revisions": [],
+  "final_status": "ACCEPTED"
+}

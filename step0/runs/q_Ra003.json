@@ -1,0 +1,369 @@
+{
+  "qid": "q_Ra003",
+  "seed": {
+    "question": "What are the key findings from the profitability analysis of Apple Inc. for the year 2023?",
+    "ground_truth_answer": "The key findings from the profitability analysis of Apple Inc. for the year 2023 are as follows:\n- Gross Margin: The gross margin for 2023 is $169,148 million, which indicates the company's ability to generate profit from its core business activities after accounting for the cost of goods sold.\n- Operating Income: The operating income for 2023 is $114,301 million, reflecting the company's efficiency in managing its operating expenses, including research and development and selling, general, and administrative expenses.\n- Net Income: The net income for 2023 is $96,995 million, showcasing the company's overall profitability after accounting for all expenses, including taxes and other income/expenses.\n- Earnings Per Share (EPS): The basic EPS for 2023 is $6.16, and the diluted EPS is $6.13, indicating the earnings attributable to each share of the company's stock.\nOverall, Apple Inc. has demonstrated strong profitability in 2023, with significant gross margin, operating income, and net income, reflecting its ability to generate substantial profits from its operations.",
+    "accession_number": "0000320193-23-000106",
+    "page_number": "28"
+  },
+  "step1_learn_pattern": {
+    "question_type": "C 开放检索型",
+    "structure": "单年：列出 5 个利润表数字 + 文字点评",
+    "operation": "无运算，纯取数",
+    "output_format": "$ 百万；EPS 保留 2 位小数",
+    "seed_numbers": {
+      "GP@FY2023": "169,148",
+      "OpInc@FY2023": "114,301",
+      "NI@FY2023": "96,995",
+      "EPSb@FY2023": "6.16",
+      "EPSd@FY2023": "6.13"
+    },
+    "seed_answers": {
+      "GM@FY2023": "169,148",
+      "OI@FY2023": "114,301",
+      "NetInc@FY2023": "96,995",
+      "EPS_basic@FY2023": "6.16",
+      "EPS_diluted@FY2023": "6.13"
+    },
+    "notes": [
+      "\"key findings\" 未定义；GT 实际就是 5 个数字 + 泛泛评价",
+      "Apple 把美元金额的毛利叫 \"gross margin\""
+    ],
+    "data_items": {
+      "GP": {
+        "label": "Total gross margin",
+        "statement": "Consolidated Statements of Operations",
+        "type": "duration"
+      },
+      "OpInc": {
+        "label": "Operating income",
+        "statement": "Consolidated Statements of Operations",
+        "type": "duration"
+      },
+      "NI": {
+        "label": "Net income",
+        "statement": "Consolidated Statements of Operations",
+        "type": "duration"
+      },
+      "EPSb": {
+        "label": "Earnings per share – Basic",
+        "statement": "Consolidated Statements of Operations",
+        "type": "duration"
+      },
+      "EPSd": {
+        "label": "Earnings per share – Diluted",
+        "statement": "Consolidated Statements of Operations",
+        "type": "duration"
+      }
+    },
+    "formulas": {
+      "GM": "GP@{p}",
+      "OI": "OpInc@{p}",
+      "NetInc": "NI@{p}",
+      "EPS_basic": "EPSb@{p}",
+      "EPS_diluted": "EPSd@{p}"
+    },
+    "evidence_in_seed_context": {
+      "GP@FY2023": [
+        {
+          "page": "28",
+          "row_label": "Gross margin"
+        }
+      ],
+      "OpInc@FY2023": [
+        {
+          "page": "28",
+          "row_label": "Operating income"
+        }
+      ],
+      "NI@FY2023": [
+        {
+          "page": "28",
+          "row_label": "Net income"
+        }
+      ],
+      "EPSb@FY2023": [
+        {
+          "page": "28",
+          "row_label": "Basic"
+        }
+      ],
+      "EPSd@FY2023": [
+        {
+          "page": "28",
+          "row_label": "Diluted"
+        }
+      ],
+      "GM@FY2023": [
+        {
+          "page": "28",
+          "row_label": "Gross margin"
+        }
+      ],
+      "OI@FY2023": [
+        {
+          "page": "28",
+          "row_label": "Operating income"
+        }
+      ],
+      "NetInc@FY2023": [
+        {
+          "page": "28",
+          "row_label": "Net income"
+        }
+      ],
+      "EPS_basic@FY2023": [
+        {
+          "page": "28",
+          "row_label": "Basic"
+        }
+      ],
+      "EPS_diluted@FY2023": [
+        {
+          "page": "28",
+          "row_label": "Diluted"
+        }
+      ]
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000320193-23-000106",
+    "inputs": [
+      {
+        "key": "EPSb@FY2023",
+        "seed_stated": 6.16,
+        "xbrl": 6.16,
+        "xbrl_concept": "EarningsPerShareBasic",
+        "status": "MATCH"
+      },
+      {
+        "key": "EPSd@FY2023",
+        "seed_stated": 6.13,
+        "xbrl": 6.13,
+        "xbrl_concept": "EarningsPerShareDiluted",
+        "status": "MATCH"
+      },
+      {
+        "key": "GP@FY2023",
+        "seed_stated": 169148.0,
+        "xbrl": 169148.0,
+        "xbrl_concept": "GrossProfit",
+        "status": "MATCH"
+      },
+      {
+        "key": "NI@FY2023",
+        "seed_stated": 96995.0,
+        "xbrl": 96995.0,
+        "xbrl_concept": "NetIncomeLoss",
+        "status": "MATCH"
+      },
+      {
+        "key": "OpInc@FY2023",
+        "seed_stated": 114301.0,
+        "xbrl": 114301.0,
+        "xbrl_concept": "OperatingIncomeLoss",
+        "status": "MATCH"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "GM@FY2023",
+        "formula": "GP@FY2023",
+        "seed_answer": "169,148",
+        "recomputed_from_seed_inputs": 169148.0,
+        "recomputed_from_filing": 169148.0,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 169148.0
+      },
+      {
+        "metric": "OI@FY2023",
+        "formula": "OpInc@FY2023",
+        "seed_answer": "114,301",
+        "recomputed_from_seed_inputs": 114301.0,
+        "recomputed_from_filing": 114301.0,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 114301.0
+      },
+      {
+        "metric": "NetInc@FY2023",
+        "formula": "NI@FY2023",
+        "seed_answer": "96,995",
+        "recomputed_from_seed_inputs": 96995.0,
+        "recomputed_from_filing": 96995.0,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 96995.0
+      },
+      {
+        "metric": "EPS_basic@FY2023",
+        "formula": "EPSb@FY2023",
+        "seed_answer": "6.16",
+        "recomputed_from_seed_inputs": 6.16,
+        "recomputed_from_filing": 6.16,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 6.16
+      },
+      {
+        "metric": "EPS_diluted@FY2023",
+        "formula": "EPSd@FY2023",
+        "seed_answer": "6.13",
+        "recomputed_from_seed_inputs": 6.13,
+        "recomputed_from_filing": 6.13,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 6.13
+      }
+    ],
+    "verdict": "MATCH。5 项数字全部与文件一致（p28 利润表）。"
+  },
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026，截至 2026-09-26）",
+    "decision": "shift",
+    "rationale": "5 个数据项均可得。开放题改写为指定这 5 项，使答案可判分。",
+    "target_filing": {
+      "form": "10-K",
+      "period": "2026-09-26",
+      "filed": "2026-11-03",
+      "accn": "0000320193-26-000026",
+      "doc": "aapl-20260926.htm"
+    },
+    "availability": {
+      "EPSb@FY2026": "EarningsPerShareBasic",
+      "EPSd@FY2026": "EarningsPerShareDiluted",
+      "GP@FY2026": "GrossProfit",
+      "NI@FY2026": "NetIncomeLoss",
+      "OpInc@FY2026": "OperatingIncomeLoss"
+    }
+  },
+  "step4_compute": {
+    "inputs": {
+      "EPSb@FY2026": {
+        "concept": "EarningsPerShareBasic",
+        "dims": {},
+        "value": 9.01
+      },
+      "EPSd@FY2026": {
+        "concept": "EarningsPerShareDiluted",
+        "dims": {},
+        "value": 8.98
+      },
+      "GP@FY2026": {
+        "concept": "GrossProfit",
+        "dims": {},
+        "value": 233602.0
+      },
+      "NI@FY2026": {
+        "concept": "NetIncomeLoss",
+        "dims": {},
+        "value": 132175.0
+      },
+      "OpInc@FY2026": {
+        "concept": "OperatingIncomeLoss",
+        "dims": {},
+        "value": 158063.0
+      }
+    },
+    "metrics": {
+      "GM@FY2026": {
+        "formula": "GP@FY2026",
+        "value": 233602.0,
+        "missing": []
+      },
+      "OI@FY2026": {
+        "formula": "OpInc@FY2026",
+        "value": 158063.0,
+        "missing": []
+      },
+      "NetInc@FY2026": {
+        "formula": "NI@FY2026",
+        "value": 132175.0,
+        "missing": []
+      },
+      "EPS_basic@FY2026": {
+        "formula": "EPSb@FY2026",
+        "value": 9.01,
+        "missing": []
+      },
+      "EPS_diluted@FY2026": {
+        "formula": "EPSd@FY2026",
+        "value": 8.98,
+        "missing": []
+      }
+    }
+  },
+  "step5_question": {
+    "question": "From Apple Inc.'s Form 10-K for the fiscal year ended September 26, 2026, report the key profitability results for fiscal 2026: total gross margin, operating income, and net income (each in $ millions), and basic and diluted earnings per share.",
+    "answer": {
+      "GM@FY2026": 233602,
+      "OI@FY2026": 158063,
+      "NetInc@FY2026": 132175,
+      "EPS_basic@FY2026": 9.01,
+      "EPS_diluted@FY2026": 8.98
+    },
+    "answer_text": "Total gross margin ($M) (FY2026): 233,602\nOperating income ($M) (FY2026): 158,063\nNet income ($M) (FY2026): 132,175\nBasic EPS ($) (FY2026): 9.01\nDiluted EPS ($) (FY2026): 8.98",
+    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "changes_vs_seed": [
+      "期间 FY2023 → FY2026",
+      "\"key findings\" 改为明确列出 5 个指标（与原 GT 覆盖的指标一致）",
+      "删除无法判分的文字点评"
+    ]
+  },
+  "step6_review": {
+    "text_verification": [
+      {
+        "key": "EPSb@FY2026",
+        "value_as_text": "9.01",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "EPSd@FY2026",
+        "value_as_text": "8.98",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "GP@FY2026",
+        "value_as_text": "233,602",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "NI@FY2026",
+        "value_as_text": "132,175",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "OpInc@FY2026",
+        "value_as_text": "158,063",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      }
+    ],
+    "answer_leak_in_question": [],
+    "rounding_near_boundary": [],
+    "automatic_checks_pass": true,
+    "verdict": "pass",
+    "checklist": {
+      "same_company_and_period_type": true,
+      "inputs_found_in_filing_text": true,
+      "formula_matches_learned_pattern": true,
+      "arithmetic_by_code": true,
+      "answerable_from_filing_alone": true,
+      "no_answer_leak_in_question": true,
+      "change_is_mainly_information_update": "是（开放题改为指定 5 项，覆盖范围与原 GT 相同）"
+    },
+    "notes": []
+  },
+  "revisions": [],
+  "final_status": "ACCEPTED"
+}

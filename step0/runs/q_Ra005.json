@@ -1,0 +1,323 @@
+{
+  "qid": "q_Ra005",
+  "seed": {
+    "question": "What were the key outcomes of the solvency analysis for JPMorgan Chase as of March 31, 2024?",
+    "ground_truth_answer": "The key findings from the solvency analysis of JPMorgan Chase as of March 31, 2024, include:\n- Debt Equity Ratio: 11.15\n- Interest Coverage Ratio: 0.71\n- Financial Leverage Ratio: 12.15\n- Long-term Debt to Capitalization Ratio: 0.54\nThese ratios suggest that JPMorgan Chase has a high level of debt relative to equity, a low interest coverage ratio, and significant financial leverage, indicating potential solvency risks.",
+    "accession_number": "0000019617-24-000326",
+    "page_number": "83, 85"
+  },
+  "step1_learn_pattern": {
+    "question_type": "B 半结构化分析型",
+    "structure": "单个季度：4 个偿债比率 + 文字结论",
+    "operation": "4 个除法；公式未在 GT 中给出，由回测反推",
+    "output_format": "保留 2 位小数",
+    "seed_answers": {
+      "DE@Q1_2024": "11.15",
+      "ICR@Q1_2024": "0.71",
+      "FL@Q1_2024": "12.15",
+      "LTDCap@Q1_2024": "0.54"
+    },
+    "notes": [
+      "GT 只有 4 个比率、没有输入和公式；在原文件中搜索组合后反推出公式（见 metrics）",
+      "ICR 反推结果是 税前利润 ÷ 利息费用（0.71），不是常规的 EBIT ÷ 利息费用（=1.71）",
+      "银行业的利息费用属于经营成本，这些比率的经济含义有限；GT 的 \"potential solvency risks\" 结论不成立"
+    ],
+    "data_items": {
+      "Assets": {
+        "label": "Total assets",
+        "statement": "Consolidated balance sheets",
+        "type": "instant"
+      },
+      "Liab": {
+        "label": "Total liabilities",
+        "statement": "Consolidated balance sheets",
+        "type": "instant"
+      },
+      "Eq": {
+        "label": "Total stockholders' equity",
+        "statement": "Consolidated balance sheets",
+        "type": "instant"
+      },
+      "LTD": {
+        "label": "Long-term debt",
+        "statement": "Consolidated balance sheets",
+        "type": "instant"
+      },
+      "IntExp": {
+        "label": "Total interest expense",
+        "statement": "Consolidated statements of income",
+        "type": "duration"
+      },
+      "PreTax": {
+        "label": "Income before income tax expense",
+        "statement": "Consolidated statements of income",
+        "type": "duration"
+      }
+    },
+    "formulas": {
+      "DE": "Liab@{p} / Eq@{p}",
+      "ICR": "PreTax@{p} / IntExp@{p}",
+      "FL": "Assets@{p} / Eq@{p}",
+      "LTDCap": "LTD@{p} / (LTD@{p} + Eq@{p})"
+    },
+    "evidence_in_seed_context": {
+      "DE@Q1_2024": [],
+      "ICR@Q1_2024": [],
+      "FL@Q1_2024": [],
+      "LTDCap@Q1_2024": []
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000019617-24-000326",
+    "inputs": [
+      {
+        "key": "Assets@Q1_2024",
+        "seed_stated": null,
+        "xbrl": 4090727.0,
+        "xbrl_concept": "Assets",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "Eq@Q1_2024",
+        "seed_stated": null,
+        "xbrl": 336637.0,
+        "xbrl_concept": "StockholdersEquity",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "IntExp@Q1_2024",
+        "seed_stated": null,
+        "xbrl": 24356.0,
+        "xbrl_concept": "InterestExpense",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "LTD@Q1_2024",
+        "seed_stated": null,
+        "xbrl": 395872.0,
+        "xbrl_concept": "LongTermDebtAndCapitalLeaseObligationsIncludingCurrentMaturities",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "Liab@Q1_2024",
+        "seed_stated": null,
+        "xbrl": 3754090.0,
+        "xbrl_concept": "Liabilities",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "PreTax@Q1_2024",
+        "seed_stated": null,
+        "xbrl": 17293.0,
+        "xbrl_concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "status": "XBRL_ONLY"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "DE@Q1_2024",
+        "formula": "Liab@Q1_2024 / Eq@Q1_2024",
+        "seed_answer": "11.15",
+        "recomputed_from_seed_inputs": 11.151745054762252,
+        "recomputed_from_filing": 11.151745054762252,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 11.15
+      },
+      {
+        "metric": "ICR@Q1_2024",
+        "formula": "PreTax@Q1_2024 / IntExp@Q1_2024",
+        "seed_answer": "0.71",
+        "recomputed_from_seed_inputs": 0.710009853834784,
+        "recomputed_from_filing": 0.710009853834784,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 0.71
+      },
+      {
+        "metric": "FL@Q1_2024",
+        "formula": "Assets@Q1_2024 / Eq@Q1_2024",
+        "seed_answer": "12.15",
+        "recomputed_from_seed_inputs": 12.151745054762252,
+        "recomputed_from_filing": 12.151745054762252,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 12.15
+      },
+      {
+        "metric": "LTDCap@Q1_2024",
+        "formula": "LTD@Q1_2024 / (LTD@Q1_2024 + Eq@Q1_2024)",
+        "seed_answer": "0.54",
+        "recomputed_from_seed_inputs": 0.5404329503118733,
+        "recomputed_from_filing": 0.5404329503118733,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 0.54
+      }
+    ],
+    "verdict": "MATCH。4 个比率均由反推公式精确复现（ICR 为非常规定义：税前利润 ÷ 利息费用）。"
+  },
+  "step3_plan": {
+    "target_rule": "最新一期 10-Q（2026-09-30），季度期间长度与原题一致（3 个月）",
+    "decision": "shift",
+    "rationale": "数据项全部可得（利息费用科目改名，见 revisions）。沿用回测确认的公式，并在题干中写明 ICR 的非常规定义。删除错误的叙述结论。",
+    "target_filing": {
+      "form": "10-Q",
+      "period": "2026-09-30",
+      "filed": "2026-11-03",
+      "accn": "0001628280-26-069523",
+      "doc": "jpm-20260930.htm"
+    },
+    "availability": {
+      "Assets@Q3_2026": "Assets",
+      "Eq@Q3_2026": "StockholdersEquity",
+      "IntExp@Q3_2026": "InterestExpenseOperating",
+      "LTD@Q3_2026": "LongTermDebtAndCapitalLeaseObligationsIncludingCurrentMaturities",
+      "Liab@Q3_2026": "Liabilities",
+      "PreTax@Q3_2026": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+    }
+  },
+  "step4_compute": {
+    "inputs": {
+      "Assets@Q3_2026": {
+        "concept": "Assets",
+        "dims": {},
+        "value": 5091545.0
+      },
+      "Eq@Q3_2026": {
+        "concept": "StockholdersEquity",
+        "dims": {},
+        "value": 372368.0
+      },
+      "IntExp@Q3_2026": {
+        "concept": "InterestExpenseOperating",
+        "dims": {},
+        "value": 26020.0
+      },
+      "LTD@Q3_2026": {
+        "concept": "LongTermDebtAndCapitalLeaseObligationsIncludingCurrentMaturities",
+        "dims": {},
+        "value": 460160.0
+      },
+      "Liab@Q3_2026": {
+        "concept": "Liabilities",
+        "dims": {},
+        "value": 4719177.0
+      },
+      "PreTax@Q3_2026": {
+        "concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "dims": {},
+        "value": 20134.0
+      }
+    },
+    "metrics": {
+      "DE@Q3_2026": {
+        "formula": "Liab@Q3_2026 / Eq@Q3_2026",
+        "value": 12.673422528251622,
+        "missing": []
+      },
+      "ICR@Q3_2026": {
+        "formula": "PreTax@Q3_2026 / IntExp@Q3_2026",
+        "value": 0.7737893927747886,
+        "missing": []
+      },
+      "FL@Q3_2026": {
+        "formula": "Assets@Q3_2026 / Eq@Q3_2026",
+        "value": 13.673422528251622,
+        "missing": []
+      },
+      "LTDCap@Q3_2026": {
+        "formula": "LTD@Q3_2026 / (LTD@Q3_2026 + Eq@Q3_2026)",
+        "value": 0.5527261545557627,
+        "missing": []
+      }
+    }
+  },
+  "step5_question": {
+    "question": "Perform a solvency analysis of JPMorgan Chase & Co. using its Form 10-Q for the quarter ended September 30, 2026. Compute: (1) debt-to-equity ratio = total liabilities / total stockholders' equity; (2) interest coverage ratio = income before income tax expense / total interest expense, both for the three months ended September 30, 2026; (3) financial leverage ratio = total assets / total stockholders' equity; (4) long-term debt to capitalization ratio = long-term debt / (long-term debt + total stockholders' equity). Use balance sheet amounts as of September 30, 2026 and round each ratio to two decimals.",
+    "answer": {
+      "DE@Q3_2026": 12.67,
+      "ICR@Q3_2026": 0.77,
+      "FL@Q3_2026": 13.67,
+      "LTDCap@Q3_2026": 0.55
+    },
+    "answer_text": "Debt-to-equity (Q3_2026): 12.67\nInterest coverage (pre-tax income / interest expense) (Q3_2026): 0.77\nFinancial leverage (Q3_2026): 13.67\nLong-term debt to capitalization (Q3_2026): 0.55",
+    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "changes_vs_seed": [
+      "时点 2024-03-31 → 2026-09-30（同为 3 个月季度）",
+      "题干写明 4 个公式（GT 原本没有）",
+      "删除 \"potential solvency risks\" 等结论"
+    ]
+  },
+  "step6_review": {
+    "text_verification": [
+      {
+        "key": "Assets@Q3_2026",
+        "value_as_text": "5,091,545",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Eq@Q3_2026",
+        "value_as_text": "372,368",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "IntExp@Q3_2026",
+        "value_as_text": "26,020",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "LTD@Q3_2026",
+        "value_as_text": "460,160",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "Liab@Q3_2026",
+        "value_as_text": "4,719,177",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "PreTax@Q3_2026",
+        "value_as_text": "20,134",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      }
+    ],
+    "answer_leak_in_question": [],
+    "rounding_near_boundary": [],
+    "automatic_checks_pass": true,
+    "verdict": "pass",
+    "checklist": {
+      "same_company_and_period_type": true,
+      "inputs_found_in_filing_text": true,
+      "formula_matches_learned_pattern": true,
+      "arithmetic_by_code": true,
+      "answerable_from_filing_alone": true,
+      "no_answer_leak_in_question": true,
+      "change_is_mainly_information_update": true
+    },
+    "notes": [
+      "ICR 定义非常规，已在题干写明公式，避免受测模型按 EBIT 口径作答被误判",
+      "银行业比率经济含义有限，但题目只考计算，不影响可判分性"
+    ]
+  },
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step3_plan",
+      "problem": "IntExp 只配置了 InterestExpense，目标 10-Q 中该标签缺失（availability=MISSING）",
+      "action": "在目标文件中搜索含 Interest 的科目，发现 JPM 自 2026 年起改用 InterestExpenseOperating；原文 \"Total interest expense $ 26,020\" 吻合 → 把它加入候选科目",
+      "result": "第 2 轮可得"
+    }
+  ],
+  "final_status": "ACCEPTED"
+}

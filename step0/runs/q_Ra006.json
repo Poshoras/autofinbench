@@ -1,0 +1,434 @@
+{
+  "qid": "q_Ra006",
+  "seed": {
+    "question": "What percentage of Nike's total revenue in 2018 was contributed by each region, and how does this reflect the company's global revenue distribution?",
+    "ground_truth_answer": "To calculate the percentage of revenue contributed by each region to Nike's total revenue in 2018:\n\nFormula:\nPercentage of Revenue = (Revenue from Region / Total Revenue) × 100\n\nData:\n\nNorth America Revenue = $14,855 million\nEMEA Revenue = $9,242 million\nGreater China Revenue = $5,134 million\nAPLA Revenue = $5,166 million\nGlobal Brand Divisions Revenue = $88 million\nTotal Revenue = $14,855 + $9,242 + $5,134 + $5,166 + $88 = $34,485 million\nCalculations:\n\nNorth America: (14,855 / 34,485) × 100 ≈ 43.08%\nEMEA: (9,242 / 34,485) × 100 ≈ 26.80%\nGreater China: (5,134 / 34,485) × 100 ≈ 14.89%\nAPLA: (5,166 / 34,485) × 100 ≈ 14.98%\nGlobal Brand Divisions: (88 / 34,485) × 100 ≈ 0.26%",
+    "accession_number": "0000320187-18-000142",
+    "page_number": "71"
+  },
+  "step1_learn_pattern": {
+    "question_type": "A 计算型（附一句定性结论）",
+    "structure": "单年：5 个地区占比",
+    "operation": "各地区收入 ÷ 分母，分母为 5 项之和",
+    "output_format": "百分比，保留 2 位小数",
+    "seed_numbers": {
+      "NA@FY2018": "14,855",
+      "EMEA@FY2018": "9,242",
+      "GC@FY2018": "5,134",
+      "APLA@FY2018": "5,166",
+      "GBD@FY2018": "88"
+    },
+    "seed_answers": {
+      "Brand@FY2018": "34,485",
+      "ShareNA@FY2018": "43.08",
+      "ShareEMEA@FY2018": "26.80",
+      "ShareGC@FY2018": "14.89",
+      "ShareAPLA@FY2018": "14.98",
+      "ShareGBD@FY2018": "0.26"
+    },
+    "notes": [
+      "题干说 \"Nike's total revenue\"，但 GT 的分母 34,485 是 NIKE Brand 收入（不含 Converse 1,886 和 Corporate 26），与 NIKE Inc. 总收入 36,397 不同 → 题干与 GT 口径不一致",
+      "\"how does this reflect global distribution\" 是开放叙述，GT 未作回答"
+    ],
+    "data_items": {
+      "NA": {
+        "label": "NIKE Brand revenues – North America",
+        "statement": "Notes – Operating segments",
+        "type": "duration"
+      },
+      "EMEA": {
+        "label": "NIKE Brand revenues – Europe, Middle East & Africa",
+        "statement": "Notes – Operating segments",
+        "type": "duration"
+      },
+      "GC": {
+        "label": "NIKE Brand revenues – Greater China",
+        "statement": "Notes – Operating segments",
+        "type": "duration"
+      },
+      "APLA": {
+        "label": "NIKE Brand revenues – Asia Pacific & Latin America",
+        "statement": "Notes – Operating segments",
+        "type": "duration"
+      },
+      "GBD": {
+        "label": "Global Brand Divisions revenues",
+        "statement": "Notes – Operating segments",
+        "type": "duration"
+      },
+      "TotRev": {
+        "label": "Total NIKE, Inc. revenues",
+        "statement": "Consolidated Statements of Income",
+        "type": "duration"
+      }
+    },
+    "formulas": {
+      "Brand": "NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}",
+      "ShareNA": "NA@{p} / (NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}) * 100",
+      "ShareEMEA": "EMEA@{p} / (NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}) * 100",
+      "ShareGC": "GC@{p} / (NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}) * 100",
+      "ShareAPLA": "APLA@{p} / (NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}) * 100",
+      "ShareGBD": "GBD@{p} / (NA@{p} + EMEA@{p} + GC@{p} + APLA@{p} + GBD@{p}) * 100",
+      "DIAG_NA_share_of_total_revenue": "NA@{p} / TotRev@{p} * 100"
+    },
+    "evidence_in_seed_context": {
+      "NA@FY2018": [
+        {
+          "page": "71",
+          "row_label": "North America"
+        }
+      ],
+      "EMEA@FY2018": [
+        {
+          "page": "71",
+          "row_label": "Europe, Middle East & Africa"
+        }
+      ],
+      "GC@FY2018": [
+        {
+          "page": "71",
+          "row_label": "Greater China"
+        }
+      ],
+      "APLA@FY2018": [
+        {
+          "page": "71",
+          "row_label": "Asia Pacific & Latin America"
+        }
+      ],
+      "GBD@FY2018": [
+        {
+          "page": "71",
+          "row_label": "Global Brand Divisions"
+        }
+      ],
+      "Brand@FY2018": [
+        {
+          "page": "71",
+          "row_label": "Total NIKE Brand"
+        }
+      ],
+      "ShareNA@FY2018": [],
+      "ShareEMEA@FY2018": [],
+      "ShareGC@FY2018": [],
+      "ShareAPLA@FY2018": [],
+      "ShareGBD@FY2018": []
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000320187-18-000142",
+    "inputs": [
+      {
+        "key": "APLA@FY2018",
+        "seed_stated": 5166.0,
+        "xbrl": 5166.0,
+        "xbrl_concept": "SalesRevenueNet",
+        "status": "MATCH"
+      },
+      {
+        "key": "EMEA@FY2018",
+        "seed_stated": 9242.0,
+        "xbrl": 9242.0,
+        "xbrl_concept": "SalesRevenueNet",
+        "status": "MATCH"
+      },
+      {
+        "key": "GBD@FY2018",
+        "seed_stated": 88.0,
+        "xbrl": null,
+        "xbrl_concept": null,
+        "status": "NO_XBRL (context only)"
+      },
+      {
+        "key": "GC@FY2018",
+        "seed_stated": 5134.0,
+        "xbrl": 5134.0,
+        "xbrl_concept": "SalesRevenueNet",
+        "status": "MATCH"
+      },
+      {
+        "key": "NA@FY2018",
+        "seed_stated": 14855.0,
+        "xbrl": 14855.0,
+        "xbrl_concept": "SalesRevenueNet",
+        "status": "MATCH"
+      },
+      {
+        "key": "TotRev@FY2018",
+        "seed_stated": null,
+        "xbrl": 36397.0,
+        "xbrl_concept": "SalesRevenueNet",
+        "status": "XBRL_ONLY"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "Brand@FY2018",
+        "formula": "NA@FY2018 + EMEA@FY2018 + GC@FY2018 + APLA@FY2018 + GBD@FY2018",
+        "seed_answer": "34,485",
+        "recomputed_from_seed_inputs": 34485.0,
+        "recomputed_from_filing": 34485.0,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 34485.0
+      },
+      {
+        "metric": "ShareNA@FY2018",
+        "formula": "NA@FY2018 / (NA@FY2018 + EMEA@FY2018 + GC@FY2018 + APLA@FY2018 + GBD@FY2018) * 100",
+        "seed_answer": "43.08",
+        "recomputed_from_seed_inputs": 43.07670001449906,
+        "recomputed_from_filing": 43.07670001449906,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 43.08
+      },
+      {
+        "metric": "ShareEMEA@FY2018",
+        "formula": "EMEA@FY2018 / (NA@FY2018 + EMEA@FY2018 + GC@FY2018 + APLA@FY2018 + GBD@FY2018) * 100",
+        "seed_answer": "26.80",
+        "recomputed_from_seed_inputs": 26.800057996230247,
+        "recomputed_from_filing": 26.800057996230247,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 26.8
+      },
+      {
+        "metric": "ShareGC@FY2018",
+        "formula": "GC@FY2018 / (NA@FY2018 + EMEA@FY2018 + GC@FY2018 + APLA@FY2018 + GBD@FY2018) * 100",
+        "seed_answer": "14.89",
+        "recomputed_from_seed_inputs": 14.887632303900247,
+        "recomputed_from_filing": 14.887632303900247,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 14.89
+      },
+      {
+        "metric": "ShareAPLA@FY2018",
+        "formula": "APLA@FY2018 / (NA@FY2018 + EMEA@FY2018 + GC@FY2018 + APLA@FY2018 + GBD@FY2018) * 100",
+        "seed_answer": "14.98",
+        "recomputed_from_seed_inputs": 14.980426272292302,
+        "recomputed_from_filing": 14.980426272292302,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 14.98
+      },
+      {
+        "metric": "ShareGBD@FY2018",
+        "formula": "GBD@FY2018 / (NA@FY2018 + EMEA@FY2018 + GC@FY2018 + APLA@FY2018 + GBD@FY2018) * 100",
+        "seed_answer": "0.26",
+        "recomputed_from_seed_inputs": 0.2551834130781499,
+        "recomputed_from_filing": 0.2551834130781499,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 0.26
+      },
+      {
+        "metric": "DIAG_NA_share_of_total_revenue@FY2018",
+        "formula": "NA@FY2018 / TotRev@FY2018 * 100",
+        "seed_answer": null,
+        "recomputed_from_seed_inputs": 40.81380333543974,
+        "recomputed_from_filing": 40.81380333543974,
+        "missing": []
+      }
+    ],
+    "verdict": "MATCH + 口径问题。输入和算术全部复现，但分母是 NIKE Brand 收入 34,485，而题干写的是 total revenue（NIKE Inc. 总收入 36,397；按总收入算，北美占比为 40.81% 而非 43.08%）。"
+  },
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026，截至 2026-05-31）",
+    "decision": "shift",
+    "rationale": "分部结构未变（仍是 4 个地区 + Global Brand Divisions），数据可得。按 GT 的实际口径（NIKE Brand 收入为分母）出题并写明；叙述部分改为 \"占比最大的地区\"。",
+    "target_filing": {
+      "form": "10-K",
+      "period": "2026-05-31",
+      "filed": "2026-07-15",
+      "accn": "0000320187-26-000088",
+      "doc": "nke-20260531.htm"
+    },
+    "availability": {
+      "APLA@FY2026": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "EMEA@FY2026": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "GBD@FY2026": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "GC@FY2026": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "NA@FY2026": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "TotRev@FY2026": "RevenueFromContractWithCustomerExcludingAssessedTax"
+    }
+  },
+  "step4_compute": {
+    "inputs": {
+      "APLA@FY2026": {
+        "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "dims": {
+          "ConsolidationItemsAxis": "OperatingSegmentsMember",
+          "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+          "SubsegmentsAxis": "AsiaPacificAndLatinAmericaSegmentMember"
+        },
+        "value": 6243.0
+      },
+      "EMEA@FY2026": {
+        "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "dims": {
+          "ConsolidationItemsAxis": "OperatingSegmentsMember",
+          "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+          "SubsegmentsAxis": "EuropeMiddleEastAndAfricaSegmentMember"
+        },
+        "value": 12572.0
+      },
+      "GBD@FY2026": {
+        "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "dims": {
+          "ConsolidationItemsAxis": "MaterialReconcilingItemsMember",
+          "StatementBusinessSegmentsAxis": "NIKEBrandMember"
+        },
+        "value": 49.0
+      },
+      "GC@FY2026": {
+        "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "dims": {
+          "ConsolidationItemsAxis": "OperatingSegmentsMember",
+          "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+          "SubsegmentsAxis": "GreaterChinaSegmentMember"
+        },
+        "value": 5847.0
+      },
+      "NA@FY2026": {
+        "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "dims": {
+          "ConsolidationItemsAxis": "OperatingSegmentsMember",
+          "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+          "SubsegmentsAxis": "NorthAmericaSegmentMember"
+        },
+        "value": 20511.0
+      },
+      "TotRev@FY2026": {
+        "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "dims": {},
+        "value": 46398.0
+      }
+    },
+    "metrics": {
+      "Brand@FY2026": {
+        "formula": "NA@FY2026 + EMEA@FY2026 + GC@FY2026 + APLA@FY2026 + GBD@FY2026",
+        "value": 45222.0,
+        "missing": []
+      },
+      "ShareNA@FY2026": {
+        "formula": "NA@FY2026 / (NA@FY2026 + EMEA@FY2026 + GC@FY2026 + APLA@FY2026 + GBD@FY2026) * 100",
+        "value": 45.356242536818364,
+        "missing": []
+      },
+      "ShareEMEA@FY2026": {
+        "formula": "EMEA@FY2026 / (NA@FY2026 + EMEA@FY2026 + GC@FY2026 + APLA@FY2026 + GBD@FY2026) * 100",
+        "value": 27.800628012914068,
+        "missing": []
+      },
+      "ShareGC@FY2026": {
+        "formula": "GC@FY2026 / (NA@FY2026 + EMEA@FY2026 + GC@FY2026 + APLA@FY2026 + GBD@FY2026) * 100",
+        "value": 12.9295475653443,
+        "missing": []
+      },
+      "ShareAPLA@FY2026": {
+        "formula": "APLA@FY2026 / (NA@FY2026 + EMEA@FY2026 + GC@FY2026 + APLA@FY2026 + GBD@FY2026) * 100",
+        "value": 13.805227544115695,
+        "missing": []
+      },
+      "ShareGBD@FY2026": {
+        "formula": "GBD@FY2026 / (NA@FY2026 + EMEA@FY2026 + GC@FY2026 + APLA@FY2026 + GBD@FY2026) * 100",
+        "value": 0.10835434080757153,
+        "missing": []
+      },
+      "DIAG_NA_share_of_total_revenue@FY2026": {
+        "formula": "NA@FY2026 / TotRev@FY2026 * 100",
+        "value": 44.20664683822579,
+        "missing": []
+      }
+    }
+  },
+  "step5_question": {
+    "question": "According to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, what percentage of total NIKE Brand revenues in fiscal 2026 came from each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions? Use total NIKE Brand revenues (the sum of these five) as the denominator, report each percentage to two decimal places, and identify the region with the largest share.",
+    "answer": {
+      "Brand@FY2026": 45222,
+      "ShareNA@FY2026": 45.36,
+      "ShareEMEA@FY2026": 27.8,
+      "ShareGC@FY2026": 12.93,
+      "ShareAPLA@FY2026": 13.81,
+      "ShareGBD@FY2026": 0.11,
+      "Largest_share": "North America"
+    },
+    "answer_text": "Total NIKE Brand revenues ($M) (FY2026): 45,222\nNorth America % (FY2026): 45.36\nEMEA % (FY2026): 27.80\nGreater China % (FY2026): 12.93\nAPLA % (FY2026): 13.81\nGlobal Brand Divisions % (FY2026): 0.11\nLargest share: North America",
+    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "changes_vs_seed": [
+      "期间 FY2018 → FY2026",
+      "分母从模糊的 \"total revenue\" 改为明确的 \"total NIKE Brand revenues\"（与原 GT 实际口径一致）",
+      "开放叙述改为 \"占比最大的地区\""
+    ]
+  },
+  "step6_review": {
+    "text_verification": [
+      {
+        "key": "APLA@FY2026",
+        "value_as_text": "6,243",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "EMEA@FY2026",
+        "value_as_text": "12,572",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "GBD@FY2026",
+        "value_as_text": "49",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "GC@FY2026",
+        "value_as_text": "5,847",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "NA@FY2026",
+        "value_as_text": "20,511",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "TotRev@FY2026",
+        "value_as_text": "46,398",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      }
+    ],
+    "answer_leak_in_question": [],
+    "rounding_near_boundary": [
+      {
+        "key": "ShareAPLA@FY2026",
+        "unrounded": 13.805227544115695
+      }
+    ],
+    "automatic_checks_pass": true,
+    "verdict": "pass",
+    "checklist": {
+      "same_company_and_period_type": true,
+      "inputs_found_in_filing_text": true,
+      "formula_matches_learned_pattern": true,
+      "arithmetic_by_code": true,
+      "answerable_from_filing_alone": true,
+      "no_answer_leak_in_question": true,
+      "change_is_mainly_information_update": "是（分母改为明确的 NIKE Brand 收入，与原 GT 实际口径一致）"
+    },
+    "notes": [
+      "5 项之和 45,222 与文件中 \"TOTAL NIKE BRAND\" 一致"
+    ]
+  },
+  "revisions": [],
+  "final_status": "ACCEPTED"
+}

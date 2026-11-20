@@ -1,0 +1,44 @@
+new_qid,seed_qid,company,form,accession_number,report_period,filed,question,answer_text,answer_json,status
+q_Ra002_u1,q_Ra002,Procter & Gamble Co,10-K,0000080424-26-000103,2026-06-30,2026-08-04,"Using Procter & Gamble's Form 10-K for the fiscal year ended June 30, 2026, analyze P&G's profitability for fiscal 2026 and fiscal 2025 with the following ratios: gross margin = (net sales - cost of products sold) / net sales; operating margin = operating income / net sales; net margin = net earnings attributable to Procter & Gamble / net sales; return on equity (ROE) = net earnings attributable to Procter & Gamble / average total shareholders' equity, where the average is taken over the beginning and end of each fiscal year. Report each ratio for both years as a percentage rounded to one decimal place, and for each ratio state whether it increased, decreased, or was unchanged from fiscal 2025 to fiscal 2026 (compare the rounded values).","Gross margin % (FY2025): 51.2
+Gross margin % (FY2026): 50.2
+Operating margin % (FY2025): 24.3
+Operating margin % (FY2026): 22.7
+Net margin % (FY2025): 19.0
+Net margin % (FY2026): 18.4
+ROE % (FY2025): 31.1
+ROE % (FY2026): 30.1
+Gross margin change: decreased
+Operating margin change: decreased
+Net margin change: decreased
+ROE change: decreased","{""GPM@FY2025"": 51.2, ""GPM@FY2026"": 50.2, ""OPM@FY2025"": 24.3, ""OPM@FY2026"": 22.7, ""NPM@FY2025"": 19.0, ""NPM@FY2026"": 18.4, ""ROE@FY2025"": 31.1, ""ROE@FY2026"": 30.1, ""GPM_change"": ""decreased"", ""OPM_change"": ""decreased"", ""NPM_change"": ""decreased"", ""ROE_change"": ""decreased""}",ACCEPTED
+q_Ra003_u1,q_Ra003,Apple Inc.,10-K,0000320193-26-000026,2026-09-26,2026-11-03,"From Apple Inc.'s Form 10-K for the fiscal year ended September 26, 2026, report the key profitability results for fiscal 2026: total gross margin, operating income, and net income (each in $ millions), and basic and diluted earnings per share.","Total gross margin ($M) (FY2026): 233,602
+Operating income ($M) (FY2026): 158,063
+Net income ($M) (FY2026): 132,175
+Basic EPS ($) (FY2026): 9.01
+Diluted EPS ($) (FY2026): 8.98","{""GM@FY2026"": 233602, ""OI@FY2026"": 158063, ""NetInc@FY2026"": 132175, ""EPS_basic@FY2026"": 9.01, ""EPS_diluted@FY2026"": 8.98}",ACCEPTED
+q_Ra004_u1,q_Ra004,Apple Inc.,10-K,0000320193-26-000026,2026-09-26,2026-11-03,"Assess Apple Inc.'s solvency position as of September 26, 2026 using the balance sheet in its fiscal 2026 Form 10-K. Report total assets, total liabilities, total shareholders' equity, and total term debt (current plus non-current term debt), each in $ millions. Then compute (a) the ratio of total liabilities to total shareholders' equity, rounded to two decimals, and (b) liquid assets, defined as cash and cash equivalents plus current and non-current marketable securities (in $ millions), and state whether liquid assets exceed total term debt.","Total assets ($M) (FY2026): 404,548
+Total liabilities ($M) (FY2026): 292,455
+Total shareholders' equity ($M) (FY2026): 112,093
+Total term debt ($M) (FY2026): 78,114
+Total liabilities / equity (FY2026): 2.61
+Liquid assets ($M) (FY2026): 136,935
+Liquid assets exceed term debt?: yes","{""TA@FY2026"": 404548, ""TL@FY2026"": 292455, ""TE@FY2026"": 112093, ""TermDebt@FY2026"": 78114, ""LtoE@FY2026"": 2.61, ""Liquid@FY2026"": 136935, ""Liquid_exceeds_term_debt"": ""yes""}",ACCEPTED
+q_Ra005_u1,q_Ra005,JPMorgan Chase & Co,10-Q,0001628280-26-069523,2026-09-30,2026-11-03,"Perform a solvency analysis of JPMorgan Chase & Co. using its Form 10-Q for the quarter ended September 30, 2026. Compute: (1) debt-to-equity ratio = total liabilities / total stockholders' equity; (2) interest coverage ratio = income before income tax expense / total interest expense, both for the three months ended September 30, 2026; (3) financial leverage ratio = total assets / total stockholders' equity; (4) long-term debt to capitalization ratio = long-term debt / (long-term debt + total stockholders' equity). Use balance sheet amounts as of September 30, 2026 and round each ratio to two decimals.","Debt-to-equity (Q3_2026): 12.67
+Interest coverage (pre-tax income / interest expense) (Q3_2026): 0.77
+Financial leverage (Q3_2026): 13.67
+Long-term debt to capitalization (Q3_2026): 0.55","{""DE@Q3_2026"": 12.67, ""ICR@Q3_2026"": 0.77, ""FL@Q3_2026"": 13.67, ""LTDCap@Q3_2026"": 0.55}",ACCEPTED
+q_Ra006_u1,q_Ra006,"NIKE, Inc.",10-K,0000320187-26-000088,2026-05-31,2026-07-15,"According to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, what percentage of total NIKE Brand revenues in fiscal 2026 came from each of North America; Europe, Middle East & Africa (EMEA); Greater China; Asia Pacific & Latin America (APLA); and Global Brand Divisions? Use total NIKE Brand revenues (the sum of these five) as the denominator, report each percentage to two decimal places, and identify the region with the largest share.","Total NIKE Brand revenues ($M) (FY2026): 45,222
+North America % (FY2026): 45.36
+EMEA % (FY2026): 27.80
+Greater China % (FY2026): 12.93
+APLA % (FY2026): 13.81
+Global Brand Divisions % (FY2026): 0.11
+Largest share: North America","{""Brand@FY2026"": 45222, ""ShareNA@FY2026"": 45.36, ""ShareEMEA@FY2026"": 27.8, ""ShareGC@FY2026"": 12.93, ""ShareAPLA@FY2026"": 13.81, ""ShareGBD@FY2026"": 0.11, ""Largest_share"": ""North America""}",ACCEPTED
+q_Ra007_u1,q_Ra007,"NIKE, Inc.",10-K,0000320187-26-000088,2026-05-31,2026-07-15,"Using NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, compute NIKE's EBIT for fiscal 2026 and fiscal 2025 in $ millions, where EBIT = income before income taxes + interest (income) expense, net (as reported on the income statement), and compute the year-over-year percentage change in EBIT from fiscal 2025 to fiscal 2026, rounded to two decimals.","EBIT ($M) (FY2025): 3,778
+EBIT ($M) (FY2026): 3,850
+EBIT YoY change % (FY2026): 1.91","{""EBIT@FY2025"": 3778, ""EBIT@FY2026"": 3850, ""Chg@FY2026"": 1.91}",ACCEPTED
+q_Ra008_u1,q_Ra008,"NIKE, Inc.",10-K,0000320187-26-000088,2026-05-31,2026-07-15,"In NIKE's Asia Pacific & Latin America (APLA) segment, how did revenues from Footwear, Apparel, and Equipment change from fiscal 2025 to fiscal 2026, according to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026? Report each category's percentage change to two decimal places and identify which category had the highest and which had the lowest percentage change.","Footwear change % (FY2026): -1.68
+Apparel change % (FY2026): 5.71
+Equipment change % (FY2026): -8.14
+Highest growth: Apparel
+Lowest growth: Equipment","{""FWg@FY2026"": -1.68, ""APg@FY2026"": 5.71, ""EQg@FY2026"": -8.14, ""Highest"": ""Apparel"", ""Lowest"": ""Equipment""}",ACCEPTED

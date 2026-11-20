@@ -1,0 +1,74 @@
+{
+  "qid": "q_Ra010",
+  "seed": {
+    "question": "How did Discover’s Net Interest Margin for 2023 compare to the previous year?",
+    "ground_truth_answer": "In 2023, Discover’s Net Interest Margin (NIM), representing net interest income as a percentage of average total loan receivables, increased to 11.07% from 11.04% in 2022, despite a disproportionate rise in interest expenses.  ",
+    "accession_number": "0001393612-24-000010",
+    "page_number": "60, 61, 62"
+  },
+  "step1_learn_pattern": {
+    "question_type": "A 计算型（公司直接披露的指标）",
+    "structure": "两年对比：净息差",
+    "operation": "无运算，直接取公司披露的 NIM（= 净利息收入 ÷ 平均贷款应收款）",
+    "output_format": "百分比，保留 2 位小数",
+    "seed_numbers": {
+      "NIM@FY2023": "11.07",
+      "NIM@FY2022": "11.04"
+    },
+    "notes": [
+      "题干用 \"Discover’s\"，公司明确",
+      "GT 中 \"despite a disproportionate rise in interest expenses\" 为叙述，无法判分"
+    ],
+    "data_items": {
+      "NIM": {
+        "label": "Net interest margin (reported %)",
+        "statement": "MD&A – Net interest income",
+        "type": "duration"
+      }
+    },
+    "formulas": {},
+    "evidence_in_seed_context": {
+      "NIM@FY2023": [
+        {
+          "page": "62",
+          "row_label": "Net interest margin(10)"
+        }
+      ],
+      "NIM@FY2022": [
+        {
+          "page": "62",
+          "row_label": "Net interest margin(10)"
+        }
+      ]
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0001393612-24-000010",
+    "inputs": [
+      {
+        "key": "NIM@FY2022",
+        "seed_stated": 11.04,
+        "xbrl": null,
+        "xbrl_concept": null,
+        "status": "NO_XBRL (context only)"
+      },
+      {
+        "key": "NIM@FY2023",
+        "seed_stated": 11.07,
+        "xbrl": null,
+        "xbrl_concept": null,
+        "status": "NO_XBRL (context only)"
+      }
+    ],
+    "answers": [],
+    "verdict": "MATCH（仅原文定位）。NIM 11.07% / 11.04% 在原文 p62 定位到，为公司直接披露的指标。"
+  },
+  "step3_plan": {
+    "target_rule": "同类文件（10-K）的最新一期，且报告期须晚于受测模型知识截止日",
+    "decision": "reject",
+    "rationale": "EDGAR 上 Discover 最后一份定期报告是 2025-03-31 的 10-Q（2025 年被 Capital One 收购后不再单独申报）。可用的最新 10-K 报告期为 2024-12-31，早于当前主流模型的知识截止日，平移后起不到防污染作用。"
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "EDGAR 上 Discover 最后一份定期报告是 2025-03-31 的 10-Q（2025 年被 Capital One 收购后不再单独申报）。可用的最新 10-K 报告期为 2024-12-31，早于当前主流模型的知识截止日，平移后起不到防污染作用。",
+  "revisions": []
+}

@@ -1,0 +1,300 @@
+{
+  "qid": "q_Ra009",
+  "seed": {
+    "question": "How did Nike's stock price perform in 2018 compared to key financial metrics?",
+    "ground_truth_answer": "From Nike's 2018 financial statements, the following details about its stock performance and key financial metrics are observed:\n\nStock Price Performance:\nYear-end stock price (2018): $71.80\nYear-end stock price (2017): $52.99\nHigh stock price (2018): $73.49\nLow stock price (2018): $50.35\nKey Financial Metrics (2018 vs. 2017):\nRevenues: Increased from $34,350 million in 2017 to $36,397 million in 2018 (6% growth).\nNet Income: Decreased from $4,240 million in 2017 to $1,933 million in 2018, reflecting a decline.\nEarnings per Share (EPS):\nBasic EPS: $1.19 in 2018, down from $2.56 in 2017.\nDiluted EPS: $1.17 in 2018, down from $2.51 in 2017",
+    "accession_number": "0000320187-18-000142",
+    "page_number": "18"
+  },
+  "step1_learn_pattern": {
+    "question_type": "C 开放检索型",
+    "structure": "股价表现（年末价、最高、最低）+ 利润表指标两年对比",
+    "operation": "取数 + 一个收入增长率",
+    "output_format": "股价 $；金额 $ 百万",
+    "seed_numbers": {
+      "PxEnd@FY2018": "71.80",
+      "PxEnd@FY2017": "52.99",
+      "PxHigh@FY2018": "73.49",
+      "PxLow@FY2018": "50.35",
+      "Rev@FY2018": "36,397",
+      "Rev@FY2017": "34,350",
+      "NI@FY2018": "1,933",
+      "NI@FY2017": "4,240",
+      "EPSb@FY2018": "1.19",
+      "EPSb@FY2017": "2.56",
+      "EPSd@FY2018": "1.17",
+      "EPSd@FY2017": "2.51"
+    },
+    "seed_answers": {
+      "RevGrowth@FY2018": "6"
+    },
+    "notes": [
+      "题目核心是股价表现，股价来自 10-K 的 Item 5 股价表，属于市场数据而非财务报表数据"
+    ],
+    "data_items": {
+      "Rev": {
+        "label": "Revenues",
+        "statement": "Consolidated Statements of Income",
+        "type": "duration"
+      },
+      "NI": {
+        "label": "Net income",
+        "statement": "Consolidated Statements of Income",
+        "type": "duration"
+      },
+      "EPSb": {
+        "label": "Basic EPS",
+        "statement": "Consolidated Statements of Income",
+        "type": "duration"
+      },
+      "EPSd": {
+        "label": "Diluted EPS",
+        "statement": "Consolidated Statements of Income",
+        "type": "duration"
+      },
+      "PxEnd": {
+        "label": "Year-end stock price",
+        "statement": "Item 5 – market price table",
+        "type": "duration"
+      },
+      "PxHigh": {
+        "label": "High stock price",
+        "statement": "Item 5 – market price table",
+        "type": "duration"
+      },
+      "PxLow": {
+        "label": "Low stock price",
+        "statement": "Item 5 – market price table",
+        "type": "duration"
+      }
+    },
+    "formulas": {
+      "RevGrowth": "(Rev@{p} - Rev@{prev}) / Rev@{prev} * 100",
+      "PxEndChk": "PxEnd@{p}"
+    },
+    "evidence_in_seed_context": {
+      "PxEnd@FY2018": [
+        {
+          "page": "18",
+          "row_label": "Year-end stock price"
+        }
+      ],
+      "PxEnd@FY2017": [
+        {
+          "page": "18",
+          "row_label": "Year-end stock price"
+        }
+      ],
+      "PxHigh@FY2018": [
+        {
+          "page": "18",
+          "row_label": "High"
+        }
+      ],
+      "PxLow@FY2018": [
+        {
+          "page": "18",
+          "row_label": "Low"
+        }
+      ],
+      "Rev@FY2018": [
+        {
+          "page": "18",
+          "row_label": "Revenues"
+        }
+      ],
+      "Rev@FY2017": [
+        {
+          "page": "18",
+          "row_label": "Revenues"
+        }
+      ],
+      "NI@FY2018": [
+        {
+          "page": "18",
+          "row_label": "Net income"
+        }
+      ],
+      "NI@FY2017": [
+        {
+          "page": "18",
+          "row_label": "Net income"
+        }
+      ],
+      "EPSb@FY2018": [
+        {
+          "page": "18",
+          "row_label": "Basic"
+        }
+      ],
+      "EPSb@FY2017": [
+        {
+          "page": "18",
+          "row_label": "Basic"
+        }
+      ],
+      "EPSd@FY2018": [
+        {
+          "page": "18",
+          "row_label": "Diluted"
+        }
+      ],
+      "EPSd@FY2017": [
+        {
+          "page": "18",
+          "row_label": "Diluted"
+        }
+      ],
+      "RevGrowth@FY2018": [
+        {
+          "page": "18",
+          "row_label": "ITEM 6. Selected Financial Data"
+        },
+        {
+          "page": "18",
+          "row_label": "Gross profit"
+        }
+      ]
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000320187-18-000142",
+    "inputs": [
+      {
+        "key": "EPSb@FY2017",
+        "seed_stated": 2.56,
+        "xbrl": 2.56,
+        "xbrl_concept": "EarningsPerShareBasic",
+        "status": "MATCH"
+      },
+      {
+        "key": "EPSb@FY2018",
+        "seed_stated": 1.19,
+        "xbrl": 1.19,
+        "xbrl_concept": "EarningsPerShareBasic",
+        "status": "MATCH"
+      },
+      {
+        "key": "EPSd@FY2017",
+        "seed_stated": 2.51,
+        "xbrl": 2.51,
+        "xbrl_concept": "EarningsPerShareDiluted",
+        "status": "MATCH"
+      },
+      {
+        "key": "EPSd@FY2018",
+        "seed_stated": 1.17,
+        "xbrl": 1.17,
+        "xbrl_concept": "EarningsPerShareDiluted",
+        "status": "MATCH"
+      },
+      {
+        "key": "NI@FY2017",
+        "seed_stated": 4240.0,
+        "xbrl": 4240.0,
+        "xbrl_concept": "NetIncomeLoss",
+        "status": "MATCH"
+      },
+      {
+        "key": "NI@FY2018",
+        "seed_stated": 1933.0,
+        "xbrl": 1933.0,
+        "xbrl_concept": "NetIncomeLoss",
+        "status": "MATCH"
+      },
+      {
+        "key": "PxEnd@FY2017",
+        "seed_stated": 52.99,
+        "xbrl": null,
+        "xbrl_concept": null,
+        "status": "NO_XBRL (context only)"
+      },
+      {
+        "key": "PxEnd@FY2018",
+        "seed_stated": 71.8,
+        "xbrl": null,
+        "xbrl_concept": null,
+        "status": "NO_XBRL (context only)"
+      },
+      {
+        "key": "PxHigh@FY2018",
+        "seed_stated": 73.49,
+        "xbrl": null,
+        "xbrl_concept": null,
+        "status": "NO_XBRL (context only)"
+      },
+      {
+        "key": "PxLow@FY2018",
+        "seed_stated": 50.35,
+        "xbrl": null,
+        "xbrl_concept": null,
+        "status": "NO_XBRL (context only)"
+      },
+      {
+        "key": "Rev@FY2017",
+        "seed_stated": 34350.0,
+        "xbrl": 34350.0,
+        "xbrl_concept": "SalesRevenueNet",
+        "status": "MATCH"
+      },
+      {
+        "key": "Rev@FY2018",
+        "seed_stated": 36397.0,
+        "xbrl": 36397.0,
+        "xbrl_concept": "SalesRevenueNet",
+        "status": "MATCH"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "RevGrowth@FY2018",
+        "formula": "(Rev@FY2018 - Rev@FY2017) / Rev@FY2017 * 100",
+        "seed_answer": "6",
+        "recomputed_from_seed_inputs": 5.95924308588064,
+        "recomputed_from_filing": 5.95924308588064,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 6.0
+      },
+      {
+        "metric": "PxEndChk@FY2017",
+        "formula": "PxEnd@FY2017",
+        "seed_answer": null,
+        "recomputed_from_seed_inputs": 52.99,
+        "recomputed_from_filing": 52.99,
+        "missing": []
+      },
+      {
+        "metric": "PxEndChk@FY2018",
+        "formula": "PxEnd@FY2018",
+        "seed_answer": null,
+        "recomputed_from_seed_inputs": 71.8,
+        "recomputed_from_filing": 71.8,
+        "missing": []
+      }
+    ],
+    "verdict": "MATCH。财务数字全部与 XBRL 一致，股价在原文 p18 定位到；收入增长 5.96% ≈ 6%。"
+  },
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026）",
+    "decision": "reject",
+    "rationale": "FY2026 10-K 的 Item 5 已不再提供股价高低点/年末价表格（SEC 2018 年后取消该披露要求），题目核心数据无法从申报文件获得。只保留财务指标部分会改变题目考查的内容，因此淘汰。",
+    "target_filing": {
+      "form": "10-K",
+      "period": "2026-05-31",
+      "filed": "2026-07-15",
+      "accn": "0000320187-26-000088",
+      "doc": "nke-20260531.htm"
+    },
+    "availability": {
+      "PxEnd@FY2025": "MISSING",
+      "PxEnd@FY2026": "MISSING",
+      "Rev@FY2025": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "Rev@FY2026": "RevenueFromContractWithCustomerExcludingAssessedTax"
+    }
+  },
+  "final_status": "REJECTED",
+  "reject_reason": "FY2026 10-K 的 Item 5 已不再提供股价高低点/年末价表格（SEC 2018 年后取消该披露要求），题目核心数据无法从申报文件获得。只保留财务指标部分会改变题目考查的内容，因此淘汰。",
+  "revisions": []
+}

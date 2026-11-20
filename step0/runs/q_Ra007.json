@@ -1,0 +1,259 @@
+{
+  "qid": "q_Ra007",
+  "seed": {
+    "question": "How does Nike's EBIT compare year-on-year?",
+    "ground_truth_answer": "EBIT 2018: $4,379 million\nEBIT 2017: $4,945 million\nFormula:\nPercentage Change in EBIT = ((EBIT 2018 - EBIT 2017) / EBIT 2017) × 100\n\nCalculation:\nPercentage Change = ((4,379 - 4,945) / 4,945) × 100\nPercentage Change = (-566 / 4,945) × 100 ≈ -11.45%\n\nNike's EBIT decreased by approximately 11.45% from fiscal 2017 to 2018. The decline was driven by increased selling and administrative expenses and gross margin pressures, despite higher revenues.",
+    "accession_number": "0000320187-18-000142",
+    "page_number": "71"
+  },
+  "step1_learn_pattern": {
+    "question_type": "A 计算型（附一句原因解释）",
+    "structure": "两年对比：EBIT 同比变化率",
+    "operation": "EBIT = 税前利润 + 净利息费用；变化率 = (今年 − 去年) ÷ 去年",
+    "output_format": "EBIT 为 $ 百万；变化率为百分比，保留 2 位小数",
+    "seed_answers": {
+      "EBIT@FY2018": "4,379",
+      "EBIT@FY2017": "4,945",
+      "Chg@FY2018": "-11.45"
+    },
+    "notes": [
+      "GT 未给 EBIT 的计算方法；回测确认 = 税前利润 + 净利息费用（与 Nike 分部附注中的 \"Earnings Before Interest and Taxes\" 一致）",
+      "GT 的原因解释（S&A 费用上升、毛利率承压）无法用比率判分，删除"
+    ],
+    "data_items": {
+      "PreTax": {
+        "label": "Income before income taxes",
+        "statement": "Consolidated Statements of Income",
+        "type": "duration"
+      },
+      "NetInt": {
+        "label": "Interest expense (income), net（XBRL 中正数 = 净利息收入）",
+        "statement": "Consolidated Statements of Income",
+        "type": "duration"
+      }
+    },
+    "formulas": {
+      "EBIT": "PreTax@{p} - NetInt@{p}",
+      "Chg": "((PreTax@{p} - NetInt@{p}) - (PreTax@{prev} - NetInt@{prev})) / (PreTax@{prev} - NetInt@{prev}) * 100"
+    },
+    "evidence_in_seed_context": {
+      "EBIT@FY2018": [
+        {
+          "page": "71",
+          "row_label": "Total NIKE, Inc. Earnings Before Interest and Taxes"
+        }
+      ],
+      "EBIT@FY2017": [
+        {
+          "page": "71",
+          "row_label": "Total NIKE, Inc. Earnings Before Interest and Taxes"
+        }
+      ],
+      "Chg@FY2018": []
+    }
+  },
+  "step2_backtest": {
+    "seed_filing": "0000320187-18-000142",
+    "inputs": [
+      {
+        "key": "NetInt@FY2017",
+        "seed_stated": null,
+        "xbrl": -59.0,
+        "xbrl_concept": "InterestIncomeExpenseNonoperatingNet",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "NetInt@FY2018",
+        "seed_stated": null,
+        "xbrl": -54.0,
+        "xbrl_concept": "InterestIncomeExpenseNonoperatingNet",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "PreTax@FY2017",
+        "seed_stated": null,
+        "xbrl": 4886.0,
+        "xbrl_concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "status": "XBRL_ONLY"
+      },
+      {
+        "key": "PreTax@FY2018",
+        "seed_stated": null,
+        "xbrl": 4325.0,
+        "xbrl_concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+        "status": "XBRL_ONLY"
+      }
+    ],
+    "answers": [
+      {
+        "metric": "EBIT@FY2017",
+        "formula": "PreTax@FY2017 - NetInt@FY2017",
+        "seed_answer": "4,945",
+        "recomputed_from_seed_inputs": 4945.0,
+        "recomputed_from_filing": 4945.0,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 4945.0
+      },
+      {
+        "metric": "EBIT@FY2018",
+        "formula": "PreTax@FY2018 - NetInt@FY2018",
+        "seed_answer": "4,379",
+        "recomputed_from_seed_inputs": 4379.0,
+        "recomputed_from_filing": 4379.0,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": 4379.0
+      },
+      {
+        "metric": "Chg@FY2018",
+        "formula": "((PreTax@FY2018 - NetInt@FY2018) - (PreTax@FY2017 - NetInt@FY2017)) / (PreTax@FY2017 - NetInt@FY2017) * 100",
+        "seed_answer": "-11.45",
+        "recomputed_from_seed_inputs": -11.445904954499495,
+        "recomputed_from_filing": -11.445904954499495,
+        "missing": [],
+        "arithmetic_ok": true,
+        "filing_ok": true,
+        "corrected_seed_answer": -11.45
+      }
+    ],
+    "verdict": "MATCH。EBIT = 税前利润 + 净利息费用，两年数值与变化率 −11.45% 全部复现。"
+  },
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026），比较 FY2026 vs FY2025",
+    "decision": "shift",
+    "rationale": "数据项可得；题干写明 EBIT 定义。",
+    "target_filing": {
+      "form": "10-K",
+      "period": "2026-05-31",
+      "filed": "2026-07-15",
+      "accn": "0000320187-26-000088",
+      "doc": "nke-20260531.htm"
+    },
+    "availability": {
+      "NetInt@FY2025": "InterestIncomeExpenseNonoperatingNet",
+      "NetInt@FY2026": "InterestIncomeExpenseNonoperatingNet",
+      "PreTax@FY2025": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "PreTax@FY2026": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+    }
+  },
+  "step4_compute": {
+    "inputs": {
+      "NetInt@FY2025": {
+        "concept": "InterestIncomeExpenseNonoperatingNet",
+        "dims": {},
+        "value": 107.0
+      },
+      "NetInt@FY2026": {
+        "concept": "InterestIncomeExpenseNonoperatingNet",
+        "dims": {},
+        "value": 50.0
+      },
+      "PreTax@FY2025": {
+        "concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "dims": {},
+        "value": 3885.0
+      },
+      "PreTax@FY2026": {
+        "concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+        "dims": {},
+        "value": 3900.0
+      }
+    },
+    "metrics": {
+      "EBIT@FY2025": {
+        "formula": "PreTax@FY2025 - NetInt@FY2025",
+        "value": 3778.0,
+        "missing": []
+      },
+      "EBIT@FY2026": {
+        "formula": "PreTax@FY2026 - NetInt@FY2026",
+        "value": 3850.0,
+        "missing": []
+      },
+      "Chg@FY2026": {
+        "formula": "((PreTax@FY2026 - NetInt@FY2026) - (PreTax@FY2025 - NetInt@FY2025)) / (PreTax@FY2025 - NetInt@FY2025) * 100",
+        "value": 1.9057702488088937,
+        "missing": []
+      }
+    }
+  },
+  "step5_question": {
+    "question": "Using NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026, compute NIKE's EBIT for fiscal 2026 and fiscal 2025 in $ millions, where EBIT = income before income taxes + interest (income) expense, net (as reported on the income statement), and compute the year-over-year percentage change in EBIT from fiscal 2025 to fiscal 2026, rounded to two decimals.",
+    "answer": {
+      "EBIT@FY2025": 3778,
+      "EBIT@FY2026": 3850,
+      "Chg@FY2026": 1.91
+    },
+    "answer_text": "EBIT ($M) (FY2025): 3,778\nEBIT ($M) (FY2026): 3,850\nEBIT YoY change % (FY2026): 1.91",
+    "grading": "numbers: correct if within 1 unit of the last stated decimal place (absorbs rounding-boundary differences); labels: exact match",
+    "changes_vs_seed": [
+      "期间 FY2018/FY2017 → FY2026/FY2025",
+      "题干写明 EBIT 定义",
+      "删除原因解释"
+    ]
+  },
+  "step6_review": {
+    "text_verification": [
+      {
+        "key": "NetInt@FY2025",
+        "value_as_text": "107",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "NetInt@FY2026",
+        "value_as_text": "50",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "PreTax@FY2025",
+        "value_as_text": "3,885",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      },
+      {
+        "key": "PreTax@FY2026",
+        "value_as_text": "3,900",
+        "match_mode": "near_label",
+        "found_in_filing_text": true
+      }
+    ],
+    "answer_leak_in_question": [],
+    "rounding_near_boundary": [],
+    "automatic_checks_pass": true,
+    "verdict": "pass",
+    "checklist": {
+      "same_company_and_period_type": true,
+      "inputs_found_in_filing_text": true,
+      "formula_matches_learned_pattern": true,
+      "arithmetic_by_code": true,
+      "answerable_from_filing_alone": true,
+      "no_answer_leak_in_question": true,
+      "change_is_mainly_information_update": true
+    },
+    "notes": [
+      "独立佐证：Nike 在 MD&A 的非 GAAP 调节表中直接披露 \"EBIT $ 3,850 $ 3,778\"，与计算结果一致"
+    ]
+  },
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step6_review",
+      "problem": "NetInt (50)/(107) 在 \"Interest expense (income), net\" 附近找不到",
+      "action": "查原文发现 FY2026 10-K 已改名为 \"Interest (income) expense, net\"（Nike 现为净利息收入）→ 扩展行标签；同时把题干中的科目名改为新文件的叫法（属于 step5 修订）",
+      "result": "第 2 轮仍未通过：新行标签正则写成了两对括号，与原文 \"Interest (income) expense, net\" 不符"
+    },
+    {
+      "round": 2,
+      "step": "step6_review",
+      "problem": "第 1 轮修订的行标签正则有误",
+      "action": "改为括号可选的正则，同时兼容新旧两种写法",
+      "result": "第 3 轮通过"
+    }
+  ],
+  "final_status": "ACCEPTED"
+}

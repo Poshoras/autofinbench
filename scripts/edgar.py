@@ -1,6 +1,6 @@
 """Thin cached client for SEC EDGAR (submissions, companyfacts, filing documents).
 Raw responses are cached under data/edgar/ (treated as untrusted data)."""
-import json, os, time, urllib.request, gzip, io
+import json, os, time, urllib.request, gzip, zlib
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 CACHE = os.path.join(ROOT, 'data', 'edgar')
@@ -10,11 +10,13 @@ os.makedirs(CACHE, exist_ok=True)
 def _get(url, path):
     if os.path.exists(path):
         return open(path, 'rb').read()
-    req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Encoding': 'gzip'})
+    # www.sec.gov returns 403 unless Accept-Encoding is 'gzip, deflate' and Accept is set
+    req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*'})
     with urllib.request.urlopen(req, timeout=60) as r:
         data = r.read()
-        if r.headers.get('Content-Encoding') == 'gzip':
-            data = gzip.decompress(data)
+        enc = r.headers.get('Content-Encoding')
+        if enc == 'gzip': data = gzip.decompress(data)
+        elif enc == 'deflate': data = zlib.decompress(data)
     with open(path, 'wb') as f:
         f.write(data)
     time.sleep(0.2)  # stay well under SEC's 10 req/s limit

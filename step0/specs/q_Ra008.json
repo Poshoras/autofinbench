@@ -1,0 +1,205 @@
+{
+  "qid": "q_Ra008",
+  "company": "NIKE, Inc.",
+  "cik": 320187,
+  "seed_accn": "0000320187-18-000142",
+  "target_accn": "0000320187-26-000088",
+  "periods": {
+    "seed": {
+      "FY2017": {
+        "start": "2016-06-01",
+        "end": "2017-05-31"
+      },
+      "FY2018": {
+        "start": "2017-06-01",
+        "end": "2018-05-31"
+      }
+    },
+    "target": {
+      "FY2025": {
+        "start": "2024-06-01",
+        "end": "2025-05-31"
+      },
+      "FY2026": {
+        "start": "2025-06-01",
+        "end": "2026-05-31"
+      }
+    }
+  },
+  "metric_periods": {
+    "seed": [
+      "FY2017",
+      "FY2018"
+    ],
+    "target": [
+      "FY2025",
+      "FY2026"
+    ]
+  },
+  "items": {
+    "FW": {
+      "concepts_seed": [],
+      "concepts_target": [
+        "RevenueFromContractWithCustomerExcludingAssessedTax"
+      ],
+      "dims_target": {
+        "ConsolidationItemsAxis": "OperatingSegmentsMember",
+        "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+        "SubsegmentsAxis": "AsiaPacificAndLatinAmericaSegmentMember",
+        "ProductOrServiceAxis": "FootwearMember"
+      },
+      "type": "duration",
+      "label": "APLA revenues – Footwear",
+      "statement": "MD&A – APLA segment table / Notes – disaggregation of revenues",
+      "text_label": "Footwear"
+    },
+    "AP": {
+      "concepts_seed": [],
+      "concepts_target": [
+        "RevenueFromContractWithCustomerExcludingAssessedTax"
+      ],
+      "dims_target": {
+        "ConsolidationItemsAxis": "OperatingSegmentsMember",
+        "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+        "SubsegmentsAxis": "AsiaPacificAndLatinAmericaSegmentMember",
+        "ProductOrServiceAxis": "ApparelMember"
+      },
+      "type": "duration",
+      "label": "APLA revenues – Apparel",
+      "statement": "MD&A – APLA segment table / Notes – disaggregation of revenues",
+      "text_label": "Apparel"
+    },
+    "EQ": {
+      "concepts_seed": [],
+      "concepts_target": [
+        "RevenueFromContractWithCustomerExcludingAssessedTax"
+      ],
+      "dims_target": {
+        "ConsolidationItemsAxis": "OperatingSegmentsMember",
+        "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+        "SubsegmentsAxis": "AsiaPacificAndLatinAmericaSegmentMember",
+        "ProductOrServiceAxis": "SportingEquipmentMember"
+      },
+      "type": "duration",
+      "label": "APLA revenues – Equipment",
+      "statement": "MD&A – APLA segment table / Notes – disaggregation of revenues",
+      "text_label": "Equipment"
+    },
+    "APLA": {
+      "concepts_seed": [
+        "SalesRevenueNet"
+      ],
+      "dims_seed": {
+        "ProductOrServiceAxis": "NIKEBrandMember",
+        "StatementBusinessSegmentsAxis": "AsiaPacificAndLatinAmericaSegmentMember"
+      },
+      "concepts_target": [
+        "RevenueFromContractWithCustomerExcludingAssessedTax"
+      ],
+      "dims_target": {
+        "ConsolidationItemsAxis": "OperatingSegmentsMember",
+        "StatementBusinessSegmentsAxis": "NIKEBrandMember",
+        "SubsegmentsAxis": "AsiaPacificAndLatinAmericaSegmentMember"
+      },
+      "type": "duration",
+      "label": "APLA total revenues",
+      "statement": "Notes – Operating segments",
+      "text_label": "Asia Pacific & Latin America"
+    }
+  },
+  "metrics": {
+    "FWg": "(FW@{p} - FW@{prev}) / FW@{prev} * 100",
+    "APg": "(AP@{p} - AP@{prev}) / AP@{prev} * 100",
+    "EQg": "(EQ@{p} - EQ@{prev}) / EQ@{prev} * 100",
+    "DIAG_products_minus_APLA_total": "FW@{p} + AP@{p} + EQ@{p} - APLA@{p}"
+  },
+  "step1_pattern": {
+    "question_type": "A 计算型",
+    "structure": "两年对比：3 个品类的增长率 + 最高/最低",
+    "operation": "3 个增长率 (今年 − 去年) ÷ 去年；再比大小",
+    "output_format": "百分比，保留 2 位小数",
+    "seed_numbers": {
+      "FW@FY2018": "3,575",
+      "FW@FY2017": "3,285",
+      "AP@FY2018": "1,347",
+      "AP@FY2017": "1,185",
+      "EQ@FY2018": "244",
+      "EQ@FY2017": "267"
+    },
+    "seed_answers": {
+      "FWg@FY2018": "8.83",
+      "APg@FY2018": "13.67",
+      "EQg@FY2018": "-8.61"
+    },
+    "notes": [
+      "题干没有说是哪个地区；3 个品类之和 3,575+1,347+244 = 5,166 = APLA 分部收入（XBRL 核对，见 DIAG 指标）→ 实际是 APLA（亚太及拉美）分部",
+      "2018 年的文件未对 MD&A 分地区品类表做 XBRL 标注，种子输入只能靠原文定位核对"
+    ]
+  },
+  "step2_verdict": "MATCH。3 个增长率复现；3 个品类之和 − APLA 分部收入 = 0（两年），确认题目实指 APLA 分部。种子输入来自 2018 年 MD&A，无 XBRL，只能靠原文定位（p30）核对。",
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026），比较 FY2026 vs FY2025",
+    "decision": "shift",
+    "rationale": "APLA 分部与品类拆分仍然存在且有 XBRL 标注；题干补上 \"APLA\" 这一缺失的范围。"
+  },
+  "step5_question": {
+    "question": "In NIKE's Asia Pacific & Latin America (APLA) segment, how did revenues from Footwear, Apparel, and Equipment change from fiscal 2025 to fiscal 2026, according to NIKE, Inc.'s Form 10-K for the fiscal year ended May 31, 2026? Report each category's percentage change to two decimal places and identify which category had the highest and which had the lowest percentage change.",
+    "answer_decimals": {
+      "FWg@FY2026": 2,
+      "APg@FY2026": 2,
+      "EQg@FY2026": 2
+    },
+    "selectors": {
+      "Highest": [
+        "argmax",
+        [
+          "FWg@FY2026",
+          "APg@FY2026",
+          "EQg@FY2026"
+        ]
+      ],
+      "Lowest": [
+        "argmin",
+        [
+          "FWg@FY2026",
+          "APg@FY2026",
+          "EQg@FY2026"
+        ]
+      ]
+    },
+    "display_names": {
+      "FWg": "Footwear change %",
+      "APg": "Apparel change %",
+      "EQg": "Equipment change %",
+      "Highest": "Highest growth",
+      "Lowest": "Lowest growth"
+    },
+    "changes_vs_seed": [
+      "期间 FY2018/FY2017 → FY2026/FY2025",
+      "题干补上缺失的分部范围 \"APLA\"",
+      "删除原因推测（\"increased demand and product innovation\" 等）"
+    ],
+    "selector_labels": {
+      "FWg": "Footwear",
+      "APg": "Apparel",
+      "EQg": "Equipment"
+    }
+  },
+  "step6_review": {
+    "verdict": "pass",
+    "checklist": {
+      "same_company_and_period_type": true,
+      "inputs_found_in_filing_text": true,
+      "formula_matches_learned_pattern": true,
+      "arithmetic_by_code": true,
+      "answerable_from_filing_alone": true,
+      "no_answer_leak_in_question": true,
+      "change_is_mainly_information_update": "是（补上缺失的分部范围 APLA）"
+    },
+    "notes": [
+      "3 个品类之和 = APLA 分部收入（差为 0），数据口径自洽",
+      "Footwear −1.68% 接近舍入分界，判分容差 ±0.01 可吸收"
+    ]
+  },
+  "revisions": []
+}

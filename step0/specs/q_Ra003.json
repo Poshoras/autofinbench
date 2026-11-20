@@ -1,0 +1,151 @@
+{
+  "qid": "q_Ra003",
+  "company": "Apple Inc.",
+  "cik": 320193,
+  "seed_accn": "0000320193-23-000106",
+  "target_accn": "0000320193-26-000026",
+  "periods": {
+    "seed": {
+      "FY2023": {
+        "start": "2022-09-25",
+        "end": "2023-09-30"
+      }
+    },
+    "target": {
+      "FY2026": {
+        "start": "2025-09-28",
+        "end": "2026-09-26"
+      }
+    }
+  },
+  "metric_periods": {
+    "seed": [
+      "FY2023"
+    ],
+    "target": [
+      "FY2026"
+    ]
+  },
+  "items": {
+    "GP": {
+      "concepts": [
+        "GrossProfit"
+      ],
+      "type": "duration",
+      "label": "Total gross margin",
+      "statement": "Consolidated Statements of Operations",
+      "text_label": "Total gross margin"
+    },
+    "OpInc": {
+      "concepts": [
+        "OperatingIncomeLoss"
+      ],
+      "type": "duration",
+      "label": "Operating income",
+      "statement": "Consolidated Statements of Operations",
+      "text_label": "Operating income"
+    },
+    "NI": {
+      "concepts": [
+        "NetIncomeLoss"
+      ],
+      "type": "duration",
+      "label": "Net income",
+      "statement": "Consolidated Statements of Operations",
+      "text_label": "Net income"
+    },
+    "EPSb": {
+      "concepts": [
+        "EarningsPerShareBasic"
+      ],
+      "type": "duration",
+      "scale": "unit",
+      "label": "Earnings per share – Basic",
+      "statement": "Consolidated Statements of Operations",
+      "text_label": "Basic"
+    },
+    "EPSd": {
+      "concepts": [
+        "EarningsPerShareDiluted"
+      ],
+      "type": "duration",
+      "scale": "unit",
+      "label": "Earnings per share – Diluted",
+      "statement": "Consolidated Statements of Operations",
+      "text_label": "Diluted"
+    }
+  },
+  "metrics": {
+    "GM": "GP@{p}",
+    "OI": "OpInc@{p}",
+    "NetInc": "NI@{p}",
+    "EPS_basic": "EPSb@{p}",
+    "EPS_diluted": "EPSd@{p}"
+  },
+  "step1_pattern": {
+    "question_type": "C 开放检索型",
+    "structure": "单年：列出 5 个利润表数字 + 文字点评",
+    "operation": "无运算，纯取数",
+    "output_format": "$ 百万；EPS 保留 2 位小数",
+    "seed_numbers": {
+      "GP@FY2023": "169,148",
+      "OpInc@FY2023": "114,301",
+      "NI@FY2023": "96,995",
+      "EPSb@FY2023": "6.16",
+      "EPSd@FY2023": "6.13"
+    },
+    "seed_answers": {
+      "GM@FY2023": "169,148",
+      "OI@FY2023": "114,301",
+      "NetInc@FY2023": "96,995",
+      "EPS_basic@FY2023": "6.16",
+      "EPS_diluted@FY2023": "6.13"
+    },
+    "notes": [
+      "\"key findings\" 未定义；GT 实际就是 5 个数字 + 泛泛评价",
+      "Apple 把美元金额的毛利叫 \"gross margin\""
+    ]
+  },
+  "step2_verdict": "MATCH。5 项数字全部与文件一致（p28 利润表）。",
+  "step3_plan": {
+    "target_rule": "最新一期 10-K（FY2026，截至 2026-09-26）",
+    "decision": "shift",
+    "rationale": "5 个数据项均可得。开放题改写为指定这 5 项，使答案可判分。"
+  },
+  "step5_question": {
+    "question": "From Apple Inc.'s Form 10-K for the fiscal year ended September 26, 2026, report the key profitability results for fiscal 2026: total gross margin, operating income, and net income (each in $ millions), and basic and diluted earnings per share.",
+    "answer_decimals": {
+      "GM@FY2026": 0,
+      "OI@FY2026": 0,
+      "NetInc@FY2026": 0,
+      "EPS_basic@FY2026": 2,
+      "EPS_diluted@FY2026": 2
+    },
+    "display_names": {
+      "GM": "Total gross margin ($M)",
+      "OI": "Operating income ($M)",
+      "NetInc": "Net income ($M)",
+      "EPS_basic": "Basic EPS ($)",
+      "EPS_diluted": "Diluted EPS ($)"
+    },
+    "changes_vs_seed": [
+      "期间 FY2023 → FY2026",
+      "\"key findings\" 改为明确列出 5 个指标（与原 GT 覆盖的指标一致）",
+      "删除无法判分的文字点评"
+    ]
+  },
+  "step6_review": {
+    "verdict": "pass",
+    "checklist": {
+      "same_company_and_period_type": true,
+      "inputs_found_in_filing_text": true,
+      "formula_matches_learned_pattern": true,
+      "arithmetic_by_code": true,
+      "answerable_from_filing_alone": true,
+      "no_answer_leak_in_question": true,
+      "change_is_mainly_information_update": "是（开放题改为指定 5 项，覆盖范围与原 GT 相同）"
+    },
+    "notes": []
+  },
+  "revisions": []
+}

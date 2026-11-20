@@ -1,0 +1,161 @@
+{
+  "qid": "q_Ra005",
+  "company": "JPMorgan Chase & Co",
+  "cik": 19617,
+  "seed_accn": "0000019617-24-000326",
+  "target_accn": "0001628280-26-069523",
+  "periods": {
+    "seed": {
+      "Q1_2024": {
+        "start": "2024-01-01",
+        "end": "2024-03-31"
+      }
+    },
+    "target": {
+      "Q3_2026": {
+        "start": "2026-07-01",
+        "end": "2026-09-30"
+      }
+    }
+  },
+  "metric_periods": {
+    "seed": [
+      "Q1_2024"
+    ],
+    "target": [
+      "Q3_2026"
+    ]
+  },
+  "items": {
+    "Assets": {
+      "concepts": [
+        "Assets"
+      ],
+      "type": "instant",
+      "label": "Total assets",
+      "statement": "Consolidated balance sheets",
+      "text_label": "Total assets"
+    },
+    "Liab": {
+      "concepts": [
+        "Liabilities"
+      ],
+      "type": "instant",
+      "label": "Total liabilities",
+      "statement": "Consolidated balance sheets",
+      "text_label": "Total liabilities"
+    },
+    "Eq": {
+      "concepts": [
+        "StockholdersEquity"
+      ],
+      "type": "instant",
+      "label": "Total stockholders' equity",
+      "statement": "Consolidated balance sheets",
+      "text_label": "Total stockholders.{1,2}equity"
+    },
+    "LTD": {
+      "concepts": [
+        "LongTermDebtAndCapitalLeaseObligationsIncludingCurrentMaturities",
+        "LongTermDebt"
+      ],
+      "type": "instant",
+      "label": "Long-term debt",
+      "statement": "Consolidated balance sheets",
+      "text_label": "Long-term debt"
+    },
+    "IntExp": {
+      "concepts": [
+        "InterestExpense",
+        "InterestExpenseOperating"
+      ],
+      "type": "duration",
+      "label": "Total interest expense",
+      "statement": "Consolidated statements of income",
+      "text_label": "Total interest expense"
+    },
+    "PreTax": {
+      "concepts": [
+        "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest"
+      ],
+      "type": "duration",
+      "label": "Income before income tax expense",
+      "statement": "Consolidated statements of income",
+      "text_label": "Income before income tax expense"
+    }
+  },
+  "metrics": {
+    "DE": "Liab@{p} / Eq@{p}",
+    "ICR": "PreTax@{p} / IntExp@{p}",
+    "FL": "Assets@{p} / Eq@{p}",
+    "LTDCap": "LTD@{p} / (LTD@{p} + Eq@{p})"
+  },
+  "step1_pattern": {
+    "question_type": "B 半结构化分析型",
+    "structure": "单个季度：4 个偿债比率 + 文字结论",
+    "operation": "4 个除法；公式未在 GT 中给出，由回测反推",
+    "output_format": "保留 2 位小数",
+    "seed_answers": {
+      "DE@Q1_2024": "11.15",
+      "ICR@Q1_2024": "0.71",
+      "FL@Q1_2024": "12.15",
+      "LTDCap@Q1_2024": "0.54"
+    },
+    "notes": [
+      "GT 只有 4 个比率、没有输入和公式；在原文件中搜索组合后反推出公式（见 metrics）",
+      "ICR 反推结果是 税前利润 ÷ 利息费用（0.71），不是常规的 EBIT ÷ 利息费用（=1.71）",
+      "银行业的利息费用属于经营成本，这些比率的经济含义有限；GT 的 \"potential solvency risks\" 结论不成立"
+    ]
+  },
+  "step2_verdict": "MATCH。4 个比率均由反推公式精确复现（ICR 为非常规定义：税前利润 ÷ 利息费用）。",
+  "step3_plan": {
+    "target_rule": "最新一期 10-Q（2026-09-30），季度期间长度与原题一致（3 个月）",
+    "decision": "shift",
+    "rationale": "数据项全部可得（利息费用科目改名，见 revisions）。沿用回测确认的公式，并在题干中写明 ICR 的非常规定义。删除错误的叙述结论。"
+  },
+  "step5_question": {
+    "question": "Perform a solvency analysis of JPMorgan Chase & Co. using its Form 10-Q for the quarter ended September 30, 2026. Compute: (1) debt-to-equity ratio = total liabilities / total stockholders' equity; (2) interest coverage ratio = income before income tax expense / total interest expense, both for the three months ended September 30, 2026; (3) financial leverage ratio = total assets / total stockholders' equity; (4) long-term debt to capitalization ratio = long-term debt / (long-term debt + total stockholders' equity). Use balance sheet amounts as of September 30, 2026 and round each ratio to two decimals.",
+    "answer_decimals": {
+      "DE@Q3_2026": 2,
+      "ICR@Q3_2026": 2,
+      "FL@Q3_2026": 2,
+      "LTDCap@Q3_2026": 2
+    },
+    "display_names": {
+      "DE": "Debt-to-equity",
+      "ICR": "Interest coverage (pre-tax income / interest expense)",
+      "FL": "Financial leverage",
+      "LTDCap": "Long-term debt to capitalization"
+    },
+    "changes_vs_seed": [
+      "时点 2024-03-31 → 2026-09-30（同为 3 个月季度）",
+      "题干写明 4 个公式（GT 原本没有）",
+      "删除 \"potential solvency risks\" 等结论"
+    ]
+  },
+  "step6_review": {
+    "verdict": "pass",
+    "checklist": {
+      "same_company_and_period_type": true,
+      "inputs_found_in_filing_text": true,
+      "formula_matches_learned_pattern": true,
+      "arithmetic_by_code": true,
+      "answerable_from_filing_alone": true,
+      "no_answer_leak_in_question": true,
+      "change_is_mainly_information_update": true
+    },
+    "notes": [
+      "ICR 定义非常规，已在题干写明公式，避免受测模型按 EBIT 口径作答被误判",
+      "银行业比率经济含义有限，但题目只考计算，不影响可判分性"
+    ]
+  },
+  "revisions": [
+    {
+      "round": 1,
+      "step": "step3_plan",
+      "problem": "IntExp 只配置了 InterestExpense，目标 10-Q 中该标签缺失（availability=MISSING）",
+      "action": "在目标文件中搜索含 Interest 的科目，发现 JPM 自 2026 年起改用 InterestExpenseOperating；原文 \"Total interest expense $ 26,020\" 吻合 → 把它加入候选科目",
+      "result": "第 2 轮可得"
+    }
+  ]
+}
