@@ -4,6 +4,9 @@ import json, os, re, csv, collections
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 S1 = os.path.join(ROOT, 'step1')
 
+# seeds whose own SecQue excerpts lack an input of the metric: excerpt-based checking items are not answerable
+SEED_CONTEXT_INCOMPLETE = {'q_Ra001': 'seed excerpts contain no income statement, so operating income (EBIT input) cannot be checked from them'}
+
 def num(s):
     m = re.search(r'-?[\d,]+\.?\d*', s); return float(m.group(0).replace(',', '')) if m else None
 
@@ -54,11 +57,17 @@ def main():
                 i['answer'] = dict(answerable=True, correct_value=ctrl[q], derivation=rev['derivable'][q],
                                    expected='Rebuild the missing figure from the identity, then compute the metric.')
                 reasons.append('removed figure is derivable; converted to reconstruct item (GT = original value)')
+            elif q in rev.get('unanswerable_other_reason', {}):
+                o = rev['unanswerable_other_reason'][q]
+                i['answer']['missing_item'] = o['missing_item']
+                reasons.append('unanswerable, but not because of the blanked cell: ' + o['note'])
             elif q in rev['answer_printed_in_excerpts']:
                 status = 'REJECTED'; reasons.append('answer printed in excerpts: ' + rev['answer_printed_in_excerpts'][q])
             if not c.get('removed_value_absent', True):
                 status = 'REJECTED'; reasons.append('removed value still present')
         elif i['op'] == 'verify':
+            if q in SEED_CONTEXT_INCOMPLETE:
+                status = 'REJECTED'; reasons.append(SEED_CONTEXT_INCOMPLETE[q])
             if 'INVALID' in i.get('error_type', ''):
                 status = 'REJECTED'; reasons.append('injected error invisible after rounding')
             if c.get('rounding_boundary'): reasons.append('true value near rounding boundary')

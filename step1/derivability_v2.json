@@ -1,0 +1,437 @@
+{
+ "q_Ra001_missing": {
+  "op": "missing",
+  "seed_qid": "q_Ra001",
+  "company": "Apple Inc.",
+  "removed": "3,933",
+  "tables": [
+   {
+    "table_row": "Interest expense",
+    "n_period_columns": 3,
+    "identities_all_columns": [
+     "+ [Interest and dividend income] + [Other income/(expense), net] - [Total other income/(expense), net]",
+     "- [Interest and dividend income] - [Other income/(expense), net] + [Total other income/(expense), net]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra002_missing": {
+  "op": "missing",
+  "seed_qid": "q_Ra002",
+  "company": "Procter & Gamble (P&G)",
+  "removed": "40,848",
+  "tables": [
+   {
+    "table_row": "Cost of products sold",
+    "n_period_columns": 3,
+    "identities_all_columns": [
+     "+ [NET SALES] - [Selling, general and administrative expense] - [Indefinite-lived intangible asset impairment ] - [OPERATING INCOME]",
+     "- [NET SALES] + [Selling, general and administrative expense] + [Indefinite-lived intangible asset impairment ] + [OPERATING INCOME]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra005_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_Ra005",
+  "company": "JPMorgan Chase & Co.",
+  "removed": "336,637",
+  "tables": [
+   {
+    "table_row": "Total stockholders' equity",
+    "n_period_columns": 2,
+    "identities_all_columns": [
+     "+ [Total assets(a)] - [Total liabilities(a)]",
+     "- [Total assets(a)] + [Total liabilities(a)]",
+     "+ [Total liabilities(a)] - [Total liabilities and stockholders' equity]",
+     "- [Total liabilities(a)] + [Total liabilities and stockholders' equity]",
+     "sum of rows [Preferred stock ($1 par value;] .. [Treasury stock, at cost (1,233]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra007_missing": {
+  "op": "missing",
+  "seed_qid": "q_Ra007",
+  "company": "NIKE, Inc.",
+  "removed": "4,325",
+  "tables": [
+   {
+    "table_row": "TOTAL NIKE, INC. INCOME BEFORE INCOME TAXES",
+    "n_period_columns": 3,
+    "identities_all_columns": [
+     "+ [Total NIKE, Inc. Earnings Before Interest and] - [Interest expense (income), net]",
+     "- [Total NIKE, Inc. Earnings Before Interest and] + [Interest expense (income), net]",
+     "+ [Total NIKE Brand] + [Converse] + [Corporate] - [Interest expense (income), net]",
+     "- [Total NIKE Brand] - [Converse] - [Corporate] + [Interest expense (income), net]",
+     "+ [Total NIKE, Inc. Earnings Before Interest and] - [Interest expense (income), net] + [Greater China] - [Asia Pacific & Latin America]",
+     "+ [Total NIKE, Inc. Earnings Before Interest and] - [Interest expense (income), net] - [Greater China] + [Asia Pacific & Latin America]",
+     "- [Total NIKE, Inc. Earnings Before Interest and] + [Interest expense (income), net] + [Greater China] - [Asia Pacific & Latin America]",
+     "- [Total NIKE, Inc. Earnings Before Interest and] + [Interest expense (income), net] - [Greater China] + [Asia Pacific & Latin America]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra011_missing": {
+  "op": "missing",
+  "seed_qid": "q_Ra011",
+  "company": "Discover Financial Services",
+  "removed": "11.27",
+  "tables": [
+   {
+    "table_row": "Basic earnings per common share",
+    "n_period_columns": 3,
+    "identities_all_columns": [],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra034_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_Ra034",
+  "company": "NextEra Energy (NEE)",
+  "removed": "27,963",
+  "tables": [
+   {
+    "table_row": "Total current liabilities",
+    "n_period_columns": 2,
+    "identities_all_columns": [
+     "+ [Total other liabilities and deferred credits] - [TOTAL LIABILITIES]",
+     "- [Total other liabilities and deferred credits] + [TOTAL LIABILITIES]",
+     "+ [TOTAL ASSETS] + [Total other liabilities and deferred credits] - [TOTAL LIABILITIES] - [TOTAL LIABILITIES, REDEEMABLE NONCONTROLLING ]",
+     "+ [TOTAL ASSETS] - [Total other liabilities and deferred credits] + [TOTAL LIABILITIES] - [TOTAL LIABILITIES, REDEEMABLE NONCONTROLLING ]",
+     "- [TOTAL ASSETS] + [Total other liabilities and deferred credits] - [TOTAL LIABILITIES] + [TOTAL LIABILITIES, REDEEMABLE NONCONTROLLING ]",
+     "- [TOTAL ASSETS] - [Total other liabilities and deferred credits] + [TOTAL LIABILITIES] + [TOTAL LIABILITIES, REDEEMABLE NONCONTROLLING ]",
+     "+ [TOTAL ASSETS] - [Total other liabilities and deferred credits] - [REDEEMABLE NONCONTROLLING INTERESTS – VIEs] - [TOTAL EQUITY]",
+     "- [TOTAL ASSETS] + [Total other liabilities and deferred credits] + [REDEEMABLE NONCONTROLLING INTERESTS – VIEs] + [TOTAL EQUITY]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra051_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_Ra051",
+  "company": "NVIDIA Corporation",
+  "removed": "42,978",
+  "tables": [
+   {
+    "table_row": "Total shareholders' equity",
+    "n_period_columns": 2,
+    "identities_all_columns": [
+     "+ [Total assets] - [Total liabilities]",
+     "- [Total assets] + [Total liabilities]",
+     "+ [Total liabilities] - [Total liabilities and shareholders' equity]",
+     "- [Total liabilities] + [Total liabilities and shareholders' equity]",
+     "+ [Total assets] - [Total liabilities] + [Common stock, $0.001 par value; 8,000 shares ]",
+     "+ [Total assets] - [Total liabilities] - [Common stock, $0.001 par value; 8,000 shares ]",
+     "- [Total assets] + [Total liabilities] + [Common stock, $0.001 par value; 8,000 shares ]",
+     "- [Total assets] + [Total liabilities] - [Common stock, $0.001 par value; 8,000 shares ]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra064_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_Ra064",
+  "company": "Halliburton Company",
+  "removed": "23,018",
+  "tables": [
+   {
+    "table_row": "Total revenue",
+    "n_period_columns": 3,
+    "identities_all_columns": [
+     "+ [Services] + [Product sales]",
+     "- [Services] - [Product sales]",
+     "+ [Total operating costs and expenses] + [Operating income]",
+     "- [Total operating costs and expenses] - [Operating income]",
+     "+ [Services] + [Product sales] + [Basic net income per share]",
+     "+ [Services] + [Product sales] - [Basic net income per share]",
+     "- [Services] - [Product sales] + [Basic net income per share]",
+     "- [Services] - [Product sales] - [Basic net income per share]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra070_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_Ra070",
+  "company": "The Goldman Sachs Group, Inc.",
+  "removed": "14,213",
+  "tables": [
+   {
+    "table_row": "Total net revenues",
+    "n_period_columns": 2,
+    "identities_all_columns": [
+     "+ [Total non-interest revenues] + [Net interest income]",
+     "- [Total non-interest revenues] - [Net interest income]",
+     "+ [Total non-interest revenues] + [Interest income] - [Interest expense]",
+     "- [Total non-interest revenues] - [Interest income] + [Interest expense]",
+     "+ [Provision for credit losses] + [Total operating expenses] + [Pre-tax earnings]",
+     "- [Provision for credit losses] - [Total operating expenses] - [Pre-tax earnings]",
+     "+ [Total non-interest revenues] + [Net interest income] + [Basic] - [Diluted]",
+     "+ [Total non-interest revenues] + [Net interest income] - [Basic] + [Diluted]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra107_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_Ra107",
+  "company": "Honeywell International Inc.",
+  "removed": "9,105",
+  "tables": [
+   {
+    "table_row": "Net sales",
+    "n_period_columns": 2,
+    "identities_all_columns": [
+     "+ [Product sales] + [Service sales]",
+     "- [Product sales] - [Service sales]",
+     "+ [Total costs, expenses and other] + [Income before taxes]",
+     "- [Total costs, expenses and other] - [Income before taxes]",
+     "+ [Product sales] + [Service sales] + [Earnings per share of common stock-basic]",
+     "+ [Product sales] + [Service sales] - [Earnings per share of common stock-basic]",
+     "- [Product sales] - [Service sales] + [Earnings per share of common stock-basic]",
+     "- [Product sales] - [Service sales] - [Earnings per share of common stock-basic]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra124_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_Ra124",
+  "company": "Exxon Mobil Corporation",
+  "removed": "70,763",
+  "tables": [
+   {
+    "table_row": "Total current liabilities",
+    "n_period_columns": 2,
+    "identities_all_columns": [
+     "+ [Notes and loans payable] + [Accounts payable and accrued liabilities] + [Income taxes payable]",
+     "- [Notes and loans payable] - [Accounts payable and accrued liabilities] - [Income taxes payable]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra147_missing": {
+  "op": "missing",
+  "seed_qid": "q_Ra147",
+  "company": "The Coca-Cola Company",
+  "removed": "101,202",
+  "tables": [
+   {
+    "table_row": "Total Assets",
+    "n_period_columns": 2,
+    "identities_all_columns": [
+     "sum of rows [Total Current Assets] .. [Other intangible assets]"
+    ],
+    "note": ""
+   },
+   {
+    "table_row": "Total Liabilities and Equity",
+    "n_period_columns": 2,
+    "identities_all_columns": [
+     "sum of rows [Total Current Assets] .. [Other intangible assets]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_Ra158_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_Ra158",
+  "company": "Tesla, Inc.",
+  "removed": "12,556",
+  "tables": [
+   {
+    "table_row": "Net income attributable to common stockholders",
+    "n_period_columns": 3,
+    "identities_all_columns": [
+     "+ [Net income] - [Net (loss) income attributable to noncontroll]",
+     "- [Net income] + [Net (loss) income attributable to noncontroll]",
+     "+ [Income before income taxes] - [(Benefit from) provision for income taxes] - [Net (loss) income attributable to noncontroll]",
+     "- [Income before income taxes] + [(Benefit from) provision for income taxes] + [Net (loss) income attributable to noncontroll]",
+     "+ [Net income] - [Net (loss) income attributable to noncontroll] + [Diluted]",
+     "+ [Net income] - [Net (loss) income attributable to noncontroll] - [Diluted]",
+     "- [Net income] + [Net (loss) income attributable to noncontroll] + [Diluted]",
+     "- [Net income] + [Net (loss) income attributable to noncontroll] - [Diluted]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_com006_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_com006",
+  "company": "American Express Company",
+  "removed": "60,515",
+  "tables": [
+   {
+    "table_row": "Total revenues net of interest expense",
+    "n_period_columns": 3,
+    "identities_all_columns": [
+     "+ [Total non-interest revenues] + [Net interest income]",
+     "- [Total non-interest revenues] - [Net interest income]",
+     "+ [Total provisions for credit losses] + [Total revenues net of interest expense after ]",
+     "- [Total provisions for credit losses] - [Total revenues net of interest expense after ]",
+     "+ [Total non-interest revenues] + [Total interest income] - [Total interest expense]",
+     "- [Total non-interest revenues] - [Total interest income] + [Total interest expense]",
+     "+ [Total provisions for credit losses] + [Total expenses] + [Pretax income]",
+     "- [Total provisions for credit losses] - [Total expenses] - [Pretax income]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_com010_missing": {
+  "op": "missing",
+  "seed_qid": "q_com010",
+  "company": "Fortinet, Inc.",
+  "removed": "3,719",
+  "tables": [
+   {
+    "table_row": "Total current liabilities",
+    "n_period_columns": 2,
+    "identities_all_columns": [
+     "+ [Accounts payable] + [Accrued liabilities] + [Accrued payroll and compensation] + [Deferred revenue]",
+     "- [Accounts payable] - [Accrued liabilities] - [Accrued payroll and compensation] - [Deferred revenue]",
+     "+ [DEFERRED REVENUE] + [LONG-TERM DEBT] + [OTHER LIABILITIES] - [Total liabilities]",
+     "- [DEFERRED REVENUE] - [LONG-TERM DEBT] - [OTHER LIABILITIES] + [Total liabilities]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_com058_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_com058",
+  "company": "Simon Property Group",
+  "removed": "2,279,789",
+  "tables": [
+   {
+    "table_row": "NET INCOME ATTRIBUTABLE TO COMMON STOCKHOLDERS",
+    "n_period_columns": 3,
+    "identities_all_columns": [
+     "+ [CONSOLIDATED NET INCOME] - [Net income attributable to noncontrolling int] - [Preferred dividends]",
+     "- [CONSOLIDATED NET INCOME] + [Net income attributable to noncontrolling int] + [Preferred dividends]",
+     "+ [Net income attributable to noncontrolling int] + [Preferred dividends] - [Consolidated Net Income]",
+     "- [Net income attributable to noncontrolling int] - [Preferred dividends] + [Consolidated Net Income]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_com069_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_com069",
+  "company": "General Mills, Inc.",
+  "removed": "14,511",
+  "tables": []
+ },
+ "q_com077_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_com077",
+  "company": "Bank of America Corporation",
+  "removed": "25,377",
+  "tables": [
+   {
+    "table_row": "Total revenue, net of interest expense",
+    "n_period_columns": 4,
+    "identities_all_columns": [
+     "+ [Net interest income] + [Total noninterest income]",
+     "- [Net interest income] - [Total noninterest income]",
+     "+ [Interest income] - [Interest expense] + [Total noninterest income]",
+     "- [Interest income] + [Interest expense] - [Total noninterest income]",
+     "+ [Net interest income] + [Total noninterest income] + [Earnings]",
+     "+ [Net interest income] + [Total noninterest income] - [Earnings]",
+     "- [Net interest income] - [Total noninterest income] + [Earnings]",
+     "- [Net interest income] - [Total noninterest income] - [Earnings]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_com146_missing": {
+  "op": "reconstruct",
+  "seed_qid": "q_com146",
+  "company": "The Bank of New York Mellon Corporation",
+  "removed": "2.44",
+  "tables": [
+   {
+    "table_row": "Diluted",
+    "n_period_columns": 5,
+    "identities_all_columns": [],
+    "note": ""
+   }
+  ]
+ },
+ "q_com166_missing": {
+  "op": "missing",
+  "seed_qid": "q_com166",
+  "company": "Pfizer Inc.",
+  "removed": "13,007",
+  "tables": [
+   {
+    "table_row": "Total revenues",
+    "n_period_columns": 4,
+    "identities_all_columns": [
+     "+ [Product revenues(a)] + [Alliance revenues(a)] + [Royalty revenues(a)]",
+     "- [Product revenues(a)] - [Alliance revenues(a)] - [Royalty revenues(a)]",
+     "+ [Product revenues(a)] + [Alliance revenues(a)] + [Royalty revenues(a)] + [Income from continuing operations attributabl]",
+     "+ [Product revenues(a)] + [Alliance revenues(a)] + [Royalty revenues(a)] - [Income from continuing operations attributabl]",
+     "- [Product revenues(a)] - [Alliance revenues(a)] - [Royalty revenues(a)] + [Income from continuing operations attributabl]",
+     "- [Product revenues(a)] - [Alliance revenues(a)] - [Royalty revenues(a)] - [Income from continuing operations attributabl]",
+     "+ [Product revenues(a)] + [Alliance revenues(a)] + [Royalty revenues(a)] + [Net income attributable to Pfizer Inc. common]",
+     "+ [Product revenues(a)] + [Alliance revenues(a)] + [Royalty revenues(a)] - [Net income attributable to Pfizer Inc. common]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_com178_missing": {
+  "op": "missing",
+  "seed_qid": "q_com178",
+  "company": "AT&T Inc.",
+  "removed": "3,701",
+  "tables": [
+   {
+    "table_row": "Cash and cash equivalents",
+    "n_period_columns": 2,
+    "identities_all_columns": [
+     "+ [Accounts receivable – net of related allowanc] + [Inventories] + [Prepaid and other current assets] - [Total current assets]",
+     "- [Accounts receivable – net of related allowanc] - [Inventories] - [Prepaid and other current assets] + [Total current assets]"
+    ],
+    "note": ""
+   }
+  ]
+ },
+ "q_an049_missing": {
+  "op": "missing",
+  "seed_qid": "q_an049",
+  "company": "The J. M. Smucker Company",
+  "removed": "7,998,900",
+  "tables": [
+   {
+    "table_row": "Net sales",
+    "n_period_columns": 3,
+    "identities_all_columns": [],
+    "note": ""
+   },
+   {
+    "table_row": "Net sales",
+    "n_period_columns": 4,
+    "identities_all_columns": [],
+    "note": ""
+   }
+  ]
+ }
+}
