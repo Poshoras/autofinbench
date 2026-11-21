@@ -1,0 +1,551 @@
+[
+ {
+  "qid": "q_Ra001",
+  "company": "Apple Inc.",
+  "cik": 320193,
+  "end": "2023-09-30",
+  "months": 12,
+  "metric": "interest coverage ratio",
+  "basis": "operating income as EBIT, divided by interest expense",
+  "kind": "ratio",
+  "fmt": "x2",
+  "items": {
+   "EBIT": [
+    "OperatingIncomeLoss"
+   ],
+   "IntExp": [
+    "InterestExpense"
+   ]
+  },
+  "expr": "EBIT/IntExp"
+ },
+ {
+  "qid": "q_Ra002",
+  "company": "Procter & Gamble (P&G)",
+  "cik": 80424,
+  "end": "2024-06-30",
+  "months": 12,
+  "metric": "gross profit margin",
+  "basis": "net sales less cost of products sold, as a share of net sales",
+  "kind": "pct",
+  "fmt": "p1",
+  "items": {
+   "Rev": [
+    "Revenues"
+   ],
+   "COGS": [
+    "CostOfGoodsAndServicesSold"
+   ]
+  },
+  "expr": "(Rev-COGS)/Rev*100",
+  "peer": {
+   "company": "General Mills, Inc.",
+   "cik": 40704,
+   "end": "2024-05-26",
+   "items": {
+    "Rev": [
+     "RevenueFromContractWithCustomerExcludingAssessedTax",
+     "Revenues"
+    ],
+    "COGS": [
+     "CostOfGoodsAndServicesSold"
+    ]
+   }
+  }
+ },
+ {
+  "qid": "q_Ra005",
+  "company": "JPMorgan Chase & Co.",
+  "cik": 19617,
+  "end": "2024-03-31",
+  "months": 0,
+  "metric": "debt-to-equity ratio",
+  "basis": "total liabilities to total stockholders' equity",
+  "kind": "ratio",
+  "fmt": "x2",
+  "items": {
+   "Liab": [
+    "Liabilities"
+   ],
+   "Eq": [
+    "StockholdersEquity"
+   ]
+  },
+  "expr": "Liab/Eq"
+ },
+ {
+  "qid": "q_Ra007",
+  "company": "NIKE, Inc.",
+  "cik": 320187,
+  "end": "2018-05-31",
+  "months": 12,
+  "metric": "EBIT",
+  "basis": "income before income taxes plus net interest expense; $ millions",
+  "kind": "level",
+  "fmt": "m0",
+  "items": {
+   "PreTax": [
+    "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments"
+   ],
+   "IntNet": [
+    "InterestIncomeExpenseNonoperatingNet"
+   ]
+  },
+  "expr": "PreTax-IntNet",
+  "skipped": [
+   [
+    "q_Ra006",
+    "regional shares need segment-dimension facts not in companyfacts"
+   ]
+  ]
+ },
+ {
+  "qid": "q_Ra011",
+  "company": "Discover Financial Services",
+  "cik": 1393612,
+  "end": "2023-12-31",
+  "months": 12,
+  "metric": "dividend payout ratio",
+  "basis": "dividends declared per common share as a share of basic EPS",
+  "kind": "pct",
+  "fmt": "p1",
+  "items": {
+   "DPS": [
+    "CommonStockDividendsPerShareDeclared",
+    "USD/shares"
+   ],
+   "EPS": [
+    "EarningsPerShareBasic",
+    "USD/shares"
+   ]
+  },
+  "expr": "DPS/EPS*100",
+  "peer": {
+   "company": "American Express Company",
+   "cik": 4962,
+   "end": "2023-12-31"
+  }
+ },
+ {
+  "qid": "q_Ra034",
+  "company": "NextEra Energy (NEE)",
+  "cik": 753308,
+  "end": "2023-12-31",
+  "months": 0,
+  "metric": "current ratio",
+  "basis": "total current assets to total current liabilities",
+  "kind": "ratio",
+  "fmt": "x2",
+  "items": {
+   "CA": [
+    "AssetsCurrent"
+   ],
+   "CL": [
+    "LiabilitiesCurrent"
+   ]
+  },
+  "expr": "CA/CL",
+  "skipped": [
+   [
+    "q_Ra033",
+    "interest expense is not reported as a standalone non-dimensional XBRL fact in companyfacts"
+   ]
+  ],
+  "peer": {
+   "company": "CMS Energy Corporation",
+   "cik": 811156,
+   "end": "2023-12-31"
+  }
+ },
+ {
+  "qid": "q_Ra051",
+  "company": "NVIDIA Corporation",
+  "cik": 1045810,
+  "end": "2024-01-28",
+  "months": 12,
+  "metric": "return on equity",
+  "basis": "net income over year-end shareholders' equity",
+  "kind": "pct",
+  "fmt": "p1",
+  "items": {
+   "NI": [
+    "NetIncomeLoss"
+   ],
+   "Eq": [
+    "StockholdersEquity",
+    null,
+    0
+   ]
+  },
+  "expr": "NI/Eq*100"
+ },
+ {
+  "qid": "q_Ra064",
+  "company": "Halliburton Company",
+  "cik": 45012,
+  "end": "2023-12-31",
+  "months": 12,
+  "metric": "EBITDA margin",
+  "basis": "operating income plus depreciation, depletion and amortization, as a share of total revenue",
+  "kind": "pct",
+  "fmt": "p1",
+  "items": {
+   "OpInc": [
+    "OperatingIncomeLoss"
+   ],
+   "DA": [
+    "DepreciationDepletionAndAmortization"
+   ],
+   "Rev": [
+    "RevenueFromContractWithCustomerIncludingAssessedTax",
+    "Revenues"
+   ]
+  },
+  "expr": "(OpInc+DA)/Rev*100"
+ },
+ {
+  "qid": "q_Ra070",
+  "company": "The Goldman Sachs Group, Inc.",
+  "cik": 886982,
+  "end": "2024-03-31",
+  "months": 3,
+  "metric": "net profit margin",
+  "basis": "net earnings as a share of total net revenues, three months ended",
+  "kind": "pct",
+  "fmt": "p1",
+  "items": {
+   "NI": [
+    "NetIncomeLoss"
+   ],
+   "Rev": [
+    "RevenuesNetOfInterestExpense",
+    "Revenues"
+   ]
+  },
+  "expr": "NI/Rev*100",
+  "peer": {
+   "company": "JPMorgan Chase & Co.",
+   "cik": 19617,
+   "end": "2024-03-31",
+   "items": {
+    "NI": [
+     "NetIncomeLoss"
+    ],
+    "Rev": [
+     "Revenues",
+     "RevenuesNetOfInterestExpense"
+    ]
+   }
+  }
+ },
+ {
+  "qid": "q_Ra107",
+  "company": "Honeywell International Inc.",
+  "cik": 773840,
+  "end": "2024-03-31",
+  "months": 3,
+  "metric": "net profit margin",
+  "basis": "net income attributable to Honeywell as a share of net sales, three months ended",
+  "kind": "pct",
+  "fmt": "p1",
+  "items": {
+   "NI": [
+    "NetIncomeLoss"
+   ],
+   "Rev": [
+    "Revenues",
+    "RevenueFromContractWithCustomerExcludingAssessedTax"
+   ]
+  },
+  "expr": "NI/Rev*100"
+ },
+ {
+  "qid": "q_Ra124",
+  "company": "Exxon Mobil Corporation",
+  "cik": 34088,
+  "end": "2024-06-30",
+  "months": 0,
+  "metric": "current ratio",
+  "basis": "total current assets to total current liabilities",
+  "kind": "ratio",
+  "fmt": "x2",
+  "items": {
+   "CA": [
+    "AssetsCurrent"
+   ],
+   "CL": [
+    "LiabilitiesCurrent"
+   ]
+  },
+  "expr": "CA/CL",
+  "peer": {
+   "company": "Halliburton Company",
+   "cik": 45012,
+   "end": "2024-06-30"
+  }
+ },
+ {
+  "qid": "q_Ra147",
+  "company": "The Coca-Cola Company",
+  "cik": 21344,
+  "end": "2024-06-28",
+  "months": 6,
+  "metric": "return on assets (six months, not annualized)",
+  "basis": "six-month net income attributable to shareowners over period-end total assets",
+  "kind": "pct",
+  "fmt": "p2",
+  "items": {
+   "NI": [
+    "NetIncomeLoss"
+   ],
+   "TA": [
+    "Assets",
+    null,
+    0
+   ]
+  },
+  "expr": "NI/TA*100"
+ },
+ {
+  "qid": "q_Ra158",
+  "company": "Tesla, Inc.",
+  "cik": 1318605,
+  "end": "2023-12-31",
+  "months": 12,
+  "metric": "year-over-year growth in net income attributable to common stockholders",
+  "basis": "percentage change versus prior fiscal year",
+  "kind": "growth",
+  "fmt": "p1",
+  "items": {
+   "NI": [
+    "NetIncomeLoss"
+   ]
+  },
+  "expr": "growth(NI)"
+ },
+ {
+  "qid": "q_com006",
+  "company": "American Express Company",
+  "cik": 4962,
+  "end": "2023-12-31",
+  "months": 12,
+  "metric": "net profit margin",
+  "basis": "net income as a share of total revenues net of interest expense",
+  "kind": "pct",
+  "fmt": "p1",
+  "items": {
+   "NI": [
+    "NetIncomeLoss"
+   ],
+   "Rev": [
+    "RevenuesNetOfInterestExpense",
+    "Revenues"
+   ]
+  },
+  "expr": "NI/Rev*100",
+  "skipped": [
+   [
+    "q_com001-005",
+    "billed business / segment KPIs not in XBRL; q_com005 has no defined metric"
+   ]
+  ]
+ },
+ {
+  "qid": "q_com010",
+  "company": "Fortinet, Inc.",
+  "cik": 1262039,
+  "end": "2023-12-31",
+  "months": 0,
+  "metric": "current ratio",
+  "basis": "total current assets to total current liabilities",
+  "kind": "ratio",
+  "fmt": "x2",
+  "items": {
+   "CA": [
+    "AssetsCurrent"
+   ],
+   "CL": [
+    "LiabilitiesCurrent"
+   ]
+  },
+  "expr": "CA/CL",
+  "skipped": [
+   [
+    "q_com008",
+    "debt-to-equity undefined: both companies report stockholders deficit (negative equity)"
+   ],
+   [
+    "q_com009",
+    "efficiency ratios not specified"
+   ]
+  ]
+ },
+ {
+  "qid": "q_com058",
+  "company": "Simon Property Group",
+  "cik": 1063761,
+  "end": "2023-12-31",
+  "months": 12,
+  "metric": "net income attributable to common stockholders",
+  "basis": "$ millions",
+  "kind": "level",
+  "fmt": "m0",
+  "items": {
+   "NI": [
+    "NetIncomeLoss",
+    "NetIncomeLossAvailableToCommonStockholdersBasic"
+   ]
+  },
+  "expr": "NI",
+  "skipped": [
+   [
+    "q_com013-016",
+    "segment data, leasing activity and dividend policy are not single XBRL metrics"
+   ]
+  ]
+ },
+ {
+  "qid": "q_com069",
+  "company": "General Mills, Inc.",
+  "cik": 40704,
+  "end": "2023-05-28",
+  "months": 0,
+  "metric": "goodwill",
+  "basis": "balance-sheet goodwill at fiscal year-end, $ millions",
+  "kind": "level",
+  "fmt": "m1",
+  "items": {
+   "GW": [
+    "Goodwill"
+   ]
+  },
+  "expr": "GW"
+ },
+ {
+  "qid": "q_com077",
+  "company": "Bank of America Corporation",
+  "cik": 70858,
+  "end": "2024-06-30",
+  "months": 3,
+  "metric": "noninterest income share of revenue",
+  "basis": "noninterest income as a share of total revenue net of interest expense, three months ended",
+  "kind": "pct",
+  "fmt": "p1",
+  "items": {
+   "NII": [
+    "NoninterestIncome"
+   ],
+   "Rev": [
+    "Revenues",
+    "RevenuesNetOfInterestExpense"
+   ]
+  },
+  "expr": "NII/Rev*100",
+  "peer_dropped": {
+   "company": "The Bank of New York Mellon Corporation",
+   "cik": 1390777,
+   "end": "2024-06-30",
+   "items": {
+    "NII": [
+     "NoninterestIncome"
+    ],
+    "Rev": [
+     "Revenues",
+     "RevenuesNetOfInterestExpense"
+    ]
+   },
+   "reason": "BNY total revenue is not available as a standard us-gaap fact for the quarter"
+  }
+ },
+ {
+  "qid": "q_com146",
+  "company": "The Bank of New York Mellon Corporation",
+  "cik": 1390777,
+  "end": "2024-06-30",
+  "months": 6,
+  "metric": "year-over-year change in diluted earnings per common share",
+  "basis": "six months ended, percentage change versus same period of prior year",
+  "kind": "growth",
+  "fmt": "p1",
+  "items": {
+   "EPS": [
+    "EarningsPerShareDiluted",
+    "USD/shares"
+   ]
+  },
+  "expr": "growth(EPS)",
+  "skipped": [
+   [
+    "q_com145",
+    "total fee revenue is a company-specific (bk:) XBRL concept, not in companyfacts"
+   ]
+  ]
+ },
+ {
+  "qid": "q_com166",
+  "company": "Pfizer Inc.",
+  "cik": 78003,
+  "end": "2024-06-30",
+  "months": 3,
+  "metric": "year-over-year growth in total revenues",
+  "basis": "second fiscal quarter versus the same quarter of the prior year",
+  "kind": "growth",
+  "fmt": "p1",
+  "items": {
+   "Rev": [
+    "Revenues",
+    "RevenueFromContractWithCustomerExcludingAssessedTax"
+   ]
+  },
+  "expr": "growth(Rev)",
+  "peer": {
+   "company": "Johnson & Johnson",
+   "cik": 200406,
+   "end": "2024-06-30",
+   "items": {
+    "Rev": [
+     "Revenues",
+     "RevenueFromContractWithCustomerExcludingAssessedTax"
+    ]
+   }
+  }
+ },
+ {
+  "qid": "q_com178",
+  "company": "AT&T Inc.",
+  "cik": 732717,
+  "end": "2023-12-31",
+  "months": 0,
+  "metric": "year-over-year change in cash and cash equivalents",
+  "basis": "percentage change in year-end cash and cash equivalents",
+  "kind": "growth",
+  "fmt": "p1",
+  "items": {
+   "Cash": [
+    "CashAndCashEquivalentsAtCarryingValue"
+   ]
+  },
+  "expr": "growth(Cash)"
+ },
+ {
+  "qid": "q_an049",
+  "company": "The J. M. Smucker Company",
+  "cik": 91419,
+  "end": "2022-04-30",
+  "months": 12,
+  "metric": "gross profit margin",
+  "basis": "gross profit as a share of net sales",
+  "kind": "pct",
+  "fmt": "p1",
+  "items": {
+   "GP": [
+    "GrossProfit"
+   ],
+   "Rev": [
+    "RevenueFromContractWithCustomerIncludingAssessedTax",
+    "Revenues"
+   ]
+  },
+  "expr": "GP/Rev*100"
+ }
+]

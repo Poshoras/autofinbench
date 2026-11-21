@@ -1,0 +1,554 @@
+[
+ {
+  "seed_qid": "q_Ra001",
+  "company": "Apple Inc.",
+  "metric": "interest coverage ratio",
+  "backtest": {
+   "our_value": "29.06x",
+   "value_if_originally_reported": "29.06x",
+   "seed_gt_contains_value": false,
+   "inputs_in_seed_gt": {
+    "EBIT": true,
+    "IntExp": true
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000320193-23-000106",
+   "our_accessions": [
+    "0000320193-23-000106"
+   ],
+   "seed_gt_excerpt": "Interest Coverage Ratio is calculated using the formula: Interest Coverage Ratio = EBIT / Interest Expenses.\n\nFor 2021:\nEBIT (Operating Income) = $108,949 million\nInterest Expenses = $2,687 million\nInterest Coverage Ratio = $108,949 million / $2,687 million = 40.6\n\nFor 2022:\nEBIT (Operating Income) = $119,437 million\nInterest Expenses = $2,931 million\nInterest Coverage Ratio = $119,437 million / $"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_Ra002",
+  "company": "Procter & Gamble (P&G)",
+  "metric": "gross profit margin",
+  "backtest": {
+   "our_value": "51.4%",
+   "value_if_originally_reported": "51.4%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "Rev": false,
+    "COGS": false
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000080424-24-000083",
+   "our_accessions": [
+    "0000080424-24-000083"
+   ],
+   "seed_gt_excerpt": "Profitability Ratio Analysis for Procter & Gamble (P&G) in 2023 and 2024\nGross Profit Margin:\n2024: 51.4%\n2023: 47.6%\n\nOperating Profit Margin:\n2024: 22.1%\n2023: 22.1%\n\nNet Profit Margin:\n2024: 17.7%\n2023: 17.9%\n\n\nReturn on Equity (ROE):\n2024: 30.5%\n2023: 31.2%\n\nAnalysis:\nIn 2024, Procter & Gamble continued to exhibit strong profitability, despite minor fluctuations in certain metrics. The slight "
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_Ra005",
+  "company": "JPMorgan Chase & Co.",
+  "metric": "debt-to-equity ratio",
+  "backtest": {
+   "our_value": "11.15x",
+   "value_if_originally_reported": "11.15x",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "Liab": false,
+    "Eq": false
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000019617-24-000326",
+   "our_accessions": [
+    "0000019617-24-000326"
+   ],
+   "seed_gt_excerpt": "The key findings from the solvency analysis of JPMorgan Chase as of March 31, 2024, include:\n- Debt Equity Ratio: 11.15\n- Interest Coverage Ratio: 0.71\n- Financial Leverage Ratio: 12.15\n- Long-term Debt to Capitalization Ratio: 0.54\nThese ratios suggest that JPMorgan Chase has a high level of debt relative to equity, a low interest coverage ratio, and significant financial leverage, indicating pot"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_Ra007",
+  "company": "NIKE, Inc.",
+  "metric": "EBIT",
+  "backtest": {
+   "our_value": "$4,379 million",
+   "value_if_originally_reported": "$4,379 million",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "PreTax": false,
+    "IntNet": false
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000320187-18-000142",
+   "our_accessions": [
+    "0000320187-18-000142"
+   ],
+   "seed_gt_excerpt": "EBIT 2018: $4,379 million\nEBIT 2017: $4,945 million\nFormula:\nPercentage Change in EBIT = ((EBIT 2018 - EBIT 2017) / EBIT 2017) × 100\n\nCalculation:\nPercentage Change = ((4,379 - 4,945) / 4,945) × 100\nPercentage Change = (-566 / 4,945) × 100 ≈ -11.45%\n\nNike's EBIT decreased by approximately 11.45% from fiscal 2017 to 2018. The decline was driven by increased selling and administrative expenses and g"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": [
+   [
+    "q_Ra006",
+    "regional shares need segment-dimension facts not in companyfacts"
+   ]
+  ]
+ },
+ {
+  "seed_qid": "q_Ra011",
+  "company": "Discover Financial Services",
+  "metric": "dividend payout ratio",
+  "backtest": {
+   "our_value": "24.0%",
+   "value_if_originally_reported": "24.0%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "DPS": true,
+    "EPS": true
+   },
+   "restated_inputs": [
+    "EPS"
+   ],
+   "seed_accession": "0001393612-24-000010;0001393612-24-000010",
+   "our_accessions": [
+    "0001393612-24-000010"
+   ],
+   "seed_gt_excerpt": "The payout ratio is calculated using the formula:\nPayout Ratio = (Total Dividends per Share/Basci Earnings per Share (EPS))×100\n\nDividend per Share:\n2023: $2.70\n2022: $2.30\nBasic Earnings per Share (EPS):\n2023: $11.27\n2022: $15.45 \nPayout Ratio Calculation:\n2023: Payout Ratio = 23.9 %\n2022: Payout Ratio = 14.9 %"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_Ra034",
+  "company": "NextEra Energy (NEE)",
+  "metric": "current ratio",
+  "backtest": {
+   "our_value": "0.55x",
+   "value_if_originally_reported": "0.55x",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "CA": true,
+    "CL": true
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000753308-24-000008",
+   "our_accessions": [
+    "0000753308-24-000008"
+   ],
+   "seed_gt_excerpt": "The current ratio is calculated by dividing total current assets by total current liabilities. For NEE in 2023, the total current assets were $15,361 million, and the total current liabilities were $27,963 million. Therefore, the current ratio for NEE in 2023 is:\n\nCurrent Ratio = Total Current Assets / Total Current Liabilities = $15,361 million / $27,963 million ≈ 0.55"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": [
+   [
+    "q_Ra033",
+    "interest expense is not reported as a standalone non-dimensional XBRL fact in companyfacts"
+   ]
+  ]
+ },
+ {
+  "seed_qid": "q_Ra051",
+  "company": "NVIDIA Corporation",
+  "metric": "return on equity",
+  "backtest": {
+   "our_value": "69.2%",
+   "value_if_originally_reported": "69.2%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "NI": true,
+    "Eq": true
+   },
+   "restated_inputs": [],
+   "seed_accession": "0001045810-24-000029",
+   "our_accessions": [
+    "0001045810-24-000029"
+   ],
+   "seed_gt_excerpt": "Return on Equity (ROE) is calculated using the formula: ROE = (Net Income / Shareholder's Equity) * 100.\n\nFor 2024:\nNet Income = $29,760 million\nShareholder's Equity = $42,978 million\nROE = ($29,760 / $42,978) * 100 = 69.2%\n\nFor 2023:\nNet Income = $4,368 million\nShareholder's Equity = $22,101 million\nROE = ($4,368 / $22,101) * 100 = 19.8%"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_Ra064",
+  "company": "Halliburton Company",
+  "metric": "EBITDA margin",
+  "backtest": {
+   "our_value": "22.1%",
+   "value_if_originally_reported": "22.1%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "OpInc": true,
+    "DA": true,
+    "Rev": true
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000045012-24-000007",
+   "our_accessions": [
+    "0000045012-24-000007"
+   ],
+   "seed_gt_excerpt": "EBITDA Margin is calculated as (EBITDA / Revenue) * 100. EBITDA is derived from Operating Income plus Depreciation, Depletion, and Amortization. For Halliburton in 2023, the operating income is $4,083 million, and the depreciation, depletion, and amortization is $998 million. Therefore, the EBITDA is $4,083 + $998 = $5,081 million. The total revenue is $23,018 million. The EBITDA Margin for 2023 i"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_Ra070",
+  "company": "The Goldman Sachs Group, Inc.",
+  "metric": "net profit margin",
+  "backtest": {
+   "our_value": "29.1%",
+   "value_if_originally_reported": "29.1%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "NI": true,
+    "Rev": true
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000886982-24-000016",
+   "our_accessions": [
+    "0000886982-24-000016"
+   ],
+   "seed_gt_excerpt": "The Net Profit Margin for Goldman Sachs for the first quarter of 2024 is calculated as follows:\nNet Profit Margin = (Net Income / Revenue) * 100\nNet Income (2024 Q1) = $4,132 million\nRevenue (2024 Q1) = $14,213 million\nNet Profit Margin = (4,132 / 14,213) * 100 = 29.07%"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_Ra107",
+  "company": "Honeywell International Inc.",
+  "metric": "net profit margin",
+  "backtest": {
+   "our_value": "16.1%",
+   "value_if_originally_reported": "16.1%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "NI": true,
+    "Rev": true
+   },
+   "restated_inputs": [
+    "NI",
+    "Rev"
+   ],
+   "seed_accession": "0000773840-24-000051",
+   "our_accessions": [
+    "0000773840-24-000051"
+   ],
+   "seed_gt_excerpt": "The Net Profit Margin for Honeywell International Inc. for the three months ended March 31, 2024, is calculated as follows:\nNet Profit Margin = (Net Income / Net Sales) * 100\nNet Income = $1,463 million\nNet Sales = $9,105 million\nNet Profit Margin = (1,463 / 9,105) * 100 = 16.06%"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_Ra124",
+  "company": "Exxon Mobil Corporation",
+  "metric": "current ratio",
+  "backtest": {
+   "our_value": "1.36x",
+   "value_if_originally_reported": "1.36x",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "CA": true,
+    "CL": true
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000034088-24-000050",
+   "our_accessions": [
+    "0000034088-24-000050"
+   ],
+   "seed_gt_excerpt": "The current ratio is calculated as:\nCurrent Assets/Current Liabilities\n96,238/ 70,763​\n =1.36"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_Ra147",
+  "company": "The Coca-Cola Company",
+  "metric": "return on assets (six months, not annualized)",
+  "backtest": {
+   "our_value": "5.52%",
+   "value_if_originally_reported": "5.52%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "NI": true,
+    "TA": true
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000021344-24-000044",
+   "our_accessions": [
+    "0000021344-24-000044"
+   ],
+   "seed_gt_excerpt": "ROA = (Net Income / Total Assets) * 100 = ($5,588 million / $101,202 million) * 100 = 5.52%"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_Ra158",
+  "company": "Tesla, Inc.",
+  "metric": "year-over-year growth in net income attributable to common stockholders",
+  "backtest": {
+   "our_value": "19.4%",
+   "value_if_originally_reported": "19.4%",
+   "seed_gt_contains_value": false,
+   "inputs_in_seed_gt": {
+    "NI": false,
+    "NI_prev": false
+   },
+   "restated_inputs": [],
+   "seed_accession": "0001628280-24-002390",
+   "our_accessions": [
+    "0000950170-23-001409",
+    "0001628280-24-002390"
+   ],
+   "seed_gt_excerpt": "Tesla's net income increased from $12,587 million in 2022 to $14,974 million in 2023, which is an increase of approximately 18.95%."
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_com006",
+  "company": "American Express Company",
+  "metric": "net profit margin",
+  "backtest": {
+   "our_value": "13.8%",
+   "value_if_originally_reported": "13.8%",
+   "seed_gt_contains_value": false,
+   "inputs_in_seed_gt": {
+    "NI": true,
+    "Rev": false
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000004962-24-000013;0001393612-24-000010",
+   "our_accessions": [
+    "0000004962-24-000013"
+   ],
+   "seed_gt_excerpt": "Profit margin is calculated as net income divided by total revenues. For American Express, the profit margin in 2023 is approximately 12.4% ($8,374 million net income / $67,364 million total revenues), and in 2022, it is about 13.5% ($7,514 million net income / $55,625 million total revenues). For Discover Financial Services, the profit margin in 2023 is approximately 14.3% ($2,940 million net inc"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": [
+   [
+    "q_com001-005",
+    "billed business / segment KPIs not in XBRL; q_com005 has no defined metric"
+   ]
+  ]
+ },
+ {
+  "seed_qid": "q_com010",
+  "company": "Fortinet, Inc.",
+  "metric": "current ratio",
+  "backtest": {
+   "our_value": "1.19x",
+   "value_if_originally_reported": "1.19x",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "CA": false,
+    "CL": false
+   },
+   "restated_inputs": [],
+   "seed_accession": "0001262039-24-000014;0001560327-24-000021",
+   "our_accessions": [
+    "0001262039-24-000014"
+   ],
+   "seed_gt_excerpt": "To assess the year-over-year change in liquidity ratios, we need to compare the current ratios for both companies from 2022 to 2023.For Fortinet Inc.:Current Assets (2022): $3,810.4 million,Current Liabilities (2022): $3,078.4 million, Current Ratio (2022): 3,810.4 / 3,078.4 = 1.24, Current Ratio (2023): 1.19-->Year-over-Year Change: 1.19 - 1.24 = -0.05. For Rapid7 Inc.:Current Assets (2022): $510"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": [
+   [
+    "q_com008",
+    "debt-to-equity undefined: both companies report stockholders deficit (negative equity)"
+   ],
+   [
+    "q_com009",
+    "efficiency ratios not specified"
+   ]
+  ]
+ },
+ {
+  "seed_qid": "q_com058",
+  "company": "Simon Property Group",
+  "metric": "net income attributable to common stockholders",
+  "backtest": {
+   "our_value": "$2,280 million",
+   "value_if_originally_reported": "$2,280 million",
+   "seed_gt_contains_value": false,
+   "inputs_in_seed_gt": {
+    "NI": false
+   },
+   "restated_inputs": [],
+   "seed_accession": "0001558370-24-001532;0000899689-24-000005",
+   "our_accessions": [
+    "0001558370-24-001532"
+   ],
+   "seed_gt_excerpt": "In 2023, Simon Property Group reported a consolidated net income of $2,617,018,000. In contrast, Vornado Realty Trust reported a net income of $32,888,000. This significant difference highlights that Simon Property Group had a much higher profitability compared to Vornado Realty Trust in 2023. "
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": [
+   [
+    "q_com013-016",
+    "segment data, leasing activity and dividend policy are not single XBRL metrics"
+   ]
+  ]
+ },
+ {
+  "seed_qid": "q_com069",
+  "company": "General Mills, Inc.",
+  "metric": "goodwill",
+  "backtest": {
+   "our_value": "$14,511.2 million",
+   "value_if_originally_reported": "$14,511.2 million",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "GW": true
+   },
+   "restated_inputs": [],
+   "seed_accession": "0001193125-23-177500;0000080424-23-000073",
+   "our_accessions": [
+    "0001193125-23-177500"
+   ],
+   "seed_gt_excerpt": "General Mills reported goodwill of $14,511.2 million and other intangible assets totaling $6,967.6 million for the fiscal year 2023. The intangible assets include brands and other indefinite-lived intangibles valued at $6,712.4 million and customer relationships and other finite-lived intangibles valued at $255.2 million after accumulated amortization.\nThe Procter & Gamble Company reported goodwil"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_com077",
+  "company": "Bank of America Corporation",
+  "metric": "noninterest income share of revenue",
+  "backtest": {
+   "our_value": "46.0%",
+   "value_if_originally_reported": "46.0%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "NII": true,
+    "Rev": true
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000070858-24-000208;0000019617-24-000453",
+   "our_accessions": [
+    "0000070858-24-000208"
+   ],
+   "seed_gt_excerpt": "Bank of America:\n- Noninterest income: $11,675 million\n- Total revenue, net of interest expense: $25,377 million\n- Contribution: Noninterest income contributes approximately 46% to the total revenue\n\nJPMorgan Chase:\n- Noninterest revenue: $27,454 million\n- Total net revenue: $50,200 million\n- Contribution: Noninterest revenue contributes approximately 55% to the total net revenue"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_com146",
+  "company": "The Bank of New York Mellon Corporation",
+  "metric": "year-over-year change in diluted earnings per common share",
+  "backtest": {
+   "our_value": "13.5%",
+   "value_if_originally_reported": "13.5%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "EPS": true,
+    "EPS_prev": true
+   },
+   "restated_inputs": [
+    "EPS_prev"
+   ],
+   "seed_accession": "0001390777-24-000105",
+   "our_accessions": [
+    "0001390777-23-000081",
+    "0001390777-24-000105"
+   ],
+   "seed_gt_excerpt": "Bank of New York Mellon's diluted earnings per common share increased from $2.44 in the first half of 2023 to $2.77 in the first half of 2024, representing an increase of approximately 13.5%."
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": [
+   [
+    "q_com145",
+    "total fee revenue is a company-specific (bk:) XBRL concept, not in companyfacts"
+   ]
+  ]
+ },
+ {
+  "seed_qid": "q_com166",
+  "company": "Pfizer Inc.",
+  "metric": "year-over-year growth in total revenues",
+  "backtest": {
+   "our_value": "2.1%",
+   "value_if_originally_reported": "2.1%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "Rev": true,
+    "Rev_prev": true
+   },
+   "restated_inputs": [
+    "Rev_prev"
+   ],
+   "seed_accession": "0000078003-24-000166",
+   "our_accessions": [
+    "0000078003-23-000088",
+    "0000078003-24-000166"
+   ],
+   "seed_gt_excerpt": "Pfizer's total revenues for the quarter ending June 30, 2024, were $13,283 million, compared to $13,007 million for the quarter ending July 2, 2023. This reflects an increase of $276 million or 2.12%, indicating a modest growth in revenue\nChange in revenue = 13,283 - 13,007 = 276 million\nPercentage change = (276 / 13,007) * 100 = 2.12%"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_com178",
+  "company": "AT&T Inc.",
+  "metric": "year-over-year change in cash and cash equivalents",
+  "backtest": {
+   "our_value": "81.6%",
+   "value_if_originally_reported": "81.6%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "Cash": true,
+    "Cash_prev": true
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000732717-24-000009;0001562762-24-000034",
+   "our_accessions": [
+    "0000732717-23-000011",
+    "0000732717-24-000009"
+   ],
+   "seed_gt_excerpt": "The percentage change in cash and cash equivalents is calculated as (Current Year Cash and Cash Equivalents - Previous Year Cash and Cash Equivalents) / Previous Year Cash and Cash Equivalents * 100.\n\nFor AT&T Inc.:\n- 2023 Cash and Cash Equivalents: $6,722 million.\n- 2022 Cash and Cash Equivalents: $3,701 million.\n\nPercentage Change in Cash and Cash Equivalents for AT&T Inc. = ($6,722 million - $3"
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ },
+ {
+  "seed_qid": "q_an049",
+  "company": "The J. M. Smucker Company",
+  "metric": "gross profit margin",
+  "backtest": {
+   "our_value": "33.8%",
+   "value_if_originally_reported": "33.8%",
+   "seed_gt_contains_value": true,
+   "inputs_in_seed_gt": {
+    "GP": false,
+    "Rev": false
+   },
+   "restated_inputs": [],
+   "seed_accession": "0000091419-22-000049",
+   "our_accessions": [
+    "0000091419-22-000049"
+   ],
+   "seed_gt_excerpt": "The Gross Profit Margin for JM Smucker in 2022 was 33.8%, compared to 39.2% in 2021. This decline was primarily due to higher costs driven by inflationary pressures across commodities, packaging, transportation, and manufacturing. The unfavorable impact of unsaleable inventory and estimated customer returns related to the Jif peanut butter recall also contributed significantly to the gross profit "
+  },
+  "trend_ok": true,
+  "missing_ok": true,
+  "skipped_seeds": []
+ }
+]

@@ -1,0 +1,1937 @@
+[
+ {
+  "qid": "q_Ra001",
+  "period": "2019-09-30",
+  "item": "EBIT",
+  "concept": "OperatingIncomeLoss",
+  "value": 63930000000,
+  "accn": "0000320193-19-000119",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra001",
+  "period": "2019-09-30",
+  "item": "IntExp",
+  "concept": "InterestExpense",
+  "value": 3576000000,
+  "accn": "0000320193-19-000119",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra001",
+  "period": "2020-09-30",
+  "item": "EBIT",
+  "concept": "OperatingIncomeLoss",
+  "value": 66288000000,
+  "accn": "0000320193-20-000096",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra001",
+  "period": "2020-09-30",
+  "item": "IntExp",
+  "concept": "InterestExpense",
+  "value": 2873000000,
+  "accn": "0000320193-20-000096",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra001",
+  "period": "2021-09-30",
+  "item": "EBIT",
+  "concept": "OperatingIncomeLoss",
+  "value": 108949000000,
+  "accn": "0000320193-21-000105",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra001",
+  "period": "2021-09-30",
+  "item": "IntExp",
+  "concept": "InterestExpense",
+  "value": 2645000000,
+  "accn": "0000320193-21-000105",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra001",
+  "period": "2022-09-30",
+  "item": "EBIT",
+  "concept": "OperatingIncomeLoss",
+  "value": 119437000000,
+  "accn": "0000320193-22-000108",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra001",
+  "period": "2022-09-30",
+  "item": "IntExp",
+  "concept": "InterestExpense",
+  "value": 2931000000,
+  "accn": "0000320193-22-000108",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra001",
+  "period": "2023-09-30",
+  "item": "EBIT",
+  "concept": "OperatingIncomeLoss",
+  "value": 114301000000,
+  "accn": "0000320193-23-000106",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra001",
+  "period": "2023-09-30",
+  "item": "IntExp",
+  "concept": "InterestExpense",
+  "value": 3933000000,
+  "accn": "0000320193-23-000106",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra002",
+  "period": "2020-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 70950000000,
+  "accn": "0000080424-20-000053",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra002",
+  "period": "2020-06-30",
+  "item": "COGS",
+  "concept": "CostOfGoodsAndServicesSold",
+  "value": 35250000000,
+  "accn": "0000080424-20-000053",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra002",
+  "period": "2021-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 76118000000,
+  "accn": "0000080424-21-000100",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra002",
+  "period": "2021-06-30",
+  "item": "COGS",
+  "concept": "CostOfGoodsAndServicesSold",
+  "value": 37108000000,
+  "accn": "0000080424-21-000100",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra002",
+  "period": "2022-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 80187000000,
+  "accn": "0000080424-22-000064",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra002",
+  "period": "2022-06-30",
+  "item": "COGS",
+  "concept": "CostOfGoodsAndServicesSold",
+  "value": 42157000000,
+  "accn": "0000080424-22-000064",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra002",
+  "period": "2023-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 82006000000,
+  "accn": "0000080424-23-000073",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra002",
+  "period": "2023-06-30",
+  "item": "COGS",
+  "concept": "CostOfGoodsAndServicesSold",
+  "value": 42760000000,
+  "accn": "0000080424-23-000073",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra002",
+  "period": "2024-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 84039000000,
+  "accn": "0000080424-24-000083",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra002",
+  "period": "2024-06-30",
+  "item": "COGS",
+  "concept": "CostOfGoodsAndServicesSold",
+  "value": 40848000000,
+  "accn": "0000080424-24-000083",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra005",
+  "period": "2020-03-31",
+  "item": "Liab",
+  "concept": "Liabilities",
+  "value": 2878169000000,
+  "accn": "0000019617-20-000299",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra005",
+  "period": "2020-03-31",
+  "item": "Eq",
+  "concept": "StockholdersEquity",
+  "value": 261262000000,
+  "accn": "0000019617-20-000299",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra005",
+  "period": "2021-03-31",
+  "item": "Liab",
+  "concept": "Liabilities",
+  "value": 3408622000000,
+  "accn": "0000019617-21-000292",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra005",
+  "period": "2021-03-31",
+  "item": "Eq",
+  "concept": "StockholdersEquity",
+  "value": 280714000000,
+  "accn": "0000019617-21-000292",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra005",
+  "period": "2022-03-31",
+  "item": "Liab",
+  "concept": "Liabilities",
+  "value": 3668788000000,
+  "accn": "0000019617-22-000319",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra005",
+  "period": "2022-03-31",
+  "item": "Eq",
+  "concept": "StockholdersEquity",
+  "value": 285899000000,
+  "accn": "0000019617-22-000319",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra005",
+  "period": "2023-03-31",
+  "item": "Liab",
+  "concept": "Liabilities",
+  "value": 3441223000000,
+  "accn": "0000019617-23-000310",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra005",
+  "period": "2023-03-31",
+  "item": "Eq",
+  "concept": "StockholdersEquity",
+  "value": 303082000000,
+  "accn": "0000019617-23-000310",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra005",
+  "period": "2024-03-31",
+  "item": "Liab",
+  "concept": "Liabilities",
+  "value": 3754090000000,
+  "accn": "0000019617-24-000326",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra005",
+  "period": "2024-03-31",
+  "item": "Eq",
+  "concept": "StockholdersEquity",
+  "value": 336637000000,
+  "accn": "0000019617-24-000326",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra007",
+  "period": "2014-05-31",
+  "item": "PreTax",
+  "concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+  "value": 3544000000,
+  "accn": "0000320187-14-000097",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra007",
+  "period": "2014-05-31",
+  "item": "IntNet",
+  "concept": "InterestIncomeExpenseNonoperatingNet",
+  "value": -33000000,
+  "accn": "0000320187-14-000097",
+  "found_in_text": false
+ },
+ {
+  "qid": "q_Ra007",
+  "period": "2015-05-31",
+  "item": "PreTax",
+  "concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+  "value": 4205000000,
+  "accn": "0000320187-15-000113",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra007",
+  "period": "2015-05-31",
+  "item": "IntNet",
+  "concept": "InterestIncomeExpenseNonoperatingNet",
+  "value": -28000000,
+  "accn": "0000320187-15-000113",
+  "found_in_text": false
+ },
+ {
+  "qid": "q_Ra007",
+  "period": "2016-05-31",
+  "item": "PreTax",
+  "concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+  "value": 4623000000,
+  "accn": "0000320187-16-000336",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra007",
+  "period": "2016-05-31",
+  "item": "IntNet",
+  "concept": "InterestIncomeExpenseNonoperatingNet",
+  "value": -19000000,
+  "accn": "0000320187-16-000336",
+  "found_in_text": false
+ },
+ {
+  "qid": "q_Ra007",
+  "period": "2017-05-31",
+  "item": "PreTax",
+  "concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+  "value": 4886000000,
+  "accn": "0000320187-17-000090",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra007",
+  "period": "2017-05-31",
+  "item": "IntNet",
+  "concept": "InterestIncomeExpenseNonoperatingNet",
+  "value": -59000000,
+  "accn": "0000320187-17-000090",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra007",
+  "period": "2018-05-31",
+  "item": "PreTax",
+  "concept": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+  "value": 4325000000,
+  "accn": "0000320187-18-000142",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra007",
+  "period": "2018-05-31",
+  "item": "IntNet",
+  "concept": "InterestIncomeExpenseNonoperatingNet",
+  "value": -54000000,
+  "accn": "0000320187-18-000142",
+  "found_in_text": false
+ },
+ {
+  "qid": "q_Ra011",
+  "period": "2019-12-31",
+  "item": "DPS",
+  "concept": "CommonStockDividendsPerShareDeclared",
+  "value": 1.68,
+  "accn": "0001393612-20-000009",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra011",
+  "period": "2019-12-31",
+  "item": "EPS",
+  "concept": "EarningsPerShareBasic",
+  "value": 9.09,
+  "accn": "0001393612-20-000009",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra011",
+  "period": "2020-12-31",
+  "item": "DPS",
+  "concept": "CommonStockDividendsPerShareDeclared",
+  "value": 1.76,
+  "accn": "0001393612-21-000014",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra011",
+  "period": "2020-12-31",
+  "item": "EPS",
+  "concept": "EarningsPerShareBasic",
+  "value": 3.6,
+  "accn": "0001393612-21-000014",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra011",
+  "period": "2021-12-31",
+  "item": "DPS",
+  "concept": "CommonStockDividendsPerShareDeclared",
+  "value": 1.88,
+  "accn": "0001393612-22-000007",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra011",
+  "period": "2021-12-31",
+  "item": "EPS",
+  "concept": "EarningsPerShareBasic",
+  "value": 17.85,
+  "accn": "0001393612-22-000007",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra011",
+  "period": "2022-12-31",
+  "item": "DPS",
+  "concept": "CommonStockDividendsPerShareDeclared",
+  "value": 2.3,
+  "accn": "0001393612-23-000007",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra011",
+  "period": "2022-12-31",
+  "item": "EPS",
+  "concept": "EarningsPerShareBasic",
+  "value": 15.52,
+  "accn": "0001393612-23-000007",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra011",
+  "period": "2023-12-31",
+  "item": "DPS",
+  "concept": "CommonStockDividendsPerShareDeclared",
+  "value": 2.7,
+  "accn": "0001393612-24-000010",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra011",
+  "period": "2023-12-31",
+  "item": "EPS",
+  "concept": "EarningsPerShareBasic",
+  "value": 11.27,
+  "accn": "0001393612-24-000010",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra034",
+  "period": "2019-12-31",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 7408000000,
+  "accn": "0000753308-20-000021",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra034",
+  "period": "2019-12-31",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 13853000000,
+  "accn": "0000753308-20-000021",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra034",
+  "period": "2020-12-31",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 7382000000,
+  "accn": "0000753308-21-000014",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra034",
+  "period": "2020-12-31",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 15558000000,
+  "accn": "0000753308-21-000014",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra034",
+  "period": "2021-12-31",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 9288000000,
+  "accn": "0000753308-22-000014",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra034",
+  "period": "2021-12-31",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 17437000000,
+  "accn": "0000753308-22-000014",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra034",
+  "period": "2022-12-31",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 13490000000,
+  "accn": "0000753308-23-000019",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra034",
+  "period": "2022-12-31",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 26695000000,
+  "accn": "0000753308-23-000019",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra034",
+  "period": "2023-12-31",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 15361000000,
+  "accn": "0000753308-24-000008",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra034",
+  "period": "2023-12-31",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 27963000000,
+  "accn": "0000753308-24-000008",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra051",
+  "period": "2020-01-28",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 2796000000,
+  "accn": "0001045810-20-000010",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra051",
+  "period": "2020-01-28",
+  "item": "Eq",
+  "concept": "StockholdersEquity",
+  "value": 12204000000,
+  "accn": "0001045810-20-000010",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra051",
+  "period": "2021-01-28",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 4332000000,
+  "accn": "0001045810-21-000010",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra051",
+  "period": "2021-01-28",
+  "item": "Eq",
+  "concept": "StockholdersEquity",
+  "value": 16893000000,
+  "accn": "0001045810-21-000010",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra051",
+  "period": "2022-01-28",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 9752000000,
+  "accn": "0001045810-22-000036",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra051",
+  "period": "2022-01-28",
+  "item": "Eq",
+  "concept": "StockholdersEquity",
+  "value": 26612000000,
+  "accn": "0001045810-22-000036",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra051",
+  "period": "2023-01-28",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 4368000000,
+  "accn": "0001045810-23-000017",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra051",
+  "period": "2023-01-28",
+  "item": "Eq",
+  "concept": "StockholdersEquity",
+  "value": 22101000000,
+  "accn": "0001045810-23-000017",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra051",
+  "period": "2024-01-28",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 29760000000,
+  "accn": "0001045810-24-000029",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra051",
+  "period": "2024-01-28",
+  "item": "Eq",
+  "concept": "StockholdersEquity",
+  "value": 42978000000,
+  "accn": "0001045810-24-000029",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2019-12-31",
+  "item": "OpInc",
+  "concept": "OperatingIncomeLoss",
+  "value": -448000000,
+  "accn": "0000045012-20-000031",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2019-12-31",
+  "item": "DA",
+  "concept": "DepreciationDepletionAndAmortization",
+  "value": 1625000000,
+  "accn": "0000045012-20-000031",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2019-12-31",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+  "value": 22408000000,
+  "accn": "0000045012-20-000031",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2020-12-31",
+  "item": "OpInc",
+  "concept": "OperatingIncomeLoss",
+  "value": -2436000000,
+  "accn": "0000045012-21-000009",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2020-12-31",
+  "item": "DA",
+  "concept": "DepreciationDepletionAndAmortization",
+  "value": 1058000000,
+  "accn": "0000045012-21-000009",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2020-12-31",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+  "value": 14445000000,
+  "accn": "0000045012-21-000009",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2021-12-31",
+  "item": "OpInc",
+  "concept": "OperatingIncomeLoss",
+  "value": 1800000000,
+  "accn": "0000045012-22-000013",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2021-12-31",
+  "item": "DA",
+  "concept": "DepreciationDepletionAndAmortization",
+  "value": 904000000,
+  "accn": "0000045012-22-000013",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2021-12-31",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+  "value": 15295000000,
+  "accn": "0000045012-22-000013",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2022-12-31",
+  "item": "OpInc",
+  "concept": "OperatingIncomeLoss",
+  "value": 2707000000,
+  "accn": "0000045012-23-000011",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2022-12-31",
+  "item": "DA",
+  "concept": "DepreciationDepletionAndAmortization",
+  "value": 940000000,
+  "accn": "0000045012-23-000011",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2022-12-31",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+  "value": 20297000000,
+  "accn": "0000045012-23-000011",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2023-12-31",
+  "item": "OpInc",
+  "concept": "OperatingIncomeLoss",
+  "value": 4083000000,
+  "accn": "0000045012-24-000007",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2023-12-31",
+  "item": "DA",
+  "concept": "DepreciationDepletionAndAmortization",
+  "value": 998000000,
+  "accn": "0000045012-24-000007",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra064",
+  "period": "2023-12-31",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+  "value": 23018000000,
+  "accn": "0000045012-24-000007",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra070",
+  "period": "2020-03-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 1213000000,
+  "accn": "0001193125-20-129324",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra070",
+  "period": "2020-03-31",
+  "item": "Rev",
+  "concept": "RevenuesNetOfInterestExpense",
+  "value": 8743000000,
+  "accn": "0001193125-20-129324",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra070",
+  "period": "2021-03-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 6836000000,
+  "accn": "0001193125-21-148444",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra070",
+  "period": "2021-03-31",
+  "item": "Rev",
+  "concept": "RevenuesNetOfInterestExpense",
+  "value": 17704000000,
+  "accn": "0001193125-21-148444",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra070",
+  "period": "2022-03-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 3939000000,
+  "accn": "0001193125-22-134459",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra070",
+  "period": "2022-03-31",
+  "item": "Rev",
+  "concept": "RevenuesNetOfInterestExpense",
+  "value": 12933000000,
+  "accn": "0001193125-22-134459",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra070",
+  "period": "2023-03-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 3234000000,
+  "accn": "0000886982-23-000005",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra070",
+  "period": "2023-03-31",
+  "item": "Rev",
+  "concept": "RevenuesNetOfInterestExpense",
+  "value": 12224000000,
+  "accn": "0000886982-23-000005",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra070",
+  "period": "2024-03-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 4132000000,
+  "accn": "0000886982-24-000016",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra070",
+  "period": "2024-03-31",
+  "item": "Rev",
+  "concept": "RevenuesNetOfInterestExpense",
+  "value": 14213000000,
+  "accn": "0000886982-24-000016",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra107",
+  "period": "2020-03-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 1581000000,
+  "accn": "0000773840-20-000025",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra107",
+  "period": "2020-03-31",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+  "value": 8463000000,
+  "accn": "0000773840-20-000025",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra107",
+  "period": "2021-03-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 1427000000,
+  "accn": "0000773840-21-000032",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra107",
+  "period": "2021-03-31",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+  "value": 8454000000,
+  "accn": "0000773840-21-000032",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra107",
+  "period": "2022-03-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 1134000000,
+  "accn": "0000773840-22-000037",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra107",
+  "period": "2022-03-31",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+  "value": 8376000000,
+  "accn": "0000773840-22-000037",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra107",
+  "period": "2023-03-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 1394000000,
+  "accn": "0000773840-23-000038",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra107",
+  "period": "2023-03-31",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+  "value": 8864000000,
+  "accn": "0000773840-23-000038",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra107",
+  "period": "2024-03-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 1463000000,
+  "accn": "0000773840-24-000051",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra107",
+  "period": "2024-03-31",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+  "value": 9105000000,
+  "accn": "0000773840-24-000051",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra124",
+  "period": "2020-06-30",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 53016000000,
+  "accn": "0000034088-20-000073",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra124",
+  "period": "2020-06-30",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 57270000000,
+  "accn": "0000034088-20-000073",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra124",
+  "period": "2021-06-30",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 52842000000,
+  "accn": "0000034088-21-000051",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra124",
+  "period": "2021-06-30",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 62238000000,
+  "accn": "0000034088-21-000051",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra124",
+  "period": "2022-06-30",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 93163000000,
+  "accn": "0000034088-22-000051",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra124",
+  "period": "2022-06-30",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 80110000000,
+  "accn": "0000034088-22-000051",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra124",
+  "period": "2023-06-30",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 91760000000,
+  "accn": "0000034088-23-000048",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra124",
+  "period": "2023-06-30",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 61815000000,
+  "accn": "0000034088-23-000048",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra124",
+  "period": "2024-06-30",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 96238000000,
+  "accn": "0000034088-24-000050",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra124",
+  "period": "2024-06-30",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 70763000000,
+  "accn": "0000034088-24-000050",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra147",
+  "period": "2020-06-28",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 4554000000,
+  "accn": "0000021344-20-000041",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra147",
+  "period": "2020-06-28",
+  "item": "TA",
+  "concept": "Assets",
+  "value": 94689000000,
+  "accn": "0000021344-20-000041",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra147",
+  "period": "2021-06-28",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 4886000000,
+  "accn": "0000021344-21-000024",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra147",
+  "period": "2021-06-28",
+  "item": "TA",
+  "concept": "Assets",
+  "value": 90194000000,
+  "accn": "0000021344-21-000024",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra147",
+  "period": "2022-06-28",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 4686000000,
+  "accn": "0000021344-22-000034",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra147",
+  "period": "2022-06-28",
+  "item": "TA",
+  "concept": "Assets",
+  "value": 93169000000,
+  "accn": "0000021344-22-000034",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra147",
+  "period": "2023-06-28",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 5654000000,
+  "accn": "0000021344-23-000048",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra147",
+  "period": "2023-06-28",
+  "item": "TA",
+  "concept": "Assets",
+  "value": 98456000000,
+  "accn": "0000021344-23-000048",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra147",
+  "period": "2024-06-28",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 5588000000,
+  "accn": "0000021344-24-000044",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra147",
+  "period": "2024-06-28",
+  "item": "TA",
+  "concept": "Assets",
+  "value": 101202000000,
+  "accn": "0000021344-24-000044",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra158",
+  "period": "2019-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": -862000000,
+  "accn": "0001564590-20-004475",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra158",
+  "period": "2019-12-31",
+  "item": "NI_prev",
+  "concept": "NetIncomeLoss",
+  "value": -976000000.0,
+  "accn": "0001564590-20-004475",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra158",
+  "period": "2020-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 721000000,
+  "accn": "0001564590-21-004599",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra158",
+  "period": "2020-12-31",
+  "item": "NI_prev",
+  "concept": "NetIncomeLoss",
+  "value": -862000000.0,
+  "accn": "0001564590-21-004599",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra158",
+  "period": "2021-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 5519000000,
+  "accn": "0000950170-22-000796",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra158",
+  "period": "2021-12-31",
+  "item": "NI_prev",
+  "concept": "NetIncomeLoss",
+  "value": 721000000.0,
+  "accn": "0000950170-22-000796",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra158",
+  "period": "2022-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 12556000000,
+  "accn": "0000950170-23-001409",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra158",
+  "period": "2022-12-31",
+  "item": "NI_prev",
+  "concept": "NetIncomeLoss",
+  "value": 5519000000.0,
+  "accn": "0000950170-23-001409",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra158",
+  "period": "2023-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 14997000000,
+  "accn": "0001628280-24-002390",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_Ra158",
+  "period": "2023-12-31",
+  "item": "NI_prev",
+  "concept": "NetIncomeLoss",
+  "value": 12556000000.0,
+  "accn": "0001628280-24-002390",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com006",
+  "period": "2019-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 6759000000,
+  "accn": "0000004962-20-000030",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com006",
+  "period": "2019-12-31",
+  "item": "Rev",
+  "concept": "RevenuesNetOfInterestExpense",
+  "value": 43556000000,
+  "accn": "0000004962-20-000030",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com006",
+  "period": "2020-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 3135000000,
+  "accn": "0000004962-21-000013",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com006",
+  "period": "2020-12-31",
+  "item": "Rev",
+  "concept": "RevenuesNetOfInterestExpense",
+  "value": 36087000000,
+  "accn": "0000004962-21-000013",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com006",
+  "period": "2021-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 8060000000,
+  "accn": "0000004962-22-000008",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com006",
+  "period": "2021-12-31",
+  "item": "Rev",
+  "concept": "RevenuesNetOfInterestExpense",
+  "value": 42380000000,
+  "accn": "0000004962-22-000008",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com006",
+  "period": "2022-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 7514000000,
+  "accn": "0000004962-23-000006",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com006",
+  "period": "2022-12-31",
+  "item": "Rev",
+  "concept": "RevenuesNetOfInterestExpense",
+  "value": 52862000000,
+  "accn": "0000004962-23-000006",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com006",
+  "period": "2023-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLoss",
+  "value": 8374000000,
+  "accn": "0000004962-24-000013",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com006",
+  "period": "2023-12-31",
+  "item": "Rev",
+  "concept": "RevenuesNetOfInterestExpense",
+  "value": 60515000000,
+  "accn": "0000004962-24-000013",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com010",
+  "period": "2019-12-31",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 2769000000,
+  "accn": "0001262039-20-000011",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com010",
+  "period": "2019-12-31",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 1473600000,
+  "accn": "0001262039-20-000011",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com010",
+  "period": "2020-12-31",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 2740400000,
+  "accn": "0001262039-21-000008",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com010",
+  "period": "2020-12-31",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 1829500000,
+  "accn": "0001262039-21-000008",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com010",
+  "period": "2021-12-31",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 3600600000,
+  "accn": "0001262039-22-000008",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com010",
+  "period": "2021-12-31",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 2318100000,
+  "accn": "0001262039-22-000008",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com010",
+  "period": "2022-12-31",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 3810400000,
+  "accn": "0001262039-23-000010",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com010",
+  "period": "2022-12-31",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 3078400000,
+  "accn": "0001262039-23-000010",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com010",
+  "period": "2023-12-31",
+  "item": "CA",
+  "concept": "AssetsCurrent",
+  "value": 4428300000,
+  "accn": "0001262039-24-000014",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com010",
+  "period": "2023-12-31",
+  "item": "CL",
+  "concept": "LiabilitiesCurrent",
+  "value": 3719000000,
+  "accn": "0001262039-24-000014",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com058",
+  "period": "2019-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLossAvailableToCommonStockholdersBasic",
+  "value": 2098247000,
+  "accn": "0001558370-20-001135",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com058",
+  "period": "2020-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLossAvailableToCommonStockholdersBasic",
+  "value": 1109227000,
+  "accn": "0001558370-21-001700",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com058",
+  "period": "2021-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLossAvailableToCommonStockholdersBasic",
+  "value": 2246294000,
+  "accn": "0001558370-22-001845",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com058",
+  "period": "2022-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLossAvailableToCommonStockholdersBasic",
+  "value": 2136198000,
+  "accn": "0001558370-23-001840",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com058",
+  "period": "2023-12-31",
+  "item": "NI",
+  "concept": "NetIncomeLossAvailableToCommonStockholdersBasic",
+  "value": 2279789000,
+  "accn": "0001558370-24-001532",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com069",
+  "period": "2019-05-28",
+  "item": "GW",
+  "concept": "Goodwill",
+  "value": 13995800000,
+  "accn": "0001193125-19-184675",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com069",
+  "period": "2020-05-28",
+  "item": "GW",
+  "concept": "Goodwill",
+  "value": 13923200000,
+  "accn": "0001193125-20-186469",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com069",
+  "period": "2021-05-28",
+  "item": "GW",
+  "concept": "Goodwill",
+  "value": 14062400000,
+  "accn": "0001193125-21-204830",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com069",
+  "period": "2022-05-28",
+  "item": "GW",
+  "concept": "Goodwill",
+  "value": 14378500000,
+  "accn": "0001193125-22-185257",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com069",
+  "period": "2023-05-28",
+  "item": "GW",
+  "concept": "Goodwill",
+  "value": 14511200000,
+  "accn": "0001193125-23-177500",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com077",
+  "period": "2020-06-30",
+  "item": "NII",
+  "concept": "NoninterestIncome",
+  "value": 11478000000,
+  "accn": "0000070858-20-000040",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com077",
+  "period": "2020-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 22326000000,
+  "accn": "0000070858-20-000040",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com077",
+  "period": "2021-06-30",
+  "item": "NII",
+  "concept": "NoninterestIncome",
+  "value": 11233000000,
+  "accn": "0000070858-21-000084",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com077",
+  "period": "2021-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 21466000000,
+  "accn": "0000070858-21-000084",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com077",
+  "period": "2022-06-30",
+  "item": "NII",
+  "concept": "NoninterestIncome",
+  "value": 10244000000,
+  "accn": "0000070858-22-000112",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com077",
+  "period": "2022-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 22688000000,
+  "accn": "0000070858-22-000112",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com077",
+  "period": "2023-06-30",
+  "item": "NII",
+  "concept": "NoninterestIncome",
+  "value": 11039000000,
+  "accn": "0000070858-23-000176",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com077",
+  "period": "2023-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 25197000000,
+  "accn": "0000070858-23-000176",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com077",
+  "period": "2024-06-30",
+  "item": "NII",
+  "concept": "NoninterestIncome",
+  "value": 11675000000,
+  "accn": "0000070858-24-000208",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com077",
+  "period": "2024-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 25377000000,
+  "accn": "0000070858-24-000208",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com146",
+  "period": "2020-06-30",
+  "item": "EPS",
+  "concept": "EarningsPerShareDiluted",
+  "value": 2.06,
+  "accn": "0001390777-20-000072",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com146",
+  "period": "2020-06-30",
+  "item": "EPS_prev",
+  "concept": "EarningsPerShareDiluted",
+  "value": 1.95,
+  "accn": "0001390777-20-000072",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com146",
+  "period": "2021-06-30",
+  "item": "EPS",
+  "concept": "EarningsPerShareDiluted",
+  "value": 2.1,
+  "accn": "0001390777-21-000070",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com146",
+  "period": "2021-06-30",
+  "item": "EPS_prev",
+  "concept": "EarningsPerShareDiluted",
+  "value": 2.06,
+  "accn": "0001390777-21-000070",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com146",
+  "period": "2022-06-30",
+  "item": "EPS",
+  "concept": "EarningsPerShareDiluted",
+  "value": 1.88,
+  "accn": "0001390777-22-000075",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com146",
+  "period": "2022-06-30",
+  "item": "EPS_prev",
+  "concept": "EarningsPerShareDiluted",
+  "value": 2.1,
+  "accn": "0001390777-22-000075",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com146",
+  "period": "2023-06-30",
+  "item": "EPS",
+  "concept": "EarningsPerShareDiluted",
+  "value": 2.42,
+  "accn": "0001390777-23-000081",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com146",
+  "period": "2023-06-30",
+  "item": "EPS_prev",
+  "concept": "EarningsPerShareDiluted",
+  "value": 1.88,
+  "accn": "0001390777-23-000081",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com146",
+  "period": "2024-06-30",
+  "item": "EPS",
+  "concept": "EarningsPerShareDiluted",
+  "value": 2.77,
+  "accn": "0001390777-24-000105",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com146",
+  "period": "2024-06-30",
+  "item": "EPS_prev",
+  "concept": "EarningsPerShareDiluted",
+  "value": 2.44,
+  "accn": "0001390777-24-000105",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com166",
+  "period": "2020-06-30",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+  "value": 11801000000,
+  "accn": "0000078003-20-000060",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com166",
+  "period": "2020-06-30",
+  "item": "Rev_prev",
+  "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+  "value": 13264000000.0,
+  "accn": "0000078003-20-000060",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com166",
+  "period": "2021-06-30",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+  "value": 18977000000,
+  "accn": "0000078003-21-000093",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com166",
+  "period": "2021-06-30",
+  "item": "Rev_prev",
+  "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+  "value": 9864000000.0,
+  "accn": "0000078003-21-000093",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com166",
+  "period": "2022-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 27742000000,
+  "accn": "0000078003-23-000088",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com166",
+  "period": "2022-06-30",
+  "item": "Rev_prev",
+  "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+  "value": 18977000000,
+  "accn": "0000078003-21-000093",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com166",
+  "period": "2023-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 12734000000,
+  "accn": "0000078003-23-000088",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com166",
+  "period": "2023-06-30",
+  "item": "Rev_prev",
+  "concept": "Revenues",
+  "value": 27742000000.0,
+  "accn": "0000078003-23-000088",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com166",
+  "period": "2024-06-30",
+  "item": "Rev",
+  "concept": "Revenues",
+  "value": 13283000000,
+  "accn": "0000078003-24-000166",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com166",
+  "period": "2024-06-30",
+  "item": "Rev_prev",
+  "concept": "Revenues",
+  "value": 13007000000.0,
+  "accn": "0000078003-24-000166",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com178",
+  "period": "2019-12-31",
+  "item": "Cash",
+  "concept": "CashAndCashEquivalentsAtCarryingValue",
+  "value": 12130000000,
+  "accn": "0001562762-20-000064",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com178",
+  "period": "2019-12-31",
+  "item": "Cash_prev",
+  "concept": "CashAndCashEquivalentsAtCarryingValue",
+  "value": 5204000000.0,
+  "accn": "0001562762-20-000064",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com178",
+  "period": "2020-12-31",
+  "item": "Cash",
+  "concept": "CashAndCashEquivalentsAtCarryingValue",
+  "value": 9740000000,
+  "accn": "0000732717-21-000012",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com178",
+  "period": "2020-12-31",
+  "item": "Cash_prev",
+  "concept": "CashAndCashEquivalentsAtCarryingValue",
+  "value": 12130000000.0,
+  "accn": "0000732717-21-000012",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com178",
+  "period": "2021-12-31",
+  "item": "Cash",
+  "concept": "CashAndCashEquivalentsAtCarryingValue",
+  "value": 21169000000,
+  "accn": "0000732717-22-000015",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com178",
+  "period": "2021-12-31",
+  "item": "Cash_prev",
+  "concept": "CashAndCashEquivalentsAtCarryingValue",
+  "value": 9740000000.0,
+  "accn": "0000732717-22-000015",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com178",
+  "period": "2022-12-31",
+  "item": "Cash",
+  "concept": "CashAndCashEquivalentsAtCarryingValue",
+  "value": 3701000000,
+  "accn": "0000732717-23-000011",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com178",
+  "period": "2022-12-31",
+  "item": "Cash_prev",
+  "concept": "CashAndCashEquivalentsAtCarryingValue",
+  "value": 19223000000.0,
+  "accn": "0000732717-23-000011",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com178",
+  "period": "2023-12-31",
+  "item": "Cash",
+  "concept": "CashAndCashEquivalentsAtCarryingValue",
+  "value": 6722000000,
+  "accn": "0000732717-24-000009",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_com178",
+  "period": "2023-12-31",
+  "item": "Cash_prev",
+  "concept": "CashAndCashEquivalentsAtCarryingValue",
+  "value": 3701000000.0,
+  "accn": "0000732717-24-000009",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_an049",
+  "period": "2018-04-30",
+  "item": "GP",
+  "concept": "GrossProfit",
+  "value": 2836100000,
+  "accn": "0000091419-18-000005",
+  "found_in_text": false
+ },
+ {
+  "qid": "q_an049",
+  "period": "2018-04-30",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+  "value": 7357100000,
+  "accn": "0000091419-19-000005",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_an049",
+  "period": "2019-04-30",
+  "item": "GP",
+  "concept": "GrossProfit",
+  "value": 2915700000,
+  "accn": "0000091419-19-000005",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_an049",
+  "period": "2019-04-30",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+  "value": 7838000000,
+  "accn": "0000091419-19-000005",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_an049",
+  "period": "2020-04-30",
+  "item": "GP",
+  "concept": "GrossProfit",
+  "value": 3002000000,
+  "accn": "0000091419-20-000065",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_an049",
+  "period": "2020-04-30",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+  "value": 7801000000,
+  "accn": "0000091419-20-000065",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_an049",
+  "period": "2021-04-30",
+  "item": "GP",
+  "concept": "GrossProfit",
+  "value": 3138700000,
+  "accn": "0000091419-21-000048",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_an049",
+  "period": "2021-04-30",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+  "value": 8002700000,
+  "accn": "0000091419-21-000048",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_an049",
+  "period": "2022-04-30",
+  "item": "GP",
+  "concept": "GrossProfit",
+  "value": 2700700000,
+  "accn": "0000091419-22-000049",
+  "found_in_text": true
+ },
+ {
+  "qid": "q_an049",
+  "period": "2022-04-30",
+  "item": "Rev",
+  "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+  "value": 7998900000,
+  "accn": "0000091419-22-000049",
+  "found_in_text": true
+ }
+]

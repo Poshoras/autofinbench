@@ -1,0 +1,31 @@
+{
+ "_note": "Exception-based review of missing-premise items. Automated search: 2-term (a±b) and 3-term (a±b±c) combinations of remaining figures, then row labels read by Claude to separate real accounting identities from coincidences. Also checked whether the final answer itself is printed in the excerpts. A third pass searched two-term divisions/multiplications with unit conversion (x1, x1000, /1000) for the remaining items.",
+ "unanswerable": {
+  "q_Ra001": "2-term hits are unrelated rows (e.g. other income + investing cash flow) - coincidental",
+  "q_Ra002": "no 2-term hit; 3-term hits unrelated (e.g. pension OCI + pre-tax income + intangibles) - coincidental",
+  "q_Ra011": "3-term/ratio hits are unrelated EPS/expense rows - coincidental",
+  "q_Ra147": "3-term hits unrelated - coincidental",
+  "q_com010": "many tiny-number coincidences (0.1, 0.2) - coincidental",
+  "q_com166": "3-term hits mix revenue, share count and expenses - coincidental",
+  "q_com178": "3-term hits unrelated balance-sheet rows - coincidental"
+ },
+ "derivable": {
+  "q_Ra005": "total liabilities and equity - total liabilities = stockholders' equity",
+  "q_Ra034": "TOTAL LIABILITIES - other liabilities and deferred credits = current liabilities",
+  "q_Ra051": "total assets - total liabilities = shareholders' equity",
+  "q_Ra064": "operating income + total operating costs = revenue (also product sales + services)",
+  "q_Ra070": "net interest income + total non-interest revenues = net revenues",
+  "q_Ra107": "product sales + service sales = net sales (also pre-tax income + total costs)",
+  "q_Ra158": "net income - net income attributable to noncontrolling interests = net income attributable to common",
+  "q_com006": "net interest income + total non-interest revenues = total revenues net of interest expense",
+  "q_com069": "goodwill and intangibles total - other intangible assets = goodwill",
+  "q_com077": "net interest income + total noninterest income = total revenue net of interest expense",
+  "q_Ra124": "notes and loans payable + accounts payable and accrued liabilities + income taxes payable = total current liabilities (3-term)",
+  "q_com058": "consolidated net income - noncontrolling interests - preferred dividends = net income to common (3-term)",
+  "q_com146": "net income applicable to common (H1 2023) 1,947 / diluted average shares 799,157 thousand = 2.436 -> 2.44 (division with unit conversion; found by the scale-aware ratio search). Growth is 13.5% with the reported 2.44, 13.7% with the unrounded 2.436: accept 13.5%-13.7%."
+ },
+ "answer_printed_in_excerpts": {
+  "q_Ra007": "Total NIKE, Inc. Earnings Before Interest and Taxes 4,379 is printed in the segment table",
+  "q_an049": "gross margin '% of net sales 33.8%' is printed in the MD&A table"
+ }
+}
