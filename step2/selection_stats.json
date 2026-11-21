@@ -1,0 +1,41 @@
+{
+ "test_rows": 3235,
+ "eligible_before_dedup": 665,
+ "eligible_after_dedup": 354,
+ "excluded": {
+  "not calculation task": 1952,
+  "figure or table": 283,
+  "no unit hint": 239,
+  "answer equals a given number": 38,
+  "too short or too long": 34,
+  "refers to other text": 11,
+  "fewer than 2 parameters": 13,
+  "same exercise as a kept item": 311
+ },
+ "available_by_capability": {
+  "TR": 175,
+  "NM": 92,
+  "NM; SP": 6,
+  "SP": 38,
+  "SP; TR": 20,
+  "TU": 9,
+  "FF": 9,
+  "NM; TR": 5
+ },
+ "picked": 200,
+ "picked_by_capability": {
+  "NM": 45,
+  "TR": 76,
+  "SP": 30,
+  "SP; TR": 20,
+  "TU": 9,
+  "FF": 9,
+  "NM; SP": 6,
+  "NM; TR": 5
+ },
+ "picked_by_topic": {
+  "corporate_finance": 97,
+  "derivatives": 93,
+  "money_banking": 10
+ }
+}
