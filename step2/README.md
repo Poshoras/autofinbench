@@ -116,6 +116,8 @@ user：题干原文，不加任何东西。
 | `scripts/select_xfinbench.py` | 筛选脚本 |
 | `step2/PILOT20.md`、`step2/pilot20_items.md` | 20 道试改题：总结和逐题内容 |
 | `step2/pilot20.jsonl`、`scripts/step2_pilot20.py` | 试改题数据和求解程序 |
+| `step2/BATCH160.md`、`step2/batch160_items.md` | 第二批 160 道（20 种子 × 8 版本）：总结和逐题内容 |
+| `step2/batch160.jsonl`、`scripts/step2_batch160.py` | 第二批数据和求解程序 |
 
 原始数据不放进仓库，可以从 https://huggingface.co/datasets/Zhihan/XFinBench 下载 `test_set.csv`，然后运行：
 ```bash
