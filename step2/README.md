@@ -114,6 +114,8 @@ user：题干原文，不加任何东西。
 | `step2/seeds_200.jsonl` | 同上，另含术语编号和参数个数 |
 | `step2/selection_stats.json` | 筛选统计 |
 | `scripts/select_xfinbench.py` | 筛选脚本 |
+| `step2/PILOT20.md`、`step2/pilot20_items.md` | 20 道试改题：总结和逐题内容 |
+| `step2/pilot20.jsonl`、`scripts/step2_pilot20.py` | 试改题数据和求解程序 |
 
 原始数据不放进仓库，可以从 https://huggingface.co/datasets/Zhihan/XFinBench 下载 `test_set.csv`，然后运行：
 ```bash
