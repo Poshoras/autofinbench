@@ -1,10 +1,11 @@
-# 金融 Agent Benchmark 调研报告（24 个）
+# 金融 Agent Benchmark 调研报告（27 个）
 
 日期：2026-11-26 · 用时约 40 分钟 · 作者：Claude（为 AutoFinBench 准备）
 
 > **⚠️ 先说明名单问题**：你的消息里写了"这是我要调研的名单"，但名单没有一起发过来。我检查了仓库和这台机器上最近新增的文件，都没有找到。你说过不能问你，所以我按下面的办法定了名单：
 > - **核心 18 个**：仓库 `survey/benchmark_pool.csv` 中属于 **agent / 金融文件研究** 类的条目，加上我们之前检索到的主流金融 agent benchmark；
-> - **补充 6 个**：这次新检索到的（见第一部分）。
+> - **补充 6 个**：这次新检索到的（见第一部分）；
+> - **追加 3 个**：Investor's Last Exam、CFAgentBench、FinTrace（第二部分 E 组）。
 >
 > 如果你原本的名单里有别的条目，发给我就能按同一模板补上。
 > 纯 QA / 数值推理类数据集（FinQA、TAT-QA 等）不在本次范围内，见 [BENCHMARK_POOL.md](BENCHMARK_POOL.md)。
@@ -20,7 +21,7 @@
 | # | Benchmark | 任务形态 | 评估方式 | 当前最好成绩 | 数据公开 |
 |---|---|---|---|---|---|
 | 1 | FinanceBench | 文件短答案 QA | 人工判对错 | GPT-4-Turbo 长上下文 79%（2023） | Q/GT/Src ◐（150 条） |
-| 2 | Vals Finance Agent (FAB) | 工具研究题 | rubric + LLM judge | o3 46.8% | ◐（50 条公开） |
+| 2 | Vals Finance Agent (FAB) | 工具研究题 | rubric + LLM judge（v2 起改为 3 个 judge 评审团） | 论文 o3 46.8%；官网 v2.1 Claude Fable 5.2 69.47% | ◐（v1 50 条 / v2.1 27 条公开） |
 | 3 | FinSearchComp | 搜索短答案 | LLM judge + 容差 | Grok 4 68.9%（人类 75.0） | Q/GT ✅ |
 | 4 | FinAgentBench | 文档/段落排序 | nDCG | 段落 nDCG@5 0.42 | ? |
 | 5 | Fin-RATE | 文件 QA（跨公司/跨年） | 3 个 LLM judge 集成 | 跨年 43.5%（人类 85.9） | Q/GT/Src ✅ |
@@ -43,6 +44,9 @@
 | 22 | **FinGAIA** 🆕 | 中文 GAIA 式任务 | 人工为主 | 48.9（专家 84.7） | ◐（13 条） |
 | 23 | **FinMCP-Bench** 🆕 | MCP 工具链 | 工具 P/R/F1 | 多轮 EMR ≤4.1 | Q/GT ✅ |
 | 24 | **Bank-World** 🆕 | 银行状态变更工作流 | 状态检查 + rubric | 单轮 full-pass 55% | ❌ |
+| 25 | Investor's Last Exam ➕ | 时点截断的买方研究 | rubric + 实际结果 | GPT-6 Astra 68.1 | ◐（HF 有任务和 rubric，与 GitHub 说法矛盾） |
+| 26 | CFAgentBench ➕ | 建筑金融 ERP 操作 | 状态差异 oracle | pass^1 0.67 / pass^5 0.38 | ◐ |
+| 27 | FinTrace ➕ | 多轮 MCP 工具轨迹 | 3 项算法指标 + 6 项 judge 指标 | Opus 4.6 0.788 | Q ✅（MIT） |
 
 ---
 
@@ -57,7 +61,7 @@
 | [FinMCP-Bench](https://arxiv.org/abs/2603.24943)（ICASSP 2026） | 真实 App 日志 + MCP 工具，GT 是工具调用轨迹，覆盖多轮场景 |
 | [Bank-World](https://arxiv.org/abs/2610.39733) | 金融里少见的 **τ-bench 式状态环境**（审批、权限、记账），用确定性状态检查评分 |
 
-还看到但没来得及读的（可选）：CFAgentBench（建筑金融，[2606.22000](https://arxiv.org/abs/2606.22000)）、Investor's Last Exam（[2610.38342](https://arxiv.org/abs/2610.38342)，"不看未来"的投资决策）、FinTrace（轨迹级评测）、FinNextAssist。
+另外追加读了 3 个（第二部分 E 组）：Investor's Last Exam、CFAgentBench、FinTrace。还看到但没读的：FinNextAssist、FinanceHarness（是系统，不是 benchmark）。
 
 ---
 
@@ -88,18 +92,23 @@
   - 主要问题：工具误用（Llama 4 编造文档）、反复失败的调用、表格数据处理差 ⚠️。
 - **GT Construction**：7 位来自投行、对冲基金、PE 的专家出题，每题由另一位专家复核。
   - 我的判断：短答案部分**可信度高**（可从 XBRL 复算）；建模和判断类题**可信度中**。
-- **Data**：公开验证集 50 条（CC BY 4.0），私有验证集 150 条需申请，测试集 337 条不公开；harness 为 MIT。arXiv 上只有 v1，但 Samaya 和 IPO 两篇论文都提到了 "FAB v2"（带 dealbreaker 门槛评分），可能只发在 Vals 官网，我没有核实。
+- **Data**：公开验证集 50 条（CC BY 4.0），私有验证集 150 条需申请，测试集 337 条不公开；harness 为 MIT。
+- **版本演进（arXiv 只有 v1 论文，下面的信息来自 [vals.ai](https://www.vals.ai/benchmarks/fabv2-1) 官网，已核实）**：
+  - **v1.1**：537 题，Claude Opus 4.7 最高 64.37%；
+  - **v2**（已归档）：927 题（公开 27 / 私有验证 450 / 测试 450）。评分改为"dealbreaker 门槛的部分分"为主、All-Pass 为辅，由 GPT-5.4、Gemini-3.1-Pro、Sonnet 4.6 三个 judge 组成评审团。最高是 Gemini 4 Argon，65.40%；
+  - **v2.1**（2026-11-19 更新）：换了评审团（GPT-6.1 Sol、Gemini 3.8 Flash、Sonnet 5.5），修了一批题，官网写明分数与 v2 不可比。Claude Fable 5.2 第一，69.47%。
+  - 启示：**专业团队也要靠持续人工修题和换 judge 来维护**，这正好说明了自动更新的需求。
 
 #### 3. FinSearchComp（[2509.13160](https://arxiv.org/abs/2509.13160)，ICLR 2026，字节 Seed 等）
 - **Task**：635 题，分三类：T1 时效数据获取、T2 简单历史查询、T3 复杂历史调查；分全球和大中华两个子集。例 [原文]："What was the total assets of Starbucks as of September 27, 2020?" → $29,374.5 million（允许舍入误差）
 - **Capability**："search proficiency and knowledge-grounded reasoning"，即新鲜度、时点准确性、多期综合。
-- **Evaluation**：LLM judge 加容差带，由专家抽检。⚠️ 约 400 条/子集做过人工核验，一致率约 95%。T1 用实时 API 结果核对。
+- **Evaluation**：LLM judge 加容差带（论文没写是哪个 judge 模型），由专家抽检。每个子集用 4–5 个模型约 400 条做人工核验，一致率 95%（T1 约 91.5%，T3 最高 99.8%）。T1 用实时 API 结果核对。
   - 我的判断：**自动化程度高**。
 - **Performance**：Grok 4（联网）全球子集 68.9%；豆包（联网）大中华子集 54.2%；人类专家分别为 75.0 和 88.3。不联网时 T1 接近 0。
   - 主要问题：搜索太浅、时间戳过期、单位/币种错误、财年日历错位、开盘价和收盘价混淆。
 - **GT Construction**：50 位专家加 20 位资深评审，共约 180 + 60 小时。每题由 1–2 人盲做复核，分歧由资深专家仲裁。
   - 我的判断：T2/T3 可以由 XBRL 或数据库自动生成，**可信度高**。
-- **Data**：论文称完全开源（HF `ByteSeedXpert/FinSearchComp`），但我访问时返回 401，未核实。⚠️ 字段含 question/answer/trace。数据许可未写明。
+- **Data**：已核实。HF `ByteSeedXpert/FinSearchComp` 有 635 行，**CC-BY-4.0**，字段为 id/tier/question/tool_template/answer/trace，**题目、GT 和解题 trace 都公开**；judge prompt 在附录 C。没有 GitHub repo。
 
 #### 4. FinAgentBench（[2508.14052](https://arxiv.org/abs/2508.14052)，NeurIPS 2025）
 - **Task**：两阶段 agentic 检索。先给 5 种文件（10-K、10-Q、8-K、电话会、DEF 14A）排序，再给文件内的段落排序，共约 26K 例。论文正文没有给出文字例题，只在图里有。
@@ -261,8 +270,10 @@
 - **Capability**：建模与公式完整性、取数、判断、**跨交付物一致性**、可直接给客户的格式、透明度。
 - **Evaluation**：每题约 150 条加权二值 rubric，由 agent-as-judge "Gandalf"（OpenHands + Gemini 3 Flash Preview）**实际打开文件检查**。与人工共识一致 88.2%（κ 0.756），**高于人与人之间的 84.6%**。
   - 我的判断：**自动化程度高**，交付物类任务可以借鉴这种做法。
-- **Performance**：最好的 GPT-5.4 也有近一半 rubric 没通过，**银行家认为可直接交客户的比例是 0%**。⚠️ 失败原因占比：公式/代码 41%、推理 27%、检索 18%、编造 13%。
-- **GT Construction**：银行家写需求和 rubric，经多轮审核；摘要写 502 位银行家，⚠️ 正文摘录写 172 位、约 5,700 小时。只有部分题目有 golden 交付物。
+- **Performance**：最好的 GPT-5.4 也有近一半 rubric 没通过，**银行家认为可直接交客户的比例是 0%**。
+  - 任务通过率 16%，3 次全过（Pass^3）13%，所有关键项全过只有 2%。
+  - 失败原因占比（GPT-5.4 轨迹）：公式/代码 41%、推理 27%、检索与坚持 18%、编造 13%。
+- **GT Construction**：银行家写需求和 rubric，经多轮审核。502 是合作银行家的总人数，**直接参与造题的是 172 人，累计 5,700+ 小时**。只有部分题目有 golden 交付物。
   - 我的判断：**无法自动化**。
 - **Data**：HF（CC-BY-4.0）公开 tasks.jsonl（需求 + rubric）、部分 golden 交付物、任务文件和约 5.5 GB SEC/行情数据。**目前公开程度最好的交付物类 benchmark**。
 
@@ -313,6 +324,36 @@
   - 我的判断：状态检查**可信度高**。
 - **Data**：**不公开**，只公开方法和逐题结果。
 
+### E 组：追加（论文后半部分只读到摘要，细节可信度略低）
+
+#### 25. Investor's Last Exam（[2610.38342](https://arxiv.org/abs/2610.38342)）
+- **Task**：86 个买方研究任务（公司研究 78、市场预测 8），在一个**按版本存储、严格截断信息时点的语料库**（3,430,336 个文档版本）里完成。例 [原文，来自 README]："Task O80 asks for Tesla's Q2 2026 deliveries, GAAP revenue, and GAAP automotive gross margin"
+- **Capability**："coordinate evidence retrieval, computation, and financial reasoning across multi-step workflows"
+- **Evaluation**：7 个维度的加权 rubric（0–100），预测题按实际结果用 interval score 评分。judge 是 GPT-6 Astra，**它同时也是被测模型**；另用 GPT-OSS-120B 做稳健性检查。没有报告一致率。
+- **Performance**：GPT-6 Astra 总分 68.1，"预测与建模"维度约 52.5。
+  - 主要问题：分析对了、预测却错；读错现金流；提交失败。
+  - ⚠️ **Astra 走公开网页的轨迹里有 57% 引用了截止日之后的来源**——不加沙箱，泄漏非常普遍。
+- **GT Construction**：专家编写，AI 辅助检索和审核；预测题 GT 用实际结果。
+- **Data**：GitHub 写的是"不分发"，但 HF `HenryJ12/InvestorLastExam` 上有 86 个任务、1,472 条 rubric 和 ground_truth_json，两边说法矛盾。都没有写许可。
+
+#### 26. CFAgentBench（[2606.22000](https://arxiv.org/abs/2606.22000)，建筑业金融）
+- **Task**：1,014 个任务规格，8 个领域、77 个任务族，其中 40 个是可执行套件。agent 在 ERP 等系统里完成变更单、付款准备等操作，只"准备"资金流动，不实际执行。例 [意译]：判断一张变更单是否属于业主变更。
+- **Capability**：agent 能否在企业软件栈里、在政策约束下**可靠地**完成工作。
+- **Evaluation**：比对状态差异，加"禁止改动"硬门槛，再加输出的正则检查；报告 pass^1 和 pass^5。**所有报告的数字都不经过 LLM judge**。
+- **Performance**：DeepSeek-V3.1 pass^1 0.67，但 pass^5 只有 0.38，**可靠性崩塌**；跨应用 ERP 同步接近 0。没有测闭源前沿模型。
+- **GT Construction**：种子来自行业论坛帖子、计划文档、播客；oracle 是确定性的，只收录 oracle 打满分的任务。
+  - 我的判断：**可信度高**。
+- **Data**：⚠️ 论文称公开 jsonl、环境目录和应用接口（verified split 711 题）；Pro split 303 题私有。许可未写明。
+
+#### 27. FinTrace（[2604.10015](https://arxiv.org/abs/2604.10015)）
+- **Task**：800 个查询，在 FMP 的 MCP 工具上走多轮调用轨迹，覆盖 34 类。例 [原文]："What was the average of the total deductions for the years 2004, 2005, and 2006?"
+- **Capability**：作者的结论原话是 "all models struggle with information utilization and final answer quality"
+- **Evaluation**：9 个指标，分 4 条轴：3 个算法指标（工具 F1、步骤效率、冗余），6 个由 Claude-Sonnet-4.6 按 5 分 Likert 打分。与专家对比：排序 κ=0.89，逐项加权 κ 0.63–0.86。
+- **Performance**：Claude-Opus-4.6 总分 0.788，但通过率只有 2.65/5；推理型 QA 最难。另外 SFT 后 32B 模型有 43.9% 的轨迹不给答案，DPO 后降到 5.8%。
+- **GT Construction**：3 个前沿 LLM 生成候选，LLM judge 选出最佳，4 位专家审核全部 800 条。
+  - 我的判断：**可信度中**。
+- **Data**：HF `YupengCao/FinTrace`（MIT），测试集 800 条公开；轨迹和训练数据标为 "coming soon"。
+
 ---
 
 ## 三、重新分类
@@ -322,28 +363,28 @@
 | 类别 | 数量 | 成员 | 特点 |
 |---|---|---|---|
 | **G1 专家手写的确定答案** | 6 | FinanceBench、Vals FAB、FinSearchComp、SecQue、FinGAIA、FinAgentBench（相关性标签） | 短答案、可以对答案；成本高、规模小、会过时；**最适合做种子** |
-| **G2 LLM 生成 + 人工审核** | 5 | Fin-RATE、BizFinBench、FinToolBench（继承种子 GT）、FinMCP-Bench（日志 + 审核）、FinDeepResearch（LLM 写参考报告） | 规模大；可信度取决于人审的深度 |
-| **G3 没有参考答案，只有 rubric** | 5 | FrontierFinance-Samaya（专家 rubric）、AgenticFinBench（LLM rubric）、IPO Agent（模型共识 rubric）、FORCE-Bench（公开数据部分）、Deep FinResearch（从分析师报告抽 rubric） | 开放式长答案；可信度由 rubric 质量和 judge 偏差决定 |
-| **G4 参考交付物或状态 + 检查项** | 4 | MBABench（golden 工作簿）、FrontierFinance-CU（参考模型）、BankerToolBench（golden 交付物 + rubric）、Bank-World（参考解 + 状态检查） | 最接近真实工作；构造成本最高 |
+| **G2 LLM 生成 + 人工审核** | 6 | Fin-RATE、BizFinBench、FinToolBench（继承种子 GT）、FinMCP-Bench（日志 + 审核）、FinDeepResearch（LLM 写参考报告）、FinTrace（多个 LLM 出候选 + 专家审） | 规模大；可信度取决于人审的深度 |
+| **G3 没有参考答案，只有 rubric** | 6 | FrontierFinance-Samaya（专家 rubric）、AgenticFinBench（LLM rubric）、IPO Agent（模型共识 rubric）、FORCE-Bench（公开数据部分）、Deep FinResearch（从分析师报告抽 rubric）、Investor's Last Exam（专家 rubric + 实际结果） | 开放式长答案；可信度由 rubric 质量和 judge 偏差决定 |
+| **G4 参考交付物或状态 + 检查项** | 5 | MBABench（golden 工作簿）、FrontierFinance-CU（参考模型）、BankerToolBench（golden 交付物 + rubric）、Bank-World（参考解 + 状态检查）、CFAgentBench（状态差异 oracle） | 最接近真实工作；构造成本最高 |
 | **G5 由世界或程序决定** | 4 | LiveSearch（执行程序）、FinDeepForecast、FutureX-Finance（事后解析）、AI-Trader（市场） | 天然不受污染、可持续刷新；能考察的能力较窄 |
 
 ### 副分类：按底层材料
 
 | 材料 | 数量 | 成员 |
 |---|---|---|
-| **M1 SEC 文件、年报、招股书** | 8 | FinanceBench、SecQue、Fin-RATE、FinAgentBench、Vals FAB、IPO Agent、FinDeepResearch、Deep FinResearch |
-| **M2 网页和实时数据 API** | 8 | FinSearchComp、LiveSearch、FutureX-Finance、FinDeepForecast、AI-Trader、FinToolBench、FinGAIA、FrontierFinance-Samaya |
+| **M1 SEC 文件、年报、招股书** | 9 | FinanceBench、SecQue、Fin-RATE、FinAgentBench、Vals FAB、IPO Agent、FinDeepResearch、Deep FinResearch、Investor's Last Exam（带版本的文档库） |
+| **M2 网页和实时数据 API** | 9 | FinSearchComp、LiveSearch、FutureX-Finance、FinDeepForecast、AI-Trader、FinToolBench、FinGAIA、FrontierFinance-Samaya、FinTrace |
 | **M3 真实用户请求日志** | 3 | AgenticFinBench、FinMCP-Bench、BizFinBench |
-| **M4 工作环境和交付物（Excel/PPT/ERP/银行系统）** | 5 | MBABench、FrontierFinance-CU、BankerToolBench、FORCE-Bench、Bank-World |
+| **M4 工作环境和交付物（Excel/PPT/ERP/银行系统）** | 6 | MBABench、FrontierFinance-CU、BankerToolBench、FORCE-Bench、Bank-World、CFAgentBench |
 
 （每个只归入主要材料。FrontierFinance-Samaya 和 BankerToolBench 也大量使用 SEC 文件。）
 
 **两条轴交叉后的观察**：M1 × G1 最密集，也最接近饱和。M4 × G5 是空白：交付物任务目前**全部依赖 rubric 或参考解**，还没有"由程序确定 GT"的做法。
 
 ### 另外两个常用视角
-- **输出形式**：短答案（1、2、3、13–16、22）；长报告（6、7、11、12、20、21）；文件交付物（9、10、19）；动作或状态（18、23、24）；排序（4）。
+- **输出形式**：短答案（1、2、3、13–16、22）；长报告（6、7、11、12、20、21、25）；文件交付物（9、10、19）；动作或状态（18、23、24、26、27）；排序（4）。
 - **数据可用性**（决定能不能当种子）：
-  - **完整公开**（题目 + GT + 原始材料）：SecQue、Fin-RATE、MBABench、BankerToolBench（GT 只有部分）、FinanceBench（150 条）、FinMCP-Bench；
+  - **完整公开**（题目 + GT + 原始材料）：SecQue、Fin-RATE、MBABench、BankerToolBench（GT 只有部分）、FinanceBench（150 条）、FinMCP-Bench、FinSearchComp（题目 + GT + 解题 trace，原始材料在网上）、FinTrace（800 条测试集）；
   - **只公开题目和 rubric**：FrontierFinance-Samaya、AgenticFinBench、IPO Agent（70 条）；
   - **基本不可用**：FrontierFinance-CU、Deep FinResearch、Bank-World、FinAgentBench、FutureX-Finance。
 
@@ -370,7 +411,8 @@
 
 3. **合成企业或银行环境 + 状态检查（金融版 τ-bench）**
    - FORCE-Bench 的 ERP 部分和 Bank-World 说明，合成账套能给出确定的 GT，还能考察审批、权限、对账、如实汇报这些能力。但 Bank-World 不公开，FORCE-Bench 要 D365 许可。
-   - **开源的合成公司账套环境**是空白。可以从真实 10-K 反推一家"影子公司"的总账，让报表和 XBRL 对得上，这样可信度有保证。
+   - CFAgentBench 已经在建筑金融领域这么做了，但领域很窄，也没测闭源前沿模型；它还发现 pass^1 0.67 到 pass^5 只剩 0.38，**可靠性才是真正的短板**。
+   - **通用、开源的合成公司账套环境**仍然是空白。可以从真实 10-K 反推一家"影子公司"的总账，让报表和 XBRL 对得上，这样可信度有保证。
 
 4. **rubric 和 judge 的可信度本身就是研究点**
    - 现象：模型共识 rubric（IPO Agent）、只看题面写的 rubric（AgenticFinBench）、同家族 judge 自我偏好（IPO、Bank-World）、judge 偏高（FrontierFinance-CU）。
@@ -380,6 +422,8 @@
 5. **用"时点沙箱"解决污染，同时复用历史事件**
    - AI-Trader 把搜索限制在模拟时间之前，Samaya 给每题设提问日期，FinDeepForecast 则要等事件发生。
    - 改进办法：冻结截至 T 的 EDGAR 文件和新闻，在 T 时点提问，用 T 之后的真实数据当 GT。这样不用"等未来"就能批量造预测和判断题。和"换到截止日之后"配合起来，可以给企业私有 agent 做不受污染的评测。
+   - **Investor's Last Exam 已经做了带版本的语料库**，并量化出：放开公开网页时，**57% 的轨迹引用了截止日之后的来源**。这说明不做沙箱，所谓"预测"大多是在偷看答案。
+   - 我们可以在它的基础上补两点：一是让 GT 由程序计算，二是批量生成题目（它只有 86 题，全是人写的）。
 
 6. **按能力缺口设计算子，让 solver 反馈驱动题目演化（AutoSciBench 那套闭环搬到金融）**
    - 每个已经暴露的缺口对应一个算子，作用在种子题上：
