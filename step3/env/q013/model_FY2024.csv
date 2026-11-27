@@ -1,0 +1,9 @@
+line,unit,FY2023,FY2024,definition
+revenue,USD m,96773,97690,Revenues
+operating_income,USD m,8891,7076,OperatingIncomeLoss
+operating_margin_pct,%,9.19,7.24,operating_income / revenue * 100
+net_income,USD m,14997,7091,NetIncomeLoss
+diluted_eps,USD,4.3,2.04,EarningsPerShareDiluted
+ocf,USD m,13256,14923,NetCashProvidedByUsedInOperatingActivities
+capex,USD m,8898,11339,PaymentsToAcquirePropertyPlantAndEquipment
+fcf,USD m,4358,3584,ocf - capex
