@@ -1,0 +1,23 @@
+{
+ "family": "F1",
+ "fields": {
+  "fcf_usd_m": 5422,
+  "fy2024_comparative_differs_from_original": true,
+  "fy2024_revenue_used_usd_m": 34717,
+  "operating_margin_pct": 21.70557128358528,
+  "revenue_growth_pct": 7.849180516749721
+ },
+ "qid": "q002",
+ "signatures": {
+  "stale_comparative_original_FY2024": {
+   "fy2024_revenue_used_usd_m": 38498,
+   "revenue_growth_pct": -2.742999636344745
+  }
+ },
+ "tol": {
+  "fcf_usd_m": 1.0,
+  "fy2024_revenue_used_usd_m": 1.0,
+  "operating_margin_pct": 0.02,
+  "revenue_growth_pct": 0.02
+ }
+}

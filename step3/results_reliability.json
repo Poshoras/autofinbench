@@ -1,0 +1,288 @@
+[
+ {
+  "qid": "q001",
+  "family": "F1",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q002",
+  "family": "F1",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q003",
+  "family": "F1",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q004",
+  "family": "F2",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q005",
+  "family": "F2",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q006",
+  "family": "F3",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q007",
+  "family": "F4",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q008",
+  "family": "F4",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q009",
+  "family": "F7",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q010",
+  "family": "F8",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q011",
+  "family": "F2",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q012",
+  "family": "F1",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q013",
+  "family": "F3",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q014",
+  "family": "F4",
+  "scores": [
+   1.0,
+   0.7142857142857143,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": false
+ },
+ {
+  "qid": "q015",
+  "family": "F2",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q016",
+  "family": "F1",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q017",
+  "family": "F3",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q018",
+  "family": "F2",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q019",
+  "family": "F1",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q020",
+  "family": "F1",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q021",
+  "family": "F8",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q022",
+  "family": "F7P",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q023",
+  "family": "F4",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q024",
+  "family": "F11",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q025",
+  "family": "F12",
+  "scores": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "pass@1": true,
+  "pass^3": true
+ },
+ {
+  "qid": "q026",
+  "family": "F13",
+  "scores": [
+   null,
+   null,
+   null
+  ],
+  "pass@1": false,
+  "pass^3": false
+ }
+]

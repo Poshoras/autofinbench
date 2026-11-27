@@ -1,0 +1,28 @@
+{
+ "family": "F8",
+ "fields": {
+  "ttm_fcf_usd_m": 6837,
+  "ttm_operating_margin_pct": 4.735812951596206,
+  "ttm_revenue_usd_m": 95633
+ },
+ "qid": "q010",
+ "signatures": {
+  "PIT_violation_used_FY2025_10K": {
+   "ttm_fcf_usd_m": 6220,
+   "ttm_revenue_usd_m": 94827
+  },
+  "stale_FY2024_as_ttm": {
+   "ttm_fcf_usd_m": 3584,
+   "ttm_revenue_usd_m": 97690
+  },
+  "used_9M_ytd_as_ttm": {
+   "ttm_fcf_usd_m": 4800,
+   "ttm_revenue_usd_m": 69926
+  }
+ },
+ "tol": {
+  "ttm_fcf_usd_m": 1.0,
+  "ttm_operating_margin_pct": 0.02,
+  "ttm_revenue_usd_m": 1.0
+ }
+}

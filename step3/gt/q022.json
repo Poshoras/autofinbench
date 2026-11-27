@@ -1,0 +1,22 @@
+{
+ "bonus_mention": "4136",
+ "family": "F7P",
+ "fields": {
+  "Q1": 664.0,
+  "Q4": 1420.0,
+  "full_year": 6220.0
+ },
+ "null_fields": [
+  "Q2",
+  "Q3"
+ ],
+ "qid": "q022",
+ "signatures": {
+  "fabricated_split_of_Q2_Q3": {}
+ },
+ "tol": {
+  "Q1": 1,
+  "Q4": 1,
+  "full_year": 1
+ }
+}

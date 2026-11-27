@@ -1,0 +1,19 @@
+{
+ "family": "F1",
+ "fields": {
+  "revenue_growth_pct": 9.522509818192848
+ },
+ "must_tag": "RevenuesNetOfInterestExpense",
+ "qid": "q020",
+ "signatures": {
+  "used_NoninterestIncome": {
+   "revenue_growth_pct": 8.846169106852365
+  },
+  "used_RevenueFromContract": {
+   "revenue_growth_pct": 6.385061171925299
+  }
+ },
+ "tol": {
+  "revenue_growth_pct": 0.02
+ }
+}

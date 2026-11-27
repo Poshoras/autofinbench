@@ -1,0 +1,13 @@
+{
+ "blocked": false,
+ "family": "F2",
+ "fields": {
+  "fcf_margin_pct": 8.826785927509958,
+  "fcf_usd_m": 1626.2999999999997
+ },
+ "qid": "q005",
+ "tol": {
+  "fcf_margin_pct": 0.02,
+  "fcf_usd_m": 0.15
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "changed_lines": [
+  "capex",
+  "fcf",
+  "operating_income",
+  "operating_margin_pct",
+  "revenue"
+ ],
+ "family": "F3",
+ "model": {
+  "FY2024": {
+   "capex": 871,
+   "diluted_eps": 8.71,
+   "fcf": 5226,
+   "net_income": 5705,
+   "ocf": 6097,
+   "operating_income": 7667,
+   "operating_margin_pct": 22.08,
+   "revenue": 34717
+  },
+  "FY2025": {
+   "capex": 986,
+   "diluted_eps": 7.36,
+   "fcf": 5422,
+   "net_income": 4729,
+   "ocf": 6408,
+   "operating_income": 8127,
+   "operating_margin_pct": 21.71,
+   "revenue": 37442
+  }
+ },
+ "qid": "q006",
+ "signatures": {
+  "kept_stale_FY2024": {
+   "capex": 1164,
+   "diluted_eps": 8.71,
+   "fcf": 4933,
+   "net_income": 5705,
+   "ocf": 6097,
+   "operating_income": 8699,
+   "operating_margin_pct": 22.6,
+   "revenue": 38498
+  }
+ },
+ "tol_abs": {
+  "*": 0.5,
+  "diluted_eps": 0.005,
+  "operating_margin_pct": 0.011
+ }
+}

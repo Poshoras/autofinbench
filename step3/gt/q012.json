@@ -1,0 +1,21 @@
+{
+ "family": "F1",
+ "fields": {
+  "growth_pct": -41.6964018738164,
+  "rev2022": 100330,
+  "rev2023": 58496
+ },
+ "qid": "q012",
+ "signatures": {
+  "PIT_violation_used_recast": {
+   "growth_pct": -41.138621200889546,
+   "rev2022": 101175,
+   "rev2023": 59553
+  }
+ },
+ "tol": {
+  "growth_pct": 0.02,
+  "rev2022": 1,
+  "rev2023": 1
+ }
+}

@@ -1,0 +1,21 @@
+{
+ "family": "F1",
+ "fields": {
+  "adjustment_factor": 10,
+  "eps_cagr_pct": 102.91986247835693,
+  "eps_fy2024_as_reported": 11.93,
+  "eps_fy2024_comparable": 1.19
+ },
+ "qid": "q003",
+ "signatures": {
+  "mixed_split_basis": {
+   "eps_cagr_pct": -35.91183775598187
+  }
+ },
+ "tol": {
+  "adjustment_factor": 0.05,
+  "eps_cagr_pct": 0.1,
+  "eps_fy2024_as_reported": 0.005,
+  "eps_fy2024_comparable": 0.005
+ }
+}

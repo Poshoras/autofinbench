@@ -1,0 +1,29 @@
+{
+ "family": "F11",
+ "fields": {
+  "buyback_q3_2025_usd_m": 100.0,
+  "cash_2025_09_30_usd_m": 12930.0,
+  "etr_9m2025_pct": 18.102727120629076,
+  "pretax_9m2025_as_originally_reported_usd_m": 5977.0,
+  "pretax_9m2025_as_presented_now_usd_m": 2023.0,
+  "rd_q3_2025_usd_m": 497.0
+ },
+ "qid": "q024",
+ "signatures": {
+  "PIT_violation_recast_ETR": {
+   "etr_9m2025_pct": 21.10726643598616
+  },
+  "ytd_as_quarter": {
+   "buyback_q3_2025_usd_m": 3704.0,
+   "rd_q3_2025_usd_m": 1417.0
+  }
+ },
+ "tol": {
+  "buyback_q3_2025_usd_m": 1.0,
+  "cash_2025_09_30_usd_m": 1.0,
+  "etr_9m2025_pct": 0.02,
+  "pretax_9m2025_as_originally_reported_usd_m": 1.0,
+  "pretax_9m2025_as_presented_now_usd_m": 1.0,
+  "rd_q3_2025_usd_m": 1.0
+ }
+}

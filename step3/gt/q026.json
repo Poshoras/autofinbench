@@ -1,0 +1,33 @@
+{
+ "family": "F13",
+ "hits": [
+  {
+   "cik": 200406,
+   "entity": "Johnson & Johnson",
+   "first_reported": 94943000000,
+   "max_revised": 79990000000,
+   "pct_change": -15.75,
+   "period_end": "2023-01-01",
+   "tag": "RevenueFromContractWithCustomerExcludingAssessedTax"
+  },
+  {
+   "cik": 773840,
+   "entity": "Honeywell International Inc",
+   "first_reported": 36662000000,
+   "max_revised": 33009000000,
+   "pct_change": -9.96,
+   "period_end": "2023-12-31",
+   "tag": "RevenueFromContractWithCustomerExcludingAssessedTax"
+  },
+  {
+   "cik": 773840,
+   "entity": "Honeywell International Inc",
+   "first_reported": 38498000000,
+   "max_revised": 34717000000,
+   "pct_change": -9.82,
+   "period_end": "2024-12-31",
+   "tag": "RevenueFromContractWithCustomerExcludingAssessedTax"
+  }
+ ],
+ "qid": "q026"
+}

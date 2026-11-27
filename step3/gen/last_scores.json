@@ -1,0 +1,39 @@
+[
+ {
+  "qid": "q025",
+  "family": "F12",
+  "rev": "1",
+  "fields": {
+   "C01": true,
+   "C02": true,
+   "C03": true,
+   "C04": true,
+   "C05": true,
+   "C06": true,
+   "C07": true,
+   "C08": true,
+   "C09": true,
+   "C10": true,
+   "C11": true,
+   "C12": true,
+   "C13": true,
+   "C14": true,
+   "C15": true,
+   "C16": true,
+   "C17": true,
+   "C18": true,
+   "C19": true,
+   "C20": true,
+   "C21": true,
+   "C22": true,
+   "C23": true,
+   "C24": true,
+   "C25": true,
+   "C26": true,
+   "C27": true,
+   "C28": true
+  },
+  "score": 1.0,
+  "signatures": []
+ }
+]

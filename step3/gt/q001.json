@@ -1,0 +1,21 @@
+{
+ "family": "F1",
+ "fields": {
+  "fcf_usd_m": 4933,
+  "operating_margin_pct": 22.595979011896723,
+  "revenue_growth_pct": 5.007910097648782
+ },
+ "qid": "q001",
+ "signatures": {
+  "PIT_violation_used_2026_recast": {
+   "fcf_usd_m": 5226,
+   "operating_margin_pct": 22.08428147593398,
+   "revenue_growth_pct": 5.174346390378393
+  }
+ },
+ "tol": {
+  "fcf_usd_m": 1.0,
+  "operating_margin_pct": 0.02,
+  "revenue_growth_pct": 0.02
+ }
+}

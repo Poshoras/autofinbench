@@ -1,0 +1,19 @@
+{
+ "blocked": true,
+ "family": "F2",
+ "missing_must_mention": [
+  "PaymentsToAcquirePropertyPlantAndEquipment|capex|capital expenditure"
+ ],
+ "qid": "q011",
+ "signatures": {
+  "annualized_9M": {
+   "fcf_usd_m": 15041.333333333332
+  },
+  "fabricated_from_outside_source": {
+   "fcf_usd_m": 15147
+  },
+  "used_9M_ytd_capex_as_annual": {
+   "fcf_usd_m": 16170
+  }
+ }
+}

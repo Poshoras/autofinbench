@@ -1,0 +1,18 @@
+{
+ "family": "F8",
+ "fields": {
+  "ttm_diluted_eps": 2.133
+ },
+ "qid": "q021",
+ "signatures": {
+  "mixed_pre_post_split": {
+   "ttm_diluted_eps": 12.87
+  },
+  "pre_split_prior_ytd": {
+   "ttm_diluted_eps": 9.899999999999999
+  }
+ },
+ "tol": {
+  "ttm_diluted_eps": 0.006
+ }
+}
