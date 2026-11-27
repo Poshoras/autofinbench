@@ -121,7 +121,7 @@
   > "we consider a benchmark to be a 'task' and 'metric' which are used together to represent a 'phenomenon' of interest."
   - 脚注 1 以 GSM8K 为例：phenomenon 是 "multi-step mathematical reasoning"。
 - **【原文】§3.8** 要求阐明 "the chain of decisions from defining a phenomenon, to operationalising it via a task…"。
-- **【我的归纳】**：这是一个 **(phenomenon, task, metric) 三元组**。和你的三元组相比，多了 phenomenon（要测的能力），少了 environment。作者调研了 445 篇 LLM benchmark 论文，结论之一是 phenomenon 经常定义不清。
+- **【我的归纳】**：这是一个 **(phenomenon, task, metric) 三元组**。和你的三元组相比，多了 phenomenon（要测的能力），少了 environment。
 
 ### B. 任务层：数学形式化（RL 与 agent）
 
