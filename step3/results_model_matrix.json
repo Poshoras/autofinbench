@@ -1,0 +1,377 @@
+[
+ {
+  "qid": "q001",
+  "family": "F1",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q002",
+  "family": "F1",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q003",
+  "family": "F1",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q004",
+  "family": "F2",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q005",
+  "family": "F2",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q006",
+  "family": "F3",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q007",
+  "family": "F4",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 0.286,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 0.2857142857142857,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.317,
+  "signatures": {}
+ },
+ {
+  "qid": "q008",
+  "family": "F4",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 0.286,
+  "gpt-5.6-luna": 0.571,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 0.2857142857142857,
+   "gpt-5.6-luna": 0.5714285714285714
+  },
+  "difficulty": 0.0,
+  "separability": 0.254,
+  "signatures": {}
+ },
+ {
+  "qid": "q009",
+  "family": "F7",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q010",
+  "family": "F8",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q011",
+  "family": "F2",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 0.333,
+  "gpt-5.6-luna": 0.333,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.296,
+  "signatures": {}
+ },
+ {
+  "qid": "q012",
+  "family": "F1",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q013",
+  "family": "F3",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q014",
+  "family": "F4",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 0.571,
+  "gpt-5.6-luna": 0.429,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 0.5714285714285714,
+   "gpt-5.6-luna": 0.42857142857142855
+  },
+  "difficulty": 0.0,
+  "separability": 0.222,
+  "signatures": {}
+ },
+ {
+  "qid": "q015",
+  "family": "F2",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q016",
+  "family": "F1",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q017",
+  "family": "F3",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q018",
+  "family": "F2",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 0.5,
+  "gpt-5.6-luna": 0.5,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.222,
+  "signatures": {}
+ },
+ {
+  "qid": "q019",
+  "family": "F1",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q020",
+  "family": "F1",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q021",
+  "family": "F8",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q022",
+  "family": "F7P",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q023",
+  "family": "F4",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 0.143,
+  "gpt-5.6-luna": 0.286,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 0.14285714285714285,
+   "gpt-5.6-luna": 0.2857142857142857
+  },
+  "difficulty": 0.0,
+  "separability": 0.349,
+  "signatures": {}
+ },
+ {
+  "qid": "q024",
+  "family": "F11",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ },
+ {
+  "qid": "q025",
+  "family": "F12",
+  "gpt-6-astra": 1.0,
+  "gpt-6-luna": 1.0,
+  "gpt-5.6-luna": 1.0,
+  "lenient": {
+   "gpt-6-astra": 1.0,
+   "gpt-6-luna": 1.0,
+   "gpt-5.6-luna": 1.0
+  },
+  "difficulty": 0.0,
+  "separability": 0.0,
+  "signatures": {}
+ }
+]

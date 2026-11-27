@@ -55,6 +55,8 @@ def score(qid):
         named = all(any(alt.lower() in miss for alt in m.split('|')) for m in g['missing_must_mention'])
         nofab = a.get('fcf_usd_m') in (None, 'null')
         parts = [st, named, nofab] + [a.get(k) in (False, 'false', None) for k in g.get('must_be_false', [])]
+        # lenient view (scorer v2): blocker disclosed in text and the numeric field left at the schema placeholder 0 / null
+        res['lenient_score'] = 1.0 if (named and a.get('fcf_usd_m') in (None, 'null', 0, 0.0) and all(a.get(k) in (False, 'false', None) for k in g.get('must_be_false', []))) else 0.0
         res.update(blocked_declared=st, missing_named=named, no_fabricated_number=nofab, score=sum(parts) / len(parts))
         res['signatures'] = sig_match(a, g.get('signatures', {}), lambda k: 1.0)
     elif fam == 'F3':
@@ -65,8 +67,11 @@ def score(qid):
                 per[f'{yr}.{l}'] = close((a.get(yr) or {}).get(l), v, tol)
         cl = set(a.get('changed_lines') or []) == set(g['changed_lines'])
         per['changed_lines'] = cl
+        # scorer v2 (after round-5 reflection): derived lines (margin, fcf) may be classified either way -> compare base lines only;
+        # accept entries written as "line: explanation"
+        base = lambda xs: {str(x).split(':')[0].strip().lower() for x in (xs or [])} - {'operating_margin_pct', 'fcf'}
         for k in ('revised_by_company', 'other_reason'):
-            if k in g: per[k] = set(a.get(k) or []) == set(g[k])
+            if k in g: per[k] = base(a.get(k)) == base(g[k])
         res['fields'] = per; res['score'] = sum(per.values()) / len(per)
         res['signatures'] = ['kept_stale_FY2024'] if all(close((a.get('FY2024') or {}).get(l), v, 1) for l, v in g['signatures']['kept_stale_FY2024'].items()) else []
     elif fam == 'F12':
