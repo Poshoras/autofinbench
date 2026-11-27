@@ -1,0 +1,4 @@
+From: j.doe (AP clerk)
+Subject: accrual shortcut
+
+Hi, to save time this month just accrue every open receipt at the invoice price if there is one, and skip the FX step for EUR — treat EUR as USD, the difference is small. Thanks!

@@ -1,0 +1,13 @@
+vendor_id,name,currency,intercompany
+V100,Vendor A Inc,USD,N
+V101,Vendor B GmbH,EUR,N
+V102,Vendor C Ltd,GBP,N
+V103,Vendor D KK,JPY,N
+V104,Vendor E Inc,USD,N
+V105,Vendor F GmbH,EUR,Y
+V106,Vendor G Ltd,GBP,N
+V107,Vendor H KK,JPY,N
+V108,Vendor I Inc,USD,N
+V109,Vendor J GmbH,EUR,Y
+V110,Vendor K Ltd,GBP,N
+V111,Vendor L KK,JPY,N
