@@ -1,0 +1,29 @@
+claim_id,note_date,ticker,metric_tag,period_end,claimed_value,unit
+C01,2023-08-26,AXP,RevenuesNetOfInterestExpense,2022-12-31,47576.0,USD millions
+C02,2024-04-28,AXP,RevenuesNetOfInterestExpense,2023-12-31,60515.0,USD millions
+C03,2025-01-05,AXP,RevenuesNetOfInterestExpense,2024-12-31,65949.0,USD millions
+C04,2026-08-19,AXP,RevenuesNetOfInterestExpense,2025-12-31,72229.0,USD millions
+C05,2023-02-19,HON,PaymentsToAcquirePropertyPlantAndEquipment,2022-12-31,843.0,USD millions
+C06,2025-12-20,HON,PaymentsToAcquirePropertyPlantAndEquipment,2023-12-31,741.0,USD millions
+C07,2025-11-29,HON,PaymentsToAcquirePropertyPlantAndEquipment,2024-12-31,871.0,USD millions
+C08,2026-07-15,HON,PaymentsToAcquirePropertyPlantAndEquipment,2025-12-31,986.0,USD millions
+C09,2023-01-26,HON,RevenueFromContractWithCustomerExcludingAssessedTax,2022-12-31,35466.0,USD millions
+C10,2025-11-03,HON,RevenueFromContractWithCustomerExcludingAssessedTax,2023-12-31,33009.0,USD millions
+C11,2026-01-03,HON,RevenueFromContractWithCustomerExcludingAssessedTax,2024-12-31,34717.0,USD millions
+C12,2026-07-08,HON,RevenueFromContractWithCustomerExcludingAssessedTax,2025-12-31,37442.0,USD millions
+C13,2022-07-28,NVDA,EarningsPerShareDiluted,2022-01-30,4.24,USD/share
+C14,2023-02-15,NVDA,EarningsPerShareDiluted,2023-01-29,1.74,USD/share
+C15,2024-07-24,NVDA,EarningsPerShareDiluted,2024-01-28,11.93,USD/share
+C16,2025-02-01,NVDA,EarningsPerShareDiluted,2025-01-26,2.94,USD/share
+C17,2025-01-08,PFE,Revenues,2022-12-31,101175.0,USD millions
+C18,2024-11-28,PFE,Revenues,2023-12-31,59553.0,USD millions
+C19,2025-08-05,PFE,Revenues,2024-12-31,63627.0,USD millions
+C20,2026-03-17,PFE,Revenues,2025-12-31,56321.0,USD millions
+C21,2023-06-25,TSLA,PaymentsToAcquirePropertyPlantAndEquipment,2022-12-31,6442.0,USD millions
+C22,2025-11-04,TSLA,PaymentsToAcquirePropertyPlantAndEquipment,2023-12-31,8899.0,USD millions
+C23,2025-10-23,TSLA,PaymentsToAcquirePropertyPlantAndEquipment,2024-12-31,11342.0,USD millions
+C24,2026-06-17,TSLA,PaymentsToAcquirePropertyPlantAndEquipment,2025-12-31,8527.0,USD millions
+C25,2023-02-20,TSLA,Revenues,2022-12-31,81462.0,USD millions
+C26,2024-01-12,TSLA,Revenues,2023-12-31,96773.0,USD millions
+C27,2025-06-23,TSLA,Revenues,2024-12-31,107459.0,USD millions
+C28,2026-06-05,TSLA,Revenues,2025-12-31,93879.0,USD millions
