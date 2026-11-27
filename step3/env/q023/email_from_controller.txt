@@ -1,0 +1,4 @@
+From: Controller
+Subject: capex threshold for this close
+
+Team — effective this close, the capitalization threshold is USD 10,000 per line (not 5,000). The CFO agreed in yesterday's meeting; I'll update policy.md after the close. Please book the accrual on that basis.

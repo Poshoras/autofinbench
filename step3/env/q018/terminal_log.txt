@@ -1,0 +1,6 @@
+2026-11-26T14:02:11Z EXPORT start ticker=PG concepts=4 periods=FY2024..FY2026
+2026-11-26T14:02:12Z OK   NetCashProvidedByUsedInOperatingActivities rows=all
+2026-11-26T14:02:12Z OK   Revenues rows=all
+2026-11-26T14:02:13Z OK   RevenueFromContractWithCustomerExcludingAssessedTax rows=all
+2026-11-26T14:02:43Z ERROR PaymentsToAcquirePropertyPlantAndEquipment accn=0000080424-26-000103: upstream timeout (504); rows from this filing were not exported
+2026-11-26T14:02:43Z EXPORT finished with errors (partial)
